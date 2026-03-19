@@ -10,12 +10,18 @@
     --gold: #A0700A;
     --gold-light: #FDF3DC;
     --gold-mid: #C8860E;
-    --ldf: #C0202E;
-    --ldf-bg: #FEF2F3;
+    --ldf: #D94040;
+    --ldf-bg: #ff1a1a;
+    --ldf-text: #000000;
     --udf: #1565C0;
-    --udf-bg: #EFF4FD;
-    --nda: #C85000;
-    --nda-bg: #FFF3EC;
+    --udf-bg: #99e6ff;
+    --udf-text: #000000;
+    --nda: #E07828;
+    --nda-bg: #ffcc00;
+    --nda-text: #000000;
+    --others: #555555;
+    --others-bg: #F0F0F0;
+    --others-text: #000000;
     --muted: #6B7280;
     --faint: #9CA3AF;
     --border: #E5E7EB;
@@ -25,10 +31,14 @@
     --card2: #FAFAF8;
     --text: #111827;
     --text-soft: #374151;
-    --sc-color: #6D28D9;
-    --sc-bg: #F5F3FF;
-    --st-color: #047857;
-    --st-bg: #ECFDF5;
+    --sc-color: #7C3AED;
+    --sc-bg: #F3F0FF;
+    --sc-card: #FAF8FF;
+    --sc-border: #DDD6FE;
+    --st-color: #0B7A56;
+    --st-bg: #EDFAF5;
+    --st-card: #F4FDF9;
+    --st-border: #A7F3D0;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -202,9 +212,10 @@
     letter-spacing: 0.05em;
   }
 
-  .legend-pill.ldf { background: var(--ldf-bg); color: var(--ldf); border-color: rgba(192,32,46,0.2); }
-  .legend-pill.udf { background: var(--udf-bg); color: var(--udf); border-color: rgba(21,101,192,0.2); }
-  .legend-pill.nda { background: var(--nda-bg); color: var(--nda); border-color: rgba(200,80,0,0.2); }
+  .legend-pill.ldf { background: var(--ldf-bg); color: var(--ldf-text); border-color: rgba(192,32,46,0.2); }
+  .legend-pill.udf { background: var(--udf-bg); color: var(--udf-text); border-color: rgba(21,101,192,0.2); }
+  .legend-pill.nda { background: var(--nda-bg); color: var(--nda-text); border-color: rgba(200,80,0,0.2); }
+  .legend-pill.others { background: var(--others-bg); color: var(--others-text); border-color: rgba(85,85,85,0.2); }
 
   .legend-pill:hover { opacity: 0.8; transform: translateY(-1px); }
 
@@ -245,6 +256,7 @@
   .stat-cell.nda::before { background: var(--nda); }
   .stat-cell.sc::before  { background: var(--sc-color); }
   .stat-cell.st::before  { background: var(--st-color); }
+  .stat-cell.others::before { background: var(--others); }
 
   .stat-n {
     font-family: 'Playfair Display', serif;
@@ -254,11 +266,12 @@
     margin-bottom: 6px;
   }
 
-  .stat-cell.ldf .stat-n { color: var(--ldf); }
-  .stat-cell.udf .stat-n { color: var(--udf); }
-  .stat-cell.nda .stat-n { color: var(--nda); }
+  .stat-cell.ldf .stat-n { color: var(--ldf-text); }
+  .stat-cell.udf .stat-n { color: var(--udf-text); }
+  .stat-cell.nda .stat-n { color: var(--nda-text); }
   .stat-cell.sc  .stat-n { color: var(--sc-color); }
   .stat-cell.st  .stat-n { color: var(--st-color); }
+  .stat-cell.others .stat-n { color: var(--others); }
 
   .stat-label {
     font-family: 'DM Mono', monospace;
@@ -419,11 +432,12 @@
 
   .filter-btn:hover { border-color: var(--faint); color: var(--text-soft); }
   .filter-btn.active { border-color: var(--gold-mid); color: var(--gold); background: var(--gold-light); font-weight: 500; }
-  .filter-btn.ldf.active  { border-color: var(--ldf); color: var(--ldf); background: var(--ldf-bg); }
-  .filter-btn.udf.active  { border-color: var(--udf); color: var(--udf); background: var(--udf-bg); }
-  .filter-btn.nda.active  { border-color: var(--nda); color: var(--nda); background: var(--nda-bg); }
+  .filter-btn.ldf.active  { border-color: var(--ldf); color: var(--ldf-text); background: var(--ldf-bg); }
+  .filter-btn.udf.active  { border-color: var(--udf); color: var(--udf-text); background: var(--udf-bg); }
+  .filter-btn.nda.active  { border-color: var(--nda); color: var(--nda-text); background: var(--nda-bg); }
   .filter-btn.sc.active   { border-color: var(--sc-color); color: var(--sc-color); background: var(--sc-bg); }
   .filter-btn.st.active   { border-color: var(--st-color); color: var(--st-color); background: var(--st-bg); }
+  .filter-btn.others.active { border-color: var(--others); color: var(--others-text); background: var(--others-bg); }
 
   .results-info {
     font-family: 'DM Mono', monospace;
@@ -460,6 +474,34 @@
     transform: translateY(-3px);
     border-color: var(--gold-mid);
     box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  }
+
+  .card.reserved-sc {
+    background: var(--sc-card);
+    border-color: var(--sc-border);
+  }
+
+  .card.reserved-sc .card-header {
+    background: #F6F2FF;
+  }
+
+  .card.reserved-sc:hover {
+    border-color: var(--sc-color);
+    box-shadow: 0 6px 20px rgba(124,58,237,0.1);
+  }
+
+  .card.reserved-st {
+    background: var(--st-card);
+    border-color: var(--st-border);
+  }
+
+  .card.reserved-st .card-header {
+    background: #EEFAF5;
+  }
+
+  .card.reserved-st:hover {
+    border-color: var(--st-color);
+    box-shadow: 0 6px 20px rgba(11,122,86,0.1);
   }
 
   .card-header {
@@ -507,8 +549,8 @@
     font-weight: 500;
   }
 
-  .reservation-badge.sc { background: var(--sc-bg); color: var(--sc-color); border: 1px solid rgba(109,40,217,0.2); }
-  .reservation-badge.st { background: var(--st-bg); color: var(--st-color); border: 1px solid rgba(4,120,87,0.2); }
+  .reservation-badge.sc { background: var(--sc-bg); color: var(--sc-color); border: 1px solid var(--sc-border); }
+  .reservation-badge.st { background: var(--st-bg); color: var(--st-color); border: 1px solid var(--st-border); }
 
   .card-candidates {
     padding: 11px 16px 13px;
@@ -534,9 +576,10 @@
     text-align: center;
   }
 
-  .alliance-tag.LDF { background: var(--ldf-bg); color: var(--ldf); border: 1px solid rgba(192,32,46,0.2); }
-  .alliance-tag.UDF { background: var(--udf-bg); color: var(--udf); border: 1px solid rgba(21,101,192,0.2); }
-  .alliance-tag.NDA { background: var(--nda-bg); color: var(--nda); border: 1px solid rgba(200,80,0,0.2); }
+  .alliance-tag.LDF { background: var(--ldf-bg); color: var(--ldf-text); border: 1px solid rgba(192,32,46,0.2); }
+  .alliance-tag.UDF { background: var(--udf-bg); color: var(--udf-text); border: 1px solid rgba(21,101,192,0.2); }
+  .alliance-tag.NDA { background: var(--nda-bg); color: var(--nda-text); border: 1px solid rgba(200,80,0,0.2); }
+  .alliance-tag.OTH { background: var(--others-bg); color: var(--others-text); border: 1px solid rgba(85,85,85,0.2); }
 
   .candidate-party {
     font-family: 'DM Mono', monospace;
@@ -849,7 +892,7 @@
         </div>
         <div class="hstat">
           <div class="hstat-num" id="total-candidates">—</div>
-          <div class="hstat-label">Candidates</div>
+          <div class="hstat-label">Announced Candidates *</div>
         </div>
       </div>
     </div>
@@ -873,6 +916,10 @@
       <div class="legend-dot" style="background:var(--nda)"></div>
       NDA <span class="legend-count" id="nda-count">—</span>
     </div>
+    <div class="legend-pill others" onclick="setFilter('OTH')">
+      <div class="legend-dot" style="background:var(--others)"></div>
+      Others <span class="legend-count" id="oth-count">—</span>
+    </div>
   </div>
 
   <!-- Stats row -->
@@ -880,6 +927,7 @@
     <div class="stat-cell ldf"><div class="stat-n" id="stat-ldf">—</div><div class="stat-label">LDF Candidates</div></div>
     <div class="stat-cell udf"><div class="stat-n" id="stat-udf">—</div><div class="stat-label">UDF Candidates</div></div>
     <div class="stat-cell nda"><div class="stat-n" id="stat-nda">—</div><div class="stat-label">NDA Candidates</div></div>
+    <div class="stat-cell others"><div class="stat-n" id="stat-oth">—</div><div class="stat-label">Others</div></div>
     <div class="stat-cell sc"><div class="stat-n" id="stat-sc">—</div><div class="stat-label">SC Reserved</div></div>
     <div class="stat-cell st"><div class="stat-n" id="stat-st">—</div><div class="stat-label">ST Reserved</div></div>
   </div>
@@ -917,6 +965,7 @@
     <button class="filter-btn ldf" id="filter-LDF" onclick="setFilter('LDF')">🔴 LDF</button>
     <button class="filter-btn udf" id="filter-UDF" onclick="setFilter('UDF')">🔵 UDF</button>
     <button class="filter-btn nda" id="filter-NDA" onclick="setFilter('NDA')">🟠 NDA</button>
+    <button class="filter-btn others" id="filter-OTH" onclick="setFilter('OTH')">⬜ Others</button>
     <button class="filter-btn sc"  id="filter-SC"  onclick="setFilter('SC')">SC Reserved</button>
     <button class="filter-btn st"  id="filter-ST"  onclick="setFilter('ST')">ST Reserved</button>
   </div>
@@ -929,7 +978,7 @@
 </div>
 
 <footer>
-  <span class="footer-text">Kerala Legislative Assembly Election 2026 · Data sourced from Various Media & CEC Kerala</span>
+  <span class="footer-text">Kerala Legislative Assembly Election 2026 · Data sourced from Various Media & SEC Kerala</span>
   <button class="footer-disc-link" onclick="openDisclaimer()">⚠ View Disclaimer</button>
 </footer>
 
@@ -1148,6 +1197,7 @@ function renderGrid() {
     if (activeDistrict !== 'all' && row.District !== activeDistrict) return false;
     if (activeFilter === 'SC') return row.Reservation === 'SC';
     if (activeFilter === 'ST') return row.Reservation === 'ST';
+    if (activeFilter === 'OTH') return true; // placeholder until Others data arrives
     return true;
   });
 
@@ -1179,7 +1229,7 @@ function renderGrid() {
 
   filtered.forEach((row, idx) => {
     const card = document.createElement('div');
-    card.className = 'card';
+    card.className = 'card' + (row.Reservation === 'SC' ? ' reserved-sc' : row.Reservation === 'ST' ? ' reserved-st' : '');
     card.style.animationDelay = Math.min(idx * 12, 260) + 'ms';
 
     const res = row.Reservation;
@@ -1188,7 +1238,7 @@ function renderGrid() {
     function cRow(alliance, party, name) {
       const n = name ? `<span class="candidate-name">${name}</span>` : `<span class="candidate-name unknown">TBD</span>`;
       return `<div class="candidate-row">
-        <span class="alliance-tag ${alliance}">${alliance}</span>
+        <span class="alliance-tag ${alliance}">${alliance === 'OTH' ? 'Others' : alliance}</span>
         <div><div class="candidate-party">${party || '—'}</div>${n}</div>
       </div>`;
     }
@@ -1206,6 +1256,7 @@ function renderGrid() {
         ${cRow('LDF', row.LDF, row.LDF_Candidate)}
         ${cRow('UDF', row.UDF, row.UDF_Candidate)}
         ${row.NDA ? cRow('NDA', row.NDA, row.NDA_Candidate) : ''}
+        ${cRow('OTH', '', '')}
       </div>`;
 
     card.onclick = () => openModal(row);
@@ -1232,16 +1283,17 @@ function openModal(row) {
       <div class="modal-alliance-bar" style="background:${color}"></div>
       <div class="modal-candidate-inner">
         <div class="modal-alliance-label">${alliance}</div>
-        <div class="modal-party" style="color:${color}">${party || '—'}</div>
+        <div class="modal-party" style="color:#000000">${party || '—'}</div>
         <div class="modal-candidate-name${tbd ? ' tbd' : ''}">${name || 'To Be Announced'}</div>
       </div>
     </div>`;
   }
 
   document.getElementById('modal-candidates').innerHTML =
-    mCand('LDF', '#C0202E', row.LDF, row.LDF_Candidate) +
+    mCand('LDF', '#D94040', row.LDF, row.LDF_Candidate) +
     mCand('UDF', '#1565C0', row.UDF, row.UDF_Candidate) +
-    (row.NDA ? mCand('NDA', '#C85000', row.NDA, row.NDA_Candidate) : '');
+    (row.NDA ? mCand('NDA', '#E07828', row.NDA, row.NDA_Candidate) : '') +
+    mCand('Others', '#888888', '', '');
 
   document.getElementById('modal-overlay').classList.add('open');
 }
@@ -1283,11 +1335,13 @@ function computeStats() {
   document.getElementById('stat-ldf').textContent = ldf;
   document.getElementById('stat-udf').textContent = udf;
   document.getElementById('stat-nda').textContent = nda;
+  document.getElementById('stat-oth').textContent = '—';
   document.getElementById('stat-sc').textContent = sc;
   document.getElementById('stat-st').textContent = st;
   document.getElementById('ldf-count').textContent = ldf;
   document.getElementById('udf-count').textContent = udf;
   document.getElementById('nda-count').textContent = nda;
+  document.getElementById('oth-count').textContent = '—';
   document.getElementById('total-candidates').textContent = ldf + udf + nda;
 }
 
