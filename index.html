@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kerala Legislative Assembly Election 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Malayalam:ital@0;1&family=DM+Mono:wght@400;500&family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C8961E;
+    --gold-light: #F5D87A;
+    --gold-dim: #7A5C12;
+    --kerala-green: #1A6B3C;
+    --kerala-green-light: #2D9B5E;
+    --saffron: #E8621A;
+    --deep-red: #8B1A1A;
+    --ldf: #E63946;
+    --udf: #2196F3;
+    --nda: #FF6B00;
+    --ink: #0D0D0D;
+    --ink-mid: #1C1C1C;
+    --ink-soft: #2E2E2E;
+    --muted: #666;
+    --faint: #AAA;
+    --border: rgba(200,150,30,0.2);
+    --bg: #080808;
+    --card: #111;
+    --card2: #161616;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: #E8E0D0;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── HEADER ── */
+  header {
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+    background: linear-gradient(180deg, #0A0A0A 0%, #080808 100%);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .header-texture {
+    position: absolute; inset: 0;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(200,150,30,0.04) 39px, rgba(200,150,30,0.04) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(200,150,30,0.04) 39px, rgba(200,150,30,0.04) 40px);
+    pointer-events: none;
+  }
+
+  .header-inner {
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 56px 40px 44px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 40px;
+  }
+
+  .header-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .header-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 64px);
+    font-weight: 900;
+    line-height: 1.05;
+    color: #F0E8D8;
+    letter-spacing: -0.02em;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .header-sub {
+    font-size: 14px;
+    color: var(--muted);
+    margin-top: 12px;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+  }
+
+  .header-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-end;
+    padding-bottom: 4px;
+  }
+
+  .hstat {
+    text-align: right;
+  }
+
+  .hstat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .hstat-label {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .divider-bar {
+    height: 3px;
+    background: linear-gradient(90deg, var(--ldf) 33.3%, var(--udf) 33.3% 66.6%, var(--nda) 66.6%);
+    width: 100%;
+  }
+
+  /* ── LAYOUT ── */
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px 80px;
+  }
+
+  /* ── ALLIANCE LEGEND ── */
+  .alliance-legend {
+    display: flex;
+    gap: 32px;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+
+  .legend-item:hover { opacity: 0.75; }
+
+  .legend-dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .legend-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--faint);
+  }
+
+  .legend-count {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* ── STATS ROW ── */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 48px;
+  }
+
+  .stat-cell {
+    background: var(--card);
+    padding: 28px 24px;
+    position: relative;
+  }
+
+  .stat-cell::after {
+    content: '';
+    position: absolute;
+    left: 0; top: 20%; bottom: 20%;
+    width: 2px;
+  }
+
+  .stat-cell.ldf::after { background: var(--ldf); }
+  .stat-cell.udf::after { background: var(--udf); }
+  .stat-cell.nda::after { background: var(--nda); }
+  .stat-cell.total::after { background: var(--gold); }
+
+  .stat-n {
+    font-family: 'Playfair Display', serif;
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .stat-cell.ldf .stat-n { color: var(--ldf); }
+  .stat-cell.udf .stat-n { color: var(--udf); }
+  .stat-cell.nda .stat-n { color: var(--nda); }
+  .stat-cell.total .stat-n { color: var(--gold); }
+
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ── DISTRICT TABS ── */
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #DDD;
+    margin-bottom: 20px;
+  }
+
+  .tabs {
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    margin-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+    scrollbar-width: none;
+    flex-wrap: nowrap;
+  }
+
+  .tabs::-webkit-scrollbar { display: none; }
+
+  .tab {
+    padding: 12px 18px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+
+  .tab:hover { color: #CCC; }
+
+  .tab.active {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+  }
+
+  /* ── CONSTITUENCY GRID ── */
+  .search-bar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 28px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .search-input {
+    flex: 1;
+    min-width: 200px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 10px 16px;
+    color: #DDD;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .search-input::placeholder { color: var(--muted); }
+  .search-input:focus { border-color: var(--gold); }
+
+  .filter-btn {
+    padding: 10px 16px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+
+  .filter-btn:hover { border-color: var(--faint); color: #CCC; }
+  .filter-btn.active { border-color: var(--gold); color: var(--gold); background: rgba(200,150,30,0.05); }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 16px;
+  }
+
+  /* ── CONSTITUENCY CARD ── */
+  .card {
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    animation: fadeUp 0.3s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(200,150,30,0.3);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  }
+
+  .card-header {
+    padding: 16px 20px 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .card-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+  }
+
+  .card-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #EEE;
+    line-height: 1.2;
+  }
+
+  .card-district {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 3px;
+  }
+
+  .reservation-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    padding: 3px 7px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .reservation-badge.sc {
+    background: rgba(255,165,0,0.12);
+    color: #FFA500;
+    border: 1px solid rgba(255,165,0,0.25);
+  }
+
+  .reservation-badge.st {
+    background: rgba(100,200,100,0.12);
+    color: #64C864;
+    border: 1px solid rgba(100,200,100,0.25);
+  }
+
+  .card-candidates {
+    padding: 14px 20px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .candidate-row {
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .alliance-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    padding: 3px 6px;
+    border-radius: 3px;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .alliance-tag.LDF {
+    background: rgba(230, 57, 70, 0.15);
+    color: #E63946;
+    border: 1px solid rgba(230,57,70,0.3);
+  }
+
+  .alliance-tag.UDF {
+    background: rgba(33, 150, 243, 0.15);
+    color: #64B5F6;
+    border: 1px solid rgba(33,150,243,0.3);
+  }
+
+  .alliance-tag.NDA {
+    background: rgba(255, 107, 0, 0.15);
+    color: #FF9A4D;
+    border: 1px solid rgba(255,107,0,0.3);
+  }
+
+  .candidate-info {}
+
+  .candidate-party {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    margin-bottom: 2px;
+  }
+
+  .candidate-name {
+    font-size: 13px;
+    color: #CCC;
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  .candidate-name.unknown {
+    color: var(--muted);
+    font-style: italic;
+    font-size: 12px;
+  }
+
+  /* ── MODAL ── */
+  .modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 24px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s;
+  }
+
+  .modal-overlay.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .modal {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    max-width: 540px;
+    width: 100%;
+    overflow: hidden;
+    transform: scale(0.96) translateY(16px);
+    transition: transform 0.25s;
+  }
+
+  .modal-overlay.open .modal { transform: scale(1) translateY(0); }
+
+  .modal-top {
+    height: 4px;
+    background: linear-gradient(90deg, var(--ldf), var(--udf), var(--nda));
+  }
+
+  .modal-header {
+    padding: 28px 32px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .modal-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .modal-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #F0E8D8;
+  }
+
+  .modal-badges {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+
+  .modal-body {
+    padding: 24px 32px 32px;
+  }
+
+  .modal-section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .modal-candidates {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .modal-candidate {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .modal-alliance-bar {
+    width: 3px;
+    align-self: stretch;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  .modal-candidate-inner { flex: 1; }
+
+  .modal-alliance-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .modal-party {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    margin-bottom: 3px;
+  }
+
+  .modal-candidate-name {
+    font-size: 18px;
+    color: #EEE;
+    font-weight: 600;
+  }
+
+  .modal-candidate-name.tbd {
+    color: var(--muted);
+    font-style: italic;
+    font-size: 15px;
+    font-weight: 300;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 16px; right: 16px;
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--muted);
+    padding: 6px 10px;
+    cursor: pointer;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    transition: all 0.2s;
+  }
+
+  .modal-close:hover { border-color: var(--faint); color: #CCC; }
+
+  .modal-header { position: relative; }
+
+  /* ── DISTRICT SUMMARY ── */
+  .district-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .dist-card {
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 6px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .dist-card:hover {
+    border-color: rgba(200,150,30,0.25);
+    transform: translateY(-2px);
+  }
+
+  .dist-card.selected {
+    border-color: var(--gold);
+    background: rgba(200,150,30,0.04);
+  }
+
+  .dist-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #DDD;
+    margin-bottom: 10px;
+  }
+
+  .dist-seats {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .dist-mini-bar {
+    height: 3px;
+    border-radius: 2px;
+    background: var(--border);
+    overflow: hidden;
+    display: flex;
+    gap: 1px;
+  }
+
+  .dist-mini-seg { height: 100%; }
+
+  /* ── EMPTY STATE ── */
+  .empty-state {
+    grid-column: 1/-1;
+    text-align: center;
+    padding: 80px 40px;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 28px 40px;
+    text-align: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .header-inner { grid-template-columns: 1fr; padding: 36px 20px 28px; }
+    .header-stats { flex-direction: row; align-items: flex-start; }
+    .container { padding: 0 20px 60px; }
+    .grid { grid-template-columns: 1fr; }
+    footer { padding: 24px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-texture"></div>
+  <div class="header-inner">
+    <div>
+      <div class="header-eyebrow">Kerala Legislative Assembly</div>
+      <h1>Election <em>2026</em></h1>
+      <p class="header-sub">Candidate list across all 140 constituencies · 14 districts · Three-alliance contest</p>
+    </div>
+    <div class="header-stats">
+      <div class="hstat">
+        <div class="hstat-num" id="total-seats">140</div>
+        <div class="hstat-label">Constituencies</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-num" id="total-candidates">—</div>
+        <div class="hstat-label">Named Candidates</div>
+      </div>
+    </div>
+  </div>
+  <div class="divider-bar"></div>
+</header>
+
+<div class="container">
+
+  <!-- Alliance legend -->
+  <div class="alliance-legend">
+    <div class="legend-item" onclick="filterAlliance('all')">
+      <div class="legend-dot" style="background:#888"></div>
+      <span class="legend-name">ALL</span>
+    </div>
+    <div class="legend-item" onclick="filterAlliance('LDF')">
+      <div class="legend-dot" style="background:var(--ldf)"></div>
+      <span class="legend-name">LDF</span>
+      <span class="legend-count" id="ldf-count">—</span>
+    </div>
+    <div class="legend-item" onclick="filterAlliance('UDF')">
+      <div class="legend-dot" style="background:var(--udf)"></div>
+      <span class="legend-name">UDF</span>
+      <span class="legend-count" id="udf-count">—</span>
+    </div>
+    <div class="legend-item" onclick="filterAlliance('NDA')">
+      <div class="legend-dot" style="background:var(--nda)"></div>
+      <span class="legend-name">NDA</span>
+      <span class="legend-count" id="nda-count">—</span>
+    </div>
+  </div>
+
+  <!-- Stats row -->
+  <div class="stats-row">
+    <div class="stat-cell ldf">
+      <div class="stat-n" id="stat-ldf">—</div>
+      <div class="stat-label">LDF Candidates</div>
+    </div>
+    <div class="stat-cell udf">
+      <div class="stat-n" id="stat-udf">—</div>
+      <div class="stat-label">UDF Candidates</div>
+    </div>
+    <div class="stat-cell nda">
+      <div class="stat-n" id="stat-nda">—</div>
+      <div class="stat-label">NDA Candidates</div>
+    </div>
+    <div class="stat-cell total">
+      <div class="stat-n" id="stat-sc">—</div>
+      <div class="stat-label">SC Reserved</div>
+    </div>
+    <div class="stat-cell total" style="--gold: #64C864;">
+      <div class="stat-n" id="stat-st" style="color:#64C864">—</div>
+      <div class="stat-label">ST Reserved</div>
+    </div>
+  </div>
+
+  <!-- District filter -->
+  <div class="section-title">Browse by District</div>
+  <div class="tabs" id="district-tabs">
+    <div class="tab active" data-district="all" onclick="selectDistrict('all', this)">All Districts</div>
+  </div>
+
+  <!-- Search & alliance filter -->
+  <div class="search-bar">
+    <input class="search-input" id="search" placeholder="Search constituency or candidate name…" oninput="renderGrid()">
+    <button class="filter-btn" id="filter-all" onclick="setFilter('all')" class="active">All</button>
+    <button class="filter-btn" id="filter-LDF" onclick="setFilter('LDF')">LDF</button>
+    <button class="filter-btn" id="filter-UDF" onclick="setFilter('UDF')">UDF</button>
+    <button class="filter-btn" id="filter-NDA" onclick="setFilter('NDA')">NDA</button>
+    <button class="filter-btn" id="filter-SC" onclick="setFilter('SC')">SC Reserved</button>
+    <button class="filter-btn" id="filter-ST" onclick="setFilter('ST')">ST Reserved</button>
+  </div>
+
+  <!-- Main grid -->
+  <div class="grid" id="grid"></div>
+
+</div>
+
+<footer>Data compiled for 2026 Kerala Legislative Assembly Elections · All 140 constituencies · 14 Districts</footer>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <div class="modal-top"></div>
+    <div class="modal-header">
+      <div class="modal-eyebrow" id="modal-eyebrow"></div>
+      <div class="modal-title" id="modal-title"></div>
+      <div class="modal-badges" id="modal-badges"></div>
+      <button class="modal-close" onclick="closeModalDirect()">✕ Close</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section-label">Contesting Candidates</div>
+      <div class="modal-candidates" id="modal-candidates"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const RAW_CSV = `District,Constituency_Number,Constituency_Name,Reservation,LDF,LDF_Candidate,UDF,UDF_Candidate,NDA,NDA_Candidate
+Kasaragod,1,Manjeshwaram,,CPI(M),K. R. Jayanandan,IUML,A. K. M. Ashraf,BJP,K. Surendran
+Kasaragod,2,Kasaragod,,INL,,IUML,Kallatra Mahin Haji,BJP,Ashwini M.L.
+Kasaragod,3,Udma,,CPI(M),C. H. Kunhambu,INC,,BJP,Manulal Meloth
+Kasaragod,4,Kanhangad,,CPI,Govindan Pallikkappil,KEC,Shyji Ottapalli,BJP,M. Balraj
+Kasaragod,5,Thrikaripur,,CPI(M),V. P. P. Mustafa,INC,,TTP,Ravi Kulangara
+Kannur,6,Payyanur,,CPI(M),T. I. Madhusoodanan,Independent (RSP support),V. Kunjikrishnan,BJP,A. P. Gangadharan
+Kannur,7,Kalliasseri,,CPI(M),M. Vijin,INC,,BJP,A.V. Sanil Kumar
+Kannur,8,Taliparamba,,CPI(M),P. K. Shyamala,INC,,BJP,N. Haridas
+Kannur,9,Irikkur,,Kerala Congress (M),Mathew Kunnappally,INC,Sajeev Joseph,,
+Kannur,10,Azhikode,,CPI(M),K. V. Sumesh,IUML,Kareem Cheleri,BJP,K. K. Vinod Kumar
+Kannur,11,Kannur,,Congress (Secular),Kadannappalli Ramachandran,INC,,BJP,C. Raghunath
+Kannur,12,Dharmadom,,CPI(M),Pinarayi Vijayan,INC,Abdul Rasheed,BJP,K. Ranjith
+Kannur,13,Thalassery,,CPI(M),Karayi Rajan,INC,K. P. Saju,BJP,O. Nidheesh
+Kannur,14,Kuthuparamba,,RJD,P. K. Praveen,IUML,Jayanthi Rajan,BJP,Adv. Shijilal
+Kannur,15,Mattanur,,CPI(M),V. K. Sanoj,INC,,BJP,Biju Elakkuzhi
+Kannur,16,Peravoor,,CPI(M),K. K. Shailaja,INC,Sunny Joseph,BDJS,Paily Vathiatt
+Wayanad,17,Mananthavady,ST,CPI(M),O. R. Kelu,INC,Usha Vijayan,BJP,P. Shyam Raj
+Wayanad,18,Sulthan Bathery,ST,CPI(M),M. S. Viswanathan,INC,I. C. Balakrishnan,BJP,A. S. Kavitha
+Wayanad,19,Kalpetta,,RJD,P. K. Anil Kumar,INC,T. Siddique,BJP,Prasanth Malavayal
+Kozhikode,20,Vatakara,,RJD,M. K. Bhaskaran,RMPI,K. K. Rema,BJP,K. Dileep
+Kozhikode,21,Kuttiady,,CPI(M),K. P. Kunhammad Kutti Master,IUML,Parakkal Abdulla,BJP,Ramadas Manaleri
+Kozhikode,22,Nadapuram,,CPI,P. Vasantham,INC,K. M. Abhijith,BJP,C. P. Vipin Chandran
+Kozhikode,23,Koyilandy,,CPI(M),K. Dasan,INC,K. Praveen Kumar,BJP,C. R. Praphul Krishnan
+Kozhikode,24,Perambra,,CPI(M),T. P. Ramakrishnan,IUML,Fathima Thahiliya,BJP,M. Mohanan Master
+Kozhikode,25,Balussery,SC,CPI(M),K. M. Sachindev,INC,V. T. Sooraj,BJP,C. P. Sateeshan
+Kozhikode,26,Elathur,,NCP(SP),A. K. Saseendran,INC,Vidya Balakrishnan,BJP,T. Devadas
+Kozhikode,27,Kozhikode North,,CPI(M),Thottathil Ravindran,INC,K. Jayanth,BJP,Navya Haridas
+Kozhikode,28,Kozhikode South,,INL,Ahamed Devarkovil,IUML,Faisal Babu,BJP,T. Raneesh
+Kozhikode,29,Beypore,,CPI(M),Muhammad Riyas,AITC,P. V. Anvar,BJP,K. P. Prakash Babu
+Kozhikode,30,Kunnamangalam,,Independent (CPI(M) support),P. T. A. Rahim,IUML,M. A. Razak Master,BJP,V. K. Sajeevan
+Kozhikode,31,Koduvally,,Independent (CPI(M) support),Saleem Madavoor,IUML,P. K. Firos,BDJS,Giri Pambanal
+Kozhikode,32,Thiruvambady,,CPI(M),Linto Joseph,IUML,C. K. Kasim,TTP,Sunny Thomas
+Malappuram,33,Kondotty,,Independent (CPI(M) support),,IUML,T. P. Ashrafali,BJP,P. Subrahmanian
+Malappuram,34,Eranad,,CPI,Shafeer Kizhisseri,IUML,P. K. Basheer,BJP,Adv. N. Sreeprakash
+Malappuram,35,Nilambur,,Independent (CPI(M) support),U. Sharafali,INC,Aryadan Shoukath,BDJS,Gireesh Mekkad
+Malappuram,36,Wandoor,SC,CPI(M),K. K. Damodaran,INC,A. P. Anil Kumar,,
+Malappuram,37,Manjeri,,Independent (CPI support),M. Mustafa,IUML,M. Rahmathulla,BJP,Pathmasree M.
+Malappuram,38,Perinthalmanna,,CPI(M),V. P. Muhammad Haneefa,IUML,Najeeb Kanthapuram,BJP,Adv. K.P. Baburaj
+Malappuram,39,Mankada,,CPI(M),M. P. Alavi,IUML,Manjalamkuzhi Ali,BJP,Lijoy Paul
+Malappuram,40,Malappuram,,NCP(SP),K. T. Mujeeb,IUML,P. K. Kunhalikutty,BJP,Ashwathy Gupatha Kumar
+Malappuram,41,Vengara,,Independent (CPI(M) support),Muhammad Sabah Kundukuzhikkal,IUML,K. M. Shaji,BJP,Jayakrishnan V.N.
+Malappuram,42,Vallikkunnu,,INL,,IUML,T. V. Ibrahim,BJP,M. Preman Master
+Malappuram,43,Tirurangadi,,CPI,Ajit Koladi,IUML,P. M. A. Sameer,BJP,Riju C. Raghav
+Malappuram,44,Tanur,,Independent (CPI(M) support),V. Abdurahman,IUML,P. K. Navas,BJP,Deepa Puzhakkal
+Malappuram,45,Tirur,,Independent (CPI(M) support),,IUML,Kurukkoli Moideen,BJP,K. Narayanan Master
+Malappuram,46,Kottakkal,,Independent (CPI(M) support),,IUML,K. K. Abid Hussain Thangal,BDJS,Subrahmanian Chunkapally
+Malappuram,47,Thavanur,,Independent (CPI(M) support),K. T. Jaleel,INC,V. S. Joy,BDJS,Ravi Thelath
+Malappuram,48,Ponnani,,CPI(M),M. K. Sakeer,INC,K. P. Noushad Ali,BDJS,
+Palakkad,49,Thrithala,,CPI(M),M. B. Rajesh,INC,V. T. Balram,BJP,V. Unnikrishnan Master
+Palakkad,50,Pattambi,,CPI,Muhammad Muhsin,INC,,BJP,Adv. P. Manoj
+Palakkad,51,Shornur,,CPI(M),P. Mammikkutty,INC,,BJP,Sanku T. Das
+Palakkad,52,Ottapalam,,CPI(M),K. Premkumar,Ind.,P. K. Sasi,BJP,Major Ravi
+Palakkad,53,Kongad,SC,CPI(M),K. Shanthakumari,INC,K. A. Thulasi,BJP,Renu Suresh
+Palakkad,54,Mannarkkad,,CPI,Manzil Aboobacker,IUML,N. Samsudheen,AIADMK,
+Palakkad,55,Malampuzha,,CPI(M),E. Prabhakaran,INC,A. Suresh,BJP,C. Krishnakumar
+Palakkad,56,Palakkad,,Independent (CPI(M) support),N. M. R. Razaq,INC,Ramesh Pisharody,BJP,Sobha Surendran
+Palakkad,57,Tarur,SC,CPI(M),P. P. Sumod,INC,K. C. Subramanian,BJP,Suresh Babu
+Palakkad,58,Chittur,,Indian Socialist Janata Dal,Adv V. Murugadas,INC,Sumesh Achuthan,BJP,Pranesh Rajendran
+Palakkad,59,Nenmara,,CPI(M),K. Preman,INC,A. Thankappan,BDJS,A. N. Anurag
+Palakkad,60,Alathur,,CPI(M),T. M. Sasi,INC,K. N. Febin,BJP,K.V. Prasanna Kumar
+Thrissur,61,Chelakkara,SC,CPI(M),U. R. Pradeep,IUML,,BJP,K. Balakrishnan
+Thrissur,62,Kunnamkulam,,CPI(M),A. C. Moytheen,INC,,BDJS,Rijil K. R.
+Thrissur,63,Guruvayur,,CPI(M),N. K. Akbar,IUML,C. H. Rasheed,DSJP,Adv. B. Gopalakrishnan
+Thrissur,64,Manalur,,CPI(M),C. Ravindranath,INC,T. N. Prathapan,BJP,K. K. Aneesh Kumar
+Thrissur,65,Wadakkanchery,,CPI(M),Seviyar Chittilappally,INC,,BJP,Adv. T.S. Ullas Babu
+Thrissur,66,Ollur,,CPI,K. Rajan,INC,Shaji Kodankandath,BJP,Bijoy Thomas
+Thrissur,67,Thrissur,,CPI,Alankode Leelakrishnan,INC,Rajan Pallan,BJP,Padmaja Venugopal
+Thrissur,68,Nattika,SC,CPI,Geetha Gopi,INC,Sunil Lalur,BJP,C. C. Mukundan
+Thrissur,69,Kaipamangalam,,CPI,K. K. Valsaraj,INC,T. M. Nazar,BDJS,
+Thrissur,70,Irinjalakuda,,CPI(M),R. Bindu,KEC,Thomas Unniyadan,BJP,Santhosh Cherkalam
+Thrissur,71,Puthukkad,,CPI(M),K. K. Ramachandran,INC,K. M. Babu Raj,BJP,A. Nagesh
+Thrissur,72,Chalakudy,,Kerala Congress (M),Adv Biju Chirayath,INC,T. J. Saneesh Kumar Joseph,TTP,Charly Paul
+Thrissur,73,Kodungallur,,CPI,V. R. Sunil,INC,O. J. Janeesh,TTP,Varghese George
+Ernakulam,74,Perumbavoor,,Kerala Congress (M),Basil Paul,INC,,TTP,Lakshmi Priya
+Ernakulam,75,Angamaly,,CPI(M),Saju Paul,INC,Roji M. John,TTP,Promy Kuriakose
+Ernakulam,76,Aluva,,CPI(M),A. M. Ariff,INC,Anwar Sadath,,M.A. Brahmaraj
+Ernakulam,77,Kalamassery,,CPI(M),P. Rajeev,IUML,V. E. Abdul Gafoor,,
+Ernakulam,78,Paravur,,CPI,E. T. Taison,INC,V. D. Satheesan,BJP,Vathsala Prasanna Kumar
+Ernakulam,79,Vypin,,CPI(M),M. B. Shaini,INC,,,
+Ernakulam,80,Kochi,,CPI(M),K. J. Maxi,INC,,,
+Ernakulam,81,Thrippunithura,,CPI(M),K. N. Unnikrishnan,INC,,TTP,Anjali Nair
+Ernakulam,82,Ernakulam,,Indian Socialist Janata Dal,Sabu George,INC,T. J. Vinod,,P.R. Sivasankar
+Ernakulam,83,Thrikkakara,,CPI(M),Pushpadhas,INC,Uma Thomas,TTP,Akhil Marar
+Ernakulam,84,Kunnathunad,SC,CPI(M),P. V. Sreenijin,INC,V. P. Sajeendran,TTP,Babu Divakaran
+Ernakulam,85,Piravom,,Kerala Congress (M),Sabu K Jacob,KC(J),Anoop Jacob,TTP,Jibi Abraham
+Ernakulam,86,Muvattupuzha,,CPI,N. Arun,INC,Mathew Kuzhalnadan,,
+Ernakulam,87,Kothamangalam,,CPI(M),Antony John,KEC,Shibu Thekkumpuram,,
+Idukki,88,Devikulam,SC,CPI(M),A. Raj,INC,,BJP,S. Rajendran
+Idukki,89,Udumbanchola,,CPI(M),K. K. Jayachandran,INC,,BDJS,Sangeetha Viswanathan
+Idukki,90,Thodupuzha,,Kerala Congress (M),Cyriac Chazhikadan,KEC,Apu John Joseph,,
+Idukki,91,Idukki,,Kerala Congress (M),Roshi Augustine,INC,,,
+Idukki,92,Peerumade,,CPI,K. Salim Kumar,INC,,,
+Kottayam,93,Pala,,Kerala Congress (M),Jose K. Mani,DCK,Mani C. Kappan,BJP,Shone George
+Kottayam,94,Kaduthuruthy,,Kerala Congress (M),Nirmala Jimmy,KEC,Mons Joseph,BDJS,Suresh Ettikunnel
+Kottayam,95,Vaikom,SC,CPI,P. Pradeep,INC,K. Binimon,BJP,K. Ajith
+Kottayam,96,Ettumanoor,,CPI(M),V. N. Vasavan,INC,,TTP,Veena Nair
+Kottayam,97,Kottayam,,CPI(M),K. Anilkumar,INC,Thiruvanchoor Radhakrishnan,BDJS,P. Anilkumar
+Kottayam,98,Puthuppally,,CPI(M),K. M. Radhakrishnan,INC,Chandy Oommen,,
+Kottayam,99,Changanassery,,Kerala Congress (M),Job Maichil,KEC,Vinu Job,BJP,B. Radhakrishna Menon
+Kottayam,100,Kanjirappally,,Kerala Congress (M),N. Jayaraj,INC,,BJP,George Kurian
+Kottayam,101,Poonjar,,Kerala Congress (M),Sebastian Kulathunkal,INC,,BJP,P. C. George
+Alappuzha,102,Aroor,,CPI(M),Daleema,INC,Shanimol Usman,BDJS,P. S. Jyothis
+Alappuzha,103,Cherthala,,CPI,P. Prasad,INC,K. R. Rajendra Prasad,,
+Alappuzha,104,Alappuzha,,CPI(M),P. P. Chitharanjan,INC,,BJP,M.J. Job
+Alappuzha,105,Ambalappuzha,,CPI(M),H. Salam,Ind.,G. Sudhakaran,BJP,Arun Anirudhan
+Alappuzha,106,Kuttanad,,NCP(SP),Thomas K. Thomas,KEC,Reji Cheriyan,BDJS,Santhosh Santhy
+Alappuzha,107,Haripad,,CPI,T. T. Jismon,INC,Ramesh Chennithala,BJP,Sandeep Vachaspati
+Alappuzha,108,Kayamkulam,,CPI(M),U. Prathibha,INC,,BDJS,Thambi Mettuthara
+Alappuzha,109,Mavelikara,SC,CPI(M),M. S. Arun Kumar,INC,Muthara Raj,,
+Alappuzha,110,Chengannur,,CPI(M),Saji Cherian,INC,,BJP,M. V. Gopakumar
+Pathanamthitta,111,Thiruvalla,,Indian Socialist Janata Dal,Mathew T. Thomas,KEC,Varghese Mammen,BJP,Anoop Antony
+Pathanamthitta,112,Ranni,,Kerala Congress (B),Pramod Narayan,INC,,TTP,Thomas K. Samuel
+Pathanamthitta,113,Aranmula,,CPI(M),Veena George,INC,,BJP,Kummanam Rajasekharan
+Pathanamthitta,114,Konni,,CPI(M),K. U. Jenish Kumar,INC,,,
+Pathanamthitta,115,Adoor,SC,CPI,Priji Sasidharan,INC,,,
+Kollam,116,Karunagappally,,CPI,M. S. Thara,INC,C. R. Mahesh,BJP,V. S. Jithin Dev
+Kollam,117,Chavara,,Independent (CPI(M) support),Sujith Vijayanpillai,RSP,Shibu Baby John,,
+Kollam,118,Kunnathur,SC,RSP(L),Kovoor Kunjumon,RSP,Ullas Kovoor,BJP,Raji Prasad
+Kollam,119,Kottarakkara,,CPI(M),K. N. Balagopal,INC,P. Aisha Potty,BJP,R. Reshmi
+Kollam,120,Pathanapuram,,Kerala Congress (B),K. B. Ganesh Kumar,INC,Jyothikumar chamakkala,,
+Kollam,121,Punalur,,CPI,C. Ajaya Prasad,IUML,,,
+Kollam,122,Chadayamangalam,,CPI,J. Chinchu Rani,INC,,,
+Kollam,123,Kundara,,CPI(M),S. L. Sajikumar,INC,P. C. Vishnunadh,BJP,Robin Radhakrishnan (Robin RB)
+Kollam,124,Kollam,,CPI(M),S. Jayamohan,INC,Bindhu Krishna,BJP,N. Prathap Kumar
+Kollam,125,Eravipuram,,CPI(M),M. Noushad,RSP,Vishnu Mohan,,
+Kollam,126,Chathannoor,,CPI,R. Rajendran,INC,Sooraj Ravi,BJP,B. B. Gopakumar
+Thiruvananthapuram,127,Varkala,,CPI(M),V. Joy,INC,,,
+Thiruvananthapuram,128,Attingal,SC,CPI(M),O. S. Ambika,RSP,Santhosh Bhadran,BJP,P. Sudheer
+Thiruvananthapuram,129,Chirayinkeezhu,SC,CPI,Manoj B Edamana,INC,Ramya Haridas,,
+Thiruvananthapuram,130,Nedumangad,,CPI,G. R. Anil,INC,,BJP,Yuvaraj Gokul
+Thiruvananthapuram,131,Vamanapuram,,CPI(M),D. K. Murali,INC,,,
+Thiruvananthapuram,132,Kazhakkoottam,,CPI(M),Kadakampally Surendran,INC,,BJP,V. Muraleedharan
+Thiruvananthapuram,133,Vattiyoorkavu,,CPI(M),V. K. Prasanth,INC,K. Muraleedharan,BJP,R. Sreelekha
+Thiruvananthapuram,134,Thiruvananthapuram,,JKC,,CMP,C. P. John,,
+Thiruvananthapuram,135,Nemom,,CPI(M),V. Shivankutty,INC,,BJP,Rajeev Chandrasekhar
+Thiruvananthapuram,136,Aruvikkara,,CPI(M),G. Steephen,INC,,,
+Thiruvananthapuram,137,Parassala,,CPI(M),C. K. Hareendran,INC,,BJP,Gireesh Neyyar
+Thiruvananthapuram,138,Kattakkada,,CPI(M),I. B. Satheesh,INC,,BJP,P. K. Krishnadas
+Thiruvananthapuram,139,Kovalam,,Independent (CPI(M) support),Bhagat Rufus,INC,M. Vincent,,
+Thiruvananthapuram,140,Neyyattinkara,,CPI(M),K. Ansalan,INC,,,`;
+
+// Parse CSV
+function parseCSV(text) {
+  const lines = text.trim().split('\n');
+  const headers = lines[0].split(',');
+  return lines.slice(1).map(line => {
+    const vals = line.split(',');
+    const obj = {};
+    headers.forEach((h, i) => { obj[h.trim()] = (vals[i] || '').trim(); });
+    return obj;
+  }).filter(r => r.Constituency_Number);
+}
+
+const data = parseCSV(RAW_CSV);
+let activeDistrict = 'all';
+let activeFilter = 'all';
+
+// Compute districts
+const districts = [...new Set(data.map(d => d.District))];
+
+// Build district tabs
+const tabsEl = document.getElementById('district-tabs');
+districts.forEach(d => {
+  const t = document.createElement('div');
+  t.className = 'tab';
+  t.dataset.district = d;
+  t.textContent = d;
+  t.onclick = () => selectDistrict(d, t);
+  tabsEl.appendChild(t);
+});
+
+function selectDistrict(d, el) {
+  activeDistrict = d;
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  renderGrid();
+}
+
+function setFilter(f) {
+  activeFilter = f;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  const btn = document.getElementById('filter-' + f);
+  if (btn) btn.classList.add('active');
+  renderGrid();
+}
+
+function filterAlliance(a) {
+  setFilter(a === 'all' ? 'all' : a);
+}
+
+function hasCandidate(row, alliance) {
+  if (alliance === 'LDF') return !!row.LDF_Candidate;
+  if (alliance === 'UDF') return !!row.UDF_Candidate;
+  if (alliance === 'NDA') return !!row.NDA_Candidate;
+  return false;
+}
+
+function renderGrid() {
+  const q = document.getElementById('search').value.toLowerCase().trim();
+  const grid = document.getElementById('grid');
+
+  let filtered = data.filter(row => {
+    if (activeDistrict !== 'all' && row.District !== activeDistrict) return false;
+    if (activeFilter === 'SC') return row.Reservation === 'SC';
+    if (activeFilter === 'ST') return row.Reservation === 'ST';
+    if (activeFilter === 'LDF') return true; // show all but highlight
+    if (activeFilter === 'UDF') return true;
+    if (activeFilter === 'NDA') return true;
+    return true;
+  });
+
+  if (q) {
+    filtered = filtered.filter(row =>
+      row.Constituency_Name.toLowerCase().includes(q) ||
+      row.LDF_Candidate.toLowerCase().includes(q) ||
+      row.UDF_Candidate.toLowerCase().includes(q) ||
+      row.NDA_Candidate.toLowerCase().includes(q) ||
+      row.LDF.toLowerCase().includes(q) ||
+      row.UDF.toLowerCase().includes(q) ||
+      row.NDA.toLowerCase().includes(q)
+    );
+  }
+
+  grid.innerHTML = '';
+
+  if (filtered.length === 0) {
+    grid.innerHTML = '<div class="empty-state">No constituencies match your search.</div>';
+    return;
+  }
+
+  filtered.forEach((row, idx) => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.style.animationDelay = Math.min(idx * 20, 300) + 'ms';
+
+    const res = row.Reservation;
+    const resBadge = res ? `<span class="reservation-badge ${res.toLowerCase()}">${res}</span>` : '';
+
+    function candidateRow(alliance, party, name) {
+      const displayName = name
+        ? `<span class="candidate-name">${name}</span>`
+        : `<span class="candidate-name unknown">TBD</span>`;
+      const displayParty = party || '—';
+      return `
+        <div class="candidate-row">
+          <span class="alliance-tag ${alliance}">${alliance}</span>
+          <div class="candidate-info">
+            <div class="candidate-party">${displayParty}</div>
+            ${displayName}
+          </div>
+        </div>`;
+    }
+
+    card.innerHTML = `
+      <div class="card-header">
+        <div>
+          <div class="card-num">#${row.Constituency_Number}</div>
+          <div class="card-name">${row.Constituency_Name}</div>
+          <div class="card-district">${row.District}</div>
+        </div>
+        ${resBadge}
+      </div>
+      <div class="card-candidates">
+        ${candidateRow('LDF', row.LDF, row.LDF_Candidate)}
+        ${candidateRow('UDF', row.UDF, row.UDF_Candidate)}
+        ${row.NDA ? candidateRow('NDA', row.NDA, row.NDA_Candidate) : ''}
+      </div>
+    `;
+
+    card.onclick = () => openModal(row);
+    grid.appendChild(card);
+  });
+}
+
+function openModal(row) {
+  document.getElementById('modal-eyebrow').textContent = `${row.District} · Constituency #${row.Constituency_Number}`;
+  document.getElementById('modal-title').textContent = row.Constituency_Name;
+
+  const badges = document.getElementById('modal-badges');
+  badges.innerHTML = '';
+  if (row.Reservation) {
+    const b = document.createElement('span');
+    b.className = `reservation-badge ${row.Reservation.toLowerCase()}`;
+    b.textContent = `${row.Reservation} Reserved`;
+    badges.appendChild(b);
+  }
+
+  function modalCandidate(alliance, color, party, name) {
+    const n = name || 'To Be Announced';
+    const isTbd = !name;
+    return `
+      <div class="modal-candidate">
+        <div class="modal-alliance-bar" style="background:${color}"></div>
+        <div class="modal-candidate-inner">
+          <div class="modal-alliance-label">${alliance}</div>
+          <div class="modal-party" style="color:${color}">${party || '—'}</div>
+          <div class="modal-candidate-name${isTbd ? ' tbd' : ''}">${n}</div>
+        </div>
+      </div>`;
+  }
+
+  const cands = document.getElementById('modal-candidates');
+  cands.innerHTML =
+    modalCandidate('LDF', '#E63946', row.LDF, row.LDF_Candidate) +
+    modalCandidate('UDF', '#64B5F6', row.UDF, row.UDF_Candidate) +
+    (row.NDA ? modalCandidate('NDA', '#FF9A4D', row.NDA, row.NDA_Candidate) : '');
+
+  document.getElementById('modal-overlay').classList.add('open');
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById('modal-overlay')) closeModalDirect();
+}
+
+function closeModalDirect() {
+  document.getElementById('modal-overlay').classList.remove('open');
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModalDirect();
+});
+
+// Compute stats
+function computeStats() {
+  let ldf = 0, udf = 0, nda = 0, sc = 0, st = 0;
+  data.forEach(r => {
+    if (r.LDF_Candidate) ldf++;
+    if (r.UDF_Candidate) udf++;
+    if (r.NDA_Candidate) nda++;
+    if (r.Reservation === 'SC') sc++;
+    if (r.Reservation === 'ST') st++;
+  });
+  const total = ldf + udf + nda;
+  document.getElementById('stat-ldf').textContent = ldf;
+  document.getElementById('stat-udf').textContent = udf;
+  document.getElementById('stat-nda').textContent = nda;
+  document.getElementById('stat-sc').textContent = sc;
+  document.getElementById('stat-st').textContent = st;
+  document.getElementById('ldf-count').textContent = ldf;
+  document.getElementById('udf-count').textContent = udf;
+  document.getElementById('nda-count').textContent = nda;
+  document.getElementById('total-candidates').textContent = total;
+}
+
+computeStats();
+setFilter('all');
+renderGrid();
+</script>
+</body>
+</html>
