@@ -754,6 +754,7 @@
   .filter-btn.sc.active   { border-color: var(--sc-color); color: var(--sc-color); background: var(--sc-bg); }
   .filter-btn.st.active   { border-color: var(--st-color); color: var(--st-color); background: var(--st-bg); }
   .filter-btn.others.active { border-color: var(--others); color: var(--others-text); background: var(--others-bg); }
+  .filter-btn.female.active { border-color: #EC4899; color: #BE185D; background: #FCE7F3; }
 
   .results-info {
     font-family: 'DM Mono', monospace; font-size: 11px; color: var(--faint);
@@ -909,6 +910,121 @@
   .footer-disc-link { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--gold); letter-spacing: 0.07em; cursor: pointer; text-decoration: underline; text-underline-offset: 2px; background: none; border: none; transition: color 0.2s; }
   .footer-disc-link:hover { color: var(--gold-mid); }
 
+  /* ── GENDER DEMOGRAPHY ── */
+  .gender-section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 24px 18px;
+    margin-bottom: 24px;
+  }
+
+  .gender-section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px; font-weight: 700; color: var(--text);
+    margin-bottom: 4px;
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  .gender-section-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px; color: var(--muted); letter-spacing: 0.14em;
+    text-transform: uppercase; margin-bottom: 16px;
+  }
+
+  .gender-bar-wrap {
+    height: 10px; background: #E5E7EB;
+    border-radius: 6px; overflow: hidden; margin-bottom: 8px;
+    display: flex;
+  }
+
+  .gender-bar-female {
+    height: 100%;
+    background: linear-gradient(90deg, #EC4899, #F472B6);
+    border-radius: 6px 0 0 6px;
+    transition: width 0.8s ease;
+  }
+
+  .gender-bar-male {
+    height: 100%;
+    background: linear-gradient(90deg, #3B82F6, #60A5FA);
+    flex: 1;
+  }
+
+  .gender-bar-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; color: var(--muted);
+    letter-spacing: 0.04em; margin-bottom: 16px;
+  }
+
+  .gender-alliance-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .gender-alliance-cell {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    position: relative; overflow: hidden;
+  }
+
+  .gender-alliance-cell::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  }
+
+  .gender-alliance-cell.ldf::before { background: var(--ldf); }
+  .gender-alliance-cell.udf::before { background: var(--udf); }
+  .gender-alliance-cell.nda::before { background: var(--nda); }
+
+  .gender-cell-alliance {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 8px;
+  }
+
+  .gender-cell-stats {
+    display: flex; gap: 12px; align-items: flex-end;
+  }
+
+  .gender-cell-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px; font-weight: 700; line-height: 1;
+  }
+
+  .gender-cell-num.female { color: #EC4899; }
+  .gender-cell-num.male { color: #3B82F6; }
+
+  .gender-cell-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 8px; color: var(--muted);
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding-bottom: 3px;
+  }
+
+  /* Gender dot on candidate names */
+  .gender-dot {
+    font-size: 11px; margin-left: 2px;
+    vertical-align: middle;
+  }
+  .gender-dot.female { color: #EC4899; }
+  .gender-dot.male { color: #3B82F6; }
+
+  /* Gender badge in modal */
+  .modal-gender-badge {
+    display: inline-flex; align-items: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px; letter-spacing: 0.1em;
+    padding: 2px 8px; border-radius: 10px;
+    margin-left: 6px; vertical-align: middle;
+    font-weight: 500;
+  }
+  .modal-gender-badge.female { background: #FCE7F3; color: #BE185D; border: 1px solid #FBCFE8; }
+  .modal-gender-badge.male   { background: #EFF6FF; color: #1D4ED8; border: 1px solid #BFDBFE; }
+
   /* ── MOBILE BOTTOM NAV ── */
   .mobile-bottom-nav {
     display: none;
@@ -1024,6 +1140,10 @@
 
     .filter-row { gap: 5px; margin-bottom: 14px; }
     .filter-btn { padding: 6px 11px; font-size: 9px; }
+
+    .gender-alliance-row { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .gender-cell-num { font-size: 20px; }
+    .gender-section { padding: 14px 16px; margin-bottom: 16px; }
 
     .grid { grid-template-columns: 1fr; gap: 10px; }
 
@@ -1249,6 +1369,47 @@
         <div class="stat-cell st"><div class="stat-n" id="stat-st">&#x2014;</div><div class="stat-label">ST Reserved</div></div>
       </div>
 
+      <!-- Gender Demography -->
+      <div class="gender-section">
+        <div class="gender-section-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M12 12v8M9 18h6M16 3h3v3M16.5 3.5l-3 3"/></svg>
+          Gender Demography
+        </div>
+        <div class="gender-section-sub">Candidate representation by gender across alliances</div>
+
+        <div class="gender-bar-wrap">
+          <div class="gender-bar-female" id="gender-bar-female" style="width:0%"></div>
+          <div class="gender-bar-male"></div>
+        </div>
+        <div class="gender-bar-label" id="gender-bar-label">Computing…</div>
+
+        <div class="gender-alliance-row">
+          <div class="gender-alliance-cell ldf">
+            <div class="gender-cell-alliance">LDF</div>
+            <div class="gender-cell-stats">
+              <div><div class="gender-cell-num female" id="stat-ldf-f">—</div><div class="gender-cell-sub">Women</div></div>
+            </div>
+          </div>
+          <div class="gender-alliance-cell udf">
+            <div class="gender-cell-alliance">UDF</div>
+            <div class="gender-cell-stats">
+              <div><div class="gender-cell-num female" id="stat-udf-f">—</div><div class="gender-cell-sub">Women</div></div>
+            </div>
+          </div>
+          <div class="gender-alliance-cell nda">
+            <div class="gender-cell-alliance">NDA</div>
+            <div class="gender-cell-stats">
+              <div><div class="gender-cell-num female" id="stat-nda-f">—</div><div class="gender-cell-sub">Women</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hidden ids for computeStats -->
+        <span id="stat-female" style="display:none"></span>
+        <span id="stat-male" style="display:none"></span>
+        <span id="stat-female-pct" style="display:none"></span>
+      </div>
+
       <!-- District tabs -->
       <div class="section-title">Browse by District</div>
       <div class="tabs" id="district-tabs">
@@ -1264,6 +1425,7 @@
         <button class="filter-btn others" id="filter-OTH" onclick="setFilter('OTH')">&#x25A1; Others</button>
         <button class="filter-btn sc"  id="filter-SC"  onclick="setFilter('SC')">SC Reserved</button>
         <button class="filter-btn st"  id="filter-ST"  onclick="setFilter('ST')">ST Reserved</button>
+        <button class="filter-btn female" id="filter-female" onclick="setFilter('female')">&#x2640; Women Candidates</button>
       </div>
 
       <div class="results-info" id="results-info"></div>
@@ -1332,171 +1494,181 @@ let TOPOJSON = null; // loaded via fetch
 
 function parseCSV(text) {
   const lines = text.trim().split('\n');
-  const headers = lines[0].split(',');
+  const headers = lines[0].replace(/\r/,'').split(',').map(h => h.trim());
+
+  function parseLine(line) {
+    const vals = [];
+    let cur = '', inQ = false;
+    for (let i = 0; i < line.length; i++) {
+      const c = line[i];
+      if (c === '"') { inQ = !inQ; }
+      else if (c === ',' && !inQ) { vals.push(cur.trim()); cur = ''; }
+      else { cur += c; }
+    }
+    vals.push(cur.trim());
+    return vals;
+  }
+
   return lines.slice(1).map(line => {
-    const vals = line.split(',');
+    const vals = parseLine(line.replace(/\r/,''));
     const obj = {};
-    headers.forEach((h, i) => { obj[h.trim()] = (vals[i] || '').trim(); });
+    headers.forEach((h, i) => {
+      let v = (vals[i] || '').trim();
+      // Treat TBD as empty
+      if (v === 'TBD' || v === 'tbd') v = '';
+      obj[h] = v;
+    });
     return obj;
   }).filter(r => r.Constituency_Number);
 }
 
-const RAW_CSV = `District,Distrct_Wikidata,Constituency_Number,Constituency_Name,Constituency_Wikidata,Reservation,LDF,LDF_Candidate,LDF_Candidate_Wikidata,UDF,UDF_Candidate,UDF_Candidate_Wikidata,NDA,NDA_Candidate,NDA_Candidate_Wikidata
-Kasaragod,Q1419703,1,Manjeshwaram,Q13113782,,CPI(M),K. R. Jayanandan,,IUML,A. K. M. Ashraf,Q106687787,BJP,K. Surendran,Q25587200
-Kasaragod,Q1419703,2,Kasaragod,Q13111222,,INL,,,IUML,Kallatra Mahin Haji,        ,BJP,Ashwini M.L.,
-Kasaragod,Q1419703,3,Udma,Q13110513,,CPI(M),C. H. Kunhambu,Q13115063,INC,,,BJP,Manulal Meloth,
-Kasaragod,Q1419703,4,Kanhangad,Q13111113,,CPI,Govindan Pallikkappil,,KEC,Shyji Ottapalli,,BJP,M. Balraj,
-Kasaragod,Q1419703,5,Thrikaripur,Q16137696,,CPI(M),V. P. P. Mustafa,,INC,,                        ,TTP,Ravi Kulangara,
-Kannur,Q2980652,6,Payyanur,Q17379122,,CPI(M),T. I. Madhusoodanan,Q106679753,Independent (RSP support),V. Kunjikrishnan,,BJP,A. P. Gangadharan,
-Kannur,Q2980652,7,Kalliasseri,Q13111077,,CPI(M),M. Vijin,Q106687789,INC,,,BJP,A.V. Sanil Kumar,
-Kannur,Q2980652,8,Taliparamba,Q17379268,,CPI(M),P. K. Shyamala,,INC,,,BJP,N. Haridas,
-Kannur,Q2980652,9,Irikkur,Q13110432,,Kerala Congress (M),Mathew Kunnappally,,INC,Sajeev Joseph,Q106687786,,,
-Kannur,Q2980652,10,Azhikode,Q13110133,,CPI(M),K. V. Sumesh,Q106682053,IUML,Kareem Cheleri,,BJP,K. K. Vinod Kumar,
-Kannur,Q2980652,11,Kannur,Q16137348,,Congress (Secular),Kadannappalli Ramachandran,Q13564570,INC,,,BJP,C. Raghunath,
-Kannur,Q2980652,12,Dharmadom,Q13112766,,CPI(M),Pinarayi Vijayan,Q3595385,INC,Abdul Rasheed,,BJP,K. Ranjith,
-Kannur,Q2980652,13,Thalassery,Q7709532,,CPI(M),Karayi Rajan,,INC,K. P. Saju,,BJP,O. Nidheesh,
-Kannur,Q2980652,14,Kuthuparamba,Q17379603,,RJD,P. K. Praveen,,IUML,Jayanthi Rajan,,BJP,Adv. Shijilal,
-Kannur,Q2980652,15,Mattanur,Q16134425,,CPI(M),V. K. Sanoj,Q131584190,INC,,,BJP,Biju Elakkuzhi,
-Kannur,Q2980652,16,Peravoor,Q17385405,,CPI(M),K. K. Shailaja,Q16137667,INC,Sunny Joseph,Q20564838,BDJS,Paily Vathiatt,
-Wayanad,Q1364427,17,Mananthavady (ST),Q16136061,ST,CPI(M),O. R. Kelu,Q24952520,INC,Usha Vijayan,,BJP,P. Shyam Raj,
-Wayanad,Q1364427,18,Sulthan Bathery (ST),Q13115144,ST,CPI(M),M. S. Viswanathan,Q3115598,INC,I. C. Balakrishnan,Q23940094,BJP,A. S. Kavitha,
-Wayanad,Q1364427,19,Kalpetta,Q13111054,,RJD,P. K. Anil Kumar,,INC,T. Siddique,Q7668715,BJP,Prasanth Malavayal,
-Kozhikode,Q1142979,20,Vatakara,Q13114485,,RJD,M. K. Bhaskaran,,RMPI,K. K. Rema,Q20561285,BJP,K. Dileep,
-Kozhikode,Q1142979,21,Kuttiady,Q16136660,,CPI(M),K. P. Kunhammad Kutti Master,Q106687783,IUML,Parakkal Abdulla,Q24572542,BJP,Ramadas Manaleri,
-Kozhikode,Q1142979,22,Nadapuram,Q13112855,,CPI,P. Vasantham,,INC,K. M. Abhijith,Q138706956,BJP,C. P. Vipin Chandran,
-Kozhikode,Q1142979,23,Koyilandy,Q13111637,,CPI(M),K. Dasan,Q24007339,INC,K. Praveen Kumar,Q138706956,BJP,C. R. Praphul Krishnan,
-Kozhikode,Q1142979,24,Perambra,Q13113475,,CPI(M),T. P. Ramakrishnan,Q24555656,IUML,Fathima Thahiliya,QID Needed,BJP,M. Mohanan Master,
-Kozhikode,Q1142979,25,Balussery (SC),Q16137581,SC,CPI(M),K. M. Sachindev,,INC,V. T. Sooraj,,BJP,C. P. Sateeshan,
-Kozhikode,Q1142979,26,Elathur,Q16135458,,NCP(SP),A. K. Saseendran,,INC,Vidya Balakrishnan,,BJP,T. Devadas,
-Kozhikode,Q1142979,27,Kozhikode North,Q13111729,,CPI(M),Thottathil Ravindran,Q31700579,INC,K. Jayanth,QID needed,BJP,Navya Haridas,
-Kozhikode,Q1142979,28,Kozhikode South,Q24204696,,INL,Ahamed Devarkovil,Q106692139,IUML,Faisal Babu,,BJP,T. Raneesh,
-Kozhikode,Q1142979,29,Beypore,Q13113680,,CPI(M),Muhammad Riyas,Q80189102,AITC,P. V. Anvar,Q24952527,BJP,K. P. Prakash Babu,
-Kozhikode,Q1142979,30,Kunnamangalam,Q13111313,,Independent (CPI(M) support),P. T. A. Rahim,Q16143039,IUML,M. A. Razak Master,,BJP,V. K. Sajeevan,
-Kozhikode,Q1142979,31,Koduvally,Q16135012,,Independent (CPI(M) support),Saleem Madavoor,,IUML,P. K. Firos,,BDJS,Giri Pambanal,
-Kozhikode,Q1142979,32,Thiruvambady,Q13112497,,CPI(M),Linto Joseph,Q106692396,IUML,C. K. Kasim,,TTP,Sunny Thomas,
-Malappuram,Q1030918,33,Kondotty,Q16135092,,Independent (CPI(M) support,,,IUML,T. P. Ashrafali,QID Needed,BJP,P. Subrahmanian,
-Malappuram,Q1030918,34,Eranad,Q13110769,,CPI,Shafeer Kizhisseri,,IUML,P. K. Basheer,Q7121263,BJP,Adv. N. Sreeprakash,
-Malappuram,Q1030918,35,Nilambur,Q13112913,,Independent (CPI(M) support),U. Sharafali,Q7863540,INC,Aryadan Shoukath,Q4802630,BDJS,Gireesh Mekkad,
-Malappuram,Q1030918,36,Wandoor (SC),Q16135444,SC,CPI(M),K. K. Damodaran,,INC,A. P. Anil Kumar,Q4647269,,,
-Malappuram,Q1030918,37,Manjeri,Q13113783,,Independent (CPI support),M. Mustafa,,IUML,M. Rahmathulla,Q138701481,BJP,Pathmasree M.,
-Malappuram,Q1030918,38,Perinthalmanna,Q13113446,,CPI(M),V. P. Muhammad Haneefa,Q138678453,IUML,Najeeb Kanthapuram,Q106714094,BJP,Adv. K.P. Baburaj,
-Malappuram,Q1030918,39,Mankada,Q13113774,,CPI(M),M. P. Alavi,,IUML,Manjalamkuzhi Ali,Q6750341,BJP,Lijoy Paul,
-Malappuram,Q1030918,40,Malappuram,Q16135164,,NCP(SP),K. T. Mujeeb,,IUML,P. K. Kunhalikutty,Q7117360,BJP,Ashwathy Gupatha Kumar,
-Malappuram,Q1030918,41,Vengara,Q13114838,,Independent (CPI(M) support,Muhammad Sabah Kundukuzhikkal,,IUML,K. M. Shaji,Q16213770,BJP,Jayakrishnan V.N.,
-Malappuram,Q1030918,42,Vallikkunnu,Q16135944,,INL ,,,IUML,T. V. Ibrahim,Q24952528,BJP,M. Preman Master,
-Malappuram,Q1030918,43,Tirurangadi,Q13112529,,CPI,Ajit Koladi,,IUML,P. M. A. Sameer,,BJP,Riju C. Raghav,
-Malappuram,Q1030918,44,Tanur,Q16136996,,Independent (CPI(M) support,V. Abdurahman,Q24952529,IUML,P. K. Navas,QID Needed,BJP,Deepa Puzhakkal,
-Malappuram,Q1030918,45,Tirur,Q16137421,,Independent (CPI(M) support,,,IUML,Kurukkoli Moideen,Q106692608,BJP,K. Narayanan Master,
-Malappuram,Q1030918,46,Kottakkal,Q13111682,,Independent (CPI(M) support,,,IUML,K. K. Abid Hussain Thangal,Q24952533,BDJS,Subrahmanian Chunkapally,
-Malappuram,Q1030918,47,Thavanur,Q16136920,,Independent (CPI(M) support,K. T. Jaleel,Q15035529,INC,V. S. Joy,QID Needed,BDJS,Ravi Thelath,
-Malappuram,Q1030918,48,Ponnani,Q7227905,,CPI(M),M. K. Sakeer,Q138681975,INC,K. P. Noushad Ali,QID needed,BDJS,,
-Palakkad,Q1535742,49,Thrithala,Q13112607,,CPI(M),M. B. Rajesh,Q6712425,INC,V. T. Balram,Q22276949,BJP,V. Unnikrishnan Master,
-Palakkad,Q1535742,50,Pattambi,Q13113050,,CPI,Muhammad Muhsin,Q24952491,INC,,,BJP,Adv. P. Manoj,
-Palakkad,Q1535742,51,Shornur,Q13114979,,CPI(M),P. Mammikkutty,Q106680460,INC,,,BJP,Sanku T. Das,
-Palakkad,Q1535742,52,Ottapalam,Q13110827,,CPI(M),K. Premkumar,Q106679757,Ind.,P. K. Sasi,Q24952531,BJP,Major Ravi,Q6738295
-Palakkad,Q1535742,53,Kongad (SC),Q13111675,SC,CPI(M),K. Shanthakumari,Q106680462,INC,K. A. Thulasi,,BJP,Renu Suresh,
-Palakkad,Q1535742,54,Mannarkkad,Q13113828,,CPI,Manzil Aboobacker,,IUML,N. Samsudheen,Q24055597,AIADMK,,
-Palakkad,Q1535742,55,Malampuzha,Q16135283,,CPI(M),E. Prabhakaran,,INC,A. Suresh,,BJP,C. Krishnakumar,
-Palakkad,Q1535742,56,Palakkad,Q18536954,,Independent (CPI(M) support),N. M. R. Razaq,,INC,Ramesh Pisharody,Q7289434,BJP,Sobha Surendran,Q13560129
-Palakkad,Q1535742,57,Tarur (SC),Q16136772,SC,CPI(M),P. P. Sumod,Q106685898,INC,K. C. Subramanian,,BJP,Suresh Babu,
-Palakkad,Q1535742,58,Chittur,Q13111967,,Indian Socialist Janata Dal,Adv V. Murugadas,,INC,Sumesh Achuthan,,BJP,Pranesh Rajendran,
-Palakkad,Q1535742,59,Nenmara,Q13112978,,CPI(M),K. Preman,,INC,A. Thankappan,,BDJS,A. N. Anurag,
-Palakkad,Q1535742,60,Alathur,Q16136878,,CPI(M),T. M. Sasi,,INC,K. N. Febin,,BJP,K.V. Prasanna Kumar,
-Thrissur,Q2429655,61,Chelakkara (SC),Q5089791,SC,CPI(M),U. R. Pradeep,Q26702718,IUML,,,BJP,K. Balakrishnan,Q6323168
-Thrissur,Q2429655,62,Kunnamkulam,Q13111317,,CPI(M),A. C. Moytheen,Q24851727,INC,,,BDJS,Rijil K. R.,
-Thrissur,Q2429655,63,Guruvayur,Q5620568,,CPI(M),N. K. Akbar,Q106685268,IUML,C. H. Rasheed,,DSJP,Adv. B. Gopalakrishnan,
-Thrissur,Q2429655,64,Manalur,Q6746846,,CPI(M),C. Ravindranath,Q5006200,INC,T. N. Prathapan,Q7668536,BJP,K. K. Aneesh Kumar,
-Thrissur,Q2429655,65,Wadakkanchery,Q16135293,,CPI(M),Seviyar Chittilappally,Q106681166,INC,,,BJP,Adv. T.S. Ullas Babu,
-Thrissur,Q2429655,66,Ollur,Q7088394,,CPI,K. Rajan,Q135532539,INC,Shaji Kodankandath,,BJP,Bijoy Thomas,
-Thrissur,Q2429655,67,Thrissur,Q7798271,,CPI,Alankode Leelakrishnan,Q13223614,INC,Rajan Pallan,Q16624190,BJP,Padmaja Venugopal,
-Thrissur,Q2429655,68,Nattika (SC),Q6980360,SC,CPI,Geetha Gopi,Q5529973,INC,Sunil Lalur,,BJP,C. C. MukundanC.C. Mukundan,Q106681155
-Thrissur,Q2429655,69,Kaipamangalam,Q6348174,,CPI,K. K. Valsaraj,,INC,T. M. Nazar,,BDJS,,
-Thrissur,Q2429655,70,Irinjalakuda,Q6070028,,CPI(M),R. Bindu,Q7273492,KEC,Thomas Unniyadan,Q7794631,BJP,Santhosh Cherkalam,
-Thrissur,Q2429655,71,Puthukkad,Q7258374,,CPI(M),K. K. Ramachandran,Q106683215,INC,K. M. Babu Raj,,BJP,A. Nagesh,
-Thrissur,Q2429655,72,Chalakudy,Q5068546,,Kerala Congress (M),Adv Biju Chirayath,,INC,T. J. Saneesh Kumar Joseph,Q106696961,TTP,Charly Paul,
-Thrissur,Q2429655,73,Kodungallur,Q6425466,,CPI,V. R. Sunil,Q25589441,INC,O. J. Janeesh,,TTP,Varghese George,
-Ernakulam,Q1356097,74,Perumbavoor,Q16136149,,Kerala Congress (M),Basil Paul,,INC,,,TTP,Lakshmi Priya,Q64853044
-Ernakulam,Q1356097,75,Angamaly,Q7601651,,CPI(M),Saju Paul,Q6813188,INC,Roji M. John,Q24205009,TTP,Promy Kuriakose,
-Ernakulam,Q1356097,76,Aluva,Q13110297,,CPI(M),A. M. Ariff,Q4647242,INC,Anwar Sadath,Q24007179,,M.A. Brahmaraj,
-Ernakulam,Q1356097,77,Kalamassery,Q16134141,,CPI(M),P. Rajeev,Q92782463,IUML,V. E. Abdul Gafoor,,,,
-Ernakulam,Q1356097,78,Paravur,Q13113120,,CPI,E. T. Taison,Q47493011,INC,V. D. Satheesan,Q6956446,BJP,Vathsala Prasanna Kumar,
-Ernakulam,Q1356097,79,Vypin,Q13114876,,CPI(M),M. B. Shaini,,INC,,,,,
-Ernakulam,Q1356097,80,Kochi,Q17372576,,CPI(M),K. J. Maxi,Q25589440,INC,,,,,
-Ernakulam,Q1356097,81,Thrippunithura,Q13112618,,CPI(M),K. N. Unnikrishnan,Q106685272,INC,,,TTP,Anjali Nair,Q28810218
-Ernakulam,Q1356097,82,Ernakulam,Q16135415,,Indian Socialist Janata Dal,Sabu George,,INC,T. J. Vinod,Q72429286,,P.R. Sivasankar,
-Ernakulam,Q1356097,83,Thrikkakara,Q16137712,,CPI(M),Pushpadhas,,INC,Uma Thomas,Q112220391,TTP,Akhil Marar,
-Ernakulam,Q1356097,84,Kunnathunad (SC),Q13111319,SC,CPI(M),P. V. Sreenijin,Q106690857,INC,V. P. Sajeendran,Q6946858,TTP,Babu Divakaran,Q4838047
-Ernakulam,Q1356097,85,Piravom,Q13113295,,Kerala Congress (M),Sabu K Jacob,,KC(J),Anoop Jacob,Q4770056,TTP,Jibi Abraham,
-Ernakulam,Q1356097,86,Muvattupuzha,Q16137625,,CPI,N. Arun,,INC,Mathew Kuzhalnadan,Q106685292,,,
-Ernakulam,Q1356097,87,Kothamangalam,Q16135561,,CPI(M),Antony John,Q27916076,KEC,Shibu Thekkumpuram,,,,
-Idukki,Q301821,88,Devikulam (SC),Q16134525,SC,CPI(M),A. Raj,,INC,,,BJP,S. Rajendran,Q17129980
-Idukki,Q301821,89,Udumbanchola,Q16133944,,CPI(M),K. K. Jayachandran,Q16137589,INC,,,BDJS,Sangeetha Viswanathan,
-Idukki,Q301821,90,Thodupuzha,Q16133853,,Kerala Congress (M),Cyriac Chazhikadan,,KEC,Apu John Joseph,,,,
-Idukki,Q301821,91,Idukki,Q13110378,,Kerala Congress (M),Roshi Augustine,Q7368852,INC,,,,,
-Idukki,Q301821,92,Peerumade,Q16135018,,CPI,K. Salim Kumar,,INC,,,,,
-Kottayam,Q1353354,93,Pala,Q13113213,,Kerala Congress (M),Jose K. Mani,Q6279404,DCK,Mani C. Kappan,Q16135968,BJP,Shone George,
-Kottayam,Q1353354,94,Kaduthuruthy,Q13110914,,Kerala Congress (M),Nirmala Jimmy,,KEC,Mons Joseph,Q6898473,BDJS,Suresh Ettikunnel,
-Kottayam,Q1353354,95,Vaikom (SC),Q13114860,SC,CPI,P. Pradeep,,INC,K. Binimon,,BJP,K. Ajith,Q20560973
-Kottayam,Q1353354,96,Ettumanoor,Q16135978,,CPI(M),V. N. Vasavan,Q20564544,INC,,,TTP,Veena Nair,
-Kottayam,Q1353354,97,Kottayam,Q13111688,,CPI(M),K. Anilkumar,,INC,Thiruvanchoor Radhakrishnan,Q7785514,BDJS,P. Anilkumar,
-Kottayam,Q1353354,98,Puthuppally,Q13113317,,CPI(M),K. M. Radhakrishnan,,INC,Chandy Oommen,Q122212026,,,
-Kottayam,Q1353354,99,Changanassery,Q16136954,,Kerala Congress (M),Job Maichil,Q106713127,KEC,Vinu Job,,BJP,B. Radhakrishna Menon,
-Kottayam,Q1353354,100,Kanjirappally,Q16134543,,Kerala Congress (M),N. Jayaraj,Q23908915,INC,,,BJP,George Kurian,Q126469351
-Kottayam,Q1353354,101,Poonjar,Q16135693,,Kerala Congress (M),Sebastian Kulathunkal,Q106681984,INC,,,BJP,P. C. George,Q7117157
-Alappuzha,Q928959,102,Aroor,Q13110113,,CPI(M),Daleema,Q96361400,INC,Shanimol Usman,Q25589499,BDJS,P. S. Jyothis,
-Alappuzha,Q928959,103,Cherthala,Q16134436,,CPI,P. Prasad,Q106684967,INC,K. R. Rajendra Prasad,,,,
-Alappuzha,Q928959,104,Alappuzha,Q13110290,,CPI(M),P. P. Chitharanjan,Q106680459,INC,,,BJP,M.J. Job,
-Alappuzha,Q928959,105,Ambalappuzha,Q13110066,,CPI(M),H. Salam,Q106684971,Ind.,G. Sudhakaran,Q5512492,BJP,Arun Anirudhan,
-Alappuzha,Q928959,106,Kuttanad,Q16135972,,NCP(SP),Thomas K. Thomas,Q106708709,KEC,Reji Cheriyan,,BDJS,Santhosh Santhy,
-Alappuzha,Q928959,107,Haripad,Q16137908,,CPI,T. T. Jismon,,INC,Ramesh Chennithala,Q7289391,BJP,Sandeep Vachaspati,
-Alappuzha,Q928959,108,Kayamkulam,Q13111157,,CPI(M),U. Prathibha,Q24565100,INC,,,BDJS,Thambi Mettuthara,
-Alappuzha,Q928959,109,Mavelikara (SC),Q16136384,SC,CPI(M),M. S. Arun Kumar,Q106684972,INC,Muthara Raj,,,,
-Alappuzha,Q928959,110,Chengannur,Q13112004,,CPI(M),Saji Cherian,Q54553955,INC,,,BJP,M. V. Gopakumar,
-Pathanamthitta,Q634935,111,Thiruvalla,Q16137335,,Indian Socialist Janata Dal,Mathew T. Thomas,Q6787044,KEC,Varghese Mammen,,BJP,Anoop Antony,
-Pathanamthitta,Q634935,112,Ranni,Q13114408,,Kerala Congress (B),Pramod Narayan,Q106708733,INC,,,TTP,Thomas K. Samuel,
-Pathanamthitta,Q634935,113,Aranmula,Q16136677,,CPI(M),Veena George,Q13114748,INC,,,,Kummanam Rajasekharan,Q11103115
-Pathanamthitta,Q634935,114,Konni,Q20577849,,CPI(M),K. U. Jenish Kumar,Q72429201,INC,,,,,
-Pathanamthitta,Q634935,115,Adoor (SC),Q7601892,SC,CPI,Priji Sasidharan,,INC,,,,,
-Kollam,Q1356124,116,Karunagappally,Q13111030,,CPI,M. S. Thara,,INC,C. R. Mahesh,Q106679755,BJP,V. S. Jithin Dev,
-Kollam,Q1356124,117,Chavara,Q13111898,,Independent (CPI(M) support),Sujith Vijayanpillai,Q106730415,RSP,Shibu Baby John,Q7496081,,,
-Kollam,Q1356124,118,Kunnathur (SC),Q17414812,SC,RSP(L),Kovoor Kunjumon,Q24054037,RSP,Ullas Kovoor,,BJP,Raji Prasad,
-Kollam,Q1356124,119,Kottarakkara,Q13111616,,CPI(M),K. N. Balagopal,Q21173873,INC,P. Aisha Potty,Q23908917,BJP,R. Reshmi,
-Kollam,Q1356124,120,Pathanapuram,Q13113068,,Kerala Congress (B),K. B. Ganesh Kumar,Q13219724,INC,Jyothikumar chamakkala,,,,
-Kollam,Q1356124,121,Punalur,Q13113349,,CPI,C. Ajaya Prasad,,IUML,,,,,
-Kollam,Q1356124,122,Chadayamangalam,Q16137010,,CPI,J. Chinchu Rani,Q106680455,INC,,,,,
-Kollam,Q1356124,123,Kundara,Q13111296,,CPI(M),S. L. Sajikumar,,INC,P. C. Vishnunadh,Q16217685,BJP,Robin Radhakrishnan (Robin RB),
-Kollam,Q1356124,124,Kollam,Q48733036,,CPI(M),S. Jayamohan,,INC,Bindhu Krishna,,BJP,N. Prathap Kumar,
-Kollam,Q1356124,125,Eravipuram,Q13110435,,CPI(M),M. Noushad,Q24154647,RSP,Vishnu Mohan,,,,
-Kollam,Q1356124,126,Chathannoor,Q13111908,,CPI,R. Rajendran,Q120190547,INC,Sooraj Ravi,,BJP,B. B. Gopakumar,
-Thiruvananthapuram,Q162612,127,Varkala,Q16134163,,CPI(M),V. Joy,Q25589478,INC,,,,,
-Thiruvananthapuram,Q162612,128,Attingal (SC),Q16136708,SC,CPI(M),O. S. Ambika,Q106684836,RSP,Santhosh Bhadran,,BJP,P. Sudheer,
-Thiruvananthapuram,Q162612,129,Chirayinkeezhu (SC),Q16137800,SC,CPI,Manoj B Edamana,,INC,Ramya Haridas,Q63091672,,,
-Thiruvananthapuram,Q162612,130,Nedumangad,Q16136140,,CPI,G. R. Anil,Q106684827,INC,,,BJP,Yuvaraj Gokul,
-Thiruvananthapuram,Q162612,131,Vamanapuram,Q16136220,,CPI(M),D. K. Murali,Q25589463,INC,,,,,
-Thiruvananthapuram,Q162612,132,Kazhakkoottam,Q13111089,,CPI(M),Kadakampally Surendran,Q20560538,INC,,,BJP,V. Muraleedharan,Q13114656
-Thiruvananthapuram,Q162612,133,Vattiyoorkavu,Q13114513,,CPI(M),V. K. Prasanth,Q55759704,INC,K. Muraleedharan,Q13564486,BJP,R. Sreelekha,Q16193873
-Thiruvananthapuram,Q162612,134,Thiruvananthapuram,Q16137289,,JKC ,,,CMP,C. P. John,Q23887860,,,
-Thiruvananthapuram,Q162612,135,Nemom,Q13113005,,CPI(M),V. Shivankutty,Q20564519,INC,,,BJP,Rajeev Chandrasekhar,Q7285934
-Thiruvananthapuram,Q162612,136,Aruvikkara,Q7602920,,CPI(M),G. Steephen,Q106706208,INC,,,,,
-Thiruvananthapuram,Q162612,137,Parassala,Q13113201,,CPI(M),C. K. Hareendran,Q25589469,INC,,,BJP,Gireesh Neyyar,
-Thiruvananthapuram,Q162612,138,Kattakkada,Q6378291,,CPI(M),I. B. Satheesh,Q25589447,INC,,,BJP,P. K. Krishnadas,
-Thiruvananthapuram,Q162612,139,Kovalam,Q13111733,,Independent (CPI(M) support),Bhagat Rufus,,INC,M. Vincent,Q6713246,,,
-Thiruvananthapuram,Q162612,140,Neyyattinkara,Q16136265,,CPI(M),K. Ansalan,Q25589451,INC,,,,,
-Thiruvananthapuram,Q162612,,,,,,,,,,,,,
-Thiruvananthapuram,Q162612,,,,,,,,,,,,,
-Thiruvananthapuram,Q162612,,,,,,,,,,,,,
-Thiruvananthapuram,Q162612,,,,,,,,,,,,,
-Thiruvananthapuram,Q162612,,,,,,,,,,,,,
-Thiruvananthapuram,Q162612,,,,,,,,,,,,,
-Thiruvananthapuram,Q162612,,,,,,,,,,,,,
-Thiruvananthapuram,Q162612,,,,,,,,,,,,,
-Thiruvananthapuram,Q162612,,,,,,,,,,,,,`;
+const RAW_CSV = `District,Distrct_Wikidata,Constituency_Number,Constituency_Name,Constituency_Wikidata,Reservation,LDF,LDF_Candidate,LDF_Candidate_Gender,LDF_Candidate_Wikidata,UDF,UDF_Candidate,UDF_Candidate_Gender,UDF_Candidate_Wikidata,NDA,NDA_Candidate,NDA_Candidate_Gender,NDA_Candidate_Wikidata,Other1,Other_Candidate,Other_Candidate_Wikidata
+Kasaragod,Q1419703,1,Manjeshwaram,Q13113782,,CPI(M),K. R. Jayanandan,male,,IUML,A. K. M. Ashraf,male,Q106687787,BJP,K. Surendran,male,Q25587200,,,
+Kasaragod,Q1419703,2,Kasaragod,Q13111222,,INL,TBD,,,IUML,Kallatra Mahin Haji,male,        ,BJP,Ashwini M.L.,female,,,,
+Kasaragod,Q1419703,3,Udma,Q13110513,,CPI(M),C. H. Kunhambu,male,Q13115063,INC,TBD,,,BJP,Manulal Meloth,male,,,,
+Kasaragod,Q1419703,4,Kanhangad,Q13111113,,CPI,Govindan Pallikkappil,male,,KEC,Shyji Ottapalli,female,,BJP,M. Balraj,male,,,,
+Kasaragod,Q1419703,5,Thrikaripur,Q16137696,,CPI(M),V. P. P. Mustafa,male,,INC,Sandeep Varier,male,                        ,TTP,Ravi Kulangara,male,,,,
+Kannur,Q2980652,6,Payyanur,Q17379122,,CPI(M),T. I. Madhusoodanan,male,Q106679753,Independent (RSP support),V. Kunjikrishnan,male,,BJP,A. P. Gangadharan,male,,,,
+Kannur,Q2980652,7,Kalliasseri,Q13111077,,CPI(M),M. Vijin,male,Q106687789,INC,TBD,,,BJP,A.V. Sanil Kumar,male,,,,
+Kannur,Q2980652,8,Taliparamba,Q17379268,,CPI(M),P. K. Shyamala,female,,INC,TBD,,,BJP,N. Haridas,male,,,,
+Kannur,Q2980652,9,Irikkur,Q13110432,,Kerala Congress (M),Mathew Kunnappally,male,,INC,Sajeev Joseph,male,Q106687786,,,,,,,
+Kannur,Q2980652,10,Azhikode,Q13110133,,CPI(M),K. V. Sumesh,male,Q106682053,IUML,Kareem Cheleri,male,,BJP,K. K. Vinod Kumar,male,,,,
+Kannur,Q2980652,11,Kannur,Q16137348,,Congress (Secular),Kadannappalli Ramachandran,male,Q13564570,INC,TBD,,,BJP,C. Raghunath,male,,,,
+Kannur,Q2980652,12,Dharmadom,Q13112766,,CPI(M),Pinarayi Vijayan,male,Q3595385,INC,Abdul Rasheed,male,,BJP,K. Ranjith,male,,,,
+Kannur,Q2980652,13,Thalassery,Q7709532,,CPI(M),Karayi Rajan,male,,INC,K. P. Saju,male,,BJP,O. Nidheesh,male,,,,
+Kannur,Q2980652,14,Kuthuparamba,Q17379603,,RJD,P. K. Praveen,male,,IUML,Jayanthi Rajan,female,,BJP,Adv. Shijilal,male,,,,
+Kannur,Q2980652,15,Mattanur,Q16134425,,CPI(M),V. K. Sanoj,male,Q131584190,INC,TBD,,,BJP,Biju Elakkuzhi,male,,,,
+Kannur,Q2980652,16,Peravoor,Q17385405,,CPI(M),K. K. Shailaja,female,Q16137667,INC,Sunny Joseph,male,Q20564838,BDJS,Paily Vathiatt,male,,,,
+Wayanad,Q1364427,17,Mananthavady (ST),Q16136061,ST,CPI(M),O. R. Kelu,male,Q24952520,INC,Usha Vijayan,female,,BJP,P. Shyam Raj,male,,,,
+Wayanad,Q1364427,18,Sulthan Bathery (ST),Q13115144,ST,CPI(M),M. S. Viswanathan,male,Q3115598,INC,I. C. Balakrishnan,male,Q23940094,BJP,A. S. Kavitha,female,,,,
+Wayanad,Q1364427,19,Kalpetta,Q13111054,,RJD,P. K. Anil Kumar,male,,INC,T. Siddique,male,Q7668715,BJP,Prasanth Malavayal,male,,,,
+Kozhikode,Q1142979,20,Vatakara,Q13114485,,RJD,M. K. Bhaskaran,male,,RMPI,K. K. Rema,female,Q20561285,BJP,K. Dileep,male,,,,
+Kozhikode,Q1142979,21,Kuttiady,Q16136660,,CPI(M),K. P. Kunhammad Kutti Master,male,Q106687783,IUML,Parakkal Abdulla,male,Q24572542,BJP,Ramadas Manaleri,male,,,,
+Kozhikode,Q1142979,22,Nadapuram,Q13112855,,CPI,P. Vasantham,female,,INC,K. M. Abhijith,male,Q138706956,BJP,C. P. Vipin Chandran,male,,,,
+Kozhikode,Q1142979,23,Koyilandy,Q13111637,,CPI(M),K. Dasan,male,Q24007339,INC,K. Praveen Kumar,male,Q138706956,BJP,C. R. Praphul Krishnan,male,,,,
+Kozhikode,Q1142979,24,Perambra,Q13113475,,CPI(M),T. P. Ramakrishnan,male,Q24555656,IUML,Fathima Thahiliya,female,QID Needed,BJP,M. Mohanan Master,male,,,,
+Kozhikode,Q1142979,25,Balussery (SC),Q16137581,SC,CPI(M),K. M. Sachindev,male,,INC,V. T. Sooraj,male,,BJP,C. P. Sateeshan,male,,,,
+Kozhikode,Q1142979,26,Elathur,Q16135458,,NCP(SP),A. K. Saseendran,male,,INC,Vidya Balakrishnan,female,,BJP,T. Devadas,male,,,,
+Kozhikode,Q1142979,27,Kozhikode North,Q13111729,,CPI(M),Thottathil Ravindran,male,Q31700579,INC,K. Jayanth,male,QID needed,BJP,Navya Haridas,female,,,,
+Kozhikode,Q1142979,28,Kozhikode South,Q24204696,,INL,Ahamed Devarkovil,male,Q106692139,IUML,Faisal Babu,male,,BJP,T. Raneesh,male,,,,
+Kozhikode,Q1142979,29,Beypore,Q13113680,,CPI(M),Muhammad Riyas,male,Q80189102,AITC,P. V. Anvar,male,Q24952527,BJP,K. P. Prakash Babu,male,,,,
+Kozhikode,Q1142979,30,Kunnamangalam,Q13111313,,Independent (CPI(M) support),P. T. A. Rahim,male,Q16143039,IUML,M. A. Razak Master,male,,BJP,V. K. Sajeevan,male,,,,
+Kozhikode,Q1142979,31,Koduvally,Q16135012,,Independent (CPI(M) support),Saleem Madavoor,male,,IUML,P. K. Firos,male,,BDJS,Giri Pambanal,male,,,,
+Kozhikode,Q1142979,32,Thiruvambady,Q13112497,,CPI(M),Linto Joseph,male,Q106692396,IUML,C. K. Kasim,male,,TTP,Sunny Thomas,male,,,,
+Malappuram,Q1030918,33,Kondotty,Q16135092,,CPI(M),P. Jiji,female,,IUML,T. P. Ashrafali,male,QID Needed,BJP,P. Subrahmanian,male,,,,
+Malappuram,Q1030918,34,Eranad,Q13110769,,CPI,Shafeer Kizhisseri,male,,IUML,P. K. Basheer,male,Q7121263,BJP,Adv. N. Sreeprakash,male,,,,
+Malappuram,Q1030918,35,Nilambur,Q13112913,,Independent (CPI(M) support),U. Sharafali,male,Q7863540,INC,Aryadan Shoukath,male,Q4802630,BDJS,Gireesh Mekkad,male,,,,
+Malappuram,Q1030918,36,Wandoor (SC),Q16135444,SC,CPI(M),K. K. Damodaran,male,,INC,A. P. Anil Kumar,male,Q4647269,,,,,,,
+Malappuram,Q1030918,37,Manjeri,Q13113783,,Independent (CPI support),M. Mustafa,male,,IUML,M. Rahmathulla,male,Q138701481,BJP,Pathmasree M.,female,,,,
+Malappuram,Q1030918,38,Perinthalmanna,Q13113446,,CPI(M),V. P. Muhammad Haneefa,male,Q138678453,IUML,Najeeb Kanthapuram,male,Q106714094,BJP,Adv. K.P. Baburaj,male,,,,
+Malappuram,Q1030918,39,Mankada,Q13113774,,CPI(M),M. P. Alavi,male,,IUML,Manjalamkuzhi Ali,male,Q6750341,BJP,Lijoy Paul,male,,,,
+Malappuram,Q1030918,40,Malappuram,Q16135164,,NCP(SP),K. T. Mujeeb,male,,IUML,P. K. Kunhalikutty,male,Q7117360,BJP,Ashwathy Gupatha Kumar,female,,,,
+Malappuram,Q1030918,41,Vengara,Q13114838,,Independent (CPI(M) support,Muhammad Sabah Kundukuzhikkal,male,,IUML,K. M. Shaji,male,Q16213770,BJP,Jayakrishnan V.N.,male,,,,
+Malappuram,Q1030918,42,Vallikkunnu,Q16135944,,INL ,TBD,,,IUML,T. V. Ibrahim,male,Q24952528,BJP,M. Preman Master,male,,,,
+Malappuram,Q1030918,43,Tirurangadi,Q13112529,,CPI,Ajit Koladi,male,,IUML,P. M. A. Sameer,male,,BJP,Riju C. Raghav,male,,,,
+Malappuram,Q1030918,44,Tanur,Q16136996,,Independent (CPI(M) support,,male,Q24952529,IUML,P. K. Navas,male,QID Needed,BJP,Deepa Puzhakkal,female,,,,
+Malappuram,Q1030918,45,Tirur,Q16137421,,Independent (CPI(M) support,V. Abdurahman,male,,IUML,Kurukkoli Moideen,male,Q106692608,BJP,K. Narayanan Master,male,,,,
+Malappuram,Q1030918,46,Kottakkal,Q13111682,,Independent (CPI(M) support,K. Preethi,female,,IUML,K. K. Abid Hussain Thangal,male,Q24952533,BDJS,Subrahmanian Chunkapally,male,,,,
+Malappuram,Q1030918,47,Thavanur,Q16136920,,Independent (CPI(M) support,K. T. Jaleel,male,Q15035529,INC,V. S. Joy,male,QID Needed,BDJS,Ravi Thelath,male,,,,
+Malappuram,Q1030918,48,Ponnani,Q7227905,,CPI(M),M. K. Sakeer,male,Q138681975,INC,K. P. Noushad Ali,male,QID needed,BDJS,,,,,,
+Palakkad,Q1535742,49,Thrithala,Q13112607,,CPI(M),M. B. Rajesh,male,Q6712425,INC,V. T. Balram,male,Q22276949,BJP,V. Unnikrishnan Master,male,,,,
+Palakkad,Q1535742,50,Pattambi,Q13113050,,CPI,Muhammad Muhsin,male,Q24952491,INC,TBD,,,BJP,Adv. P. Manoj,male,,,,
+Palakkad,Q1535742,51,Shornur,Q13114979,,CPI(M),P. Mammikkutty,male,Q106680460,INC,TBD,,,BJP,Sanku T. Das,male,,,,
+Palakkad,Q1535742,52,Ottapalam,Q13110827,,CPI(M),K. Premkumar,male,Q106679757,Ind.,P. K. Sasi,male,Q24952531,BJP,Major Ravi,male,Q6738295,,,
+Palakkad,Q1535742,53,Kongad (SC),Q13111675,SC,CPI(M),K. Shanthakumari,female,Q106680462,INC,K. A. Thulasi,female,,BJP,Renu Suresh,female,,,,
+Palakkad,Q1535742,54,Mannarkkad,Q13113828,,CPI,Manzil Aboobacker,male,,IUML,N. Samsudheen,male,Q24055597,AIADMK,,,,,,
+Palakkad,Q1535742,55,Malampuzha,Q16135283,,CPI(M),E. Prabhakaran,male,,INC,A. Suresh,male,,BJP,C. Krishnakumar,male,,,,
+Palakkad,Q1535742,56,Palakkad,Q18536954,,Independent (CPI(M) support),N. M. R. Razaq,male,,INC,Ramesh Pisharody,male,Q7289434,BJP,Sobha Surendran,female,Q13560129,,,
+Palakkad,Q1535742,57,Tarur (SC),Q16136772,SC,CPI(M),P. P. Sumod,male,Q106685898,INC,K. C. Subramanian,male,,BJP,Suresh Babu,male,,,,
+Palakkad,Q1535742,58,Chittur,Q13111967,,Indian Socialist Janata Dal,Adv V. Murugadas,male,,INC,Sumesh Achuthan,male,,BJP,Pranesh Rajendran,male,,,,
+Palakkad,Q1535742,59,Nenmara,Q13112978,,CPI(M),K. Preman,male,,INC,A. Thankappan,male,,BDJS,A. N. Anurag,male,,,,
+Palakkad,Q1535742,60,Alathur,Q16136878,,CPI(M),T. M. Sasi,male,,INC,K. N. Febin,male,,BJP,K.V. Prasanna Kumar,male,,,,
+Thrissur,Q2429655,61,Chelakkara (SC),Q5089791,SC,CPI(M),U. R. Pradeep,male,Q26702718,Independent (IUML Support),Sivan Veettikkunnu,male,,BJP,K. Balakrishnan,male,Q6323168,,,
+Thrissur,Q2429655,62,Kunnamkulam,Q13111317,,CPI(M),A. C. Moytheen,male,Q24851727,INC,TBD,,,BDJS,Rijil K. R.,male,,,,
+Thrissur,Q2429655,63,Guruvayur,Q5620568,,CPI(M),N. K. Akbar,male,Q106685268,IUML,C. H. Rasheed,male,,DSJP,Adv. B. Gopalakrishnan,male,,,,
+Thrissur,Q2429655,64,Manalur,Q6746846,,CPI(M),C. Ravindranath,male,Q5006200,INC,T. N. Prathapan,male,Q7668536,BJP,K. K. Aneesh Kumar,male,,,,
+Thrissur,Q2429655,65,Wadakkanchery,Q16135293,,CPI(M),Xeviyar Chittilappally,male,Q106681166,INC,TBD,,,BJP,Adv. T.S. Ullas Babu,male,,,,
+Thrissur,Q2429655,66,Ollur,Q7088394,,CPI,K. Rajan,male,Q135532539,INC,Shaji Kodankandath,male,,BJP,Bijoy Thomas,male,,,,
+Thrissur,Q2429655,67,Thrissur,Q7798271,,CPI,Alankode Leelakrishnan,male,Q13223614,INC,Rajan Pallan,male,Q16624190,BJP,Padmaja Venugopal,female,,,,
+Thrissur,Q2429655,68,Nattika (SC),Q6980360,SC,CPI,Geetha Gopi,female,Q5529973,INC,Sunil Lalur,male,,BJP,C. C. Mukundan,male,Q106681155,,,
+Thrissur,Q2429655,69,Kaipamangalam,Q6348174,,CPI,K. K. Valsaraj,male,,INC,T. M. Nazar,male,,BDJS,,,,,,
+Thrissur,Q2429655,70,Irinjalakuda,Q6070028,,CPI(M),R. Bindu,female,Q7273492,KEC,Thomas Unniyadan,male,Q7794631,BJP,Santhosh Cherkalam,male,,,,
+Thrissur,Q2429655,71,Puthukkad,Q7258374,,CPI(M),K. K. Ramachandran,male,Q106683215,INC,K. M. Babu Raj,male,,BJP,A. Nagesh,male,,,,
+Thrissur,Q2429655,72,Chalakudy,Q5068546,,Kerala Congress (M),Adv Biju Chirayath,male,,INC,T. J. Saneesh Kumar Joseph,male,Q106696961,TTP,Charly Paul,male,,,,
+Thrissur,Q2429655,73,Kodungallur,Q6425466,,CPI,V. R. Sunil,male,Q25589441,INC,O. J. Janeesh,male,,TTP,Varghese George,male,,,,
+Ernakulam,Q1356097,74,Perumbavoor,Q16136149,,Kerala Congress (M),Basil Paul,male,,INC,TBD,,,TTP,Jibi Pathikkal,female,,,,
+Ernakulam,Q1356097,75,Angamaly,Q7601651,,CPI(M),Saju Paul,male,Q6813188,INC,Roji M. John,male,Q24205009,TTP,Promy Kuriakose,male,,,,
+Ernakulam,Q1356097,76,Aluva,Q13110297,,CPI(M),A. M. Ariff,male,Q4647242,INC,Anwar Sadath,male,Q24007179,,M.A. Brahmaraj,male,,,,
+Ernakulam,Q1356097,77,Kalamassery,Q16134141,,CPI(M),P. Rajeev,male,Q92782463,IUML,V. E. Abdul Gafoor,male,,,,,,,,
+Ernakulam,Q1356097,78,Paravur,Q13113120,,CPI,E. T. Taison,male,Q47493011,INC,V. D. Satheesan,male,Q6956446,BJP,Vathsala Prasanna Kumar,female,,,,
+Ernakulam,Q1356097,79,Vypin,Q13114876,,CPI(M),M. B. Shyni,female,,INC,TBD,,,,,,,,,
+Ernakulam,Q1356097,80,Kochi,Q17372576,,CPI(M),K. J. Maxi,male,Q25589440,INC,TBD,,,,,,,,,
+Ernakulam,Q1356097,81,Thrippunithura,Q13112618,,CPI(M),K. N. Unnikrishnan,male,Q106685272,INC,TBD,,,TTP,Anjali Nair,female,Q28810218,,,
+Ernakulam,Q1356097,82,Ernakulam,Q16135415,,Indian Socialist Janata Dal,Sabu George,male,,INC,T. J. Vinod,male,Q72429286,,P.R. Sivasankar,male,,,,
+Ernakulam,Q1356097,83,Thrikkakara,Q16137712,,CPI(M),Pushpadhas,male,,INC,Uma Thomas,female,Q112220391,TTP,Akhil Marar,male,,,,
+Ernakulam,Q1356097,84,Kunnathunad (SC),Q13111319,SC,CPI(M),P. V. Sreenijin,male,Q106690857,INC,V. P. Sajeendran,male,Q6946858,TTP,Babu Divakaran,male,Q4838047,,,
+Ernakulam,Q1356097,85,Piravom,Q13113295,,Kerala Congress (M),Sabu K Jacob,male,,KC(J),Anoop Jacob,male,Q4770056,TTP,Jibi Abraham,female,,,,
+Ernakulam,Q1356097,86,Muvattupuzha,Q16137625,,CPI,N. Arun,male,,INC,Mathew Kuzhalnadan,male,Q106685292,,,,,,,
+Ernakulam,Q1356097,87,Kothamangalam,Q16135561,,CPI(M),Antony John,male,Q27916076,KEC,Shibu Thekkumpuram,male,,,,,,,,
+Idukki,Q301821,88,Devikulam (SC),Q16134525,SC,CPI(M),A. Raj,male,,INC,TBD,,,BJP,S. Rajendran,male,Q17129980,,,
+Idukki,Q301821,89,Udumbanchola,Q16133944,,CPI(M),K. K. Jayachandran,male,Q16137589,INC,TBD,,,BDJS,Sangeetha Viswanathan,female,,,,
+Idukki,Q301821,90,Thodupuzha,Q16133853,,Kerala Congress (M),Cyriac Chazhikadan,male,,KEC,Apu John Joseph,male,,,,,,,,
+Idukki,Q301821,91,Idukki,Q13110378,,Kerala Congress (M),Roshi Augustine,male,Q7368852,INC,TBD,,,,,,,,,
+Idukki,Q301821,92,Peerumade,Q16135018,,CPI,K. Salim Kumar,male,,INC,TBD,,,,,,,,,
+Kottayam,Q1353354,93,Pala,Q13113213,,Kerala Congress (M),Jose K. Mani,male,Q6279404,DCK,Mani C. Kappan,male,Q16135968,BJP,Shone George,male,,,,
+Kottayam,Q1353354,94,Kaduthuruthy,Q13110914,,Kerala Congress (M),Nirmala Jimmy,female,,KEC,Mons Joseph,male,Q6898473,BDJS,Suresh Ettikunnel,male,,,,
+Kottayam,Q1353354,95,Vaikom (SC),Q13114860,SC,CPI,P. Pradeep,male,,INC,K. Binimon,male,,BJP,K. Ajith,male,Q20560973,,,
+Kottayam,Q1353354,96,Ettumanoor,Q16135978,,CPI(M),V. N. Vasavan,male,Q20564544,INC,TBD,,,TTP,Athira D. Nair,female,,,,
+Kottayam,Q1353354,97,Kottayam,Q13111688,,CPI(M),K. Anilkumar,male,,INC,Thiruvanchoor Radhakrishnan,male,Q7785514,BDJS,P. Anilkumar,male,,,,
+Kottayam,Q1353354,98,Puthuppally,Q13113317,,CPI(M),K. M. Radhakrishnan,male,,INC,Chandy Oommen,male,Q122212026,,,,,,,
+Kottayam,Q1353354,99,Changanassery,Q16136954,,Kerala Congress (M),Job Maichil,male,Q106713127,KEC,Vinu Job,male,,BJP,B. Radhakrishna Menon,male,,,,
+Kottayam,Q1353354,100,Kanjirappally,Q16134543,,Kerala Congress (M),N. Jayaraj,male,Q23908915,INC,TBD,,,BJP,George Kurian,male,Q126469351,,,
+Kottayam,Q1353354,101,Poonjar,Q16135693,,Kerala Congress (M),Sebastian Kulathunkal,male,Q106681984,INC,TBD,,,BJP,P. C. George,male,Q7117157,,,
+Alappuzha,Q928959,102,Aroor,Q13110113,,CPI(M),Daleema,female,Q96361400,INC,Shanimol Usman,female,Q25589499,BDJS,P. S. Jyothis,male,,,,
+Alappuzha,Q928959,103,Cherthala,Q16134436,,CPI,P. Prasad,male,Q106684967,INC,K. R. Rajendra Prasad,male,,,,,,,,
+Alappuzha,Q928959,104,Alappuzha,Q13110290,,CPI(M),P. P. Chitharanjan,male,Q106680459,INC,TBD,,,BJP,M.J. Job,male,,,,
+Alappuzha,Q928959,105,Ambalappuzha,Q13110066,,CPI(M),H. Salam,male,Q106684971,Ind.,G. Sudhakaran,male,Q5512492,BJP,Arun Anirudhan,male,,,,
+Alappuzha,Q928959,106,Kuttanad,Q16135972,,NCP(SP),Thomas K. Thomas,male,Q106708709,KEC,Reji Cheriyan,male,,BDJS,Santhosh Santhy,male,,,,
+Alappuzha,Q928959,107,Haripad,Q16137908,,CPI,T. T. Jismon,male,,INC,Ramesh Chennithala,male,Q7289391,BJP,Sandeep Vachaspati,male,,,,
+Alappuzha,Q928959,108,Kayamkulam,Q13111157,,CPI(M),U. Prathibha,female,Q24565100,INC,TBD,,,BDJS,Thambi Mettuthara,male,,,,
+Alappuzha,Q928959,109,Mavelikara (SC),Q16136384,SC,CPI(M),M. S. Arun Kumar,male,Q106684972,INC,Muthara Raj,female,,,TBD,,,,,
+Alappuzha,Q928959,110,Chengannur,Q13112004,,CPI(M),Saji Cherian,male,Q54553955,INC,TBD,,,BJP,M. V. Gopakumar,male,,,,
+Pathanamthitta,Q634935,111,Thiruvalla,Q16137335,,Indian Socialist Janata Dal,Mathew T. Thomas,male,Q6787044,KEC,Varghese Mammen,male,,BJP,Anoop Antony,male,,,,
+Pathanamthitta,Q634935,112,Ranni,Q13114408,,Kerala Congress (B),Pramod Narayan,male,Q106708733,INC,TBD,,,TTP,Thomas K. Samuel,male,,,,
+Pathanamthitta,Q634935,113,Aranmula,Q16136677,,CPI(M),Veena George,female,Q13114748,INC,TBD,,,,Kummanam Rajasekharan,male,Q11103115,,,
+Pathanamthitta,Q634935,114,Konni,Q20577849,,CPI(M),K. U. Jenish Kumar,male,Q72429201,INC,TBD,,,,TBD,,,,,
+Pathanamthitta,Q634935,115,Adoor (SC),Q7601892,SC,CPI,Priji Sasidharan,female,,INC,TBD,,,,TBD,,,,,
+Kollam,Q1356124,116,Karunagappally,Q13111030,,CPI,M. S. Thara,female,,INC,C. R. Mahesh,male,Q106679755,BJP,V. S. Jithin Dev,male,,,,
+Kollam,Q1356124,117,Chavara,Q13111898,,Independent (CPI(M) support),Sujith Vijayanpillai,male,Q106730415,RSP,Shibu Baby John,male,Q7496081,,TBD,,,,,
+Kollam,Q1356124,118,Kunnathur (SC),Q17414812,SC,RSP(L),Kovoor Kunjumon,male,Q24054037,RSP,Ullas Kovoor,male,,BJP,Raji Prasad,female,,,,
+Kollam,Q1356124,119,Kottarakkara,Q13111616,,CPI(M),K. N. Balagopal,male,Q21173873,INC,P. Aisha Potty,female,Q23908917,BJP,R. Reshmi,female,,,,
+Kollam,Q1356124,120,Pathanapuram,Q13113068,,Kerala Congress (B),K. B. Ganesh Kumar,male,Q13219724,INC,Jyothikumar chamakkala,female,,,TBD,,,,,
+Kollam,Q1356124,121,Punalur,Q13113349,,CPI,C. Ajaya Prasad,male,,IUML,Noushad Yusuf,male,,,TBD,,,,,
+Kollam,Q1356124,122,Chadayamangalam,Q16137010,,CPI,J. Chinchu Rani,female,Q106680455,INC,TBD,,,,TBD,,,,,
+Kollam,Q1356124,123,Kundara,Q13111296,,CPI(M),S. L. Sajikumar,male,,INC,P. C. Vishnunadh,male,Q16217685,BJP,Robin Radhakrishnan (Robin RB),male,,,,
+Kollam,Q1356124,124,Kollam,Q48733036,,CPI(M),S. Jayamohan,male,,INC,Bindhu Krishna,female,,BJP,N. Prathap Kumar,male,,,,
+Kollam,Q1356124,125,Eravipuram,Q13110435,,CPI(M),M. Noushad,male,Q24154647,RSP,Vishnu Mohan,male,,,TBD,,,,,
+Kollam,Q1356124,126,Chathannoor,Q13111908,,CPI,R. Rajendran,male,Q120190547,INC,Sooraj Ravi,male,,BJP,B. B. Gopakumar,male,,,,
+Thiruvananthapuram,Q162612,127,Varkala,Q16134163,,CPI(M),V. Joy,male,Q25589478,INC,TBD,,,,TBD,,,,,
+Thiruvananthapuram,Q162612,128,Attingal (SC),Q16136708,SC,CPI(M),O. S. Ambika,female,Q106684836,RSP,Santhosh Bhadran,male,,BJP,P. Sudheer,male,,,,
+Thiruvananthapuram,Q162612,129,Chirayinkeezhu (SC),Q16137800,SC,CPI,Manoj B Edamana,male,,INC,Ramya Haridas,female,Q63091672,,TBD,,,,,
+Thiruvananthapuram,Q162612,130,Nedumangad,Q16136140,,CPI,G. R. Anil,male,Q106684827,INC,TBD,,,BJP,Yuvaraj Gokul,male,,,,
+Thiruvananthapuram,Q162612,131,Vamanapuram,Q16136220,,CPI(M),D. K. Murali,male,Q25589463,INC,TBD,,,,TBD,,,,,
+Thiruvananthapuram,Q162612,132,Kazhakkoottam,Q13111089,,CPI(M),Kadakampally Surendran,male,Q20560538,INC,TBD,,,BJP,V. Muraleedharan,male,Q13114656,,,
+Thiruvananthapuram,Q162612,133,Vattiyoorkavu,Q13114513,,CPI(M),V. K. Prasanth,male,Q55759704,INC,K. Muraleedharan,male,Q13564486,BJP,R. Sreelekha,female,Q16193873,,,
+Thiruvananthapuram,Q162612,134,Thiruvananthapuram,Q16137289,,JKC ,TBD,,,CMP,C. P. John,male,Q23887860,,TBD,,,,,
+Thiruvananthapuram,Q162612,135,Nemom,Q13113005,,CPI(M),V. Shivankutty,male,Q20564519,INC,TBD,,,BJP,Rajeev Chandrasekhar,male,Q7285934,,,
+Thiruvananthapuram,Q162612,136,Aruvikkara,Q7602920,,CPI(M),G. Steephen,male,Q106706208,INC,TBD,,,,TBD,,,,,
+Thiruvananthapuram,Q162612,137,Parassala,Q13113201,,CPI(M),C. K. Hareendran,male,Q25589469,INC,TBD,,,BJP,Gireesh Neyyar,male,,,,
+Thiruvananthapuram,Q162612,138,Kattakkada,Q6378291,,CPI(M),I. B. Satheesh,male,Q25589447,INC,TBD,,,BJP,P. K. Krishnadas,male,Q7117359,,,
+Thiruvananthapuram,Q162612,139,Kovalam,Q13111733,,Independent (CPI(M) support),Bhagat Rufus,male,,INC,M. Vincent,male,Q6713246,,TBD,,,,,
+Thiruvananthapuram,Q162612,140,Neyyattinkara,Q16136265,,CPI(M),K. Ansalan,male,Q25589451,INC,TBD,,,,TBD,,,,,`;
 const data = parseCSV(RAW_CSV);
 
 
 
 // ── VIEW SWITCHING ──
-let currentView = 'map';
+let currentView = 'table';
 
 function switchView(view) {
   currentView = view;
@@ -1800,14 +1972,15 @@ function selectConstituency(row, props) {
   const res = row.Reservation;
   const resBadge = res ? `<span class="reservation-badge ${res.toLowerCase()}">${res} Reserved</span>` : '';
 
-  function cBlock(alliance, barColor, party, name) {
+  function cBlock(alliance, barColor, party, name, gender) {
     const tbd = !name;
+    const gBadge = (!tbd && gender) ? `<span class="modal-gender-badge ${gender}" style="font-size:8px;padding:1px 6px">${gender === 'female' ? '♀' : '♂'}</span>` : '';
     return `<div class="const-candidate-block">
       <div class="const-alliance-bar" style="background:${barColor}"></div>
       <div class="const-candidate-inner">
         <div class="const-alliance-label">${alliance}</div>
         <div class="const-party">${party || '—'}</div>
-        <div class="const-candidate-name${tbd ? ' tbd' : ''}">${name || 'To Be Announced'}</div>
+        <div class="const-candidate-name${tbd ? ' tbd' : ''}">${name || 'To Be Announced'} ${gBadge}</div>
       </div>
     </div>`;
   }
@@ -1819,10 +1992,10 @@ function selectConstituency(row, props) {
       <div class="const-detail-name">${row.Constituency_Name}</div>
       <div class="const-detail-dist">${row.District} ${resBadge}</div>
     </div>
-    ${cBlock('LDF', '#D94040', row.LDF, row.LDF_Candidate)}
-    ${cBlock('UDF', '#1565C0', row.UDF, row.UDF_Candidate)}
-    ${row.NDA ? cBlock('NDA', '#E07828', row.NDA, row.NDA_Candidate) : ''}
-    ${cBlock('Others', '#888', '', '')}
+    ${cBlock('LDF', '#D94040', row.LDF, row.LDF_Candidate, row.LDF_Candidate_Gender)}
+    ${cBlock('UDF', '#1565C0', row.UDF, row.UDF_Candidate, row.UDF_Candidate_Gender)}
+    ${row.NDA ? cBlock('NDA', '#E07828', row.NDA, row.NDA_Candidate, row.NDA_Candidate_Gender) : ''}
+    ${row.Other1 || row.Other_Candidate ? cBlock('Others', '#888', row.Other1, row.Other_Candidate, '') : ''}
   `;
 }
 
@@ -1917,6 +2090,11 @@ function renderGrid() {
     if (activeDistrict !== 'all' && row.District !== activeDistrict) return false;
     if (activeFilter === 'SC') return row.Reservation === 'SC';
     if (activeFilter === 'ST') return row.Reservation === 'ST';
+    if (activeFilter === 'female') return (
+      row.LDF_Candidate_Gender === 'female' ||
+      row.UDF_Candidate_Gender === 'female' ||
+      row.NDA_Candidate_Gender === 'female'
+    );
     return true;
   });
 
@@ -1952,8 +2130,16 @@ function renderGrid() {
     const res = row.Reservation;
     const resBadge = res ? `<span class="reservation-badge ${res.toLowerCase()}">${res}</span>` : '';
 
-    function cRow(alliance, party, name) {
-      const n = name ? `<span class="candidate-name">${name}</span>` : `<span class="candidate-name unknown">TBD</span>`;
+    function genderDot(gender) {
+      if (gender === 'female') return '<span class="gender-dot female" title="Female candidate">♀</span>';
+      if (gender === 'male') return '<span class="gender-dot male" title="Male candidate">♂</span>';
+      return '';
+    }
+
+    function cRow(alliance, party, name, gender) {
+      const n = name
+        ? `<span class="candidate-name">${name} ${genderDot(gender)}</span>`
+        : `<span class="candidate-name unknown">TBD</span>`;
       return `<div class="candidate-row">
         <span class="alliance-tag ${alliance}">${alliance === 'OTH' ? 'Others' : alliance}</span>
         <div><div class="candidate-party">${party || '\u2014'}</div>${n}</div>
@@ -1970,10 +2156,10 @@ function renderGrid() {
         ${resBadge}
       </div>
       <div class="card-candidates">
-        ${cRow('LDF', row.LDF, row.LDF_Candidate)}
-        ${cRow('UDF', row.UDF, row.UDF_Candidate)}
-        ${row.NDA ? cRow('NDA', row.NDA, row.NDA_Candidate) : ''}
-        ${cRow('OTH', '', '')}
+        ${cRow('LDF', row.LDF, row.LDF_Candidate, row.LDF_Candidate_Gender)}
+        ${cRow('UDF', row.UDF, row.UDF_Candidate, row.UDF_Candidate_Gender)}
+        ${row.NDA ? cRow('NDA', row.NDA, row.NDA_Candidate, row.NDA_Candidate_Gender) : ''}
+        ${row.Other1 || row.Other_Candidate ? cRow('OTH', row.Other1, row.Other_Candidate, '') : ''}
       </div>`;
 
     card.onclick = () => openModal(row);
@@ -1994,23 +2180,29 @@ function openModal(row) {
     badges.appendChild(b);
   }
 
-  function mCand(alliance, color, party, name) {
+  function genderBadge(gender) {
+    if (!gender) return '';
+    const isFemale = gender === 'female';
+    return `<span class="modal-gender-badge ${gender}">${isFemale ? '♀ Female' : '♂ Male'}</span>`;
+  }
+
+  function mCand(alliance, color, party, name, gender) {
     const tbd = !name;
     return `<div class="modal-candidate">
       <div class="modal-alliance-bar" style="background:${color}"></div>
       <div class="modal-candidate-inner">
         <div class="modal-alliance-label">${alliance}</div>
         <div class="modal-party" style="color:#000">${party || '\u2014'}</div>
-        <div class="modal-candidate-name${tbd ? ' tbd' : ''}">${name || 'To Be Announced'}</div>
+        <div class="modal-candidate-name${tbd ? ' tbd' : ''}">${name || 'To Be Announced'} ${!tbd ? genderBadge(gender) : ''}</div>
       </div>
     </div>`;
   }
 
   document.getElementById('modal-candidates').innerHTML =
-    mCand('LDF', '#D94040', row.LDF, row.LDF_Candidate) +
-    mCand('UDF', '#1565C0', row.UDF, row.UDF_Candidate) +
-    (row.NDA ? mCand('NDA', '#E07828', row.NDA, row.NDA_Candidate) : '') +
-    mCand('Others', '#888', '', '');
+    mCand('LDF', '#D94040', row.LDF, row.LDF_Candidate, row.LDF_Candidate_Gender) +
+    mCand('UDF', '#1565C0', row.UDF, row.UDF_Candidate, row.UDF_Candidate_Gender) +
+    (row.NDA ? mCand('NDA', '#E07828', row.NDA, row.NDA_Candidate, row.NDA_Candidate_Gender) : '') +
+    (row.Other1 || row.Other_Candidate ? mCand('Others', '#888', row.Other1, row.Other_Candidate, '') : '');
 
   document.getElementById('modal-overlay').classList.add('open');
 }
@@ -2030,13 +2222,20 @@ document.addEventListener('keydown', e => {
 
 function computeStats() {
   let ldf = 0, udf = 0, nda = 0, sc = 0, st = 0;
+  let female = 0, male = 0;
+  let ldf_f = 0, udf_f = 0, nda_f = 0;
+
   data.forEach(r => {
-    if (r.LDF_Candidate) ldf++;
-    if (r.UDF_Candidate) udf++;
-    if (r.NDA_Candidate) nda++;
+    if (r.LDF_Candidate) { ldf++;  if (r.LDF_Candidate_Gender === 'female') { ldf_f++; female++; } else if (r.LDF_Candidate_Gender === 'male') male++; }
+    if (r.UDF_Candidate) { udf++;  if (r.UDF_Candidate_Gender === 'female') { udf_f++; female++; } else if (r.UDF_Candidate_Gender === 'male') male++; }
+    if (r.NDA_Candidate) { nda++;  if (r.NDA_Candidate_Gender === 'female') { nda_f++; female++; } else if (r.NDA_Candidate_Gender === 'male') male++; }
     if (r.Reservation === 'SC') sc++;
     if (r.Reservation === 'ST') st++;
   });
+
+  const totalCands = ldf + udf + nda;
+  const femalePct = totalCands ? Math.round(female / totalCands * 100) : 0;
+
   document.getElementById('stat-ldf').textContent = ldf;
   document.getElementById('stat-udf').textContent = udf;
   document.getElementById('stat-nda').textContent = nda;
@@ -2047,7 +2246,21 @@ function computeStats() {
   document.getElementById('udf-count').textContent = udf;
   document.getElementById('nda-count').textContent = nda;
   document.getElementById('oth-count').textContent = '\u2014';
-  document.getElementById('total-candidates').textContent = ldf + udf + nda;
+  document.getElementById('total-candidates').textContent = totalCands;
+
+  // Gender stats
+  document.getElementById('stat-female').textContent = female;
+  document.getElementById('stat-male').textContent = male;
+  document.getElementById('stat-female-pct').textContent = femalePct + '%';
+  document.getElementById('stat-ldf-f').textContent = ldf_f;
+  document.getElementById('stat-udf-f').textContent = udf_f;
+  document.getElementById('stat-nda-f').textContent = nda_f;
+
+  // Gender bar
+  const barEl = document.getElementById('gender-bar-female');
+  if (barEl) barEl.style.width = femalePct + '%';
+  const barLbl = document.getElementById('gender-bar-label');
+  if (barLbl) barLbl.textContent = `${female} women (${femalePct}%) of ${totalCands} announced candidates`;
 }
 
 // ── INIT ──
