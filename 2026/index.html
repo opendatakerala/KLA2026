@@ -869,24 +869,26 @@
   .disc-overlay {
     position: fixed; inset: 0;
     background: rgba(17,24,39,0.5); backdrop-filter: blur(5px);
-    display: flex; align-items: center; justify-content: center;
-    z-index: 200; padding: 24px;
+    display: flex;
+    z-index: 200;
     opacity: 0; pointer-events: none; transition: opacity 0.3s;
   }
   .disc-overlay.open { opacity: 1; pointer-events: all; }
   .disc-modal {
-    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
-    max-width: 560px; width: 100%; overflow: hidden;
-    transform: scale(0.95) translateY(16px); transition: transform 0.3s;
-    box-shadow: 0 28px 72px rgba(0,0,0,0.18);
+    background: var(--card); border: 1px solid var(--border);
+    width: 100%;
+    overflow: hidden;
+    transform: translateY(30px); transition: transform 0.3s;
+    box-shadow: 0 -4px 40px rgba(0,0,0,0.18);
+    margin-top: auto;
   }
-  .disc-overlay.open .disc-modal { transform: scale(1) translateY(0); }
+  .disc-overlay.open .disc-modal { transform: translateY(0); }
   .disc-top { height: 5px; background: linear-gradient(90deg, #F5C842, #D4960E, #A07010); }
   .disc-header { padding: 24px 28px 12px; display: flex; align-items: flex-start; gap: 14px; }
   .disc-icon { width: 40px; height: 40px; background: #FEF9EC; border: 1.5px solid #F5D76E; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; margin-top: 2px; }
   .disc-title { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
   .disc-subtitle { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
-  .disc-body { padding: 0 28px 20px; font-size: 14px; color: var(--text-soft); line-height: 1.75; font-weight: 300; }
+  .disc-body { padding: 0 28px 20px; font-size: 14px; color: var(--text-soft); line-height: 1.75; font-weight: 300; max-height: 40vh; overflow-y: auto; }
   .disc-body p + p { margin-top: 10px; }
   .disc-body a { color: var(--udf); text-decoration: underline; text-underline-offset: 2px; word-break: break-all; }
   .disc-body a:hover { color: var(--gold); }
@@ -907,18 +909,176 @@
   .footer-disc-link { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--gold); letter-spacing: 0.07em; cursor: pointer; text-decoration: underline; text-underline-offset: 2px; background: none; border: none; transition: color 0.2s; }
   .footer-disc-link:hover { color: var(--gold-mid); }
 
-  @media (max-width: 900px) {
-    .map-outer { grid-template-columns: 1fr; }
-    .map-panel { max-height: 320px; }
+  /* ── MOBILE BOTTOM NAV ── */
+  .mobile-bottom-nav {
+    display: none;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: #fff;
+    border-top: 1px solid var(--border);
+    box-shadow: 0 -2px 12px rgba(0,0,0,0.08);
+    z-index: 50;
+    padding: 0;
+    height: 58px;
   }
 
+  .mobile-nav-inner {
+    display: flex;
+    height: 100%;
+  }
+
+  .mobile-nav-btn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    transition: all 0.2s;
+    border-top: 2px solid transparent;
+  }
+
+  .mobile-nav-btn svg { width: 20px; height: 20px; }
+  .mobile-nav-btn.active { color: var(--gold); border-top-color: var(--gold-mid); }
+
+  /* ── RESPONSIVE: TABLET (≤900px) ── */
+  @media (max-width: 900px) {
+    .map-outer { grid-template-columns: 1fr; }
+    .map-panel { max-height: 300px; }
+    .stats-row { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  /* ── RESPONSIVE: MOBILE (≤640px) ── */
   @media (max-width: 640px) {
-    .header-inner { grid-template-columns: auto 1fr; }
+    /* Header */
+    .header-stripe { height: 3px; }
+
+    .header-inner {
+      grid-template-columns: auto 1fr;
+      padding: 12px 16px 10px;
+      gap: 12px;
+    }
+
+    .header-logo { width: 44px; height: 44px; }
     .header-right { display: none; }
-    .container { padding: 0 16px 60px; }
-    .grid { grid-template-columns: 1fr; }
-    footer { padding: 16px; }
-    .hb-search-input { width: 140px; }
+
+    h1 { font-size: 22px; }
+    .header-eyebrow { font-size: 9px; }
+    .header-tagline { font-size: 11px; }
+
+    /* Bottom header bar — stack search below on mobile */
+    .header-bottom-row {
+      padding: 8px 16px 10px;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 8px;
+    }
+
+    .header-bottom-left { flex-direction: column; align-items: stretch; gap: 8px; }
+
+    .hb-search-wrap { width: 100%; }
+    .hb-search-input { width: 100%; flex: 1; }
+
+    .hb-craft { font-size: 10px; text-align: center; }
+
+    /* Hide desktop view tabs — replaced by mobile bottom nav */
+    .header-bottom-right { display: none; }
+
+    /* Show mobile bottom nav */
+    .mobile-bottom-nav { display: flex; }
+
+    /* Add bottom padding so content isn't hidden behind nav */
+    .container { padding: 0 12px 80px; }
+    body { padding-bottom: 58px; }
+
+    /* Map */
+    .map-outer { gap: 12px; padding-top: 16px; }
+    .map-container { min-height: 380px; }
+    #kerala-map { min-height: 380px; }
+    .map-panel { max-height: 260px; }
+
+    /* Table */
+    .table-view-inner { padding-top: 14px; }
+    .alliance-legend { gap: 6px; padding: 12px 0; margin-bottom: 16px; }
+    .legend-pill { font-size: 10px; padding: 4px 10px; }
+
+    .stats-row {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .stat-cell { padding: 12px 12px 10px; }
+    .stat-n { font-size: 26px; }
+
+    .tabs { margin-bottom: 14px; }
+    .tab { padding: 8px 10px; font-size: 9px; }
+
+    .filter-row { gap: 5px; margin-bottom: 14px; }
+    .filter-btn { padding: 6px 11px; font-size: 9px; }
+
+    .grid { grid-template-columns: 1fr; gap: 10px; }
+
+    .card-name { font-size: 14px; }
+    .candidate-name { font-size: 12px; }
+
+    /* Modals */
+    .modal { max-width: calc(100vw - 24px); margin: 0 12px; }
+    .modal-title { font-size: 20px; }
+    .modal-header { padding: 16px 18px 12px; }
+    .modal-body { padding: 14px 18px 18px; }
+    .modal-candidate-name { font-size: 15px; }
+
+    /* Footer */
+    footer { padding: 12px 16px; flex-direction: column; align-items: flex-start; gap: 6px; }
+    .footer-text { font-size: 9px; }
+  }
+
+  /* ── RESPONSIVE: SMALL MOBILE (≤400px) ── */
+  @media (max-width: 400px) {
+    .header-inner { padding: 10px 12px 8px; }
+    .container { padding: 0 10px 80px; }
+    h1 { font-size: 19px; }
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+    .stat-n { font-size: 22px; }
+  }
+
+  /* ── DISCLAIMER MODAL: MOBILE FIX ── */
+  .disc-overlay {
+    align-items: flex-end;   /* sheet slides up from bottom on mobile */
+    padding: 0;
+  }
+
+  .disc-modal {
+    border-radius: 16px 16px 0 0;
+    max-width: 100%;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  @media (min-width: 641px) {
+    /* On desktop keep it centered */
+    .disc-overlay { align-items: center; padding: 24px; }
+    .disc-modal {
+      border-radius: 14px;
+      max-width: 560px;
+      max-height: none;
+    }
+  }
+
+  /* Safe area for notched phones */
+  @supports (padding-bottom: env(safe-area-inset-bottom)) {
+    .mobile-bottom-nav { padding-bottom: env(safe-area-inset-bottom); height: calc(58px + env(safe-area-inset-bottom)); }
+    body { padding-bottom: calc(58px + env(safe-area-inset-bottom)); }
   }
 </style>
 </head>
@@ -1118,6 +1278,37 @@
   <button class="footer-disc-link" onclick="openDisclaimer()">&#x26A0; View Disclaimer</button>
 </footer>
 
+<!-- MOBILE BOTTOM NAV -->
+<nav class="mobile-bottom-nav" id="mobile-bottom-nav">
+  <div class="mobile-nav-inner">
+    <button class="mobile-nav-btn active" id="mob-tab-table" onclick="switchView('table')">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8">
+        <rect x="2" y="3" width="16" height="14" rx="2"/>
+        <line x1="2" y1="8" x2="18" y2="8"/>
+        <line x1="2" y1="13" x2="18" y2="13"/>
+        <line x1="7" y1="8" x2="7" y2="17"/>
+      </svg>
+      Table
+    </button>
+    <button class="mobile-nav-btn" id="mob-tab-map" onclick="switchView('map')">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8">
+        <path d="M3 5l5-2 4 2 5-2v12l-5 2-4-2-5 2V5z"/>
+        <line x1="8" y1="3" x2="8" y2="17"/>
+        <line x1="12" y1="5" x2="12" y2="19"/>
+      </svg>
+      Map
+    </button>
+    <button class="mobile-nav-btn" onclick="openDisclaimer()">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8">
+        <circle cx="10" cy="10" r="8"/>
+        <line x1="10" y1="9" x2="10" y2="14"/>
+        <circle cx="10" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
+      </svg>
+      Info
+    </button>
+  </div>
+</nav>
+
 <!-- CONSTITUENCY MODAL -->
 <div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
   <div class="modal">
@@ -1311,8 +1502,14 @@ function switchView(view) {
   currentView = view;
   const mapView = document.getElementById('map-view');
   const tableView = document.getElementById('table-view');
+  // Sync desktop view tabs
   document.getElementById('tab-map').classList.toggle('active', view === 'map');
   document.getElementById('tab-table').classList.toggle('active', view === 'table');
+  // Sync mobile bottom nav
+  const mobMap = document.getElementById('mob-tab-map');
+  const mobTable = document.getElementById('mob-tab-table');
+  if (mobMap) mobMap.classList.toggle('active', view === 'map');
+  if (mobTable) mobTable.classList.toggle('active', view === 'table');
   if (view === 'map') {
     mapView.style.display = 'block';
     tableView.style.display = 'none';
@@ -1517,7 +1714,14 @@ function renderMap(TOPOJSON) {
       path.addEventListener('mouseenter', (e) => showTooltip(e, row, feat.props));
       path.addEventListener('mouseleave', hideTooltip);
       path.addEventListener('mousemove', (e) => moveTooltip(e));
-      path.addEventListener('click', () => selectConstituency(row, feat.props));
+      path.addEventListener('click', () => { hideTooltip(); selectConstituency(row, feat.props); });
+      // Touch support
+      path.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        showTooltip(e.touches[0], row, feat.props);
+        setTimeout(hideTooltip, 2000);
+      }, { passive: false });
+      path.addEventListener('touchend', () => { hideTooltip(); selectConstituency(row, feat.props); });
 
       svg.appendChild(path);
     });
