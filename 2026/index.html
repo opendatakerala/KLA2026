@@ -77,9 +77,10 @@
 
   .header-eyebrow {
     font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    color: var(--gold-mid);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: #000000;
+    font-weight: 700;
     text-transform: uppercase;
     margin-bottom: 8px;
     display: flex;
@@ -91,7 +92,7 @@
     content: '';
     display: inline-block;
     width: 18px; height: 2px;
-    background: var(--gold-mid);
+    background: #000000;
     border-radius: 1px;
   }
 
@@ -100,17 +101,17 @@
     font-size: clamp(24px, 3.5vw, 50px);
     font-weight: 900;
     line-height: 1.05;
-    color: var(--text);
+    color: #000000;
     letter-spacing: -0.02em;
   }
 
-  h1 em { font-style: italic; color: var(--gold-mid); }
+  h1 em { font-style: italic; color: #000000; }
 
   .header-sub {
     font-size: 13px;
-    color: var(--muted);
+    color: #000000;
+    font-weight: 700;
     margin-top: 7px;
-    font-weight: 300;
   }
 
   .header-right {
@@ -118,6 +119,19 @@
     flex-direction: column;
     align-items: flex-end;
     gap: 12px;
+  }
+
+  .header-logo {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+
+  .header-top-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
   }
 
   .odk-credit {
@@ -156,15 +170,16 @@
   .hstat-num {
     font-family: 'Playfair Display', serif;
     font-size: 28px;
-    font-weight: 700;
-    color: var(--gold-mid);
+    font-weight: 900;
+    color: #000000;
     line-height: 1;
   }
 
   .hstat-label {
     font-family: 'DM Mono', monospace;
     font-size: 9px;
-    color: var(--muted);
+    color: #000000;
+    font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     margin-top: 2px;
@@ -882,9 +897,12 @@
       <p class="header-sub">Candidate list across all 140 constituencies · 14 districts · Three-alliance contest</p>
     </div>
     <div class="header-right">
-      <a class="odk-credit" href="https://github.com/opendatakerala" target="_blank" rel="noopener">
-        <span class="heart">♥</span>&nbsp;Crafted with :) by ODK Community
-      </a>
+      <div class="header-top-row">
+        <a class="odk-credit" href="https://github.com/opendatakerala" target="_blank" rel="noopener">
+          <span class="heart">♥</span>&nbsp;Crafted with :) by ODK Community
+        </a>
+        <img class="header-logo" src="https://opendatakerala.org/LSG2025/assets/logo-DnFodOdy.png" alt="ODK Logo" />
+      </div>
       <div class="header-stats">
         <div class="hstat">
           <div class="hstat-num">140</div>
