@@ -1091,7 +1091,7 @@
   .gd-seat-note .female-text { color:#BE185D; font-weight:600; }
 
   /* ALLIANCE TAB */
-  .gd-alliance-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+  .gd-alliance-grid { display: block; }
 
   .gd-a-card { border-radius:10px; overflow:hidden; border:1px solid var(--border); }
   .gd-a-header { padding:12px 16px 10px; display:flex; justify-content:space-between; align-items:center; }
@@ -1586,7 +1586,85 @@
   }
   @keyframes pulse-clear { 0%,100% { box-shadow: 0 0 0 0 rgba(238,0,0,0.15); } 50% { box-shadow: 0 0 0 4px rgba(238,0,0,0.15); } }
 
-  /* ── MAP PANEL SECTION LABEL ── */
+  /* ── MAP WOMEN BUTTON ── */
+  .map-women-btn {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 5px 12px; border-radius: 20px; cursor: pointer;
+    border: 1.5px solid #FBCFE8; background: #FDF2F8; color: #BE185D;
+    transition: all 0.18s;
+  }
+  .map-women-btn:hover { background: #FCE7F3; border-color: #F9A8D4; }
+  .map-women-btn.active { background: #BE185D; border-color: #9D174D; color: #fff; }
+  .map-women-btn.active .map-women-icon { color: #fff; }
+  .map-women-icon { font-size: 13px; line-height: 1; }
+
+  /* ── ALLIANCE VISUALIZATION ── */
+  .gd-al-wrap { display: flex; flex-direction: column; gap: 16px; }
+
+  .gd-al-row {
+    background: #fff; border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden;
+  }
+  .gd-al-top {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 16px 10px;
+  }
+  .gd-al-name {
+    font-family: 'Inter', sans-serif; font-weight: 800; font-size: 15px;
+    letter-spacing: -0.01em;
+  }
+  .gd-al-total {
+    font-family: 'DM Mono', monospace; font-size: 9px;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
+  }
+  .gd-al-counts {
+    display: flex; gap: 18px; padding: 0 16px 12px;
+  }
+  .gd-al-stat { display: flex; align-items: baseline; gap: 4px; }
+  .gd-al-stat-num {
+    font-family: 'Inter', sans-serif; font-weight: 800; font-size: 26px;
+    line-height: 1;
+  }
+  .gd-al-stat-num.f { color: #BE185D; }
+  .gd-al-stat-num.m { color: #1D4ED8; }
+  .gd-al-stat-num.t { color: #7C3AED; }
+  .gd-al-stat-label {
+    font-family: 'DM Mono', monospace; font-size: 9px;
+    text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted);
+  }
+  .gd-al-bar-wrap {
+    height: 10px; display: flex; overflow: hidden;
+    border-top: 1px solid var(--border);
+  }
+  .gd-al-bar-f { background: #EC4899; transition: width 0.9s ease; }
+  .gd-al-bar-m { background: #93C5FD; transition: width 0.9s ease; flex: 1; }
+  .gd-al-bar-t { background: #C4B5FD; transition: width 0.9s ease; }
+  .gd-al-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 8px 16px; background: var(--bg2);
+    font-family: 'DM Mono', monospace; font-size: 9px;
+    letter-spacing: 0.06em; color: var(--muted);
+  }
+  .gd-al-pct-badge {
+    font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 700;
+    padding: 2px 10px; border-radius: 20px;
+    background: #FCE7F3; color: #BE185D; border: 1px solid #FBCFE8;
+  }
+  /* ── MAP WOMEN BUTTON ── */
+  .map-women-btn {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 5px 12px; border-radius: 20px; cursor: pointer;
+    border: 1.5px solid #FBCFE8; background: #FDF2F8; color: #BE185D;
+    transition: all 0.18s;
+  }
+  .map-women-btn:hover { background: #FCE7F3; border-color: #F9A8D4; }
+  .map-women-btn.active { background: #BE185D; border-color: #9D174D; color: #fff; }
+  .map-women-icon { font-size: 13px; line-height: 1; }
+
   .map-panel-section-label {
     font-family: 'DM Mono', monospace;
     font-size: 9px; font-weight: 700; letter-spacing: 0.1em;
@@ -1759,7 +1837,9 @@
       <div class="map-panel">
         <div class="map-panel-header">
           <div class="map-panel-title" id="panel-title">Districts</div>
-          <div class="map-panel-sub" id="panel-sub">Click a constituency to view details</div>
+          <button class="map-women-btn" id="map-women-btn" onclick="toggleMapWomen(this)">
+            <span class="map-women-icon">♀</span> Women Candidates
+          </button>
         </div>
         <div class="map-panel-body" id="panel-body">
           <div class="map-panel-section-label">Party</div>
@@ -1794,14 +1874,6 @@
         <button class="filter-btn sc"  id="filter-SC"  onclick="setFilter('SC')">SC Reserved</button>
         <button class="filter-btn st"  id="filter-ST"  onclick="setFilter('ST')">ST Reserved</button>
         <button class="filter-btn female" id="filter-female" onclick="setFilter('female')">&#x2640; Women</button>
-      </div>
-
-
-      <!-- Political Parties -->
-      <!-- Political Parties bubble row -->
-      <div class="bubble-section">
-        <div class="bubble-section-label">Party</div>
-        <div class="bubble-row" id="party-bubble-row"><!-- JS rendered --></div>
       </div>
 
 
@@ -1885,6 +1957,12 @@
         <span id="stat-ldf-f" style="display:none"></span>
         <span id="stat-udf-f" style="display:none"></span>
         <span id="stat-nda-f" style="display:none"></span>
+      </div>
+
+      <!-- Political Parties bubble row -->
+      <div class="bubble-section">
+        <div class="bubble-section-label">Party</div>
+        <div class="bubble-row" id="party-bubble-row"><!-- JS rendered --></div>
       </div>
 
       <!-- District tabs -->
@@ -2349,6 +2427,7 @@ function getConstColor(row, mode) {
 
 let mapColorMode = 'alliance';
 let _mapSvg = null;
+let mapWomenActive = false;
 
 function renderMap() {
   const container = document.getElementById('kerala-map');
@@ -2429,10 +2508,16 @@ function setMapColorMode(mode, el) {
   mapColorMode = mode;
   document.querySelectorAll('.map-mode-btn').forEach(b => b.classList.remove('active'));
   if (el) el.classList.add('active');
+  // Reset women highlight if active
+  if (mapWomenActive) {
+    mapWomenActive = false;
+    const wb = document.getElementById('map-women-btn');
+    if (wb) wb.classList.remove('active');
+  }
   if (!_mapSvg) return;
   _mapSvg.selectAll('.const-path').each(function(d) {
     const row = wikiDataLookup[d.properties.WikiData];
-    d3.select(this).style('fill', getConstColor(row, mode));
+    d3.select(this).style('fill', getConstColor(row, mode)).classed('dimmed', false);
   });
 }
 
@@ -2613,19 +2698,38 @@ function renderGenderStats() {
   // ── Alliance tab ──
   var alGrid = document.getElementById('gd-alliance-grid');
   if (alGrid) {
-    var alColors = { LDF:'#EE0000', UDF:'#0078FF', NDA:'#FF9933', Others:'#33AA00' };
-    var alBg = { LDF:'#FFDDDD', UDF:'#D6EEFF', NDA:'#FFF0D6', Others:'#EEFFEE' };
-    alGrid.innerHTML = ['LDF','UDF','NDA','Others'].map(function(a) {
-      var d = byAlliance[a] || {f:0,m:0,t:0,total:0};
-      var pct = d.total ? (d.f/d.total*100).toFixed(1) : 0;
-      return '<div class="gd-alliance-card" style="border-color:' + alColors[a] + '20;background:' + alBg[a] + '">'
-        + '<div class="gd-ac-label" style="color:' + alColors[a] + '">' + a + '</div>'
-        + '<div class="gd-ac-row"><span class="gd-ac-icon female">♀</span><span class="gd-ac-num">' + d.f + '</span></div>'
-        + '<div class="gd-ac-row"><span class="gd-ac-icon male">♂</span><span class="gd-ac-num">' + d.m + '</span></div>'
-        + (d.t ? '<div class="gd-ac-row"><span class="gd-ac-icon trans">⚧</span><span class="gd-ac-num">' + d.t + '</span></div>' : '')
-        + '<div class="gd-ac-pct" style="color:' + alColors[a] + '">' + pct + '% women</div>'
-        + '</div>';
-    }).join('');
+    var alColors  = { LDF:'#EE0000', UDF:'#0078FF', NDA:'#FF9933', Others:'#33AA00' };
+    var alBg      = { LDF:'#FFDDDD', UDF:'#D6EEFF', NDA:'#FFF0D6', Others:'#EEFFEE' };
+    alGrid.innerHTML = '<div class="gd-al-wrap">'
+      + ['LDF','UDF','NDA','Others'].map(function(a) {
+          var d    = byAlliance[a] || {f:0, m:0, t:0, total:0};
+          var pct  = d.total ? (d.f / d.total * 100).toFixed(1) : 0;
+          var fW   = d.total ? (d.f / d.total * 100).toFixed(1) : 0;
+          var tW   = d.total ? (d.t / d.total * 100).toFixed(1) : 0;
+          var c    = alColors[a];
+          var bg   = alBg[a];
+          return '<div class="gd-al-row">'
+            + '<div class="gd-al-top" style="background:' + bg + '">'
+            +   '<div class="gd-al-name" style="color:' + c + '">' + a + '</div>'
+            +   '<div class="gd-al-total">' + d.total + ' candidates</div>'
+            + '</div>'
+            + '<div class="gd-al-counts">'
+            +   '<div class="gd-al-stat"><span class="gd-al-stat-num f">' + d.f + '</span><span class="gd-al-stat-label">♀ women</span></div>'
+            +   '<div class="gd-al-stat"><span class="gd-al-stat-num m">' + d.m + '</span><span class="gd-al-stat-label">♂ men</span></div>'
+            +   (d.t ? '<div class="gd-al-stat"><span class="gd-al-stat-num t">' + d.t + '</span><span class="gd-al-stat-label">⚧ trans</span></div>' : '')
+            + '</div>'
+            + '<div class="gd-al-bar-wrap">'
+            +   '<div class="gd-al-bar-f" style="width:0%" data-pct="' + fW + '"></div>'
+            +   (d.t ? '<div class="gd-al-bar-t" style="width:0%" data-pct="' + tW + '"></div>' : '')
+            +   '<div class="gd-al-bar-m"></div>'
+            + '</div>'
+            + '<div class="gd-al-footer">'
+            +   '<span>women share of ' + a + ' candidates</span>'
+            +   '<span class="gd-al-pct-badge">' + pct + '%</span>'
+            + '</div>'
+            + '</div>';
+        }).join('')
+      + '</div>';
   }
 
   // ── Party tab ──
@@ -2725,6 +2829,30 @@ function filterByParty(party, alliance, el) {
   activeFilter = 'party:' + party;
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   renderGrid();
+}
+
+// ── MAP WOMEN HIGHLIGHT ──
+function toggleMapWomen(btn) {
+  mapWomenActive = !mapWomenActive;
+  btn.classList.toggle('active', mapWomenActive);
+  if (!_mapSvg) return;
+  _mapSvg.selectAll('.const-path').each(function(d) {
+    const row = wikiDataLookup[d.properties.WikiData];
+    if (!mapWomenActive) {
+      // Restore normal coloring
+      d3.select(this).style('fill', getConstColor(row, mapColorMode)).classed('dimmed', false);
+    } else {
+      // Highlight constituencies with at least one female candidate
+      const hasWoman = row && (
+        row.LDF_Gender === 'female' || row.UDF_Gender === 'female' ||
+        row.NDA_Gender === 'female' ||
+        (row.Others_list||[]).some(o => o.gender === 'female')
+      );
+      d3.select(this)
+        .style('fill', hasWoman ? '#EC4899' : '#e8e8e8')
+        .classed('dimmed', !hasWoman);
+    }
+  });
 }
 
 bootApp();
