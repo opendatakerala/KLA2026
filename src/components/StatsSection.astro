@@ -21,22 +21,22 @@
 
   <div class="stats-content">
     <div class="stats-panel active" id="candidates-by-party-panel">
-      <div class="party-pies">
-        <div class="pie-wrapper" id="pie-ldf">
-          <div class="pie-label">LDF</div>
-          <div class="pie-chart" id="pie-chart-ldf"></div>
+      <div class="party-bars">
+        <div class="bar-wrapper" id="bar-ldf">
+          <div class="bar-label">LDF</div>
+          <div class="bar-chart" id="bar-chart-ldf"></div>
         </div>
-        <div class="pie-wrapper" id="pie-udf">
-          <div class="pie-label">UDF</div>
-          <div class="pie-chart" id="pie-chart-udf"></div>
+        <div class="bar-wrapper" id="bar-udf">
+          <div class="bar-label">UDF</div>
+          <div class="bar-chart" id="bar-chart-udf"></div>
         </div>
-        <div class="pie-wrapper" id="pie-nda">
-          <div class="pie-label">NDA</div>
-          <div class="pie-chart" id="pie-chart-nda"></div>
+        <div class="bar-wrapper" id="bar-nda">
+          <div class="bar-label">NDA</div>
+          <div class="bar-chart" id="bar-chart-nda"></div>
         </div>
-        <div class="pie-wrapper" id="pie-others">
-          <div class="pie-label">Others</div>
-          <div class="pie-chart" id="pie-chart-others"></div>
+        <div class="bar-wrapper" id="bar-others">
+          <div class="bar-label">Others</div>
+          <div class="bar-chart" id="bar-chart-others"></div>
         </div>
       </div>
     </div>
@@ -117,7 +117,7 @@
     '#c49c94', '#f7b6d2', '#c7c7c7', '#dbdb8d', '#9edae5'
   ];
 
-  function renderPartyPie(alliance, containerId) {
+  function renderPartyBar(alliance, containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
 
@@ -132,23 +132,37 @@
     
     const option = {
       tooltip: {
-        trigger: 'item',
-        formatter: '{b}: {c} ({d}%)'
+        trigger: 'axis',
+        axisPointer: { type: 'shadow' }
+      },
+      grid: {
+        left: '3%',
+        right: '10%',
+        bottom: '3%',
+        top: '3%',
+        containLabel: true
+      },
+      xAxis: {
+        type: 'value',
+        axisLabel: { fontFamily: 'DM Mono', fontSize: 10 }
+      },
+      yAxis: {
+        type: 'category',
+        data: data.map(d => d.name),
+        axisLabel: { fontFamily: 'DM Mono', fontSize: 9, width: 100, overflow: 'truncate' }
       },
       series: [{
-        type: 'pie',
-        radius: ['45%', '75%'],
-        center: ['50%', '50%'],
+        type: 'bar',
+        data: data.map(d => ({
+          value: d.value,
+          itemStyle: d.itemStyle
+        })),
         label: {
           show: true,
-          formatter: '{b}\n{c}',
-          fontSize: 9,
+          position: 'right',
           fontFamily: 'DM Mono',
-          lineHeight: 14,
-          padding: [4, 0, 0, 0]
-        },
-        labelLine: { show: false },
-        data
+          fontSize: 10
+        }
       }]
     };
 
@@ -158,10 +172,10 @@
 
   function renderCandidatesByParty() {
     const charts = [
-      renderPartyPie('LDF', 'pie-chart-ldf'),
-      renderPartyPie('UDF', 'pie-chart-udf'),
-      renderPartyPie('NDA', 'pie-chart-nda'),
-      renderPartyPie('Others', 'pie-chart-others')
+      renderPartyBar('LDF', 'bar-chart-ldf'),
+      renderPartyBar('UDF', 'bar-chart-udf'),
+      renderPartyBar('NDA', 'bar-chart-nda'),
+      renderPartyBar('Others', 'bar-chart-others')
     ];
 
     window.addEventListener('resize', () => {
@@ -325,31 +339,31 @@
     display: block;
   }
 
-  .party-pies {
+  .party-bars {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
   }
 
   @media (max-width: 900px) {
-    .party-pies {
+    .party-bars {
       grid-template-columns: repeat(2, 1fr);
     }
   }
 
   @media (max-width: 500px) {
-    .party-pies {
+    .party-bars {
       grid-template-columns: 1fr;
     }
   }
 
-  .pie-wrapper {
+  .bar-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  .pie-label {
+  .bar-label {
     font-family: 'DM Mono', monospace;
     font-size: 12px;
     font-weight: 600;
@@ -358,9 +372,9 @@
     color: var(--text-soft);
   }
 
-  .pie-chart {
+  .bar-chart {
     width: 100%;
-    height: 200px;
+    height: 240px;
   }
 
   .gender-pies {
