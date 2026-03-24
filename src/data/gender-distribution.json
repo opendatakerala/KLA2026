@@ -1,0 +1,34 @@
+{
+  "overall": {
+    "male": 456,
+    "female": 55,
+    "transgender": 1,
+    "unknown": 0
+  },
+  "byAlliance": {
+    "LDF": {
+      "male": 123,
+      "female": 17,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "UDF": {
+      "male": 127,
+      "female": 13,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "NDA": {
+      "male": 119,
+      "female": 21,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "Others": {
+      "male": 87,
+      "female": 4,
+      "transgender": 1,
+      "unknown": 0
+    }
+  }
+}

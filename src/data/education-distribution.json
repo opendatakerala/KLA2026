@@ -1,0 +1,47 @@
+{
+  "overall": {
+    "Unknown": 713,
+    "Below Plus Two": 0,
+    "Plus Two": 1,
+    "Graduate": 2,
+    "Professional Degree": 0,
+    "Post-Graduate": 0,
+    "Professional (Law)": 2
+  },
+  "byAlliance": {
+    "LDF": {
+      "Unknown": 138,
+      "Below Plus Two": 0,
+      "Plus Two": 0,
+      "Graduate": 1,
+      "Professional Degree": 0,
+      "Post-Graduate": 0,
+      "Professional (Law)": 1
+    },
+    "UDF": {
+      "Unknown": 137,
+      "Below Plus Two": 0,
+      "Plus Two": 1,
+      "Graduate": 1,
+      "Professional Degree": 0,
+      "Post-Graduate": 0,
+      "Professional (Law)": 1
+    },
+    "NDA": {
+      "Unknown": 140,
+      "Below Plus Two": 0,
+      "Plus Two": 0,
+      "Graduate": 0,
+      "Professional Degree": 0,
+      "Post-Graduate": 0
+    },
+    "Others": {
+      "Unknown": 298,
+      "Below Plus Two": 0,
+      "Plus Two": 0,
+      "Graduate": 0,
+      "Professional Degree": 0,
+      "Post-Graduate": 0
+    }
+  }
+}
