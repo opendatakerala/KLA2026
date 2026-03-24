@@ -93,12 +93,12 @@ import { createCardHTML, createModalHTML } from '../lib/grid.js';
 import { ALLIANCE_COLORS } from '../lib/constants.js';
 import constituencies from '../data/constituencies.json';
 import partyLookup from '../data/party-lookup.json';
+import topoJson from '../data/kla_map.topojson?raw';
 
 const DATA = constituencies;
 const PARTIES = partyLookup;
 
 // State
-let topoData = null;
 let currentView = 'table';
 let activeDistrict = 'all';
 let activeFilter = 'all';
@@ -220,17 +220,13 @@ function switchView(view) {
 let mapSvg = null;
 let mapFeatures = [];
 
-async function initMap() {
+function initMap() {
   const container = document.getElementById('kerala-map');
   if (!container) return;
 
-  // Load topoJSON
-  if (!topoData) {
-    const resp = await fetch('/kla_map.topojson');
-    topoData = await resp.json();
-  }
-
-  const features = topojson.feature(topoData, topoData.objects.collection).features;
+  // Use imported topoJSON directly
+  const topo = JSON.parse(topoJson);
+  const features = topojson.feature(topo, topo.objects.collection).features;
   mapFeatures = features;
   
   const w = container.clientWidth || 400;
