@@ -6,15 +6,8 @@ import * as d3 from 'd3';
 import mapSvgText from '../data/kla-map.svg?raw';
 import DATA from '../data/constituencies.json';
 import PARTIES from '../data/party-lookup.json';
-const ALLIANCE_COLORS = {
-  LDF: '#EE0000',
-  UDF: '#0078FF',
-  NDA: '#FF9933',
-  Others: '#33AA00'
-};
 
 let mapSvg = null;
-let mapColorMode = 'alliance';
 let mapWomenActive = false;
 let activeMapParty = null;
 let activeMapDistrict = 'all';
@@ -30,19 +23,6 @@ function getPartiesForRow(row) {
     });
   }
   return parties;
-}
-
-function getConstColor(row) {
-  if (!row) return '#d4e0d4';
-  if (mapColorMode === 'alliance' || !mapColorMode) {
-    if (row.LDF_Candidate && row.UDF_Candidate && row.NDA_Candidate) return '#e0e0e0';
-    if (row.LDF_Candidate) return ALLIANCE_COLORS.LDF;
-    if (row.UDF_Candidate) return ALLIANCE_COLORS.UDF;
-    if (row.NDA_Candidate) return ALLIANCE_COLORS.NDA;
-    return '#d4e0d4';
-  }
-  const key = mapColorMode.toUpperCase();
-  return row[key + '_Candidate'] ? ALLIANCE_COLORS[key] : '#d8d8d8';
 }
 
 function initMap() {
@@ -68,8 +48,7 @@ function initMap() {
           .attr('class', 'const-path');
       }
       
-      const color = getConstColor(row);
-      path.style('fill', color).style('cursor', 'pointer');
+      path.style('cursor', 'pointer');
     })
     .on('mouseenter', function(event) {
       const path = d3.select(this);
@@ -99,27 +78,6 @@ function initMap() {
       const row = DATA.find(x => x.Constituency_Wikidata === qid);
       if (row && typeof openModal === 'function') openModal(row);
     });
-}
-
-function setMapColorMode(mode) {
-  mapColorMode = mode;
-  document.querySelectorAll('.map-mode-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.mode === mode);
-  });
-  
-  if (mapWomenActive) {
-    mapWomenActive = false;
-    document.getElementById('map-women-btn')?.classList.remove('active');
-  }
-  
-  if (mapSvg) {
-    mapSvg.selectAll('.const-path').each(function() {
-      const path = d3.select(this);
-      const qid = path.attr('id');
-      const row = DATA.find(x => x.Constituency_Wikidata === qid);
-      d3.select(this).style('fill', getConstColor(row)).style('opacity', 1);
-    });
-  }
 }
 
 function getPartyStats() {
@@ -155,9 +113,8 @@ function buildMapFilters() {
   </button>`;
   
   partyStats.forEach(p => {
-    const color = ALLIANCE_COLORS[p.alliance] || '#888';
     partyHtml += `<button class="map-party-btn" data-party="${p.party}">
-      <span class="mpb-dot" style="background:${color}"></span>
+      <span class="mpb-dot" style="background:var(--text)"></span>
       <span class="mpb-label">${p.party}</span>
       <span class="mpb-count">${p.count}</span>
     </button>`;
@@ -211,12 +168,6 @@ function updateMapFilter() {
   });
 }
 
-function handleMapModeClick(e) {
-  const btn = e.target.closest('.map-mode-btn');
-  if (!btn) return;
-  setMapColorMode(btn.dataset.mode);
-}
-
 function handleMapPartyClick(e) {
   const btn = e.target.closest('.map-party-btn');
   if (!btn) return;
@@ -267,7 +218,6 @@ function initMapController() {
   initMap();
   buildMapFilters();
   
-  document.querySelector('.map-mode-row').addEventListener('click', handleMapModeClick);
   document.getElementById('party-filter').addEventListener('click', handleMapPartyClick);
   document.getElementById('dist-filter').addEventListener('click', handleMapDistrictClick);
   document.getElementById('map-women-btn')?.addEventListener('click', handleMapWomenClick);
