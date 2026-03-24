@@ -1,0 +1,79 @@
+{
+  "site": {
+    "title": "Kerala Legislative Assembly",
+    "election": "Election 2026",
+    "tagline": "Candidate list across all 140 constituencies · 14 districts",
+    "initiative": "an OpenDataKerala Community Initiative"
+  },
+  "header": {
+    "seats": "Seats",
+    "announcedCandidates": "Announced Candidates *",
+    "searchPlaceholder": "Search constituency, candidate…",
+    "search": "Search",
+    "table": "Table",
+    "map": "Map",
+    "clear": "Clear",
+    "disclaimer": "Disclaimer"
+  },
+  "footer": {
+    "credits": "Kerala Legislative Assembly Election 2026 · Data sourced from Various Media & CEC Kerala · an OpenDataKerala Initiative",
+    "viewDisclaimer": "View Disclaimer"
+  },
+  "disclaimer": {
+    "title": "Data Disclaimer",
+    "subtitle": "Please read before proceeding",
+    "body1": "The accuracy or completeness of the data presented on this page cannot be guaranteed. The information has been sourced from Various Medias, party social media handles and CEC Kerala website.",
+    "body2": "There is a chance for change according to time. Candidate announcements may be updated or revised by parties at any point.",
+    "dismiss": "Dismiss",
+    "ok": "I Understand"
+  },
+  "stats": {
+    "ldf": "LDF Candidates",
+    "udf": "UDF Candidates",
+    "nda": "NDA Candidates",
+    "sc": "SC Reserved",
+    "st": "ST Reserved"
+  },
+  "filters": {
+    "all": "All",
+    "ldf": "LDF",
+    "udf": "UDF",
+    "nda": "NDA",
+    "sc": "SC Reserved",
+    "st": "ST Reserved",
+    "women": "Women"
+  },
+  "browse": {
+    "title": "Browse by District",
+    "allDistricts": "All Districts"
+  },
+  "results": {
+    "showingAll": "Showing all {count} constituencies",
+    "showingFiltered": "Showing {shown} of {total} constituencies",
+    "search": "search",
+    "empty": "No constituencies match your search."
+  },
+  "map": {
+    "all": "All",
+    "alliance": "Alliance",
+    "scReserved": "SC Reserved",
+    "stReserved": "ST Reserved",
+    "women": "Women",
+    "clear": "Clear",
+    "party": "Party",
+    "district": "District",
+    "allParties": "All Parties",
+    "allKerala": "All Kerala"
+  },
+  "modal": {
+    "contestingCandidates": "Contesting Candidates",
+    "close": "Close",
+    "reserved": "Reserved",
+    "tbd": "TBD",
+    "toBeAnnounced": "To Be Announced"
+  },
+  "language": {
+    "en": "English",
+    "ml": "മലയാളം"
+  }
+}

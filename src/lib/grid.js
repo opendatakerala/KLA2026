@@ -5,10 +5,10 @@ const ALLIANCE_CLASS = {
   OTH: 'OTH'
 };
 
-function candidateRow(alliance, party, name) {
+function candidateRow(alliance, party, name, t = (k) => k) {
   const nameHtml = name 
     ? `<span class="candidate-name">${name}</span>` 
-    : `<span class="candidate-name unknown">TBD</span>`;
+    : `<span class="candidate-name unknown">${t('modal.tbd')}</span>`;
   
   return `<div class="candidate-row">
     <span class="alliance-tag ${ALLIANCE_CLASS[alliance] || 'OTH'}">${alliance === 'OTH' ? 'Others' : alliance}</span>
@@ -19,10 +19,10 @@ function candidateRow(alliance, party, name) {
   </div>`;
 }
 
-export function createCardHTML(row) {
+export function createCardHTML(row, t = (k) => k) {
   const res = row.Reservation;
   const resBadge = res 
-    ? `<span class="reservation-badge ${res.toLowerCase()}">${res}</span>` 
+    ? `<span class="reservation-badge ${res.toLowerCase()}">${res} ${t('modal.reserved')}</span>` 
     : '';
   
   const cardClass = res === 'SC' ? 'card reserved-sc' : 
@@ -46,9 +46,9 @@ export function createCardHTML(row) {
   </div>`;
 }
 
-export function createModalHTML(row, partyLookup) {
+export function createModalHTML(row, partyLookup, t = (k) => k) {
   const badges = row.Reservation 
-    ? `<span class="reservation-badge ${row.Reservation.toLowerCase()}">${row.Reservation} Reserved</span>` 
+    ? `<span class="reservation-badge ${row.Reservation.toLowerCase()}">${row.Reservation} ${t('modal.reserved')}</span>` 
     : '';
   
   function modalCandidate(alliance, color, party, name) {
@@ -58,7 +58,7 @@ export function createModalHTML(row, partyLookup) {
       <div class="modal-candidate-inner">
         <div class="modal-alliance-label">${alliance}</div>
         <div class="modal-party" style="color:#000">${party || '—'}</div>
-        <div class="modal-candidate-name${tbd ? ' tbd' : ''}">${name || 'To Be Announced'}</div>
+        <div class="modal-candidate-name${tbd ? ' tbd' : ''}">${name || t('modal.toBeAnnounced')}</div>
       </div>
     </div>`;
   }
