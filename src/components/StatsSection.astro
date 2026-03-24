@@ -81,6 +81,10 @@ import GenderDistribution from './charts/GenderDistribution.astro';
         tab.classList.add('active');
         document.getElementById(`${stat}-panel`).classList.add('active');
         section.classList.remove('collapsed');
+
+        setTimeout(() => {
+          window.dispatchEvent(new Event('stats-tab-shown'));
+        }, 10);
       });
     });
   }
