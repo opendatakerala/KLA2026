@@ -30,7 +30,9 @@
   let viewMode = 'grid';
 
   $: {
-    constituencies.set(constituencyData);
+    if (constituencyData.length > 0) {
+      constituencies.set(constituencyData);
+    }
   }
 
   function setView(mode) {
@@ -41,6 +43,7 @@
   }
 
   onMount(() => {
+    constituencies.set(constituencyData);
     initLanguage();
     if (typeof localStorage !== 'undefined') {
       const saved = localStorage.getItem('viewPreference');
@@ -61,30 +64,6 @@
       <div class="toolbar-left">
         <SearchBar />
       </div>
-      <div class="toolbar-right">
-        <div class="view-tabs">
-          <button 
-            class="view-tab" 
-            class:active={viewMode === 'grid'}
-            on:click={() => setView('grid')}
-          >
-            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="16" height="14" rx="2"/><line x1="2" y1="8" x2="18" y2="8"/><line x1="2" y1="13" x2="18" y2="13"/><line x1="7" y1="8" x2="7" y2="17"/></svg>
-            <span data-i18n="header.table">Table</span>
-          </button>
-          <button 
-            class="view-tab" 
-            class:active={viewMode === 'map'}
-            on:click={() => setView('map')}
-          >
-            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 5l5-2 4 2 5-2v12l-5 2-4-2-5 2V5z"/><line x1="8" y1="3" x2="8" y2="17"/><line x1="12" y1="5" x2="12" y2="19"/></svg>
-            <span data-i18n="header.map">Map</span>
-          </button>
-        </div>
-        <button class="clear-btn" on:click={clearFilters}>
-          <svg width="13" height="13" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 3l14 14M17 3L3 17"/></svg>
-          <span data-i18n="header.clear">Clear</span>
-        </button>
-      </div>
     </div>
 
     <div class="explorer-filters">
@@ -92,7 +71,28 @@
     </div>
 
     <DistrictTabs />
-
+    <button class="clear-btn" on:click={clearFilters}>
+      <svg width="13" height="13" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 3l14 14M17 3L3 17"/></svg>
+      <span data-i18n="header.clear">Clear</span>
+    </button>
+    <div class="view-tabs">
+      <button 
+        class="view-tab" 
+        class:active={viewMode === 'grid'}
+        on:click={() => setView('grid')}
+      >
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="16" height="14" rx="2"/><line x1="2" y1="8" x2="18" y2="8"/><line x1="2" y1="13" x2="18" y2="13"/><line x1="7" y1="8" x2="7" y2="17"/></svg>
+        <span data-i18n="header.table">Table</span>
+      </button>
+      <button 
+        class="view-tab" 
+        class:active={viewMode === 'map'}
+        on:click={() => setView('map')}
+      >
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 5l5-2 4 2 5-2v12l-5 2-4-2-5 2V5z"/><line x1="8" y1="3" x2="8" y2="17"/><line x1="12" y1="5" x2="12" y2="19"/></svg>
+        <span data-i18n="header.map">Map</span>
+      </button>
+    </div>
     {#if viewMode === 'grid'}
       <Grid data={constituencyData} total={constituencyData.length} />
     {:else}

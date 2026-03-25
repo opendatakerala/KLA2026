@@ -6,9 +6,8 @@
   "show_whitespace": true,
   "default_language": "svelte",
   "languages": {
-    "Svelte": {
-      "tab_size": 2,
-      "indent_on_input": true
+    "svelte": {
+      "tab_size": 2
     },
     "JavaScript": {
       "tab_size": 2,

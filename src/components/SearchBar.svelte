@@ -4,6 +4,12 @@
   let searchValue = '';
   let showSuggestions = false;
   let inputElement;
+  let suggestions = [];
+  
+  // Subscribe to stores to ensure reactivity
+  $: $filters;
+  $: $constituencies;
+  $: $searchSuggestions;
   
   $: searchValue = $filters.search;
   $: suggestions = $searchSuggestions;
@@ -11,12 +17,6 @@
   
   function handleSearch() {
     setSearch(searchValue);
-    showSuggestions = false;
-  }
-  
-  function handleClear() {
-    searchValue = '';
-    setSearch('');
     showSuggestions = false;
   }
   
@@ -82,9 +82,6 @@
       </div>
     {/if}
   </div>
-  <button class="clear-btn" id="clear-btn" on:click={handleClear}>
-    <span data-i18n="header.clear">Clear</span>
-  </button>
 </div>
 
 <style>
