@@ -2,23 +2,37 @@
   import { onMount } from 'svelte';
   import * as d3 from 'd3';
   import mapSvgText from '../data/kla-map.svg?raw';
-  import DATA from '../data/constituencies.json';
+  import { 
+    filteredConstituencies, 
+    openModal, 
+    constituencies,
+    filters,
+    setParty,
+    setDistrict,
+    toggleWomen,
+    clearFilters,
+    partyList,
+    districtList
+  } from '../stores/constituencyStore.js';
+
+  export let data = [];
+
+  $: {
+    constituencies.set(data);
+  }
 
   let mapSvg = null;
-  let mapWomenActive = false;
-  let activeMapParty = null;
-  let activeMapDistrict = 'all';
+  
+  $: filteredData = $filteredConstituencies;
+  $: partyOptions = $partyList;
+  $: districtOptions = $districtList;
+  $: activeFilters = $filters;
 
   function getPartiesForRow(row) {
     const parties = [];
-    if (row.LDF) parties.push(row.LDF);
-    if (row.UDF) parties.push(row.UDF);
-    if (row.NDA) parties.push(row.NDA);
-    if (row.Others_list) {
-      row.Others_list.forEach(o => {
-        if (o.party) parties.push(o.party);
-      });
-    }
+    (row.candidates || []).forEach(c => {
+      if (c.name && c.party) parties.push(c.party);
+    });
     return parties;
   }
 
@@ -36,12 +50,12 @@
       .each(function() {
         const path = d3.select(this);
         const qid = path.attr('id');
-        const row = DATA.find(x => x.Constituency_Wikidata === qid);
+        const row = data.find(x => x.Constituency_Wikidata === qid);
         
         if (row) {
           path
-            .attr('id', 'c' + row.Constituency_Number)
-            .attr('data-num', row.Constituency_Number)
+            .attr('id', 'c' + row.constituency_Number)
+            .attr('data-num', row.constituency_Number)
             .attr('class', 'const-path');
         }
         
@@ -50,10 +64,16 @@
       .on('mouseenter', function(event) {
         const path = d3.select(this);
         const qid = path.attr('id');
-        const row = DATA.find(x => x.Constituency_Wikidata === qid);
-        const name = row ? row.Constituency_Name : (path.attr('data-name') || '');
-        const num = row ? row.Constituency_Number : '';
-        const al = row ? (row.LDF_Candidate ? 'LDF' : row.UDF_Candidate ? 'UDF' : row.NDA_Candidate ? 'NDA' : '') : '';
+        const row = data.find(x => x.Constituency_Wikidata === qid);
+        const name = row ? row.constituency_Name : (path.attr('data-name') || '');
+        const num = row ? row.constituency_Number : '';
+        
+        const candidates = row?.candidates || [];
+        const ldfCandidate = candidates.find(c => c.alliance === 'LDF' && c.name);
+        const udfCandidate = candidates.find(c => c.alliance === 'UDF' && c.name);
+        const ndaCandidate = candidates.find(c => c.alliance === 'NDA' && c.name);
+        
+        const al = ldfCandidate ? 'LDF' : udfCandidate ? 'UDF' : ndaCandidate ? 'NDA' : '';
         
         if (tooltip) {
           tooltip.textContent = (num ? '#' + num + ' ' : '') + name + (al ? ' · ' + al : '');
@@ -72,156 +92,190 @@
       .on('click', function() {
         const path = d3.select(this);
         const qid = path.attr('id');
-        const row = DATA.find(x => x.Constituency_Wikidata === qid);
-        if (row && typeof openModal === 'function') openModal(row);
+        const row = data.find(x => x.Constituency_Wikidata === qid);
+        if (row) openModal(row);
       });
   }
 
-  function getPartyStats() {
-    const stats = {};
-    DATA.forEach(row => {
-      const parties = getPartiesForRow(row);
-      parties.forEach(p => {
-        let alliance = 'Others';
-        if (row.LDF === p) alliance = 'LDF';
-        else if (row.UDF === p) alliance = 'UDF';
-        else if (row.NDA === p) alliance = 'NDF';
-        
-        if (!stats[p]) stats[p] = { party: p, alliance, count: 0 };
-        stats[p].count++;
-      });
-    });
-    return Object.values(stats).sort((a, b) => b.count - a.count);
-  }
-
-  function getDistricts() {
-    const districts = [...new Set(DATA.map(r => r.District).filter(Boolean))];
-    return districts.sort();
-  }
-
-  function buildMapFilters() {
-    const partyFilter = document.getElementById('party-filter');
-    const partyStats = getPartyStats();
-    
-    let partyHtml = `<button class="map-party-btn active" data-party="all">
-      <span class="mpb-dot" style="background:var(--text)"></span>
-      <span class="mpb-label">All Parties</span>
-      <span class="mpb-count">${DATA.length}</span>
-    </button>`;
-    
-    partyStats.forEach(p => {
-      partyHtml += `<button class="map-party-btn" data-party="${p.party}">
-        <span class="mpb-dot" style="background:var(--text)"></span>
-        <span class="mpb-label">${p.party}</span>
-        <span class="mpb-count">${p.count}</span>
-      </button>`;
-    });
-    partyFilter.innerHTML = partyHtml;
-    
-    const distFilter = document.getElementById('dist-filter');
-    const districts = getDistricts();
-    const dCounts = {};
-    DATA.forEach(r => { dCounts[r.District] = (dCounts[r.District] || 0) + 1; });
-    
-    let distHtml = `<button class="dist-btn active" data-district="all">
-      <span class="dist-btn-name">All Kerala</span>
-      <span class="dist-btn-count">140</span>
-    </button>`;
-    
-    districts.forEach(d => {
-      distHtml += `<button class="dist-btn" data-district="${d}">
-        <span class="dist-btn-name">${d}</span>
-        <span class="dist-btn-count">${dCounts[d]}</span>
-      </button>`;
-    });
-    distFilter.innerHTML = distHtml;
-  }
-
-  function updateMapFilter() {
+  function updateMapHighlight() {
     if (!mapSvg) return;
+
+    const filteredIds = new Set(filteredData.map(c => c.constituency_Wikidata));
     
     mapSvg.selectAll('.const-path').each(function() {
       const path = d3.select(this);
       const qid = path.attr('id');
-      const row = DATA.find(x => x.Constituency_Wikidata === qid);
+      const row = data.find(x => x.Constituency_Wikidata === qid);
       
-      let shouldDim = false;
-      
-      if (activeMapParty && row) {
-        const parties = getPartiesForRow(row);
-        if (!parties.includes(activeMapParty)) shouldDim = true;
+      if (row && filteredIds.has(row.constituency_Wikidata)) {
+        path.style('opacity', 1);
+      } else {
+        path.style('opacity', 0.15);
       }
-      
-      if (activeMapDistrict !== 'all' && row) {
-        if (row.District !== activeMapDistrict) shouldDim = true;
-      }
-      
-      if (mapWomenActive && row) {
-        const hasWomen = row.LDF_Gender === 'female' || row.UDF_Gender === 'female' || row.NDA_Gender === 'female';
-        if (!hasWomen) shouldDim = true;
-      }
-      
-      path.style('opacity', shouldDim ? 0.15 : 1);
     });
   }
 
-  function handleMapPartyClick(e) {
-    const btn = e.target.closest('.map-party-btn');
-    if (!btn) return;
-    
-    activeMapParty = btn.dataset.party === 'all' ? null : btn.dataset.party;
-    
-    document.querySelectorAll('.map-party-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    
-    updateMapFilter();
+  $: if (mapSvg && filteredData) {
+    updateMapHighlight();
   }
 
-  function handleMapDistrictClick(e) {
-    const btn = e.target.closest('.dist-btn');
-    if (!btn) return;
-    
-    activeMapDistrict = btn.dataset.district === 'all' ? 'all' : btn.dataset.district;
-    
-    document.querySelectorAll('.dist-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    
-    updateMapFilter();
+  function handlePartyChange(e) {
+    setParty(e.target.value);
   }
 
-  function handleMapWomenClick() {
-    mapWomenActive = !mapWomenActive;
-    document.getElementById('map-women-btn')?.classList.toggle('active', mapWomenActive);
-    updateMapFilter();
+  function handleDistrictChange(e) {
+    setDistrict(e.target.value);
   }
 
-  function handleMapClearClick() {
-    activeMapParty = null;
-    activeMapDistrict = 'all';
-    mapWomenActive = false;
-    
-    document.querySelectorAll('.map-party-btn').forEach(b => {
-      b.classList.toggle('active', b.dataset.party === 'all');
-    });
-    document.querySelectorAll('.dist-btn').forEach(b => {
-      b.classList.toggle('active', b.dataset.district === 'all');
-    });
-    document.getElementById('map-women-btn')?.classList.remove('active');
-    
-    updateMapFilter();
+  function handleWomenToggle() {
+    toggleWomen();
   }
 
-  function initMapController() {
-    initMap();
-    buildMapFilters();
-    
-    document.getElementById('party-filter').addEventListener('click', handleMapPartyClick);
-    document.getElementById('dist-filter').addEventListener('click', handleMapDistrictClick);
-    document.getElementById('map-women-btn')?.addEventListener('click', handleMapWomenClick);
-    document.getElementById('map-clear-btn').addEventListener('click', handleMapClearClick);
+  function handleClear() {
+    clearFilters();
   }
 
   onMount(() => {
-    initMapController();
+    initMap();
   });
 </script>
+
+<div class="map-panel">
+  <div class="map-panel-header">
+    <div class="map-panel-header-row">
+      <button 
+        class="map-women-btn" 
+        class:active={activeFilters.women}
+        on:click={handleWomenToggle}
+      >
+        <span>♀</span> <span data-i18n="map.women">Women</span>
+      </button>
+      <button class="map-clear-btn" on:click={handleClear}>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/></svg>
+        <span data-i18n="map.clear">Clear</span>
+      </button>
+    </div>
+  </div>
+  <div class="map-panel-body" id="panel-body">
+    <div class="map-panel-section-label" data-i18n="map.party">Party</div>
+    <select class="party-select" on:change={handlePartyChange} value={activeFilters.party}>
+      <option value="all">All Parties ({data.length})</option>
+      {#each partyOptions as party}
+        <option value={party.party}>{party.party} ({party.count})</option>
+      {/each}
+    </select>
+    
+    <div class="map-panel-section-label" data-i18n="map.district">District</div>
+    <select class="dist-select" on:change={handleDistrictChange} value={activeFilters.district}>
+      <option value="all">All Kerala ({data.length})</option>
+      {#each districtOptions as district}
+        <option value={district}>{district}</option>
+      {/each}
+    </select>
+    
+    <div class="const-detail" id="const-detail"></div>
+  </div>
+</div>
+
+<style>
+  .map-panel {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .map-panel-header {
+    padding: 12px;
+    border-bottom: 1px solid var(--border);
+    background: var(--card2);
+  }
+
+  .map-panel-header-row {
+    display: flex;
+    gap: 8px;
+  }
+
+  .map-women-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .map-women-btn:hover {
+    border-color: var(--gold-mid);
+    color: var(--text-soft);
+  }
+
+  .map-women-btn.active {
+    background: #fce4ec;
+    border-color: #EC4899;
+    color: #EC4899;
+  }
+
+  .map-clear-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .map-clear-btn:hover {
+    background: var(--card);
+    color: var(--text);
+  }
+
+  .map-panel-body {
+    padding: 12px;
+  }
+
+  .map-panel-section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-top: 12px;
+    margin-bottom: 6px;
+  }
+
+  .map-panel-section-label:first-child {
+    margin-top: 0;
+  }
+
+  .party-select,
+  .dist-select {
+    width: 100%;
+    padding: 8px 10px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    cursor: pointer;
+  }
+
+  .party-select:focus,
+  .dist-select:focus {
+    outline: none;
+    border-color: var(--gold-mid);
+  }
+</style>

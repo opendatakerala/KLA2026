@@ -1,8 +1,10 @@
 <script>
   import MapController from './MapController.svelte';
+  import Modal from './Modal.svelte';
+
+  export let data = [];
 </script>
 
-<MapController />
 <div class="map-view" id="map-view">
   <div class="map-outer">
     <div class="map-container" id="map-container">
@@ -25,25 +27,149 @@
       </div>
       <div class="map-tooltip" id="map-tooltip"></div>
     </div>
-    <div class="map-panel">
-      <div class="map-panel-header">
-        <div class="map-panel-header-row">
-          <button class="map-women-btn" id="map-women-btn">
-            <span>♀</span> <span data-i18n="map.women">Women</span>
-          </button>
-          <button class="map-clear-btn" id="map-clear-btn">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/></svg>
-            <span data-i18n="map.clear">Clear</span>
-          </button>
-        </div>
-      </div>
-      <div class="map-panel-body" id="panel-body">
-        <div class="map-panel-section-label" data-i18n="map.party">Party</div>
-        <div class="party-filter" id="party-filter"></div>
-        <div class="map-panel-section-label" style="margin-top:10px" data-i18n="map.district">District</div>
-        <div class="dist-filter" id="dist-filter"></div>
-        <div class="const-detail" id="const-detail"></div>
-      </div>
-    </div>
+    <MapController {data} />
   </div>
 </div>
+
+<Modal />
+
+<style>
+  .map-view {
+    display: none;
+  }
+
+  .map-view:not([style*="display: none"]) {
+    display: block;
+  }
+
+  .map-outer {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 900px) {
+    .map-outer {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .map-container {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    position: relative;
+    min-height: 500px;
+  }
+
+  #kerala-map {
+    width: 100%;
+    height: auto;
+  }
+
+  #kerala-map :global(svg) {
+    width: 100%;
+    height: auto;
+  }
+
+  #kerala-map :global(path) {
+    transition: opacity 0.2s, fill 0.2s;
+  }
+
+  .map-mode-row {
+    display: flex;
+    gap: 4px;
+    margin-top: 12px;
+  }
+
+  .map-mode-btn {
+    padding: 6px 12px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .map-mode-btn:hover {
+    border-color: var(--gold-mid);
+    color: var(--text-soft);
+  }
+
+  .map-mode-btn.active {
+    background: var(--gold-light);
+    border-color: var(--gold-mid);
+    color: var(--gold);
+  }
+
+  .map-mode-btn.ldf.active {
+    background: #ffebee;
+    border-color: #EE0000;
+    color: #EE0000;
+  }
+
+  .map-mode-btn.udf.active {
+    background: #e3f2fd;
+    border-color: #0078FF;
+    color: #0078FF;
+  }
+
+  .map-mode-btn.nda.active {
+    background: #fff3e0;
+    border-color: #FF9933;
+    color: #FF9933;
+  }
+
+  .map-legend {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px;
+    font-size: 11px;
+  }
+
+  .map-legend-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .map-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 4px;
+    font-size: 11px;
+  }
+
+  .map-legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+  }
+
+  .map-tooltip {
+    position: fixed;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 6px 10px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    pointer-events: none;
+    display: none;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+</style>
