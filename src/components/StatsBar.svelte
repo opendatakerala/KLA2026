@@ -24,3 +24,58 @@
     <div class="stat-label" data-i18n="stats.st">ST Reserved</div>
   </div>
 </div>
+
+<style>
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+
+  .stat-cell {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 16px 14px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat-cell::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+  }
+
+  .stat-cell.ldf::before { background: var(--ldf); }
+  .stat-cell.udf::before { background: var(--udf); }
+  .stat-cell.nda::before { background: var(--nda); }
+  .stat-cell.sc::before { background: var(--sc-color); }
+  .stat-cell.st::before { background: var(--st-color); }
+
+  .stat-n {
+    font-family: 'Inter', sans-serif;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-cell.ldf .stat-n { color: var(--ldf); }
+  .stat-cell.udf .stat-n { color: var(--udf); }
+  .stat-cell.nda .stat-n { color: var(--nda); }
+  .stat-cell.sc .stat-n { color: var(--sc-color); }
+  .stat-cell.st .stat-n { color: var(--st-color); }
+
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+</style>
