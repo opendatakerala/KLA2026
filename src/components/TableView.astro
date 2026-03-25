@@ -1,0 +1,40 @@
+---
+import StatsBar from './svelte/StatsBar.svelte';
+import FilterBar from './svelte/FilterBar.svelte';
+import DistrictTabs from './svelte/DistrictTabs.svelte';
+import SearchBar from './svelte/SearchBar.svelte';
+import Grid from './svelte/Grid.svelte';
+
+interface Stats {
+  ldf: number;
+  udf: number;
+  nda: number;
+  sc: number;
+  st: number;
+}
+
+interface Props {
+  stats: Stats;
+  districts: string[];
+  data: object[];
+  total: number;
+  historicalData: object;
+}
+
+const { stats, districts, data, total, historicalData } = Astro.props;
+---
+
+<div class="table-view" id="table-view">
+  <div class="table-view-inner">
+    <StatsBar client:load stats={stats} />
+    <FilterBar client:load />
+    <SearchBar client:load />
+    <DistrictTabs client:load districts={districts} />
+    <Grid 
+      client:load 
+      data={data} 
+      {total}
+      {historicalData}
+    />
+  </div>
+</div>

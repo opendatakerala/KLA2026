@@ -1,4 +1,5 @@
 import { defineConfig } from 'astro/config';
+import svelte from '@astrojs/svelte';
 
 export default defineConfig({
   base: '/KLA2026',
@@ -8,5 +9,6 @@ export default defineConfig({
   },
   server: {
     host: true
-  }
+  },
+  integrations: [svelte()]
 });

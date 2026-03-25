@@ -5,12 +5,23 @@ import Footer from '../components/Footer.astro';
 import Disclaimer from '../components/Disclaimer.astro';
 import MapView from '../components/MapView.astro';
 import StatsSection from '../components/StatsSection.astro';
+import TableView from '../components/TableView.astro';
 
 import constituencies from '../data/constituencies.json';
-import partyLookup from '../data/party-lookup.json';
 import historicalComparison from '../data/historical-comparison.json';
 
 const pageTitle = "Kerala Legislative Assembly Election 2026";
+
+const stats = {
+  ldf: constituencies.filter(c => c.candidates.some(x => x.alliance === 'LDF' && x.name)).length,
+  udf: constituencies.filter(c => c.candidates.some(x => x.alliance === 'UDF' && x.name)).length,
+  nda: constituencies.filter(c => c.candidates.some(x => x.alliance === 'NDA' && x.name)).length,
+  sc: constituencies.filter(c => c.reservation === 'SC').length,
+  st: constituencies.filter(c => c.reservation === 'ST').length,
+};
+
+const districts = [...new Set(constituencies.map(c => c.District))].sort();
+const total = constituencies.length;
 ---
 
 <Layout title={pageTitle}>
@@ -19,334 +30,67 @@ const pageTitle = "Kerala Legislative Assembly Election 2026";
   <div class="container">
     <StatsSection />
     <MapView />
-
-    <div class="table-view" id="table-view">
-      <div class="table-view-inner">
-        <div class="stats-row">
-          <div class="stat-cell ldf">
-            <div class="stat-n" id="stat-ldf">—</div>
-            <div class="stat-label" data-i18n="stats.ldf">LDF Candidates</div>
-          </div>
-          <div class="stat-cell udf">
-            <div class="stat-n" id="stat-udf">—</div>
-            <div class="stat-label" data-i18n="stats.udf">UDF Candidates</div>
-          </div>
-          <div class="stat-cell nda">
-            <div class="stat-n" id="stat-nda">—</div>
-            <div class="stat-label" data-i18n="stats.nda">NDA Candidates</div>
-          </div>
-          <div class="stat-cell sc">
-            <div class="stat-n" id="stat-sc">—</div>
-            <div class="stat-label" data-i18n="stats.sc">SC Reserved</div>
-          </div>
-          <div class="stat-cell st">
-            <div class="stat-n" id="stat-st">—</div>
-            <div class="stat-label" data-i18n="stats.st">ST Reserved</div>
-          </div>
-        </div>
-
-        <div class="filter-row" id="filter-row">
-          <button class="filter-btn active" data-filter="all" data-i18n="filters.all">All</button>
-          <button class="filter-btn ldf" data-filter="LDF">LDF</button>
-          <button class="filter-btn udf" data-filter="UDF">UDF</button>
-          <button class="filter-btn nda" data-filter="NDA">NDA</button>
-          <button class="filter-btn sc" data-filter="SC" data-i18n="filters.sc">SC Reserved</button>
-          <button class="filter-btn st" data-filter="ST" data-i18n="filters.st">ST Reserved</button>
-          <button class="filter-btn female" data-filter="female">♀ <span data-i18n="filters.women">Women</span></button>
-        </div>
-
-        <div class="section-title" data-i18n="browse.title">Browse by District</div>
-        <div class="tabs" id="district-tabs">
-          <div class="tab active" data-district="all" data-i18n="browse.allDistricts">All Districts</div>
-        </div>
-
-        <div class="results-info" id="results-info"></div>
-        <div class="grid" id="grid"></div>
-      </div>
-    </div>
+    <TableView 
+      stats={stats}
+      districts={districts}
+      data={constituencies}
+      total={total}
+      historicalData={historicalComparison}
+    />
   </div>
 
   <Footer />
-
-  <div class="modal-overlay" id="modal-overlay">
-    <div class="modal">
-      <div class="modal-top"></div>
-      <div class="modal-header">
-        <div class="modal-eyebrow" id="modal-eyebrow"></div>
-        <div class="modal-title" id="modal-title"></div>
-        <div class="modal-badges" id="modal-badges"></div>
-        <button class="modal-close" id="modal-close"><span data-i18n="modal.close">✕ Close</span></button>
-      </div>
-      <div class="modal-body">
-        <div class="modal-section-label" data-i18n="modal.contestingCandidates">Contesting Candidates</div>
-        <div class="modal-candidates" id="modal-candidates"></div>
-        <div id="modal-historical"></div>
-      </div>
-    </div>
-  </div>
-
   <Disclaimer />
 </Layout>
 
 <script>
-import { computeStats, getPartyStats, getDistricts } from '../lib/stats.js';
-import { filterData, searchData } from '../lib/filter.js';
-import { createCardHTML, createModalHTML } from '../lib/grid.js';
-import { ALLIANCE_COLORS } from '../lib/constants.js';
-import { initLanguage, setLanguage, t, tReplace } from '../lib/i18n.js';
-import { initHistoricalChart } from '../lib/historical-chart.js';
-import constituencies from '../data/constituencies.json';
-import partyLookup from '../data/party-lookup.json';
-import historicalComparison from '../data/historical-comparison.json';
-
-
-const DATA = constituencies;
-const PARTIES = partyLookup;
-
-// State
-let currentView = 'table';
-let activeDistrict = 'all';
-let activeFilter = 'all';
-let activeParty = null;
-let mapColorMode = 'alliance';
-
-
-// DOM elements
-const grid = document.getElementById('grid');
-const resultsInfo = document.getElementById('results-info');
-const districtTabs = document.getElementById('district-tabs');
-const searchInput = document.getElementById('search');
-const searchBtn = document.getElementById('search-btn');
-const clearBtn = document.getElementById('clear-btn');
-const modalOverlay = document.getElementById('modal-overlay');
-const discOverlay = document.getElementById('disc-overlay');
-
-// Stats
-function updateStats() {
-  const stats = computeStats(DATA);
-  const total = stats.ldf + stats.udf + stats.nda + stats.others;
+  import { initLanguage } from '../lib/i18n.js';
   
-  document.getElementById('stat-ldf').textContent = stats.ldf;
-  document.getElementById('stat-udf').textContent = stats.udf;
-  document.getElementById('stat-nda').textContent = stats.nda;
-  document.getElementById('stat-sc').textContent = stats.sc;
-  document.getElementById('stat-st').textContent = stats.st;
-  document.getElementById('total-candidates').textContent = total;
-}
+  document.addEventListener('DOMContentLoaded', () => {
+    initLanguage();
+    
+    document.getElementById('map-view').style.display = 'none';
+    
+    document.querySelector('.view-tabs').addEventListener('click', (e) => {
+      const tab = e.target.closest('.view-tab');
+      if (!tab) return;
+      
+      const view = tab.dataset.view;
+      const mapView = document.getElementById('map-view');
+      const tableView = document.getElementById('table-view');
+      
+      document.querySelectorAll('.view-tab').forEach(t => {
+        t.classList.toggle('active', t.dataset.view === view);
+      });
+      
+      if (view === 'map') {
+        mapView.style.display = 'block';
+        tableView.style.display = 'none';
+      } else {
+        mapView.style.display = 'none';
+        tableView.style.display = 'block';
+      }
+    });
+    
+    const discOverlay = document.getElementById('disc-overlay');
+    
+    document.getElementById('disclaimer-btn').addEventListener('click', () => {
+      discOverlay.classList.add('open');
+    });
 
-// Grid
-function renderGrid() {
-  let filtered = filterData(DATA, { 
-    district: activeDistrict, 
-    filter: activeFilter, 
-    search: searchInput.value,
-    party: activeParty 
-  });
+    document.getElementById('footer-disc-link').addEventListener('click', () => {
+      discOverlay.classList.add('open');
+    });
 
-  const total = DATA.length;
-  const shown = filtered.length;
-  const query = searchInput.value.trim();
-  
-  if (shown === total && !query && activeDistrict === 'all' && activeFilter === 'all') {
-    resultsInfo.textContent = tReplace('results.showingAll', { count: shown });
-  } else {
-    resultsInfo.textContent = tReplace('results.showingFiltered', { shown, total }) + (query ? ' · ' + t('results.search') + ': "' + query + '"' : '');
-  }
-
-  if (filtered.length === 0) {
-    grid.innerHTML = '<div class="empty-state">' + t('results.empty') + '</div>';
-    return;
-  }
-
-  grid.innerHTML = filtered.map((row, idx) => {
-    const card = createCardHTML(row, t);
-    return card;
-  }).join('');
-
-  // Add click handlers
-  grid.querySelectorAll('.card').forEach(card => {
-    card.addEventListener('click', () => {
-      const num = card.dataset.constNumber;
-      const row = DATA.find(d => d.constituency_Number === num);
-      if (row) openModal(row);
+    discOverlay.addEventListener('click', (e) => {
+      const ok = e.target.id === 'disc-ok' || e.target.id === 'disc-dismiss';
+      if (ok || e.target === discOverlay) discOverlay.classList.remove('open');
+    });
+    
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        discOverlay.classList.remove('open');
+      }
     });
   });
-
-  // Update clear button
-  const hasFilters = activeFilter !== 'all' || activeDistrict !== 'all' || activeParty || query;
-  clearBtn.classList.toggle('has-filters', hasFilters);
-}
-
-// Modal
-function openModal(row) {
-  const html = createModalHTML(row, PARTIES, t, historicalComparison);
-  document.getElementById('modal-eyebrow').textContent = html.eyebrow;
-  document.getElementById('modal-title').textContent = html.title;
-  document.getElementById('modal-badges').innerHTML = html.badges;
-  document.getElementById('modal-candidates').innerHTML = html.candidates;
-  
-  // Initialize historical chart if data exists
-  if (html.historicalData) {
-    initHistoricalChart(html.historicalData);
-  } else {
-    document.getElementById('modal-historical').innerHTML = '';
-  }
-  modalOverlay.classList.add('open');
-}
-
-function closeModal() {
-  modalOverlay.classList.remove('open');
-}
-
-// Disclaimer
-function closeDisclaimer() {
-  discOverlay.classList.remove('open');
-}
-
-function openDisclaimer() {
-  discOverlay.classList.add('open');
-}
-
-// View switching
-function switchView(view) {
-  currentView = view;
-  const mapView = document.getElementById('map-view');
-  const tableView = document.getElementById('table-view');
-  
-  document.querySelectorAll('.view-tab').forEach(tab => {
-    tab.classList.toggle('active', tab.dataset.view === view);
-  });
-  
-  if (view === 'map') {
-    mapView.style.display = 'block';
-    tableView.style.display = 'none';
-  } else {
-    mapView.style.display = 'none';
-    tableView.style.display = 'block';
-  }
-}
-
-function initDistrictTabs() {
-  const districts = getDistricts(DATA);
-  districts.forEach(d => {
-    const tab = document.createElement('div');
-    tab.className = 'tab';
-    tab.dataset.district = d;
-    tab.textContent = d;
-    districtTabs.appendChild(tab);
-  });
-}
-
-// Event handlers
-function handleFilterClick(e) {
-  const btn = e.target.closest('.filter-btn');
-  if (!btn) return;
-  
-  activeFilter = btn.dataset.filter;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  activeParty = null;
-  renderGrid();
-}
-
-function handleDistrictClick(e) {
-  const tab = e.target.closest('.tab');
-  if (!tab) return;
-  
-  activeDistrict = tab.dataset.district;
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  tab.classList.add('active');
-  renderGrid();
-}
-
-function handleSearch() {
-  renderGrid();
-}
-
-function handleClear() {
-  activeFilter = 'all';
-  activeDistrict = 'all';
-  activeParty = null;
-  searchInput.value = '';
-  
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  document.querySelector('.filter-btn[data-filter="all"]').classList.add('active');
-  
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.querySelector('.tab[data-district="all"]').classList.add('active');
-  
-  renderGrid();
-}
-
-function handleViewClick(e) {
-  const tab = e.target.closest('.view-tab');
-  if (!tab) return;
-  switchView(tab.dataset.view);
-}
-
-function handleModalClick(e) {
-  if (e.target === modalOverlay) closeModal();
-}
-
-function handleDiscClick(e) {
-  const ok = e.target.id === 'disc-ok' || e.target.id === 'disc-dismiss';
-  if (ok || e.target === discOverlay) closeDisclaimer();
-}
-
-// Initialize
-document.addEventListener('DOMContentLoaded', () => {
-  // Initialize i18n (load language from localStorage)
-  const lang = initLanguage();
-  
-  // Update language switcher UI
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.lang === lang);
-  });
-  
-  // Build UI
-  initDistrictTabs();
-  updateStats();
-  renderGrid();
-  
-  // Hide map by default
-  document.getElementById('map-view').style.display = 'none';
-  
-  // Event listeners
-  document.getElementById('filter-row').addEventListener('click', handleFilterClick);
-  districtTabs.addEventListener('click', handleDistrictClick);
-  searchBtn.addEventListener('click', handleSearch);
-  searchInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') handleSearch(); });
-  clearBtn.addEventListener('click', handleClear);
-  
-  document.querySelector('.view-tabs').addEventListener('click', handleViewClick);
-  
-  // Language switcher - disabled for production
-  // TODO: Enable when Malayalam translations are ready
-  /*
-  document.getElementById('lang-switcher').addEventListener('click', (e) => {
-    const btn = e.target.closest('.lang-btn');
-    if (!btn) return;
-    const newLang = btn.dataset.lang;
-    setLanguage(newLang);
-    document.querySelectorAll('.lang-btn').forEach(b => {
-      b.classList.toggle('active', b.dataset.lang === newLang);
-    });
-    renderGrid();
-    buildMapFilters();
-  });
-  */
-  
-  modalOverlay.addEventListener('click', handleModalClick);
-  document.getElementById('modal-close').addEventListener('click', closeModal);
-  document.getElementById('disclaimer-btn').addEventListener('click', openDisclaimer);
-  document.getElementById('footer-disc-link').addEventListener('click', openDisclaimer);
-  discOverlay.addEventListener('click', handleDiscClick);
-  
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      closeModal();
-      closeDisclaimer();
-    }
-  });
-});
 </script>

@@ -10,9 +10,12 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/svelte": "^8.0.3",
     "astro": "^6.0.8",
     "d3": "^7.9.0",
     "echarts": "^6.0.0",
+    "nanostores": "^1.2.0",
+    "svelte": "^5.55.0",
     "topojson-client": "^3.1.0"
   }
 }
