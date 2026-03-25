@@ -280,6 +280,7 @@
   .candidate-info {
     padding: 10px 12px;
     flex: 1;
+    flex-shrink: 0;
   }
 
   .alliance-label {
