@@ -2,7 +2,7 @@
   import { onMount } from 'svelte';
   import * as d3 from 'd3';
   import mapSvgText from '../data/kla-map.svg?raw';
-  import { filteredConstituencies, openModal } from '../stores/constituencyStore.js';
+  import { filteredConstituencies, openModal, filters } from '../stores/constituencyStore.js';
   import Modal from './Modal.svelte';
 
   export let data = [];
@@ -10,6 +10,7 @@
   let mapSvg = null;
   
   $: filteredData = $filteredConstituencies;
+  $: activeFilters = $filters;
 
   function initMap() {
     const container = document.getElementById('kerala-map');
@@ -28,10 +29,19 @@
         const row = data.find(x => x.Constituency_Wikidata === qid);
         
         if (row) {
+          const isSc = row.reservation === 'SC';
+          const isSt = row.reservation === 'ST';
+          
           path
             .attr('id', 'c' + row.constituency_Number)
             .attr('data-num', row.constituency_Number)
-            .attr('class', 'const-path');
+            .attr('class', 'const-path' + (isSc ? ' reserved-sc' : isSt ? ' reserved-st' : ''));
+          
+          if (isSc) {
+            path.style('fill', 'var(--sc-color)');
+          } else if (isSt) {
+            path.style('fill', 'var(--st-color)');
+          }
         }
         
         path.style('cursor', 'pointer');
@@ -70,6 +80,8 @@
         const row = data.find(x => x.Constituency_Wikidata === qid);
         if (row) openModal(row);
       });
+    
+    updateMapHighlight();
   }
 
   function updateMapHighlight() {
@@ -82,10 +94,12 @@
       const qid = path.attr('id');
       const row = data.find(x => x.Constituency_Wikidata === qid);
       
-      if (row && filteredIds.has(row.constituency_Wikidata)) {
+      if (!row) return;
+      
+      if (filteredIds.has(row.constituency_Wikidata)) {
         path.style('opacity', 1);
       } else {
-        path.style('opacity', 0.15);
+        path.style('opacity', 0.2);
       }
     });
   }
@@ -103,14 +117,9 @@
   <div class="map-container" id="map-container">
     <div id="kerala-map"></div>
     <div class="map-legend" id="map-legend">
-      <div class="map-legend-title" data-i18n="map.alliance">Alliance</div>
-      <div class="map-legend-item"><div class="map-legend-dot" style="background:#EE0000;border:1.5px solid #c00;"></div>LDF</div>
-      <div class="map-legend-item"><div class="map-legend-dot" style="background:#0078FF;border:1.5px solid #005ecc;"></div>UDF</div>
-      <div class="map-legend-item"><div class="map-legend-dot" style="background:#FF9933;border:1.5px solid #e07000;"></div>NDA</div>
-      <div style="margin-top:4px;border-top:1px solid var(--border);padding-top:6px;">
-        <div class="map-legend-item"><div class="map-legend-dot" style="background:var(--sc-bg);border:1.5px solid var(--sc-color);"></div><span data-i18n="map.scReserved">SC Reserved</span></div>
-        <div class="map-legend-item"><div class="map-legend-dot" style="background:var(--st-bg);border:1.5px solid var(--st-color);"></div><span data-i18n="map.stReserved">ST Reserved</span></div>
-      </div>
+      <div class="map-legend-title">Reserved Seats</div>
+      <div class="map-legend-item"><div class="map-legend-dot sc"></div><span data-i18n="map.scReserved">SC Reserved</span></div>
+      <div class="map-legend-item"><div class="map-legend-dot st"></div><span data-i18n="map.stReserved">ST Reserved</span></div>
     </div>
     <div class="map-tooltip" id="map-tooltip"></div>
   </div>
@@ -178,6 +187,17 @@
     width: 12px;
     height: 12px;
     border-radius: 2px;
+    border: 1.5px solid;
+  }
+
+  .map-legend-dot.sc {
+    background: var(--sc-bg);
+    border-color: var(--sc-color);
+  }
+
+  .map-legend-dot.st {
+    background: var(--st-bg);
+    border-color: var(--st-color);
   }
 
   .map-tooltip {
