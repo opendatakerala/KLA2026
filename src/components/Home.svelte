@@ -7,7 +7,6 @@
   import DataExplorer from './DataExplorer.svelte';
   import Modal from './Modal.svelte';
   import { initLanguage } from '../lib/i18n.js';
-  import { stats } from '../stores/constituencyStore.js';
 
   onMount(() => {
     initLanguage();
@@ -17,7 +16,7 @@
 <Header totalCandidates="—" />
 
 <div class="container">
-  <StatsSection stats={$stats} />
+  <StatsSection />
   <DataExplorer />
 </div>
 

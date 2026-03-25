@@ -3,8 +3,7 @@
   import StatsBar from './StatsBar.svelte';
   import PartyDistribution from './charts/PartyDistribution.svelte';
   import GenderDistribution from './charts/GenderDistribution.svelte';
-
-  export let stats = { ldf: 0, udf: 0, nda: 0, sc: 0, st: 0 };
+  import { stats } from '../stores/constituencyStore.js';
 
   let collapsed = true;
   let activeTab = '';
@@ -27,7 +26,7 @@
 </script>
 
 <div class="stats-section" class:collapsed id="stats-section">
-  <StatsBar {stats} />
+  <StatsBar />
   <div class="stats-tabs">
     <button 
       class="stats-tab" 
