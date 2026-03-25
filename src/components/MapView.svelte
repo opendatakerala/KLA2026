@@ -2,13 +2,12 @@
   import { onMount } from 'svelte';
   import * as d3 from 'd3';
   import mapSvgText from '../data/kla-map.svg?raw';
-  import { filteredConstituencies, openModal } from '../stores/constituencyStore.js';
+  import { filteredConstituencies, openModal, constituencies } from '../stores/constituencyStore.js';
   import Modal from './Modal.svelte';
-
-  export let data = [];
 
   let mapSvg = null;
   
+  $: allData = $constituencies;
   $: filteredData = $filteredConstituencies;
 
   function initMap() {
@@ -27,7 +26,7 @@
       .each(function() {
         const path = d3.select(this);
         const qid = path.attr('data-qid');
-        const row = data.find(x => x.constituency_Wikidata === qid);
+        const row = allData.find(x => x.constituency_Wikidata === qid);
         
         if (row) {
           const isSc = row.reservation === 'SC';
@@ -46,7 +45,7 @@
       .on('mouseenter', function(event) {
         const path = d3.select(this);
         const qid = path.attr('data-qid');
-        const row = data.find(x => x.constituency_Wikidata === qid);
+        const row = allData.find(x => x.constituency_Wikidata === qid);
         const name = row ? row.constituency_Name : (path.attr('data-name') || '');
         const num = row ? row.constituency_Number : '';
         
@@ -74,7 +73,7 @@
       .on('click', function() {
         const path = d3.select(this);
         const qid = path.attr('data-qid');
-        const row = data.find(x => x.constituency_Wikidata === qid);
+        const row = allData.find(x => x.constituency_Wikidata === qid);
         if (row) openModal(row);
       });
     
@@ -89,7 +88,7 @@
     mapSvg.selectAll('.const-path').each(function() {
       const path = d3.select(this);
       const qid = path.attr('data-qid');
-      const row = data.find(x => x.constituency_Wikidata === qid);
+      const row = allData.find(x => x.constituency_Wikidata === qid);
       
       if (!row) return;
       

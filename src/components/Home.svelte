@@ -11,33 +11,17 @@
   import Modal from './Modal.svelte';
   import { initLanguage } from '../lib/i18n.js';
   import { 
-    constituencies, 
     filters, 
     clearFilters,
     setSearch,
     setReservation,
     toggleWomen,
     setParty,
-    setDistrict
+    setDistrict,
+    stats
   } from '../stores/constituencyStore.js';
 
-  import constituencyData from '../data/constituencies.json';
-
-  const stats = {
-    ldf: constituencyData.filter(c => c.candidates.some(x => x.alliance === 'LDF' && x.name)).length,
-    udf: constituencyData.filter(c => c.candidates.some(x => x.alliance === 'UDF' && x.name)).length,
-    nda: constituencyData.filter(c => c.candidates.some(x => x.alliance === 'NDA' && x.name)).length,
-    sc: constituencyData.filter(c => c.reservation === 'SC').length,
-    st: constituencyData.filter(c => c.reservation === 'ST').length,
-  };
-
   let viewMode = 'grid';
-
-  $: {
-    if (constituencyData.length > 0) {
-      constituencies.set(constituencyData);
-    }
-  }
 
   function setView(mode) {
     viewMode = mode;
@@ -47,7 +31,6 @@
   }
 
   onMount(() => {
-    constituencies.set(constituencyData);
     initLanguage();
     if (typeof localStorage !== 'undefined') {
       const saved = localStorage.getItem('viewPreference');
@@ -61,7 +44,7 @@
 <Header totalCandidates="—" />
 
 <div class="container">
-  <StatsSection {stats} />
+  <StatsSection stats={$stats} />
   
   <div class="data-explorer" id="data-explorer">
     <div class="explorer-filters">
@@ -129,9 +112,9 @@
       </button>
     </div>
     {#if viewMode === 'grid'}
-      <Grid data={constituencyData} total={constituencyData.length} />
+      <Grid />
     {:else}
-      <MapView data={constituencyData} />
+      <MapView />
     {/if}
   </div>
 </div>

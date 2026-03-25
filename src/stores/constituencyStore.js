@@ -1,6 +1,15 @@
 import { atom, computed } from 'nanostores';
+import constituencyData from '../data/constituencies.json';
 
-export const constituencies = atom([]);
+export const constituencies = atom(constituencyData);
+
+export const stats = computed([], () => ({
+  ldf: constituencyData.filter(c => c.candidates.some(x => x.alliance === 'LDF' && x.name)).length,
+  udf: constituencyData.filter(c => c.candidates.some(x => x.alliance === 'UDF' && x.name)).length,
+  nda: constituencyData.filter(c => c.candidates.some(x => x.alliance === 'NDA' && x.name)).length,
+  sc: constituencyData.filter(c => c.reservation === 'SC').length,
+  st: constituencyData.filter(c => c.reservation === 'ST').length,
+}));
 
 export const filters = atom({
   search: '',

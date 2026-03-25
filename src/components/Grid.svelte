@@ -1,13 +1,6 @@
 <script>
-  import { filteredConstituencies, openModal, constituencies } from '../stores/constituencyStore.js';
+  import { filteredConstituencies, openModal } from '../stores/constituencyStore.js';
   import Modal from './Modal.svelte';
-
-  export let data = [];
-  export let total = 0;
-
-  $: {
-    constituencies.set(data);
-  }
 
   $: filteredData = $filteredConstituencies;
 
