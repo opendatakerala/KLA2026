@@ -1,49 +1,10 @@
 <script>
-  import { selectedConstituency, closeModal } from '../stores/constituencyStore.js';
+  import { selectedConstituency, closeModal, getHistoricalData } from '../stores/constituencyStore.js';
   import HistoricalChart from './charts/HistoricalChart.svelte';
-  import historicalComparison from '../data/historical-comparison.json';
 
   $: currentModal = $selectedConstituency;
   
   $: seriesData = currentModal ? getHistoricalData(currentModal.qid) : [];
-  
-  function getHistoricalData(wikidata) {
-    if (!wikidata || !historicalComparison) return [];
-
-    const years = Object.keys(historicalComparison.years || {})
-      .slice()
-      .reverse();
-    const constData = historicalComparison.byConstituency;
-    const result = [];
-
-    years.forEach((year) => {
-      const yearLabel = historicalComparison.years[year];
-      const yearConstituencyData = constData[yearLabel]?.[wikidata];
-
-      if (yearConstituencyData?.candidates) {
-        const allianceVotes = { LDF: 0, UDF: 0, NDA: 0, Others: 0 };
-        let totalVotes = 0;
-
-        yearConstituencyData.candidates.forEach((c) => {
-          const votes = c.votes || 0;
-          totalVotes += votes;
-          if (c.alliance && allianceVotes.hasOwnProperty(c.alliance)) {
-            allianceVotes[c.alliance] += votes;
-          } else {
-            allianceVotes["Others"] += votes;
-          }
-        });
-
-        result.push({
-          year: yearLabel,
-          allianceVotes,
-          totalVotes,
-        });
-      }
-    });
-
-    return result;
-  }
 
   function createModalCandidate(alliance, color, party, name) {
     const tbd = !name;

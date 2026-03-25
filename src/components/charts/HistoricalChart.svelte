@@ -14,17 +14,19 @@
   let currentView = 'bars';
   let chart = null;
   let chartContainer;
+  let barsContent = '';
   
   onMount(() => {
     currentView = localStorage.getItem(STORAGE_KEY) || 'bars';
-    if (seriesData.length > 0) {
-      render();
-    }
     
     return () => {
       if (chart) chart.dispose();
     };
   });
+  
+  $: if (seriesData.length > 0) {
+    render();
+  }
   
   function setView(view) {
     currentView = view;
@@ -33,7 +35,7 @@
   }
   
   function render() {
-    if (!chartContainer || seriesData.length === 0) return;
+    if (seriesData.length === 0) return;
     
     if (chart) {
       chart.dispose();
@@ -50,12 +52,6 @@
   }
   
   function renderBars() {
-    const content = document.getElementById('historical-content');
-    if (!content) return;
-    
-    content.style.display = 'block';
-    chartContainer.style.display = 'none';
-    
     let html = '<div class="modal-historical">';
     seriesData.forEach(d => {
       html += `<div class="historical-year"><div class="historical-year-label">${d.year}</div>`;
@@ -68,16 +64,14 @@
       html += '</div>';
     });
     html += '</div>';
-    content.innerHTML = html;
+    barsContent = html;
   }
   
   async function renderLine() {
-    const echarts = await import('echarts');
-    const content = document.getElementById('historical-content');
-    if (!content) return;
+    barsContent = '';
+    if (!chartContainer) return;
     
-    content.style.display = 'none';
-    chartContainer.style.display = 'block';
+    const echarts = await import('echarts');
     
     chart = echarts.init(chartContainer, null, { renderer: 'svg' });
     
@@ -108,12 +102,10 @@
   }
   
   async function renderStacked() {
-    const echarts = await import('echarts');
-    const content = document.getElementById('historical-content');
-    if (!content) return;
+    barsContent = '';
+    if (!chartContainer) return;
     
-    content.style.display = 'none';
-    chartContainer.style.display = 'block';
+    const echarts = await import('echarts');
     
     chart = echarts.init(chartContainer, null, { renderer: 'svg' });
     
@@ -168,7 +160,109 @@
         Stacked
       </button>
     </div>
-    <div class="historical-content" id="historical-content"></div>
-    <div class="historical-chart" bind:this={chartContainer}></div>
+    {#if currentView === 'bars'}
+      <div class="historical-content">
+        {@html barsContent}
+      </div>
+    {:else}
+      <div class="historical-chart" bind:this={chartContainer}></div>
+    {/if}
   </div>
 {/if}
+
+<style>
+  .historical-chart-container {
+    margin-top: 24px;
+  }
+
+  .historical-switcher {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .hist-switch-btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    padding: 6px 12px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+
+  .hist-switch-btn:hover {
+    border-color: var(--text);
+    color: var(--text);
+  }
+
+  .hist-switch-btn.active {
+    background: var(--text);
+    color: var(--card);
+    border-color: var(--text);
+  }
+
+  .historical-chart {
+    width: 100%;
+    height: 250px;
+  }
+
+  .historical-content :global(.modal-historical) {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .historical-content :global(.historical-year) {
+    margin-bottom: 8px;
+  }
+
+  .historical-content :global(.historical-year-label) {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .historical-content :global(.historical-bar) {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+
+  .historical-content :global(.historical-alliance) {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    width: 32px;
+  }
+
+  .historical-content :global(.historical-alliance.LDF) { color: #D94040; }
+  .historical-content :global(.historical-alliance.UDF) { color: #1565C0; }
+  .historical-content :global(.historical-alliance.NDA) { color: #E07828; }
+  .historical-content :global(.historical-alliance.Others) { color: #33AA55; }
+
+  .historical-content :global(.historical-bar-track) {
+    flex: 1;
+    height: 6px;
+    background: var(--card2);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .historical-content :global(.historical-bar-fill) {
+    height: 100%;
+    border-radius: 3px;
+  }
+
+  .historical-content :global(.historical-pct) {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    width: 36px;
+    text-align: right;
+  }
+</style>
