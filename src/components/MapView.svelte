@@ -2,10 +2,12 @@
   import { onMount } from 'svelte';
   import * as d3 from 'd3';
   import mapSvgText from '../data/kla-map.svg?raw';
-  import { filteredConstituencies, openModal, constituencies } from '../stores/constituencyStore.js';
+  import { filteredConstituencies, openModal, constituencies, filters, districtBounds } from '../stores/constituencyStore.js';
   import Modal from './Modal.svelte';
 
   let mapSvg = null;
+  const viewWidth = 263;
+  const viewHeight = 345;
   
   $: allData = $constituencies;
   $: filteredData = $filteredConstituencies;
@@ -77,10 +79,10 @@
         if (row) openModal(row);
       });
     
-    updateMapHighlight();
+    updateMap();
   }
 
-  function updateMapHighlight() {
+  function updateMap() {
     if (!mapSvg) return;
 
     const filteredIds = new Set(filteredData.map(c => c.qid));
@@ -96,10 +98,26 @@
       path.classed('highlighted', isMatch)
           .classed('dimmed', !isMatch);
     });
+
+    const district = $filters.district;
+    if (district === 'all') {
+      mapSvg.transition()
+        .duration(500)
+        .attr('viewBox', `0 0 ${viewWidth} ${viewHeight}`);
+    } else {
+      const bounds = districtBounds[district.toUpperCase()];
+      if (bounds) {
+        const padding = 5;
+        const vb = `${bounds.minX - padding} ${bounds.minY - padding} ${bounds.maxX - bounds.minX + padding * 2} ${bounds.maxY - bounds.minY + padding * 2}`;
+        mapSvg.transition()
+          .duration(500)
+          .attr('viewBox', vb);
+      }
+    }
   }
 
   $: if (mapSvg && filteredData) {
-    updateMapHighlight();
+    updateMap();
   }
 
   onMount(() => {
@@ -143,6 +161,7 @@
   #kerala-map :global(svg) {
     width: 100%;
     height: auto;
+    display: block;
   }
 
   #kerala-map :global(path.const-path) {

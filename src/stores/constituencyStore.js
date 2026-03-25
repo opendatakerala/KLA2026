@@ -1,5 +1,8 @@
 import { atom, computed } from 'nanostores';
 import constituencyData from '../data/constituencies.json';
+import districtBoundsData from '../data/district-bounds.json';
+
+export const districtBounds = districtBoundsData;
 
 export const constituencies = atom(constituencyData);
 
