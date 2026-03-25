@@ -29,10 +29,10 @@ function generate() {
 
     if (!grouped[constNum]) {
       grouped[constNum] = {
-        constituency_Number: constNum,
-        constituency_Name: cleanString(cand.constituency_Name),
-        District: cleanString(cand.district),
-        constituency_Wikidata: cleanString(cand.constituency_Wikidata),
+        number: constNum,
+        name: cleanString(cand.constituency_Name),
+        district: cleanString(cand.district),
+        qid: cleanString(cand.constituency_Wikidata),
         reservation: cleanString(cand.reservation),
         candidates: []
       };
@@ -62,7 +62,7 @@ function generate() {
 
   const allianceOrder = { LDF: 0, UDF: 1, NDA: 2, Others: 3 };
   const sorted = Object.values(grouped).sort((a, b) => 
-    parseInt(a.constituency_Number) - parseInt(b.constituency_Number)
+    parseInt(a.number) - parseInt(b.number)
   );
 
   sorted.forEach(row => {

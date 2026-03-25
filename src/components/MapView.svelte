@@ -26,15 +26,15 @@
       .each(function() {
         const path = d3.select(this);
         const qid = path.attr('data-qid');
-        const row = allData.find(x => x.constituency_Wikidata === qid);
+        const row = allData.find(x => x.qid === qid);
         
         if (row) {
           const isSc = row.reservation === 'SC';
           const isSt = row.reservation === 'ST';
           
           path
-            .attr('id', 'c' + row.constituency_Number)
-            .attr('data-num', row.constituency_Number)
+            .attr('id', 'c' + row.number)
+            .attr('data-num', row.number)
             .classed('const-path', true)
             .classed('reserved-sc', isSc)
             .classed('reserved-st', isSt);
@@ -45,9 +45,9 @@
       .on('mouseenter', function(event) {
         const path = d3.select(this);
         const qid = path.attr('data-qid');
-        const row = allData.find(x => x.constituency_Wikidata === qid);
-        const name = row ? row.constituency_Name : (path.attr('data-name') || '');
-        const num = row ? row.constituency_Number : '';
+        const row = allData.find(x => x.qid === qid);
+        const name = row ? row.name : (path.attr('data-name') || '');
+        const num = row ? row.number : '';
         
         const candidates = row?.candidates || [];
         const ldfCandidate = candidates.find(c => c.alliance === 'LDF' && c.name);
@@ -73,7 +73,7 @@
       .on('click', function() {
         const path = d3.select(this);
         const qid = path.attr('data-qid');
-        const row = allData.find(x => x.constituency_Wikidata === qid);
+        const row = allData.find(x => x.qid === qid);
         if (row) openModal(row);
       });
     
@@ -83,16 +83,16 @@
   function updateMapHighlight() {
     if (!mapSvg) return;
 
-    const filteredIds = new Set(filteredData.map(c => c.constituency_Wikidata));
+    const filteredIds = new Set(filteredData.map(c => c.qid));
     
     mapSvg.selectAll('.const-path').each(function() {
       const path = d3.select(this);
       const qid = path.attr('data-qid');
-      const row = allData.find(x => x.constituency_Wikidata === qid);
+      const row = allData.find(x => x.qid === qid);
       
       if (!row) return;
       
-      const isMatch = filteredIds.has(row.constituency_Wikidata);
+      const isMatch = filteredIds.has(row.qid);
       path.classed('highlighted', isMatch)
           .classed('dimmed', !isMatch);
     });

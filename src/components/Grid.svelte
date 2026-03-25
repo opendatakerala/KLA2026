@@ -24,7 +24,7 @@
 </script>
 
 <div class="grid" id="grid">
-  {#each filteredData as row (row.constituency_Number)}
+  {#each filteredData as row (row.number)}
     <div
       class="card {row.reservation === 'SC' ? 'reserved-sc' : row.reservation === 'ST' ? 'reserved-st' : ''}"
       on:click={() => handleCardClick(row)}
@@ -34,9 +34,9 @@
     >
       <div class="card-header">
         <div>
-          <div class="card-num">CONSTITUENCY #{row.constituency_Number}</div>
-          <div class="card-name">{row.constituency_Name}</div>
-          <div class="card-district">{row.District}</div>
+          <div class="card-num">CONSTITUENCY #{row.number}</div>
+          <div class="card-name">{row.name}</div>
+          <div class="card-district">{row.district}</div>
         </div>
         {#if row.reservation}
           <span class="reservation-badge {row.reservation.toLowerCase()}">

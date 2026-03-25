@@ -63,7 +63,7 @@ export const filteredConstituencies = computed(
   [constituencies, filters],
   ($constituencies, $filters) => {
     return $constituencies.filter(row => {
-      if ($filters.district !== 'all' && row.District !== $filters.district) {
+      if ($filters.district !== 'all' && row.district !== $filters.district) {
         return false;
       }
 
@@ -87,8 +87,8 @@ export const filteredConstituencies = computed(
 
       if ($filters.search) {
         const q = $filters.search.toLowerCase().trim();
-        const matchesName = row.constituency_Name?.toLowerCase().includes(q);
-        const matchesDistrict = row.District?.toLowerCase().includes(q);
+        const matchesName = row.name?.toLowerCase().includes(q);
+        const matchesDistrict = row.district?.toLowerCase().includes(q);
         const matchesCandidate = candidates.some(
           c => (c.name || '').toLowerCase().includes(q) || (c.party || '').toLowerCase().includes(q)
         );
@@ -117,6 +117,6 @@ export const partyList = computed([constituencies], ($constituencies) => {
 });
 
 export const districtList = computed([constituencies], ($constituencies) => {
-  const districts = [...new Set($constituencies.map(c => c.District).filter(Boolean))];
+  const districts = [...new Set($constituencies.map(c => c.district).filter(Boolean))];
   return districts.sort();
 });

@@ -5,7 +5,7 @@
 
   $: currentModal = $selectedConstituency;
   
-  $: seriesData = currentModal ? getHistoricalData(currentModal.constituency_Wikidata) : [];
+  $: seriesData = currentModal ? getHistoricalData(currentModal.qid) : [];
   
   function getHistoricalData(wikidata) {
     if (!wikidata || !historicalComparison) return [];
@@ -87,9 +87,9 @@
       <div class="modal-top"></div>
       <div class="modal-header">
         <div class="modal-eyebrow">
-          {currentModal.District} · Constituency #{currentModal.constituency_Number}
+          {currentModal.district} · Constituency #{currentModal.number}
         </div>
-        <div class="modal-title">{currentModal.constituency_Name}</div>
+        <div class="modal-title">{currentModal.name}</div>
         <div class="modal-badges">
           {#if currentModal.reservation}
             <span class="reservation-badge {currentModal.reservation.toLowerCase()}">
@@ -121,7 +121,7 @@
           {/each}
         </div>
 
-        {#if currentModal.constituency_Wikidata}
+        {#if currentModal.qid}
           <div class="modal-section-label">
             Historical Results (Lok Sabha)
           </div>

@@ -1,9 +1,9 @@
 [
   {
-    "constituency_Number": "1",
-    "constituency_Name": "Manjeshwaram",
-    "District": "Kasaragod",
-    "constituency_Wikidata": "Q13113782",
+    "number": "1",
+    "name": "Manjeshwaram",
+    "district": "Kasaragod",
+    "qid": "Q13113782",
     "reservation": "",
     "candidates": [
       {
@@ -51,10 +51,10 @@
     ]
   },
   {
-    "constituency_Number": "2",
-    "constituency_Name": "Kasaragod",
-    "District": "Kasaragod",
-    "constituency_Wikidata": "Q13111222",
+    "number": "2",
+    "name": "Kasaragod",
+    "district": "Kasaragod",
+    "qid": "Q13111222",
     "reservation": "",
     "candidates": [
       {
@@ -116,10 +116,10 @@
     ]
   },
   {
-    "constituency_Number": "3",
-    "constituency_Name": "Udma",
-    "District": "Kasaragod",
-    "constituency_Wikidata": "Q13110513",
+    "number": "3",
+    "name": "Udma",
+    "district": "Kasaragod",
+    "qid": "Q13110513",
     "reservation": "",
     "candidates": [
       {
@@ -167,10 +167,10 @@
     ]
   },
   {
-    "constituency_Number": "4",
-    "constituency_Name": "Kanhangad",
-    "District": "Kasaragod",
-    "constituency_Wikidata": "Q13111113",
+    "number": "4",
+    "name": "Kanhangad",
+    "district": "Kasaragod",
+    "qid": "Q13111113",
     "reservation": "",
     "candidates": [
       {
@@ -218,10 +218,10 @@
     ]
   },
   {
-    "constituency_Number": "5",
-    "constituency_Name": "Thrikaripur",
-    "District": "Kasaragod",
-    "constituency_Wikidata": "Q16137696",
+    "number": "5",
+    "name": "Thrikaripur",
+    "district": "Kasaragod",
+    "qid": "Q16137696",
     "reservation": "",
     "candidates": [
       {
@@ -269,10 +269,10 @@
     ]
   },
   {
-    "constituency_Number": "6",
-    "constituency_Name": "Payyanur",
-    "District": "Kannur",
-    "constituency_Wikidata": "Q17379122",
+    "number": "6",
+    "name": "Payyanur",
+    "district": "Kannur",
+    "qid": "Q17379122",
     "reservation": "",
     "candidates": [
       {
@@ -320,10 +320,10 @@
     ]
   },
   {
-    "constituency_Number": "7",
-    "constituency_Name": "Kalliasseri",
-    "District": "Kannur",
-    "constituency_Wikidata": "Q13111077",
+    "number": "7",
+    "name": "Kalliasseri",
+    "district": "Kannur",
+    "qid": "Q13111077",
     "reservation": "",
     "candidates": [
       {
@@ -385,10 +385,10 @@
     ]
   },
   {
-    "constituency_Number": "8",
-    "constituency_Name": "Taliparamba",
-    "District": "Kannur",
-    "constituency_Wikidata": "Q17379268",
+    "number": "8",
+    "name": "Taliparamba",
+    "district": "Kannur",
+    "qid": "Q17379268",
     "reservation": "",
     "candidates": [
       {
@@ -450,10 +450,10 @@
     ]
   },
   {
-    "constituency_Number": "9",
-    "constituency_Name": "Irikkur",
-    "District": "Kannur",
-    "constituency_Wikidata": "Q13110432",
+    "number": "9",
+    "name": "Irikkur",
+    "district": "Kannur",
+    "qid": "Q13110432",
     "reservation": "",
     "candidates": [
       {
@@ -529,10 +529,10 @@
     ]
   },
   {
-    "constituency_Number": "10",
-    "constituency_Name": "Azhikode",
-    "District": "Kannur",
-    "constituency_Wikidata": "Q13110133",
+    "number": "10",
+    "name": "Azhikode",
+    "district": "Kannur",
+    "qid": "Q13110133",
     "reservation": "",
     "candidates": [
       {
@@ -580,10 +580,10 @@
     ]
   },
   {
-    "constituency_Number": "11",
-    "constituency_Name": "Kannur",
-    "District": "Kannur",
-    "constituency_Wikidata": "Q16137348",
+    "number": "11",
+    "name": "Kannur",
+    "district": "Kannur",
+    "qid": "Q16137348",
     "reservation": "",
     "candidates": [
       {
@@ -631,10 +631,10 @@
     ]
   },
   {
-    "constituency_Number": "12",
-    "constituency_Name": "Dharmadom",
-    "District": "Kannur",
-    "constituency_Wikidata": "Q13112766",
+    "number": "12",
+    "name": "Dharmadom",
+    "district": "Kannur",
+    "qid": "Q13112766",
     "reservation": "",
     "candidates": [
       {
@@ -682,10 +682,10 @@
     ]
   },
   {
-    "constituency_Number": "13",
-    "constituency_Name": "Thalassery",
-    "District": "Kannur",
-    "constituency_Wikidata": "Q7709532",
+    "number": "13",
+    "name": "Thalassery",
+    "district": "Kannur",
+    "qid": "Q7709532",
     "reservation": "",
     "candidates": [
       {
@@ -747,10 +747,10 @@
     ]
   },
   {
-    "constituency_Number": "14",
-    "constituency_Name": "Kuthuparamba",
-    "District": "Kannur",
-    "constituency_Wikidata": "Q17379603",
+    "number": "14",
+    "name": "Kuthuparamba",
+    "district": "Kannur",
+    "qid": "Q17379603",
     "reservation": "",
     "candidates": [
       {
@@ -812,10 +812,10 @@
     ]
   },
   {
-    "constituency_Number": "15",
-    "constituency_Name": "Mattanur",
-    "District": "Kannur",
-    "constituency_Wikidata": "Q16134425",
+    "number": "15",
+    "name": "Mattanur",
+    "district": "Kannur",
+    "qid": "Q16134425",
     "reservation": "",
     "candidates": [
       {
@@ -877,10 +877,10 @@
     ]
   },
   {
-    "constituency_Number": "16",
-    "constituency_Name": "Peravoor",
-    "District": "Kannur",
-    "constituency_Wikidata": "Q17385405",
+    "number": "16",
+    "name": "Peravoor",
+    "district": "Kannur",
+    "qid": "Q17385405",
     "reservation": "",
     "candidates": [
       {
@@ -942,10 +942,10 @@
     ]
   },
   {
-    "constituency_Number": "17",
-    "constituency_Name": "Mananthavady",
-    "District": "Wayanad",
-    "constituency_Wikidata": "Q16136061",
+    "number": "17",
+    "name": "Mananthavady",
+    "district": "Wayanad",
+    "qid": "Q16136061",
     "reservation": "ST",
     "candidates": [
       {
@@ -1007,10 +1007,10 @@
     ]
   },
   {
-    "constituency_Number": "18",
-    "constituency_Name": "Sulthan Bathery",
-    "District": "Wayanad",
-    "constituency_Wikidata": "Q13115144",
+    "number": "18",
+    "name": "Sulthan Bathery",
+    "district": "Wayanad",
+    "qid": "Q13115144",
     "reservation": "ST",
     "candidates": [
       {
@@ -1072,10 +1072,10 @@
     ]
   },
   {
-    "constituency_Number": "19",
-    "constituency_Name": "Kalpetta",
-    "District": "Wayanad",
-    "constituency_Wikidata": "Q13111054",
+    "number": "19",
+    "name": "Kalpetta",
+    "district": "Wayanad",
+    "qid": "Q13111054",
     "reservation": "",
     "candidates": [
       {
@@ -1137,10 +1137,10 @@
     ]
   },
   {
-    "constituency_Number": "20",
-    "constituency_Name": "Vatakara",
-    "District": "Kozhikode",
-    "constituency_Wikidata": "Q13114485",
+    "number": "20",
+    "name": "Vatakara",
+    "district": "Kozhikode",
+    "qid": "Q13114485",
     "reservation": "",
     "candidates": [
       {
@@ -1188,10 +1188,10 @@
     ]
   },
   {
-    "constituency_Number": "21",
-    "constituency_Name": "Kuttiady",
-    "District": "Kozhikode",
-    "constituency_Wikidata": "Q16136660",
+    "number": "21",
+    "name": "Kuttiady",
+    "district": "Kozhikode",
+    "qid": "Q16136660",
     "reservation": "",
     "candidates": [
       {
@@ -1239,10 +1239,10 @@
     ]
   },
   {
-    "constituency_Number": "22",
-    "constituency_Name": "Nadapuram",
-    "District": "Kozhikode",
-    "constituency_Wikidata": "Q13112855",
+    "number": "22",
+    "name": "Nadapuram",
+    "district": "Kozhikode",
+    "qid": "Q13112855",
     "reservation": "",
     "candidates": [
       {
@@ -1290,10 +1290,10 @@
     ]
   },
   {
-    "constituency_Number": "23",
-    "constituency_Name": "Koyilandy",
-    "District": "Kozhikode",
-    "constituency_Wikidata": "Q13111637",
+    "number": "23",
+    "name": "Koyilandy",
+    "district": "Kozhikode",
+    "qid": "Q13111637",
     "reservation": "",
     "candidates": [
       {
@@ -1355,10 +1355,10 @@
     ]
   },
   {
-    "constituency_Number": "24",
-    "constituency_Name": "Perambra",
-    "District": "Kozhikode",
-    "constituency_Wikidata": "Q13113475",
+    "number": "24",
+    "name": "Perambra",
+    "district": "Kozhikode",
+    "qid": "Q13113475",
     "reservation": "",
     "candidates": [
       {
@@ -1420,10 +1420,10 @@
     ]
   },
   {
-    "constituency_Number": "25",
-    "constituency_Name": "Balussery",
-    "District": "Kozhikode",
-    "constituency_Wikidata": "Q16137581",
+    "number": "25",
+    "name": "Balussery",
+    "district": "Kozhikode",
+    "qid": "Q16137581",
     "reservation": "SC",
     "candidates": [
       {
@@ -1471,10 +1471,10 @@
     ]
   },
   {
-    "constituency_Number": "26",
-    "constituency_Name": "Elathur",
-    "District": "Kozhikode",
-    "constituency_Wikidata": "Q16135458",
+    "number": "26",
+    "name": "Elathur",
+    "district": "Kozhikode",
+    "qid": "Q16135458",
     "reservation": "",
     "candidates": [
       {
@@ -1536,10 +1536,10 @@
     ]
   },
   {
-    "constituency_Number": "27",
-    "constituency_Name": "Kozhikode North",
-    "District": "Kozhikode",
-    "constituency_Wikidata": "Q13111729",
+    "number": "27",
+    "name": "Kozhikode North",
+    "district": "Kozhikode",
+    "qid": "Q13111729",
     "reservation": "",
     "candidates": [
       {
@@ -1601,10 +1601,10 @@
     ]
   },
   {
-    "constituency_Number": "28",
-    "constituency_Name": "Kozhikode South",
-    "District": "Kozhikode",
-    "constituency_Wikidata": "Q24204696",
+    "number": "28",
+    "name": "Kozhikode South",
+    "district": "Kozhikode",
+    "qid": "Q24204696",
     "reservation": "",
     "candidates": [
       {
@@ -1652,10 +1652,10 @@
     ]
   },
   {
-    "constituency_Number": "29",
-    "constituency_Name": "Beypore",
-    "District": "Kozhikode",
-    "constituency_Wikidata": "Q13113680",
+    "number": "29",
+    "name": "Beypore",
+    "district": "Kozhikode",
+    "qid": "Q13113680",
     "reservation": "",
     "candidates": [
       {
@@ -1703,10 +1703,10 @@
     ]
   },
   {
-    "constituency_Number": "30",
-    "constituency_Name": "Kunnamangalam",
-    "District": "Kozhikode",
-    "constituency_Wikidata": "Q13111313",
+    "number": "30",
+    "name": "Kunnamangalam",
+    "district": "Kozhikode",
+    "qid": "Q13111313",
     "reservation": "",
     "candidates": [
       {
@@ -1754,10 +1754,10 @@
     ]
   },
   {
-    "constituency_Number": "31",
-    "constituency_Name": "Koduvally",
-    "District": "Kozhikode",
-    "constituency_Wikidata": "Q16135012",
+    "number": "31",
+    "name": "Koduvally",
+    "district": "Kozhikode",
+    "qid": "Q16135012",
     "reservation": "",
     "candidates": [
       {
@@ -1819,10 +1819,10 @@
     ]
   },
   {
-    "constituency_Number": "32",
-    "constituency_Name": "Thiruvambady",
-    "District": "Kozhikode",
-    "constituency_Wikidata": "Q13112497",
+    "number": "32",
+    "name": "Thiruvambady",
+    "district": "Kozhikode",
+    "qid": "Q13112497",
     "reservation": "",
     "candidates": [
       {
@@ -1884,10 +1884,10 @@
     ]
   },
   {
-    "constituency_Number": "33",
-    "constituency_Name": "Kondotty",
-    "District": "Malappuram",
-    "constituency_Wikidata": "Q16135092",
+    "number": "33",
+    "name": "Kondotty",
+    "district": "Malappuram",
+    "qid": "Q16135092",
     "reservation": "",
     "candidates": [
       {
@@ -1949,10 +1949,10 @@
     ]
   },
   {
-    "constituency_Number": "34",
-    "constituency_Name": "Eranad",
-    "District": "Malappuram",
-    "constituency_Wikidata": "Q13110769",
+    "number": "34",
+    "name": "Eranad",
+    "district": "Malappuram",
+    "qid": "Q13110769",
     "reservation": "",
     "candidates": [
       {
@@ -2014,10 +2014,10 @@
     ]
   },
   {
-    "constituency_Number": "35",
-    "constituency_Name": "Nilambur",
-    "District": "Malappuram",
-    "constituency_Wikidata": "Q13112913",
+    "number": "35",
+    "name": "Nilambur",
+    "district": "Malappuram",
+    "qid": "Q13112913",
     "reservation": "",
     "candidates": [
       {
@@ -2079,10 +2079,10 @@
     ]
   },
   {
-    "constituency_Number": "36",
-    "constituency_Name": "Wandoor",
-    "District": "Malappuram",
-    "constituency_Wikidata": "Q16135444",
+    "number": "36",
+    "name": "Wandoor",
+    "district": "Malappuram",
+    "qid": "Q16135444",
     "reservation": "SC",
     "candidates": [
       {
@@ -2130,10 +2130,10 @@
     ]
   },
   {
-    "constituency_Number": "37",
-    "constituency_Name": "Manjeri",
-    "District": "Malappuram",
-    "constituency_Wikidata": "Q13113783",
+    "number": "37",
+    "name": "Manjeri",
+    "district": "Malappuram",
+    "qid": "Q13113783",
     "reservation": "",
     "candidates": [
       {
@@ -2195,10 +2195,10 @@
     ]
   },
   {
-    "constituency_Number": "38",
-    "constituency_Name": "Perinthalmanna",
-    "District": "Malappuram",
-    "constituency_Wikidata": "Q13113446",
+    "number": "38",
+    "name": "Perinthalmanna",
+    "district": "Malappuram",
+    "qid": "Q13113446",
     "reservation": "",
     "candidates": [
       {
@@ -2246,10 +2246,10 @@
     ]
   },
   {
-    "constituency_Number": "39",
-    "constituency_Name": "Mankada",
-    "District": "Malappuram",
-    "constituency_Wikidata": "Q13113774",
+    "number": "39",
+    "name": "Mankada",
+    "district": "Malappuram",
+    "qid": "Q13113774",
     "reservation": "",
     "candidates": [
       {
@@ -2311,10 +2311,10 @@
     ]
   },
   {
-    "constituency_Number": "40",
-    "constituency_Name": "Malappuram",
-    "District": "Malappuram",
-    "constituency_Wikidata": "Q16135164",
+    "number": "40",
+    "name": "Malappuram",
+    "district": "Malappuram",
+    "qid": "Q16135164",
     "reservation": "",
     "candidates": [
       {
@@ -2390,10 +2390,10 @@
     ]
   },
   {
-    "constituency_Number": "41",
-    "constituency_Name": "Vengara",
-    "District": "Malappuram",
-    "constituency_Wikidata": "Q13114838",
+    "number": "41",
+    "name": "Vengara",
+    "district": "Malappuram",
+    "qid": "Q13114838",
     "reservation": "",
     "candidates": [
       {
@@ -2441,10 +2441,10 @@
     ]
   },
   {
-    "constituency_Number": "42",
-    "constituency_Name": "Vallikkunnu",
-    "District": "Malappuram",
-    "constituency_Wikidata": "Q16135944",
+    "number": "42",
+    "name": "Vallikkunnu",
+    "district": "Malappuram",
+    "qid": "Q16135944",
     "reservation": "",
     "candidates": [
       {
@@ -2506,10 +2506,10 @@
     ]
   },
   {
-    "constituency_Number": "43",
-    "constituency_Name": "Tirurangadi",
-    "District": "Malappuram",
-    "constituency_Wikidata": "Q13112529",
+    "number": "43",
+    "name": "Tirurangadi",
+    "district": "Malappuram",
+    "qid": "Q13112529",
     "reservation": "",
     "candidates": [
       {
@@ -2571,10 +2571,10 @@
     ]
   },
   {
-    "constituency_Number": "44",
-    "constituency_Name": "Tanur",
-    "District": "Malappuram",
-    "constituency_Wikidata": "Q16136996",
+    "number": "44",
+    "name": "Tanur",
+    "district": "Malappuram",
+    "qid": "Q16136996",
     "reservation": "",
     "candidates": [
       {
@@ -2622,10 +2622,10 @@
     ]
   },
   {
-    "constituency_Number": "45",
-    "constituency_Name": "Tirur",
-    "District": "Malappuram",
-    "constituency_Wikidata": "Q16137421",
+    "number": "45",
+    "name": "Tirur",
+    "district": "Malappuram",
+    "qid": "Q16137421",
     "reservation": "",
     "candidates": [
       {
@@ -2687,10 +2687,10 @@
     ]
   },
   {
-    "constituency_Number": "46",
-    "constituency_Name": "Kottakkal",
-    "District": "Malappuram",
-    "constituency_Wikidata": "Q13111682",
+    "number": "46",
+    "name": "Kottakkal",
+    "district": "Malappuram",
+    "qid": "Q13111682",
     "reservation": "",
     "candidates": [
       {
@@ -2752,10 +2752,10 @@
     ]
   },
   {
-    "constituency_Number": "47",
-    "constituency_Name": "Thavanur",
-    "District": "Malappuram",
-    "constituency_Wikidata": "Q16136920",
+    "number": "47",
+    "name": "Thavanur",
+    "district": "Malappuram",
+    "qid": "Q16136920",
     "reservation": "",
     "candidates": [
       {
@@ -2817,10 +2817,10 @@
     ]
   },
   {
-    "constituency_Number": "48",
-    "constituency_Name": "Ponnani",
-    "District": "Malappuram",
-    "constituency_Wikidata": "Q7227905",
+    "number": "48",
+    "name": "Ponnani",
+    "district": "Malappuram",
+    "qid": "Q7227905",
     "reservation": "",
     "candidates": [
       {
@@ -2882,10 +2882,10 @@
     ]
   },
   {
-    "constituency_Number": "49",
-    "constituency_Name": "Thrithala",
-    "District": "Palakkad",
-    "constituency_Wikidata": "Q13112607",
+    "number": "49",
+    "name": "Thrithala",
+    "district": "Palakkad",
+    "qid": "Q13112607",
     "reservation": "",
     "candidates": [
       {
@@ -2947,10 +2947,10 @@
     ]
   },
   {
-    "constituency_Number": "50",
-    "constituency_Name": "Pattambi",
-    "District": "Palakkad",
-    "constituency_Wikidata": "Q13113050",
+    "number": "50",
+    "name": "Pattambi",
+    "district": "Palakkad",
+    "qid": "Q13113050",
     "reservation": "",
     "candidates": [
       {
@@ -3012,10 +3012,10 @@
     ]
   },
   {
-    "constituency_Number": "51",
-    "constituency_Name": "Shornur",
-    "District": "Palakkad",
-    "constituency_Wikidata": "Q13114979",
+    "number": "51",
+    "name": "Shornur",
+    "district": "Palakkad",
+    "qid": "Q13114979",
     "reservation": "",
     "candidates": [
       {
@@ -3063,10 +3063,10 @@
     ]
   },
   {
-    "constituency_Number": "52",
-    "constituency_Name": "Ottapalam",
-    "District": "Palakkad",
-    "constituency_Wikidata": "Q13110827",
+    "number": "52",
+    "name": "Ottapalam",
+    "district": "Palakkad",
+    "qid": "Q13110827",
     "reservation": "",
     "candidates": [
       {
@@ -3114,10 +3114,10 @@
     ]
   },
   {
-    "constituency_Number": "53",
-    "constituency_Name": "Kongad",
-    "District": "Palakkad",
-    "constituency_Wikidata": "Q13111675",
+    "number": "53",
+    "name": "Kongad",
+    "district": "Palakkad",
+    "qid": "Q13111675",
     "reservation": "SC",
     "candidates": [
       {
@@ -3165,10 +3165,10 @@
     ]
   },
   {
-    "constituency_Number": "54",
-    "constituency_Name": "Mannarkkad",
-    "District": "Palakkad",
-    "constituency_Wikidata": "Q13113828",
+    "number": "54",
+    "name": "Mannarkkad",
+    "district": "Palakkad",
+    "qid": "Q13113828",
     "reservation": "",
     "candidates": [
       {
@@ -3230,10 +3230,10 @@
     ]
   },
   {
-    "constituency_Number": "55",
-    "constituency_Name": "Malampuzha",
-    "District": "Palakkad",
-    "constituency_Wikidata": "Q16135283",
+    "number": "55",
+    "name": "Malampuzha",
+    "district": "Palakkad",
+    "qid": "Q16135283",
     "reservation": "",
     "candidates": [
       {
@@ -3295,10 +3295,10 @@
     ]
   },
   {
-    "constituency_Number": "56",
-    "constituency_Name": "Palakkad",
-    "District": "Palakkad",
-    "constituency_Wikidata": "Q18536954",
+    "number": "56",
+    "name": "Palakkad",
+    "district": "Palakkad",
+    "qid": "Q18536954",
     "reservation": "",
     "candidates": [
       {
@@ -3360,10 +3360,10 @@
     ]
   },
   {
-    "constituency_Number": "57",
-    "constituency_Name": "Tarur",
-    "District": "Palakkad",
-    "constituency_Wikidata": "Q16136772",
+    "number": "57",
+    "name": "Tarur",
+    "district": "Palakkad",
+    "qid": "Q16136772",
     "reservation": "SC",
     "candidates": [
       {
@@ -3411,10 +3411,10 @@
     ]
   },
   {
-    "constituency_Number": "58",
-    "constituency_Name": "Chittur",
-    "District": "Palakkad",
-    "constituency_Wikidata": "Q13111967",
+    "number": "58",
+    "name": "Chittur",
+    "district": "Palakkad",
+    "qid": "Q13111967",
     "reservation": "",
     "candidates": [
       {
@@ -3462,10 +3462,10 @@
     ]
   },
   {
-    "constituency_Number": "59",
-    "constituency_Name": "Nenmara",
-    "District": "Palakkad",
-    "constituency_Wikidata": "Q13112978",
+    "number": "59",
+    "name": "Nenmara",
+    "district": "Palakkad",
+    "qid": "Q13112978",
     "reservation": "",
     "candidates": [
       {
@@ -3527,10 +3527,10 @@
     ]
   },
   {
-    "constituency_Number": "60",
-    "constituency_Name": "Alathur",
-    "District": "Palakkad",
-    "constituency_Wikidata": "Q16136878",
+    "number": "60",
+    "name": "Alathur",
+    "district": "Palakkad",
+    "qid": "Q16136878",
     "reservation": "",
     "candidates": [
       {
@@ -3578,10 +3578,10 @@
     ]
   },
   {
-    "constituency_Number": "61",
-    "constituency_Name": "Chelakkara",
-    "District": "Thrissur",
-    "constituency_Wikidata": "Q5089791",
+    "number": "61",
+    "name": "Chelakkara",
+    "district": "Thrissur",
+    "qid": "Q5089791",
     "reservation": "SC",
     "candidates": [
       {
@@ -3657,10 +3657,10 @@
     ]
   },
   {
-    "constituency_Number": "62",
-    "constituency_Name": "Kunnamkulam",
-    "District": "Thrissur",
-    "constituency_Wikidata": "Q13111317",
+    "number": "62",
+    "name": "Kunnamkulam",
+    "district": "Thrissur",
+    "qid": "Q13111317",
     "reservation": "",
     "candidates": [
       {
@@ -3722,10 +3722,10 @@
     ]
   },
   {
-    "constituency_Number": "63",
-    "constituency_Name": "Guruvayur",
-    "District": "Thrissur",
-    "constituency_Wikidata": "Q5620568",
+    "number": "63",
+    "name": "Guruvayur",
+    "district": "Thrissur",
+    "qid": "Q5620568",
     "reservation": "",
     "candidates": [
       {
@@ -3801,10 +3801,10 @@
     ]
   },
   {
-    "constituency_Number": "64",
-    "constituency_Name": "Manalur",
-    "District": "Thrissur",
-    "constituency_Wikidata": "Q6746846",
+    "number": "64",
+    "name": "Manalur",
+    "district": "Thrissur",
+    "qid": "Q6746846",
     "reservation": "",
     "candidates": [
       {
@@ -3880,10 +3880,10 @@
     ]
   },
   {
-    "constituency_Number": "65",
-    "constituency_Name": "Wadakkanchery",
-    "District": "Thrissur",
-    "constituency_Wikidata": "Q16135293",
+    "number": "65",
+    "name": "Wadakkanchery",
+    "district": "Thrissur",
+    "qid": "Q16135293",
     "reservation": "",
     "candidates": [
       {
@@ -3945,10 +3945,10 @@
     ]
   },
   {
-    "constituency_Number": "66",
-    "constituency_Name": "Ollur",
-    "District": "Thrissur",
-    "constituency_Wikidata": "Q7088394",
+    "number": "66",
+    "name": "Ollur",
+    "district": "Thrissur",
+    "qid": "Q7088394",
     "reservation": "",
     "candidates": [
       {
@@ -4010,10 +4010,10 @@
     ]
   },
   {
-    "constituency_Number": "67",
-    "constituency_Name": "Thrissur",
-    "District": "Thrissur",
-    "constituency_Wikidata": "Q7798271",
+    "number": "67",
+    "name": "Thrissur",
+    "district": "Thrissur",
+    "qid": "Q7798271",
     "reservation": "",
     "candidates": [
       {
@@ -4075,10 +4075,10 @@
     ]
   },
   {
-    "constituency_Number": "68",
-    "constituency_Name": "Nattika",
-    "District": "Thrissur",
-    "constituency_Wikidata": "Q6980360",
+    "number": "68",
+    "name": "Nattika",
+    "district": "Thrissur",
+    "qid": "Q6980360",
     "reservation": "SC",
     "candidates": [
       {
@@ -4140,10 +4140,10 @@
     ]
   },
   {
-    "constituency_Number": "69",
-    "constituency_Name": "Kaipamangalam",
-    "District": "Thrissur",
-    "constituency_Wikidata": "Q6348174",
+    "number": "69",
+    "name": "Kaipamangalam",
+    "district": "Thrissur",
+    "qid": "Q6348174",
     "reservation": "",
     "candidates": [
       {
@@ -4219,10 +4219,10 @@
     ]
   },
   {
-    "constituency_Number": "70",
-    "constituency_Name": "Irinjalakuda",
-    "District": "Thrissur",
-    "constituency_Wikidata": "Q6070028",
+    "number": "70",
+    "name": "Irinjalakuda",
+    "district": "Thrissur",
+    "qid": "Q6070028",
     "reservation": "",
     "candidates": [
       {
@@ -4284,10 +4284,10 @@
     ]
   },
   {
-    "constituency_Number": "71",
-    "constituency_Name": "Puthukkad",
-    "District": "Thrissur",
-    "constituency_Wikidata": "Q7258374",
+    "number": "71",
+    "name": "Puthukkad",
+    "district": "Thrissur",
+    "qid": "Q7258374",
     "reservation": "",
     "candidates": [
       {
@@ -4349,10 +4349,10 @@
     ]
   },
   {
-    "constituency_Number": "72",
-    "constituency_Name": "Chalakudy",
-    "District": "Thrissur",
-    "constituency_Wikidata": "Q5068546",
+    "number": "72",
+    "name": "Chalakudy",
+    "district": "Thrissur",
+    "qid": "Q5068546",
     "reservation": "",
     "candidates": [
       {
@@ -4414,10 +4414,10 @@
     ]
   },
   {
-    "constituency_Number": "73",
-    "constituency_Name": "Kodungallur",
-    "District": "Thrissur",
-    "constituency_Wikidata": "Q6425466",
+    "number": "73",
+    "name": "Kodungallur",
+    "district": "Thrissur",
+    "qid": "Q6425466",
     "reservation": "",
     "candidates": [
       {
@@ -4479,10 +4479,10 @@
     ]
   },
   {
-    "constituency_Number": "74",
-    "constituency_Name": "Perumbavoor",
-    "District": "Ernakulam",
-    "constituency_Wikidata": "Q16136149",
+    "number": "74",
+    "name": "Perumbavoor",
+    "district": "Ernakulam",
+    "qid": "Q16136149",
     "reservation": "",
     "candidates": [
       {
@@ -4530,10 +4530,10 @@
     ]
   },
   {
-    "constituency_Number": "75",
-    "constituency_Name": "Angamaly",
-    "District": "Ernakulam",
-    "constituency_Wikidata": "Q7601651",
+    "number": "75",
+    "name": "Angamaly",
+    "district": "Ernakulam",
+    "qid": "Q7601651",
     "reservation": "",
     "candidates": [
       {
@@ -4595,10 +4595,10 @@
     ]
   },
   {
-    "constituency_Number": "76",
-    "constituency_Name": "Aluva",
-    "District": "Ernakulam",
-    "constituency_Wikidata": "Q13110297",
+    "number": "76",
+    "name": "Aluva",
+    "district": "Ernakulam",
+    "qid": "Q13110297",
     "reservation": "",
     "candidates": [
       {
@@ -4660,10 +4660,10 @@
     ]
   },
   {
-    "constituency_Number": "77",
-    "constituency_Name": "Kalamassery",
-    "District": "Ernakulam",
-    "constituency_Wikidata": "Q16134141",
+    "number": "77",
+    "name": "Kalamassery",
+    "district": "Ernakulam",
+    "qid": "Q16134141",
     "reservation": "",
     "candidates": [
       {
@@ -4725,10 +4725,10 @@
     ]
   },
   {
-    "constituency_Number": "78",
-    "constituency_Name": "Paravur",
-    "District": "Ernakulam",
-    "constituency_Wikidata": "Q13113120",
+    "number": "78",
+    "name": "Paravur",
+    "district": "Ernakulam",
+    "qid": "Q13113120",
     "reservation": "",
     "candidates": [
       {
@@ -4790,10 +4790,10 @@
     ]
   },
   {
-    "constituency_Number": "79",
-    "constituency_Name": "Vypin",
-    "District": "Ernakulam",
-    "constituency_Wikidata": "Q13114876",
+    "number": "79",
+    "name": "Vypin",
+    "district": "Ernakulam",
+    "qid": "Q13114876",
     "reservation": "",
     "candidates": [
       {
@@ -4855,10 +4855,10 @@
     ]
   },
   {
-    "constituency_Number": "80",
-    "constituency_Name": "Kochi",
-    "District": "Ernakulam",
-    "constituency_Wikidata": "Q17372576",
+    "number": "80",
+    "name": "Kochi",
+    "district": "Ernakulam",
+    "qid": "Q17372576",
     "reservation": "",
     "candidates": [
       {
@@ -4934,10 +4934,10 @@
     ]
   },
   {
-    "constituency_Number": "81",
-    "constituency_Name": "Thrippunithura",
-    "District": "Ernakulam",
-    "constituency_Wikidata": "Q13112618",
+    "number": "81",
+    "name": "Thrippunithura",
+    "district": "Ernakulam",
+    "qid": "Q13112618",
     "reservation": "",
     "candidates": [
       {
@@ -4999,10 +4999,10 @@
     ]
   },
   {
-    "constituency_Number": "82",
-    "constituency_Name": "Ernakulam",
-    "District": "Ernakulam",
-    "constituency_Wikidata": "Q16135415",
+    "number": "82",
+    "name": "Ernakulam",
+    "district": "Ernakulam",
+    "qid": "Q16135415",
     "reservation": "",
     "candidates": [
       {
@@ -5064,10 +5064,10 @@
     ]
   },
   {
-    "constituency_Number": "83",
-    "constituency_Name": "Thrikkakara",
-    "District": "Ernakulam",
-    "constituency_Wikidata": "Q16137712",
+    "number": "83",
+    "name": "Thrikkakara",
+    "district": "Ernakulam",
+    "qid": "Q16137712",
     "reservation": "",
     "candidates": [
       {
@@ -5143,10 +5143,10 @@
     ]
   },
   {
-    "constituency_Number": "84",
-    "constituency_Name": "Kunnathunad",
-    "District": "Ernakulam",
-    "constituency_Wikidata": "Q13111319",
+    "number": "84",
+    "name": "Kunnathunad",
+    "district": "Ernakulam",
+    "qid": "Q13111319",
     "reservation": "SC",
     "candidates": [
       {
@@ -5194,10 +5194,10 @@
     ]
   },
   {
-    "constituency_Number": "85",
-    "constituency_Name": "Piravom",
-    "District": "Ernakulam",
-    "constituency_Wikidata": "Q13113295",
+    "number": "85",
+    "name": "Piravom",
+    "district": "Ernakulam",
+    "qid": "Q13113295",
     "reservation": "",
     "candidates": [
       {
@@ -5273,10 +5273,10 @@
     ]
   },
   {
-    "constituency_Number": "86",
-    "constituency_Name": "Muvattupuzha",
-    "District": "Ernakulam",
-    "constituency_Wikidata": "Q16137625",
+    "number": "86",
+    "name": "Muvattupuzha",
+    "district": "Ernakulam",
+    "qid": "Q16137625",
     "reservation": "",
     "candidates": [
       {
@@ -5352,10 +5352,10 @@
     ]
   },
   {
-    "constituency_Number": "87",
-    "constituency_Name": "Kothamangalam",
-    "District": "Ernakulam",
-    "constituency_Wikidata": "Q16135561",
+    "number": "87",
+    "name": "Kothamangalam",
+    "district": "Ernakulam",
+    "qid": "Q16135561",
     "reservation": "",
     "candidates": [
       {
@@ -5403,10 +5403,10 @@
     ]
   },
   {
-    "constituency_Number": "88",
-    "constituency_Name": "Devikulam",
-    "District": "Idukki",
-    "constituency_Wikidata": "Q16134525",
+    "number": "88",
+    "name": "Devikulam",
+    "district": "Idukki",
+    "qid": "Q16134525",
     "reservation": "SC",
     "candidates": [
       {
@@ -5454,10 +5454,10 @@
     ]
   },
   {
-    "constituency_Number": "89",
-    "constituency_Name": "Udumbanchola",
-    "District": "Idukki",
-    "constituency_Wikidata": "Q16133944",
+    "number": "89",
+    "name": "Udumbanchola",
+    "district": "Idukki",
+    "qid": "Q16133944",
     "reservation": "",
     "candidates": [
       {
@@ -5505,10 +5505,10 @@
     ]
   },
   {
-    "constituency_Number": "90",
-    "constituency_Name": "Thodupuzha",
-    "District": "Idukki",
-    "constituency_Wikidata": "Q16133853",
+    "number": "90",
+    "name": "Thodupuzha",
+    "district": "Idukki",
+    "qid": "Q16133853",
     "reservation": "",
     "candidates": [
       {
@@ -5584,10 +5584,10 @@
     ]
   },
   {
-    "constituency_Number": "91",
-    "constituency_Name": "Idukki",
-    "District": "Idukki",
-    "constituency_Wikidata": "Q13110378",
+    "number": "91",
+    "name": "Idukki",
+    "district": "Idukki",
+    "qid": "Q13110378",
     "reservation": "",
     "candidates": [
       {
@@ -5635,10 +5635,10 @@
     ]
   },
   {
-    "constituency_Number": "92",
-    "constituency_Name": "Peerumade",
-    "District": "Idukki",
-    "constituency_Wikidata": "Q16135018",
+    "number": "92",
+    "name": "Peerumade",
+    "district": "Idukki",
+    "qid": "Q16135018",
     "reservation": "",
     "candidates": [
       {
@@ -5700,10 +5700,10 @@
     ]
   },
   {
-    "constituency_Number": "93",
-    "constituency_Name": "Pala",
-    "District": "Kottayam",
-    "constituency_Wikidata": "Q13113213",
+    "number": "93",
+    "name": "Pala",
+    "district": "Kottayam",
+    "qid": "Q13113213",
     "reservation": "",
     "candidates": [
       {
@@ -5765,10 +5765,10 @@
     ]
   },
   {
-    "constituency_Number": "94",
-    "constituency_Name": "Kaduthuruthy",
-    "District": "Kottayam",
-    "constituency_Wikidata": "Q13110914",
+    "number": "94",
+    "name": "Kaduthuruthy",
+    "district": "Kottayam",
+    "qid": "Q13110914",
     "reservation": "",
     "candidates": [
       {
@@ -5830,10 +5830,10 @@
     ]
   },
   {
-    "constituency_Number": "95",
-    "constituency_Name": "Vaikom",
-    "District": "Kottayam",
-    "constituency_Wikidata": "Q13114860",
+    "number": "95",
+    "name": "Vaikom",
+    "district": "Kottayam",
+    "qid": "Q13114860",
     "reservation": "SC",
     "candidates": [
       {
@@ -5881,10 +5881,10 @@
     ]
   },
   {
-    "constituency_Number": "96",
-    "constituency_Name": "Ettumanoor",
-    "District": "Kottayam",
-    "constituency_Wikidata": "Q16135978",
+    "number": "96",
+    "name": "Ettumanoor",
+    "district": "Kottayam",
+    "qid": "Q16135978",
     "reservation": "",
     "candidates": [
       {
@@ -5932,10 +5932,10 @@
     ]
   },
   {
-    "constituency_Number": "97",
-    "constituency_Name": "Kottayam",
-    "District": "Kottayam",
-    "constituency_Wikidata": "Q13111688",
+    "number": "97",
+    "name": "Kottayam",
+    "district": "Kottayam",
+    "qid": "Q13111688",
     "reservation": "",
     "candidates": [
       {
@@ -6011,10 +6011,10 @@
     ]
   },
   {
-    "constituency_Number": "98",
-    "constituency_Name": "Puthuppally",
-    "District": "Kottayam",
-    "constituency_Wikidata": "Q13113317",
+    "number": "98",
+    "name": "Puthuppally",
+    "district": "Kottayam",
+    "qid": "Q13113317",
     "reservation": "",
     "candidates": [
       {
@@ -6062,10 +6062,10 @@
     ]
   },
   {
-    "constituency_Number": "99",
-    "constituency_Name": "Changanassery",
-    "District": "Kottayam",
-    "constituency_Wikidata": "Q16136954",
+    "number": "99",
+    "name": "Changanassery",
+    "district": "Kottayam",
+    "qid": "Q16136954",
     "reservation": "",
     "candidates": [
       {
@@ -6141,10 +6141,10 @@
     ]
   },
   {
-    "constituency_Number": "100",
-    "constituency_Name": "Kanjirappally",
-    "District": "Kottayam",
-    "constituency_Wikidata": "Q16134543",
+    "number": "100",
+    "name": "Kanjirappally",
+    "district": "Kottayam",
+    "qid": "Q16134543",
     "reservation": "",
     "candidates": [
       {
@@ -6206,10 +6206,10 @@
     ]
   },
   {
-    "constituency_Number": "101",
-    "constituency_Name": "Poonjar",
-    "District": "Kottayam",
-    "constituency_Wikidata": "Q16135693",
+    "number": "101",
+    "name": "Poonjar",
+    "district": "Kottayam",
+    "qid": "Q16135693",
     "reservation": "",
     "candidates": [
       {
@@ -6257,10 +6257,10 @@
     ]
   },
   {
-    "constituency_Number": "102",
-    "constituency_Name": "Aroor",
-    "District": "Alappuzha",
-    "constituency_Wikidata": "Q13110113",
+    "number": "102",
+    "name": "Aroor",
+    "district": "Alappuzha",
+    "qid": "Q13110113",
     "reservation": "",
     "candidates": [
       {
@@ -6308,10 +6308,10 @@
     ]
   },
   {
-    "constituency_Number": "103",
-    "constituency_Name": "Cherthala",
-    "District": "Alappuzha",
-    "constituency_Wikidata": "Q16134436",
+    "number": "103",
+    "name": "Cherthala",
+    "district": "Alappuzha",
+    "qid": "Q16134436",
     "reservation": "",
     "candidates": [
       {
@@ -6373,10 +6373,10 @@
     ]
   },
   {
-    "constituency_Number": "104",
-    "constituency_Name": "Alappuzha",
-    "District": "Alappuzha",
-    "constituency_Wikidata": "Q13110290",
+    "number": "104",
+    "name": "Alappuzha",
+    "district": "Alappuzha",
+    "qid": "Q13110290",
     "reservation": "",
     "candidates": [
       {
@@ -6424,10 +6424,10 @@
     ]
   },
   {
-    "constituency_Number": "105",
-    "constituency_Name": "Ambalappuzha",
-    "District": "Alappuzha",
-    "constituency_Wikidata": "Q13110066",
+    "number": "105",
+    "name": "Ambalappuzha",
+    "district": "Alappuzha",
+    "qid": "Q13110066",
     "reservation": "",
     "candidates": [
       {
@@ -6475,10 +6475,10 @@
     ]
   },
   {
-    "constituency_Number": "106",
-    "constituency_Name": "Kuttanad",
-    "District": "Alappuzha",
-    "constituency_Wikidata": "Q16135972",
+    "number": "106",
+    "name": "Kuttanad",
+    "district": "Alappuzha",
+    "qid": "Q16135972",
     "reservation": "",
     "candidates": [
       {
@@ -6540,10 +6540,10 @@
     ]
   },
   {
-    "constituency_Number": "107",
-    "constituency_Name": "Haripad",
-    "District": "Alappuzha",
-    "constituency_Wikidata": "Q16137908",
+    "number": "107",
+    "name": "Haripad",
+    "district": "Alappuzha",
+    "qid": "Q16137908",
     "reservation": "",
     "candidates": [
       {
@@ -6591,10 +6591,10 @@
     ]
   },
   {
-    "constituency_Number": "108",
-    "constituency_Name": "Kayamkulam",
-    "District": "Alappuzha",
-    "constituency_Wikidata": "Q13111157",
+    "number": "108",
+    "name": "Kayamkulam",
+    "district": "Alappuzha",
+    "qid": "Q13111157",
     "reservation": "",
     "candidates": [
       {
@@ -6642,10 +6642,10 @@
     ]
   },
   {
-    "constituency_Number": "109",
-    "constituency_Name": "Mavelikara",
-    "District": "Alappuzha",
-    "constituency_Wikidata": "Q16136384",
+    "number": "109",
+    "name": "Mavelikara",
+    "district": "Alappuzha",
+    "qid": "Q16136384",
     "reservation": "SC",
     "candidates": [
       {
@@ -6693,10 +6693,10 @@
     ]
   },
   {
-    "constituency_Number": "110",
-    "constituency_Name": "Chengannur",
-    "District": "Alappuzha",
-    "constituency_Wikidata": "Q13112004",
+    "number": "110",
+    "name": "Chengannur",
+    "district": "Alappuzha",
+    "qid": "Q13112004",
     "reservation": "",
     "candidates": [
       {
@@ -6744,10 +6744,10 @@
     ]
   },
   {
-    "constituency_Number": "111",
-    "constituency_Name": "Thiruvalla",
-    "District": "Pathanamthitta",
-    "constituency_Wikidata": "Q16137335",
+    "number": "111",
+    "name": "Thiruvalla",
+    "district": "Pathanamthitta",
+    "qid": "Q16137335",
     "reservation": "",
     "candidates": [
       {
@@ -6795,10 +6795,10 @@
     ]
   },
   {
-    "constituency_Number": "112",
-    "constituency_Name": "Ranni",
-    "District": "Pathanamthitta",
-    "constituency_Wikidata": "Q13114408",
+    "number": "112",
+    "name": "Ranni",
+    "district": "Pathanamthitta",
+    "qid": "Q13114408",
     "reservation": "",
     "candidates": [
       {
@@ -6846,10 +6846,10 @@
     ]
   },
   {
-    "constituency_Number": "113",
-    "constituency_Name": "Aranmula",
-    "District": "Pathanamthitta",
-    "constituency_Wikidata": "Q16136677",
+    "number": "113",
+    "name": "Aranmula",
+    "district": "Pathanamthitta",
+    "qid": "Q16136677",
     "reservation": "",
     "candidates": [
       {
@@ -6897,10 +6897,10 @@
     ]
   },
   {
-    "constituency_Number": "114",
-    "constituency_Name": "Konni",
-    "District": "Pathanamthitta",
-    "constituency_Wikidata": "Q20577849",
+    "number": "114",
+    "name": "Konni",
+    "district": "Pathanamthitta",
+    "qid": "Q20577849",
     "reservation": "",
     "candidates": [
       {
@@ -6948,10 +6948,10 @@
     ]
   },
   {
-    "constituency_Number": "115",
-    "constituency_Name": "Adoor",
-    "District": "Pathanamthitta",
-    "constituency_Wikidata": "Q7601892",
+    "number": "115",
+    "name": "Adoor",
+    "district": "Pathanamthitta",
+    "qid": "Q7601892",
     "reservation": "SC",
     "candidates": [
       {
@@ -6999,10 +6999,10 @@
     ]
   },
   {
-    "constituency_Number": "116",
-    "constituency_Name": "Karunagappally",
-    "District": "Kollam",
-    "constituency_Wikidata": "Q13111030",
+    "number": "116",
+    "name": "Karunagappally",
+    "district": "Kollam",
+    "qid": "Q13111030",
     "reservation": "",
     "candidates": [
       {
@@ -7050,10 +7050,10 @@
     ]
   },
   {
-    "constituency_Number": "117",
-    "constituency_Name": "Chavara",
-    "District": "Kollam",
-    "constituency_Wikidata": "Q13111898",
+    "number": "117",
+    "name": "Chavara",
+    "district": "Kollam",
+    "qid": "Q13111898",
     "reservation": "",
     "candidates": [
       {
@@ -7101,10 +7101,10 @@
     ]
   },
   {
-    "constituency_Number": "118",
-    "constituency_Name": "Kunnathur",
-    "District": "Kollam",
-    "constituency_Wikidata": "Q17414812",
+    "number": "118",
+    "name": "Kunnathur",
+    "district": "Kollam",
+    "qid": "Q17414812",
     "reservation": "SC",
     "candidates": [
       {
@@ -7152,10 +7152,10 @@
     ]
   },
   {
-    "constituency_Number": "119",
-    "constituency_Name": "Kottarakkara",
-    "District": "Kollam",
-    "constituency_Wikidata": "Q13111616",
+    "number": "119",
+    "name": "Kottarakkara",
+    "district": "Kollam",
+    "qid": "Q13111616",
     "reservation": "",
     "candidates": [
       {
@@ -7217,10 +7217,10 @@
     ]
   },
   {
-    "constituency_Number": "120",
-    "constituency_Name": "Pathanapuram",
-    "District": "Kollam",
-    "constituency_Wikidata": "Q13113068",
+    "number": "120",
+    "name": "Pathanapuram",
+    "district": "Kollam",
+    "qid": "Q13113068",
     "reservation": "",
     "candidates": [
       {
@@ -7268,10 +7268,10 @@
     ]
   },
   {
-    "constituency_Number": "121",
-    "constituency_Name": "Punalur",
-    "District": "Kollam",
-    "constituency_Wikidata": "Q13113349",
+    "number": "121",
+    "name": "Punalur",
+    "district": "Kollam",
+    "qid": "Q13113349",
     "reservation": "",
     "candidates": [
       {
@@ -7319,10 +7319,10 @@
     ]
   },
   {
-    "constituency_Number": "122",
-    "constituency_Name": "Chadayamangalam",
-    "District": "Kollam",
-    "constituency_Wikidata": "Q16137010",
+    "number": "122",
+    "name": "Chadayamangalam",
+    "district": "Kollam",
+    "qid": "Q16137010",
     "reservation": "",
     "candidates": [
       {
@@ -7384,10 +7384,10 @@
     ]
   },
   {
-    "constituency_Number": "123",
-    "constituency_Name": "Kundara",
-    "District": "Kollam",
-    "constituency_Wikidata": "Q13111296",
+    "number": "123",
+    "name": "Kundara",
+    "district": "Kollam",
+    "qid": "Q13111296",
     "reservation": "",
     "candidates": [
       {
@@ -7435,10 +7435,10 @@
     ]
   },
   {
-    "constituency_Number": "124",
-    "constituency_Name": "Kollam",
-    "District": "Kollam",
-    "constituency_Wikidata": "Q48733036",
+    "number": "124",
+    "name": "Kollam",
+    "district": "Kollam",
+    "qid": "Q48733036",
     "reservation": "",
     "candidates": [
       {
@@ -7500,10 +7500,10 @@
     ]
   },
   {
-    "constituency_Number": "125",
-    "constituency_Name": "Eravipuram",
-    "District": "Kollam",
-    "constituency_Wikidata": "Q13110435",
+    "number": "125",
+    "name": "Eravipuram",
+    "district": "Kollam",
+    "qid": "Q13110435",
     "reservation": "",
     "candidates": [
       {
@@ -7551,10 +7551,10 @@
     ]
   },
   {
-    "constituency_Number": "126",
-    "constituency_Name": "Chathannoor",
-    "District": "Kollam",
-    "constituency_Wikidata": "Q13111908",
+    "number": "126",
+    "name": "Chathannoor",
+    "district": "Kollam",
+    "qid": "Q13111908",
     "reservation": "",
     "candidates": [
       {
@@ -7616,10 +7616,10 @@
     ]
   },
   {
-    "constituency_Number": "127",
-    "constituency_Name": "Varkala",
-    "District": "Thiruvananthapuram",
-    "constituency_Wikidata": "Q16134163",
+    "number": "127",
+    "name": "Varkala",
+    "district": "Thiruvananthapuram",
+    "qid": "Q16134163",
     "reservation": "",
     "candidates": [
       {
@@ -7667,10 +7667,10 @@
     ]
   },
   {
-    "constituency_Number": "128",
-    "constituency_Name": "Attingal",
-    "District": "Thiruvananthapuram",
-    "constituency_Wikidata": "Q16136708",
+    "number": "128",
+    "name": "Attingal",
+    "district": "Thiruvananthapuram",
+    "qid": "Q16136708",
     "reservation": "SC",
     "candidates": [
       {
@@ -7732,10 +7732,10 @@
     ]
   },
   {
-    "constituency_Number": "129",
-    "constituency_Name": "Chirayinkeezhu",
-    "District": "Thiruvananthapuram",
-    "constituency_Wikidata": "Q16137800",
+    "number": "129",
+    "name": "Chirayinkeezhu",
+    "district": "Thiruvananthapuram",
+    "qid": "Q16137800",
     "reservation": "SC",
     "candidates": [
       {
@@ -7783,10 +7783,10 @@
     ]
   },
   {
-    "constituency_Number": "130",
-    "constituency_Name": "Nedumangad",
-    "District": "Thiruvananthapuram",
-    "constituency_Wikidata": "Q16136140",
+    "number": "130",
+    "name": "Nedumangad",
+    "district": "Thiruvananthapuram",
+    "qid": "Q16136140",
     "reservation": "",
     "candidates": [
       {
@@ -7848,10 +7848,10 @@
     ]
   },
   {
-    "constituency_Number": "131",
-    "constituency_Name": "Vamanapuram",
-    "District": "Thiruvananthapuram",
-    "constituency_Wikidata": "Q16136220",
+    "number": "131",
+    "name": "Vamanapuram",
+    "district": "Thiruvananthapuram",
+    "qid": "Q16136220",
     "reservation": "",
     "candidates": [
       {
@@ -7899,10 +7899,10 @@
     ]
   },
   {
-    "constituency_Number": "132",
-    "constituency_Name": "Kazhakkoottam",
-    "District": "Thiruvananthapuram",
-    "constituency_Wikidata": "Q13111089",
+    "number": "132",
+    "name": "Kazhakkoottam",
+    "district": "Thiruvananthapuram",
+    "qid": "Q13111089",
     "reservation": "",
     "candidates": [
       {
@@ -7950,10 +7950,10 @@
     ]
   },
   {
-    "constituency_Number": "133",
-    "constituency_Name": "Vattiyoorkavu",
-    "District": "Thiruvananthapuram",
-    "constituency_Wikidata": "Q13114513",
+    "number": "133",
+    "name": "Vattiyoorkavu",
+    "district": "Thiruvananthapuram",
+    "qid": "Q13114513",
     "reservation": "",
     "candidates": [
       {
@@ -8001,10 +8001,10 @@
     ]
   },
   {
-    "constituency_Number": "134",
-    "constituency_Name": "Thiruvananthapuram",
-    "District": "Thiruvananthapuram",
-    "constituency_Wikidata": "Q16137289",
+    "number": "134",
+    "name": "Thiruvananthapuram",
+    "district": "Thiruvananthapuram",
+    "qid": "Q16137289",
     "reservation": "",
     "candidates": [
       {
@@ -8066,10 +8066,10 @@
     ]
   },
   {
-    "constituency_Number": "135",
-    "constituency_Name": "Nemom",
-    "District": "Thiruvananthapuram",
-    "constituency_Wikidata": "Q13113005",
+    "number": "135",
+    "name": "Nemom",
+    "district": "Thiruvananthapuram",
+    "qid": "Q13113005",
     "reservation": "",
     "candidates": [
       {
@@ -8131,10 +8131,10 @@
     ]
   },
   {
-    "constituency_Number": "136",
-    "constituency_Name": "Aruvikkara",
-    "District": "Thiruvananthapuram",
-    "constituency_Wikidata": "Q7602920",
+    "number": "136",
+    "name": "Aruvikkara",
+    "district": "Thiruvananthapuram",
+    "qid": "Q7602920",
     "reservation": "",
     "candidates": [
       {
@@ -8182,10 +8182,10 @@
     ]
   },
   {
-    "constituency_Number": "137",
-    "constituency_Name": "Parassala",
-    "District": "Thiruvananthapuram",
-    "constituency_Wikidata": "Q13113201",
+    "number": "137",
+    "name": "Parassala",
+    "district": "Thiruvananthapuram",
+    "qid": "Q13113201",
     "reservation": "",
     "candidates": [
       {
@@ -8247,10 +8247,10 @@
     ]
   },
   {
-    "constituency_Number": "138",
-    "constituency_Name": "Kattakkada",
-    "District": "Thiruvananthapuram",
-    "constituency_Wikidata": "Q6378291",
+    "number": "138",
+    "name": "Kattakkada",
+    "district": "Thiruvananthapuram",
+    "qid": "Q6378291",
     "reservation": "",
     "candidates": [
       {
@@ -8312,10 +8312,10 @@
     ]
   },
   {
-    "constituency_Number": "139",
-    "constituency_Name": "Kovalam",
-    "District": "Thiruvananthapuram",
-    "constituency_Wikidata": "Q13111733",
+    "number": "139",
+    "name": "Kovalam",
+    "district": "Thiruvananthapuram",
+    "qid": "Q13111733",
     "reservation": "",
     "candidates": [
       {
@@ -8377,10 +8377,10 @@
     ]
   },
   {
-    "constituency_Number": "140",
-    "constituency_Name": "Neyyattinkara",
-    "District": "Thiruvananthapuram",
-    "constituency_Wikidata": "Q16136265",
+    "number": "140",
+    "name": "Neyyattinkara",
+    "district": "Thiruvananthapuram",
+    "qid": "Q16136265",
     "reservation": "",
     "candidates": [
       {
