@@ -35,10 +35,19 @@
 
   function setView(mode) {
     viewMode = mode;
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem('viewPreference', mode);
+    }
   }
 
   onMount(() => {
     initLanguage();
+    if (typeof localStorage !== 'undefined') {
+      const saved = localStorage.getItem('viewPreference');
+      if (saved === 'grid' || saved === 'map') {
+        viewMode = saved;
+      }
+    }
   });
 </script>
 

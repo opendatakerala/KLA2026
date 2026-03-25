@@ -15,7 +15,9 @@
     const container = document.getElementById('kerala-map');
     if (!container) return;
 
-    container.innerHTML = mapSvgText;
+    // Remove style tag from SVG to prevent global CSS conflicts
+    const svgWithoutStyle = mapSvgText.replace(/<style>.*?<\/style>/s, '');
+    container.innerHTML = svgWithoutStyle;
     
     mapSvg = d3.select(container).select('svg');
     
@@ -24,7 +26,7 @@
     mapSvg.selectAll('path')
       .each(function() {
         const path = d3.select(this);
-        const qid = path.attr('id');
+        const qid = path.attr('data-qid');
         const row = data.find(x => x.constituency_Wikidata === qid);
         
         if (row) {
@@ -34,7 +36,6 @@
           path
             .attr('id', 'c' + row.constituency_Number)
             .attr('data-num', row.constituency_Number)
-            .attr('data-qid', qid)
             .classed('const-path', true)
             .classed('reserved-sc', isSc)
             .classed('reserved-st', isSt);
@@ -44,7 +45,7 @@
       })
       .on('mouseenter', function(event) {
         const path = d3.select(this);
-        const qid = path.attr('data-qid') || path.attr('id');
+        const qid = path.attr('data-qid');
         const row = data.find(x => x.constituency_Wikidata === qid);
         const name = row ? row.constituency_Name : (path.attr('data-name') || '');
         const num = row ? row.constituency_Number : '';
@@ -72,7 +73,7 @@
       })
       .on('click', function() {
         const path = d3.select(this);
-        const qid = path.attr('data-qid') || path.attr('id');
+        const qid = path.attr('data-qid');
         const row = data.find(x => x.constituency_Wikidata === qid);
         if (row) openModal(row);
       });
@@ -87,13 +88,14 @@
     
     mapSvg.selectAll('.const-path').each(function() {
       const path = d3.select(this);
-      const qid = path.attr('id');
+      const qid = path.attr('data-qid');
       const row = data.find(x => x.constituency_Wikidata === qid);
       
       if (!row) return;
       
-      path.classed('highlighted', filteredIds.has(row.constituency_Wikidata))
-          .classed('dimmed', !filteredIds.has(row.constituency_Wikidata));
+      const isMatch = filteredIds.has(row.constituency_Wikidata);
+      path.classed('highlighted', isMatch)
+          .classed('dimmed', !isMatch);
     });
   }
 
@@ -145,7 +147,11 @@
   }
 
   #kerala-map :global(path.const-path) {
-    transition: opacity 0.2s, fill 0.2s;
+    transition: opacity 0.2s, stroke-width 0.2s, fill 0.2s;
+    cursor: pointer;
+    fill: #9ca3af;
+    stroke: #232323;
+    stroke-width: 0.003;
   }
 
   #kerala-map :global(path.const-path.reserved-sc) {
@@ -157,11 +163,13 @@
   }
 
   #kerala-map :global(path.dimmed) {
-    opacity: 0.2;
+    opacity: 0.15;
   }
 
   #kerala-map :global(path.highlighted) {
     opacity: 1;
+    stroke: #000;
+    stroke-width: 0.006;
   }
 
   .map-legend {

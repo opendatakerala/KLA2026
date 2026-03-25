@@ -42,6 +42,7 @@ function generate() {
   const flippedMaxY = maxY - minY;
   
   let svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${viewWidth} ${viewHeight}" width="${viewWidth}" height="${viewHeight}">\n`;
+  svg += `  <style>path { fill: #9ca3af; stroke: #232323; stroke-width: 0.003; }</style>\n`;
   svg += `  <g transform="translate(${offsetX}, ${offsetY}) scale(${scale}) translate(${-minX}, ${-flippedMinY})">\n`;
   
   geo.features.forEach((feature, idx) => {
@@ -65,7 +66,7 @@ function generate() {
       }).join(' ');
     }
     
-    svg += `    <path fill="#9ca3af" stroke="#232323" stroke-width="0.003" id="${qid}" data-name="${name}" d="${pathData}"/>\n`;
+    svg += `    <path id="${qid}" data-qid="${qid}" data-name="${name}" d="${pathData}"/>\n`;
   });
   
   svg += `  </g>\n`;
