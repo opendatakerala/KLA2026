@@ -28,6 +28,7 @@
     "ok": "I Understand"
   },
   "stats": {
+    "overall": "Overall",
     "ldf": "LDF Candidates",
     "udf": "UDF Candidates",
     "nda": "NDA Candidates",
