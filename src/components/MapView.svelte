@@ -34,6 +34,7 @@
           path
             .attr('id', 'c' + row.constituency_Number)
             .attr('data-num', row.constituency_Number)
+            .attr('data-qid', qid)
             .classed('const-path', true)
             .classed('reserved-sc', isSc)
             .classed('reserved-st', isSt);
@@ -43,7 +44,7 @@
       })
       .on('mouseenter', function(event) {
         const path = d3.select(this);
-        const qid = path.attr('id');
+        const qid = path.attr('data-qid') || path.attr('id');
         const row = data.find(x => x.constituency_Wikidata === qid);
         const name = row ? row.constituency_Name : (path.attr('data-name') || '');
         const num = row ? row.constituency_Number : '';
@@ -71,7 +72,7 @@
       })
       .on('click', function() {
         const path = d3.select(this);
-        const qid = path.attr('id');
+        const qid = path.attr('data-qid') || path.attr('id');
         const row = data.find(x => x.constituency_Wikidata === qid);
         if (row) openModal(row);
       });
