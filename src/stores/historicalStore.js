@@ -7,7 +7,7 @@ export const historicalData = historicalComparison?.byConstituency || {};
 export function getHistoricalData(qid) {
   if (!qid || !historicalData) return [];
   
-  const years = Object.keys(historicalYears).slice().reverse();
+  const years = Object.keys(historicalYears).sort();
   const result = [];
   
   years.forEach(year => {

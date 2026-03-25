@@ -25,6 +25,8 @@
     renderChart();
   }
   
+  $: barsData = [...seriesData].reverse();
+  
   onMount(() => {
     currentView = localStorage.getItem(STORAGE_KEY) || 'bars';
     
@@ -124,7 +126,7 @@
     
     {#if currentView === 'bars'}
       <div class="bars-view">
-        {#each seriesData as yearData}
+        {#each barsData as yearData}
           <div class="year-group">
             <div class="year-label">{yearData.year}</div>
             <div class="bars-container">
