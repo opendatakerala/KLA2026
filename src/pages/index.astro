@@ -94,6 +94,7 @@ import { filterData, searchData } from '../lib/filter.js';
 import { createCardHTML, createModalHTML } from '../lib/grid.js';
 import { ALLIANCE_COLORS } from '../lib/constants.js';
 import { initLanguage, setLanguage, t, tReplace } from '../lib/i18n.js';
+import { initHistoricalChart } from '../lib/historical-chart.js';
 import constituencies from '../data/constituencies.json';
 import partyLookup from '../data/party-lookup.json';
 import historicalComparison from '../data/historical-comparison.json';
@@ -183,7 +184,13 @@ function openModal(row) {
   document.getElementById('modal-title').textContent = html.title;
   document.getElementById('modal-badges').innerHTML = html.badges;
   document.getElementById('modal-candidates').innerHTML = html.candidates;
-  document.getElementById('modal-historical').innerHTML = html.historical || '';
+  
+  // Initialize historical chart if data exists
+  if (html.historicalData) {
+    initHistoricalChart(html.historicalData);
+  } else {
+    document.getElementById('modal-historical').innerHTML = '';
+  }
   modalOverlay.classList.add('open');
 }
 

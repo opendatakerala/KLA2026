@@ -83,56 +83,50 @@ export function createModalHTML(row, partyLookup, t = (k) => k, historicalData =
     candidatesHtml += modalCandidate(o.party || 'Others', '#33AA55', o.party, o.name);
   });
 
-  let historicalHtml = '';
+  let historicalDataAttr = '';
   if (historicalData && row.constituency_Wikidata) {
-    const years = Object.keys(historicalData.years || {});
-    if (years.length > 0) {
-      const constData = historicalData.byConstituency;
-      
-      historicalHtml = '<div class="modal-section-label">Historical Results (Lok Sabha)</div><div class="modal-historical">';
-      
-      years.forEach(year => {
-        const yearLabel = historicalData.years[year];
-        const yearData = constData[yearLabel]?.[row.constituency_Wikidata];
-        
-        if (yearData && yearData.candidates) {
-          historicalHtml += `<div class="historical-year"><div class="historical-year-label">${yearLabel}</div>`;
-          
-          const allianceVotes = { LDF: 0, UDF: 0, NDA: 0, Others: 0 };
-          let totalVotes = 0;
-          
-          yearData.candidates.forEach(c => {
-            const votes = c.votes || 0;
-            totalVotes += votes;
-            if (c.alliance && allianceVotes.hasOwnProperty(c.alliance)) {
-              allianceVotes[c.alliance] += votes;
-            } else {
-              allianceVotes['Others'] += votes;
-            }
-          });
-          
-          ['LDF', 'UDF', 'NDA', 'Others'].forEach(al => {
-            if (allianceVotes[al] > 0) {
-              const pct = totalVotes > 0 ? ((allianceVotes[al] / totalVotes) * 100).toFixed(1) : 0;
-              const colors = { LDF: '#D94040', UDF: '#1565C0', NDA: '#E07828', Others: '#33AA55' };
-              historicalHtml += `<div class="historical-bar"><span class="historical-alliance ${al}">${al}</span><div class="historical-bar-track"><div class="historical-bar-fill" style="width:${pct}%;background:${colors[al]}"></div></div><span class="historical-pct">${pct}%</span></div>`;
-            }
-          });
-          
-          historicalHtml += '</div>';
-        }
-      });
-      
-      historicalHtml += '</div>';
+    const years = Object.keys(historicalData.years || {}).slice().reverse();
+    const constData = historicalData.byConstituency;
+    const seriesData = [];
+
+    years.forEach(year => {
+      const yearLabel = historicalData.years[year];
+      const yearConstituencyData = constData[yearLabel]?.[row.constituency_Wikidata];
+
+      if (yearConstituencyData?.candidates) {
+        const allianceVotes = { LDF: 0, UDF: 0, NDA: 0, Others: 0 };
+        let totalVotes = 0;
+
+        yearConstituencyData.candidates.forEach(c => {
+          const votes = c.votes || 0;
+          totalVotes += votes;
+          if (c.alliance && allianceVotes.hasOwnProperty(c.alliance)) {
+            allianceVotes[c.alliance] += votes;
+          } else {
+            allianceVotes['Others'] += votes;
+          }
+        });
+
+        seriesData.push({
+          year: yearLabel,
+          yearKey: year,
+          allianceVotes,
+          totalVotes
+        });
+      }
+    });
+
+    if (seriesData.length > 0) {
+      historicalDataAttr = JSON.stringify(seriesData);
     }
   }
-  
+
   return {
     eyebrow: `${row.District} · Constituency #${row.constituency_Number}`,
     title: row.constituency_Name,
     badges,
     candidates: candidatesHtml,
-    historical: historicalHtml
+    historicalData: historicalDataAttr
   };
 }
 
