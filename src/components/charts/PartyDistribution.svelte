@@ -4,11 +4,14 @@
   import candidatesByParty from '../../data/candidates-by-party.json';
   import { getPartyColor, ALLIANCE_COLORS } from '../../lib/constants.js';
 
+  const { isActive = false } = $props();
+
   const ALLIANCES = ['LDF', 'UDF', 'NDA', 'Others'];
   const ALLIANCE_LABELS = { LDF: 'LDF', UDF: 'UDF', NDA: 'NDA', Others: 'Others' };
   const ROW_HEIGHT = 20;
 
-  let charts = {};
+  let charts = $state({});
+  let resizeObserver = null;
 
   function renderChart(alliance, container, isMobile = false) {
     if (!container) return;
@@ -25,7 +28,9 @@
     const height = Math.max(180, data.length * ROW_HEIGHT + 20);
     container.style.height = `${height}px`;
 
-    const chart = echarts.init(container, null, { renderer: 'svg' });
+    if (!charts[alliance]) {
+      charts[alliance] = echarts.init(container, null, { renderer: 'svg' });
+    }
     
     const option = {
       tooltip: {
@@ -63,37 +68,43 @@
       }]
     };
 
-    chart.setOption(option);
-    charts[alliance] = chart;
+    charts[alliance].setOption(option);
   }
 
-  onMount(() => {
+  function initCharts() {
     const checkMobile = () => window.innerWidth <= 768;
-    let isMobile = checkMobile();
+    const isMobile = checkMobile();
     
     ALLIANCES.forEach(alliance => {
       const container = document.getElementById(`party-chart-${alliance.toLowerCase()}`);
       renderChart(alliance, container, isMobile);
     });
 
-    const handleResize = () => {
-      const newIsMobile = checkMobile();
-      if (newIsMobile !== isMobile) {
-        isMobile = newIsMobile;
-        Object.values(charts).forEach(chart => chart.dispose());
-        ALLIANCES.forEach(alliance => {
-          const container = document.getElementById(`party-chart-${alliance.toLowerCase()}`);
-          renderChart(alliance, container, isMobile);
-        });
-      } else {
-        Object.values(charts).forEach(chart => chart.resize());
-      }
-    };
-    window.addEventListener('resize', handleResize);
+    resizeObserver = new ResizeObserver(() => {
+      Object.values(charts).forEach(chart => chart.resize());
+    });
 
+    ALLIANCES.forEach(alliance => {
+      const container = document.getElementById(`party-chart-${alliance.toLowerCase()}`);
+      if (container) resizeObserver.observe(container);
+    });
+  }
+
+  function disposeCharts() {
+    if (resizeObserver) {
+      resizeObserver.disconnect();
+      resizeObserver = null;
+    }
+    Object.values(charts).forEach(chart => chart.dispose());
+    charts = {};
+  }
+
+  $effect(() => {
+    if (isActive) {
+      initCharts();
+    }
     return () => {
-      window.removeEventListener('resize', handleResize);
-      Object.values(charts).forEach(chart => chart.dispose());
+      disposeCharts();
     };
   });
 </script>

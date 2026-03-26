@@ -3,6 +3,8 @@
   import * as echarts from 'echarts';
   import genderData from '../../data/gender-distribution.json';
 
+  const { isActive = false } = $props();
+
   const TABS = ['overall', 'alliance', 'party', 'district'];
   const TAB_LABELS = {
     overall: 'Overall',
@@ -13,56 +15,25 @@
 
   const ALLIANCES = ['LDF', 'UDF', 'NDA', 'Others'];
 
-  let activeTab = 'overall';
-  let activeFilter = 'overall';
-  let chartContainer;
-  let chart = null;
-  let resizeObserver = null;
-  let initialized = false;
+  let activeTab = $state('overall');
+  let activeFilter = $state('overall');
+  let chartContainer = $state(null);
+  let chart = $state(null);
+  let resizeObserver = $state(null);
 
-  $: currentData = getCurrentData(activeTab, activeFilter);
-  $: femaleCount = currentData?.female || 0;
-  $: maleCount = currentData?.male || 0;
-  $: transCount = currentData?.transgender || 0;
-  $: showTransgender = transCount > 0;
-  $: totalCount = femaleCount + maleCount + transCount + (currentData?.unknown || 0);
-  $: femalePct = totalCount > 0 ? ((femaleCount / totalCount) * 100).toFixed(1) : 0;
-  $: malePct = totalCount > 0 ? ((maleCount / totalCount) * 100).toFixed(1) : 0;
-  $: transPct = totalCount > 0 ? ((transCount / totalCount) * 100).toFixed(1) : 0;
+  let currentData = $derived(getCurrentData(activeTab, activeFilter));
+  let femaleCount = $derived(currentData?.female || 0);
+  let maleCount = $derived(currentData?.male || 0);
+  let transCount = $derived(currentData?.transgender || 0);
+  let showTransgender = $derived(transCount > 0);
+  let totalCount = $derived(femaleCount + maleCount + transCount + (currentData?.unknown || 0));
+  let femalePct = $derived(totalCount > 0 ? ((femaleCount / totalCount) * 100).toFixed(1) : 0);
+  let malePct = $derived(totalCount > 0 ? ((maleCount / totalCount) * 100).toFixed(1) : 0);
+  let transPct = $derived(totalCount > 0 ? ((transCount / totalCount) * 100).toFixed(1) : 0);
 
-  $: tabsWithFloat = activeTab !== 'overall' 
+  let tabsWithFloat = $derived(activeTab !== 'overall' 
     ? TABS.filter(t => t !== activeTab).concat([activeTab])
-    : TABS;
-
-  $: if (initialized && chartContainer && totalCount >= 0) {
-    renderStackedBar();
-  }
-
-  onMount(() => {
-    resizeObserver = new ResizeObserver((entries) => {
-      for (const entry of entries) {
-        if (entry.contentRect.width > 0 && !initialized) {
-          initialized = true;
-          renderStackedBar();
-        } else if (chart) {
-          chart.resize();
-        }
-      }
-    });
-    
-    if (chartContainer) {
-      resizeObserver.observe(chartContainer);
-    }
-
-    return () => {
-      if (resizeObserver) {
-        resizeObserver.disconnect();
-      }
-      if (chart) {
-        chart.dispose();
-      }
-    };
-  });
+    : TABS);
 
   function getCurrentData(tab, filter) {
     if (tab === 'overall') {
@@ -91,13 +62,11 @@
   }
 
   function renderStackedBar() {
-    if (!chartContainer || !initialized) return;
+    if (!chartContainer) return;
 
     if (!chart) {
       chart = echarts.init(chartContainer, null, { renderer: 'svg' });
     }
-
-    const width = chartContainer.clientWidth || chartContainer.offsetWidth;
 
     const series = [
       {
@@ -148,6 +117,45 @@
     }
     return [];
   }
+
+  function initChart() {
+    if (!chartContainer) return;
+    
+    if (!chart) {
+      chart = echarts.init(chartContainer, null, { renderer: 'svg' });
+    }
+
+    resizeObserver = new ResizeObserver(() => {
+      if (chart) chart.resize();
+    });
+    resizeObserver.observe(chartContainer);
+
+    renderStackedBar();
+  }
+
+  function disposeChart() {
+    if (resizeObserver) {
+      resizeObserver.disconnect();
+      resizeObserver = null;
+    }
+    if (chart) {
+      chart.dispose();
+      chart = null;
+    }
+  }
+
+  $effect(() => {
+    if (isActive) {
+      setTimeout(() => initChart(), 50);
+    }
+    return () => disposeChart();
+  });
+
+  $effect(() => {
+    if (chart && totalCount >= 0) {
+      renderStackedBar();
+    }
+  });
 </script>
 
 <div class="gender-dist">

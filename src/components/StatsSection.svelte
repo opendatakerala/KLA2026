@@ -55,11 +55,11 @@
 
   <div class="stats-content">
     <div class="stats-panel" class:active={activeTab === 'candidates-by-party'}>
-      <PartyDistribution />
+      <PartyDistribution isActive={activeTab === 'candidates-by-party'} />
     </div>
 
     <div class="stats-panel" class:active={activeTab === 'gender-distribution'}>
-      <GenderDistribution />
+      <GenderDistribution isActive={activeTab === 'gender-distribution'} />
     </div>
 
     <div class="stats-panel" class:active={activeTab === 'criminal-cases'}>
