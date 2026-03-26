@@ -1,69 +1,112 @@
 <script>
-  import * as d3 from 'd3';
+  import { onMount } from 'svelte';
+  import * as echarts from 'echarts';
   import candidatesByParty from '../../data/candidates-by-party.json';
+  import { getPartyColor, ALLIANCE_COLORS } from '../../lib/constants.js';
 
-  const PARTY_PALETTE = [
-    '#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', 
-    '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf',
-    '#aec7e8', '#ffbb78', '#98df8a', '#ff9896', '#c5b0d5',
-    '#c49c94', '#f7b6d2', '#c7c7c7', '#dbdb8d', '#9edae5'
-  ];
+  const ALLIANCES = ['LDF', 'UDF', 'NDA', 'Others'];
+  const ALLIANCE_LABELS = { LDF: 'LDF', UDF: 'UDF', NDA: 'NDA', Others: 'Others' };
+  const ROW_HEIGHT = 20;
 
-  function renderAlliance(alliance, containerId) {
-    const container = document.querySelector(`#${containerId} .party-list`);
+  let charts = {};
+
+  function renderChart(alliance, container, isMobile = false) {
     if (!container) return;
 
     const parties = candidatesByParty[alliance] || {};
-    const data = Object.entries(parties).sort((a, b) => b[1] - a[1]);
-    const total = d3.sum(data, d => d[1]);
+    const data = Object.entries(parties)
+      .sort((a, b) => a[1] - b[1])
+      .map(([name, count]) => ({
+        name,
+        value: count,
+        itemStyle: { color: getPartyColor(name) }
+      }));
 
-    container.innerHTML = '';
+    const height = Math.max(180, data.length * ROW_HEIGHT + 20);
+    container.style.height = `${height}px`;
 
-    data.forEach(([name, count], idx) => {
-      const prop = total > 0 ? count / total : 0;
-      const minSize = 11;
-      const maxSize = 24;
-      const fontSize = minSize + prop * (maxSize - minSize);
-      const color = PARTY_PALETTE[idx % PARTY_PALETTE.length];
+    const chart = echarts.init(container, null, { renderer: 'svg' });
+    
+    const option = {
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: { type: 'shadow' },
+        formatter: '{b}: {c} candidates'
+      },
+      grid: { left: 4, right: isMobile ? 60 : 120, top: 4, bottom: 4, containLabel: false },
+      xAxis: { 
+        type: 'value',
+        axisLabel: { show: false },
+        axisLine: { show: false },
+        axisTick: { show: false },
+        splitLine: { show: false }
+      },
+      yAxis: { 
+        type: 'category',
+        data: data.map(d => d.name),
+        axisLabel: { show: false },
+        axisTick: { show: false },
+        axisLine: { show: false }
+      },
+      series: [{
+        type: 'bar',
+        data: data,
+        barWidth: '60%',
+        label: {
+          show: true,
+          position: 'right',
+          fontFamily: 'Inter',
+          fontSize: 10,
+          color: '#111827',
+          formatter: '{b} ({c})'
+        }
+      }]
+    };
 
-      const div = document.createElement('div');
-      div.className = 'party-item';
-      div.style.minHeight = '24px';
-      div.innerHTML = `
-        <div class="party-bar" style="width: ${prop * 100}%; background: ${color}; height: 24px;"></div>
-        <span class="party-name" style="font-size: ${fontSize}px">${name}</span>
-        <span class="party-count" style="font-size: ${fontSize * 0.7}px">${count}</span>
-      `;
-      container.appendChild(div);
-    });
+    chart.setOption(option);
+    charts[alliance] = chart;
   }
 
-  import { onMount } from 'svelte';
   onMount(() => {
-    renderAlliance('LDF', 'party-ldf');
-    renderAlliance('UDF', 'party-udf');
-    renderAlliance('NDA', 'party-nda');
-    renderAlliance('Others', 'party-others');
+    const checkMobile = () => window.innerWidth <= 768;
+    let isMobile = checkMobile();
+    
+    ALLIANCES.forEach(alliance => {
+      const container = document.getElementById(`party-chart-${alliance.toLowerCase()}`);
+      renderChart(alliance, container, isMobile);
+    });
+
+    const handleResize = () => {
+      const newIsMobile = checkMobile();
+      if (newIsMobile !== isMobile) {
+        isMobile = newIsMobile;
+        Object.values(charts).forEach(chart => chart.dispose());
+        ALLIANCES.forEach(alliance => {
+          const container = document.getElementById(`party-chart-${alliance.toLowerCase()}`);
+          renderChart(alliance, container, isMobile);
+        });
+      } else {
+        Object.values(charts).forEach(chart => chart.resize());
+      }
+    };
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      Object.values(charts).forEach(chart => chart.dispose());
+    };
   });
 </script>
 
 <div class="party-dist" id="party-dist">
-  <div class="party-alliance" id="party-ldf">
-    <div class="alliance-label">LDF</div>
-    <div class="party-list"></div>
-  </div>
-  <div class="party-alliance" id="party-udf">
-    <div class="alliance-label">UDF</div>
-    <div class="party-list"></div>
-  </div>
-  <div class="party-alliance" id="party-nda">
-    <div class="alliance-label">NDA</div>
-    <div class="party-list"></div>
-  </div>
-  <div class="party-alliance" id="party-others">
-    <div class="alliance-label">Others</div>
-    <div class="party-list"></div>
-  </div>
+  {#each ALLIANCES as alliance}
+    <div class="party-alliance">
+      <div class="alliance-label" style="color: {ALLIANCE_COLORS[alliance]}">
+        {ALLIANCE_LABELS[alliance]}
+      </div>
+      <div class="chart-container" id="party-chart-{alliance.toLowerCase()}"></div>
+    </div>
+  {/each}
 </div>
 
 <style>
@@ -73,7 +116,7 @@
     gap: 24px;
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 768px) {
     .party-dist {
       grid-template-columns: 1fr;
     }
@@ -87,7 +130,7 @@
 
   .alliance-label {
     font-family: 'DM Mono', monospace;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 700;
     letter-spacing: 0.1em;
     margin-bottom: 12px;
@@ -95,44 +138,8 @@
     border-bottom: 1px solid var(--border);
   }
 
-  #party-ldf .alliance-label { color: #EE0000; }
-  #party-udf .alliance-label { color: #0078FF; }
-  #party-nda .alliance-label { color: #FF9933; }
-  #party-others .alliance-label { color: #33AA00; }
-
-  .party-list {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .party-bar {
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    opacity: 0.15;
-    z-index: -1;
-  }
-
-  .party-item {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-    line-height: 1.2;
-    position: relative;
-    min-height: 1.5em;
-  }
-
-  .party-name {
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    color: var(--text);
-  }
-
-  .party-count {
-    font-family: 'DM Mono', monospace;
-    color: var(--muted);
-    font-weight: 500;
+  .chart-container {
+    width: 100%;
+    min-height: 180px;
   }
 </style>
