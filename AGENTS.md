@@ -8,21 +8,6 @@ This document provides guidelines for AI agents working on the KLA (Kerala Legis
 - **Build System**: Vite (via Astro)
 - **No tests configured** - Do not add tests unless explicitly requested
 
-## Build Commands
-
-```bash
-# Development
-npm run dev          # Start dev server
-npm run start        # Alias for dev
-
-# Build
-npm run build        # Production build
-npm run preview      # Preview production build
-
-# Astro
-npm run astro        # Run astro CLI
-```
-
 ## Data Generation Scripts
 
 ```bash
@@ -150,3 +135,9 @@ src/
 └── styles/              # Global CSS
 scripts/                 # Data generation scripts
 ```
+
+## Git
+
+DO NOT EVER PUSH CODE without user explicitly asking you to.
+
+DO NOT COMMIT CHANGES unless user explicitly asks you to.
