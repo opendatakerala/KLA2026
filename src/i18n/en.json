@@ -40,6 +40,17 @@
     "educationDistribution": "Education",
     "comingSoon": "Data coming soon"
   },
+  "statsBar": {
+    "constituencies": "Constituencies",
+    "booths": "Polling Booths",
+    "voters": "Voters",
+    "parties": "Parties",
+    "alliances": "Alliances",
+    "nominations": "Nomination Papers",
+    "applications": "Candidate Applications",
+    "afterScrutiny": "After Scrutiny",
+    "contesting": "Contesting Candidates"
+  },
   "filters": {
     "all": "All",
     "ldf": "LDF",

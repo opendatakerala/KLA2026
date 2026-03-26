@@ -1,81 +1,112 @@
 <script>
-  import { stats } from '../stores/constituencyStore.js';
+  import { onMount } from 'svelte';
+  import { t } from '../lib/i18n.js';
+
+  const statsData = [
+    { key: 'constituencies', value: 140 },
+    { key: 'booths', value: 30471 },
+    { key: 'voters', value: '???????' },
+    { key: 'parties', value: '25' },
+    { key: 'alliances', value: 3 },
+    { key: 'nominations', value: 2117 },
+    { key: 'applications', value: 1252 },
+    { key: 'afterScrutiny', value: '????' },
+    { key: 'contesting', value: '???' },
+  ];
+
+  let displayedValues = statsData.map(() => 0);
+
+  onMount(() => {
+    const duration = 1500;
+    const startTime = performance.now();
+
+    function animate(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+
+      statsData.forEach((stat, index) => {
+        if (typeof stat.value === 'number') {
+          displayedValues[index] = Math.floor(stat.value * eased);
+        }
+      });
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        statsData.forEach((stat, index) => {
+          if (typeof stat.value === 'number') {
+            displayedValues[index] = stat.value;
+          }
+        });
+      }
+    }
+
+    requestAnimationFrame(animate);
+  });
 </script>
 
-<div class="stats-row">
-  <div class="stat-cell ldf">
-    <div class="stat-n" id="stat-ldf">{$stats.ldf}</div>
-    <div class="stat-label" data-i18n="stats.ldf">LDF Candidates</div>
-  </div>
-  <div class="stat-cell udf">
-    <div class="stat-n" id="stat-udf">{$stats.udf}</div>
-    <div class="stat-label" data-i18n="stats.udf">UDF Candidates</div>
-  </div>
-  <div class="stat-cell nda">
-    <div class="stat-n" id="stat-nda">{$stats.nda}</div>
-    <div class="stat-label" data-i18n="stats.nda">NDA Candidates</div>
-  </div>
-  <div class="stat-cell sc">
-    <div class="stat-n" id="stat-sc">{$stats.sc}</div>
-    <div class="stat-label" data-i18n="stats.sc">SC Reserved</div>
-  </div>
-  <div class="stat-cell st">
-    <div class="stat-n" id="stat-st">{$stats.st}</div>
-    <div class="stat-label" data-i18n="stats.st">ST Reserved</div>
-  </div>
+<div class="stats-bar">
+  {#each statsData as stat, index}
+    <div class="stat-cell">
+      <div class="stat-value">
+        {typeof stat.value === 'number' ? displayedValues[index].toLocaleString() : stat.value}
+      </div>
+      <div class="stat-label" data-i18n="statsBar.{stat.key}">{t('statsBar.' + stat.key)}</div>
+    </div>
+  {/each}
 </div>
 
 <style>
-  .stats-row {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-    gap: 10px;
+  .stats-bar {
+    display: flex;
+    gap: 8px;
     margin-bottom: 28px;
+    overflow-x: auto;
+    padding-bottom: 4px;
   }
 
   .stat-cell {
+    flex: 1;
+    min-width: 90px;
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 8px;
-    padding: 16px 16px 14px;
-    position: relative;
-    overflow: hidden;
+    padding: 14px 10px 12px;
+    text-align: center;
   }
 
-  .stat-cell::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-  }
-
-  .stat-cell.ldf::before { background: var(--ldf); }
-  .stat-cell.udf::before { background: var(--udf); }
-  .stat-cell.nda::before { background: var(--nda); }
-  .stat-cell.sc::before { background: var(--sc-color); }
-  .stat-cell.st::before { background: var(--st-color); }
-
-  .stat-n {
+  .stat-value {
     font-family: 'Inter', sans-serif;
-    font-size: 34px;
+    font-size: 26px;
     font-weight: 700;
-    line-height: 1;
-    margin-bottom: 6px;
+    line-height: 1.1;
+    color: var(--text);
+    margin-bottom: 4px;
   }
-
-  .stat-cell.ldf .stat-n { color: var(--ldf); }
-  .stat-cell.udf .stat-n { color: var(--udf); }
-  .stat-cell.nda .stat-n { color: var(--nda); }
-  .stat-cell.sc .stat-n { color: var(--sc-color); }
-  .stat-cell.st .stat-n { color: var(--st-color); }
 
   .stat-label {
     font-family: 'DM Mono', monospace;
     font-size: 9px;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--muted);
+    white-space: nowrap;
+  }
+
+  @media (max-width: 640px) {
+    .stats-bar {
+      gap: 6px;
+    }
+    .stat-cell {
+      min-width: 70px;
+      padding: 10px 6px 8px;
+    }
+    .stat-value {
+      font-size: 18px;
+    }
+    .stat-label {
+      font-size: 7px;
+    }
   }
 </style>

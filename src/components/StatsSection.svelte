@@ -3,7 +3,6 @@
   import StatsBar from './StatsBar.svelte';
   import PartyDistribution from './charts/PartyDistribution.svelte';
   import GenderDistribution from './charts/GenderDistribution.svelte';
-  import { stats } from '../stores/constituencyStore.js';
 
   let collapsed = true;
   let activeTab = '';
