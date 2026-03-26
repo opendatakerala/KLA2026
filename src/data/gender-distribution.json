@@ -30,5 +30,291 @@
       "transgender": 1,
       "unknown": 0
     }
+  },
+  "byParty": {
+    "CPI(M)": {
+      "male": 65,
+      "female": 10,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "Independent (INL Support)": {
+      "male": 1,
+      "female": 0,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "CPI": {
+      "male": 19,
+      "female": 5,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "Kerala Congress (M)": {
+      "male": 11,
+      "female": 1,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "Congress (Secular)": {
+      "male": 1,
+      "female": 0,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "RJD": {
+      "male": 3,
+      "female": 0,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "NCP(SP)": {
+      "male": 3,
+      "female": 0,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "INL": {
+      "male": 1,
+      "female": 0,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "Independent (CPI(M) support)": {
+      "male": 12,
+      "female": 1,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "Independent (CPI support)": {
+      "male": 1,
+      "female": 0,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "Independent (INL support)": {
+      "male": 1,
+      "female": 0,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "Indian Socialist Janata Dal": {
+      "male": 3,
+      "female": 0,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "RSP(L)": {
+      "male": 1,
+      "female": 0,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "Kerala Congress (B)": {
+      "male": 1,
+      "female": 0,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "IUML": {
+      "male": 24,
+      "female": 2,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "INC": {
+      "male": 83,
+      "female": 9,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "KEC": {
+      "male": 7,
+      "female": 1,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "Independent (RSP support)": {
+      "male": 1,
+      "female": 0,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "Independent (INC Support)": {
+      "male": 3,
+      "female": 0,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "RMPI": {
+      "male": 0,
+      "female": 1,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "AITC": {
+      "male": 1,
+      "female": 0,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "Independent (IUML Support)": {
+      "male": 1,
+      "female": 0,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "KC(J)": {
+      "male": 1,
+      "female": 0,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "DCK": {
+      "male": 1,
+      "female": 0,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "RSP": {
+      "male": 4,
+      "female": 0,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "CMP": {
+      "male": 1,
+      "female": 0,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "BJP": {
+      "male": 83,
+      "female": 14,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "TTP": {
+      "male": 14,
+      "female": 5,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "BDJS": {
+      "male": 21,
+      "female": 2,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "JRS": {
+      "male": 1,
+      "female": 0,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "AAP": {
+      "male": 56,
+      "female": 4,
+      "transgender": 1,
+      "unknown": 0
+    },
+    "SDPI": {
+      "male": 30,
+      "female": 0,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "Others": {
+      "male": 1,
+      "female": 0,
+      "transgender": 0,
+      "unknown": 0
+    }
+  },
+  "byDistrict": {
+    "Kasaragod": {
+      "male": 14,
+      "female": 2,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "Kannur": {
+      "male": 38,
+      "female": 3,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "Wayanad": {
+      "male": 9,
+      "female": 2,
+      "transgender": 1,
+      "unknown": 0
+    },
+    "Kozhikode": {
+      "male": 39,
+      "female": 6,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "Malappuram": {
+      "male": 56,
+      "female": 5,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "Palakkad": {
+      "male": 38,
+      "female": 4,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "Thrissur": {
+      "male": 51,
+      "female": 5,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "Ernakulam": {
+      "male": 50,
+      "female": 7,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "Idukki": {
+      "male": 17,
+      "female": 1,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "Kottayam": {
+      "male": 30,
+      "female": 4,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "Alappuzha": {
+      "male": 25,
+      "female": 4,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "Pathanamthitta": {
+      "male": 13,
+      "female": 2,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "Kollam": {
+      "male": 31,
+      "female": 6,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "Thiruvananthapuram": {
+      "male": 45,
+      "female": 4,
+      "transgender": 0,
+      "unknown": 0
+    }
   }
 }

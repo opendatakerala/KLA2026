@@ -1,193 +1,381 @@
 <script>
   import { onMount } from 'svelte';
-  import * as echarts from "echarts";
-  import genderDistribution from "../../data/gender-distribution.json";
+  import * as echarts from 'echarts';
+  import genderData from '../../data/gender-distribution.json';
 
-  const GENDER_COLORS = {
-    male: "#3B82F6",
-    female: "#EC4899",
-    transgender: "#8B5CF6",
-    unknown: "#9CA3AF",
+  const TABS = ['overall', 'alliance', 'party', 'district'];
+  const TAB_LABELS = {
+    overall: 'Overall',
+    alliance: 'Alliance',
+    party: 'Party',
+    district: 'District'
   };
 
-  let charts = [];
+  const ALLIANCES = ['LDF', 'UDF', 'NDA', 'Others'];
 
-  function renderGenderPie(data, containerId, size = "small") {
-    const container = document.getElementById(containerId);
-    if (!container) return null;
+  let activeTab = 'overall';
+  let activeFilter = 'overall';
+  let chartContainer;
+  let chart = null;
+  let resizeObserver = null;
+  let initialized = false;
 
-    const chart = echarts.init(container, null, { renderer: "svg" });
+  $: currentData = getCurrentData(activeTab, activeFilter);
+  $: femaleCount = currentData?.female || 0;
+  $: maleCount = currentData?.male || 0;
+  $: transCount = currentData?.transgender || 0;
+  $: showTransgender = transCount > 0;
+  $: totalCount = femaleCount + maleCount + transCount + (currentData?.unknown || 0);
+  $: femalePct = totalCount > 0 ? ((femaleCount / totalCount) * 100).toFixed(1) : 0;
+  $: malePct = totalCount > 0 ? ((maleCount / totalCount) * 100).toFixed(1) : 0;
+  $: transPct = totalCount > 0 ? ((transCount / totalCount) * 100).toFixed(1) : 0;
 
-    const chartData = Object.entries(data)
-      .filter(([k, v]) => v > 0)
-      .map(([key, value]) => ({
-        name: key.charAt(0).toUpperCase() + key.slice(1),
-        value,
-        itemStyle: { color: GENDER_COLORS[key] || "#9CA3AF" },
-      }));
+  $: tabsWithFloat = activeTab !== 'overall' 
+    ? TABS.filter(t => t !== activeTab).concat([activeTab])
+    : TABS;
 
-    const option = {
-      tooltip: {
-        trigger: "item",
-        formatter: "{b}: {c} ({d}%)",
-      },
-      series: [
-        {
-          type: "pie",
-          radius: "50%",
-          center: ["50%", "50%"],
-          label: {
-            show: true,
-            position: "outer",
-            alignTo: "labelLine",
-            bleedMargin: 10,
-            formatter: "{b}\n{c}",
-            fontSize: size === "large" ? 18 : 14,
-            fontFamily: "DM Mono",
-            lineHeight: 18,
-            padding: [4, 0, 0, 0],
-          },
-          data: chartData,
-        },
-      ],
-    };
-
-    chart.setOption(option);
-    return chart;
-  }
-
-  function renderAll() {
-    charts = [
-      renderGenderPie(
-        genderDistribution.overall,
-        "pie-chart-overall",
-        "large",
-      ),
-      renderGenderPie(
-        genderDistribution.byAlliance?.LDF || {},
-        "pie-chart-gender-ldf",
-      ),
-      renderGenderPie(
-        genderDistribution.byAlliance?.UDF || {},
-        "pie-chart-gender-udf",
-      ),
-      renderGenderPie(
-        genderDistribution.byAlliance?.NDA || {},
-        "pie-chart-gender-nda",
-      ),
-      renderGenderPie(
-        genderDistribution.byAlliance?.Others || {},
-        "pie-chart-gender-others",
-      ),
-    ];
+  $: if (initialized && chartContainer && totalCount >= 0) {
+    renderStackedBar();
   }
 
   onMount(() => {
-    requestAnimationFrame(() => {
-      renderAll();
-      setTimeout(() => {
-        charts.forEach((c) => c && c.resize());
-      }, 100);
+    resizeObserver = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.contentRect.width > 0 && !initialized) {
+          initialized = true;
+          renderStackedBar();
+        } else if (chart) {
+          chart.resize();
+        }
+      }
     });
+    
+    if (chartContainer) {
+      resizeObserver.observe(chartContainer);
+    }
 
-    window.addEventListener("resize", () => {
-      charts.forEach((c) => c && c.resize());
-    });
-
-    window.addEventListener("stats-tab-shown", () => {
-      charts.forEach((c) => c && c.resize());
-    });
+    return () => {
+      if (resizeObserver) {
+        resizeObserver.disconnect();
+      }
+      if (chart) {
+        chart.dispose();
+      }
+    };
   });
+
+  function getCurrentData(tab, filter) {
+    if (tab === 'overall') {
+      return genderData.overall;
+    } else if (tab === 'alliance') {
+      return genderData.byAlliance[filter] || { male: 0, female: 0, transgender: 0, unknown: 0 };
+    } else if (tab === 'party') {
+      return genderData.byParty[filter] || { male: 0, female: 0, transgender: 0, unknown: 0 };
+    } else if (tab === 'district') {
+      return genderData.byDistrict[filter] || { male: 0, female: 0, transgender: 0, unknown: 0 };
+    }
+    return genderData.overall;
+  }
+
+  function setTab(tab) {
+    activeTab = tab;
+    if (tab === 'overall') {
+      activeFilter = 'overall';
+    } else if (tab === 'alliance') {
+      activeFilter = 'LDF';
+    } else if (tab === 'party') {
+      activeFilter = Object.keys(genderData.byParty)[0] || '';
+    } else if (tab === 'district') {
+      activeFilter = Object.keys(genderData.byDistrict)[0] || '';
+    }
+  }
+
+  function renderStackedBar() {
+    if (!chartContainer || !initialized) return;
+
+    if (!chart) {
+      chart = echarts.init(chartContainer, null, { renderer: 'svg' });
+    }
+
+    const width = chartContainer.clientWidth || chartContainer.offsetWidth;
+
+    const series = [
+      {
+        type: 'bar',
+        stack: 'total',
+        data: [{ value: femaleCount, itemStyle: { color: '#EC4899' } }],
+        barWidth: '100%',
+        label: { show: false }
+      }
+    ];
+
+    if (showTransgender) {
+      series.push({
+        type: 'bar',
+        stack: 'total',
+        data: [{ value: transCount, itemStyle: { color: '#8B5CF6' } }],
+        barWidth: '100%',
+        label: { show: false }
+      });
+    }
+
+    series.push({
+      type: 'bar',
+      stack: 'total',
+      data: [{ value: maleCount, itemStyle: { color: '#3B82F6' } }],
+      barWidth: '100%',
+      label: { show: false }
+    });
+
+    const option = {
+      tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+      grid: { left: 0, right: 0, top: 0, bottom: 0, containLabel: false },
+      xAxis: { type: 'value', show: false, min: 0, max: totalCount },
+      yAxis: { type: 'category', show: false },
+      series
+    };
+
+    chart.setOption(option);
+  }
+
+  function getFilterOptions(tab) {
+    if (tab === 'alliance') {
+      return ALLIANCES;
+    } else if (tab === 'party') {
+      return Object.keys(genderData.byParty);
+    } else if (tab === 'district') {
+      return Object.keys(genderData.byDistrict);
+    }
+    return [];
+  }
 </script>
 
-<div class="gender-pies">
-    <div class="pie-wrapper-large">
-        <div class="pie-label" data-i18n="stats.overall">Overall</div>
-        <div class="pie-chart-large" id="pie-chart-overall"></div>
+<div class="gender-dist">
+  <div class="tab-bar">
+    <div class="tabs">
+      {#each tabsWithFloat as tab}
+        <button 
+          class="tab-btn" 
+          class:active={activeTab === tab}
+          on:click={() => setTab(tab)}
+        >
+          {TAB_LABELS[tab]}
+        </button>
+      {/each}
     </div>
-    <div class="pies-small">
-        <div class="pie-wrapper">
-            <div class="pie-label">LDF</div>
-            <div class="pie-chart" id="pie-chart-gender-ldf"></div>
-        </div>
-        <div class="pie-wrapper">
-            <div class="pie-label">UDF</div>
-            <div class="pie-chart" id="pie-chart-gender-udf"></div>
-        </div>
-        <div class="pie-wrapper">
-            <div class="pie-label">NDA</div>
-            <div class="pie-chart" id="pie-chart-gender-nda"></div>
-        </div>
-        <div class="pie-wrapper">
-            <div class="pie-label">Others</div>
-            <div class="pie-chart" id="pie-chart-gender-others"></div>
-        </div>
+    {#if activeTab !== 'overall'}
+      <select 
+        class="filter-select"
+        bind:value={activeFilter}
+      >
+        {#each getFilterOptions(activeTab) as opt}
+          <option value={opt}>{opt}</option>
+        {/each}
+      </select>
+    {/if}
+  </div>
+
+  <div class="cards-row" class:has-trans={showTransgender}>
+    <div class="gender-card female">
+      <div class="card-icon">♀</div>
+      <div class="card-count">{femaleCount}</div>
+      <div class="card-label">Women</div>
+      <div class="card-pct">{femalePct}%</div>
     </div>
+    {#if showTransgender}
+      <div class="gender-card trans">
+        <div class="card-icon">⚥</div>
+        <div class="card-count">{transCount}</div>
+        <div class="card-label">Transgender</div>
+        <div class="card-pct">{transPct}%</div>
+      </div>
+    {/if}
+    <div class="gender-card male">
+      <div class="card-icon">♂</div>
+      <div class="card-count">{maleCount}</div>
+      <div class="card-label">Men</div>
+      <div class="card-pct">{malePct}%</div>
+    </div>
+  </div>
+
+  <div class="stacked-bar-container">
+    <div class="stacked-bar" bind:this={chartContainer}></div>
+    <div class="bar-legend">
+      <span class="legend-item"><span class="legend-dot female"></span> Women ({femalePct}%)</span>
+      {#if showTransgender}
+        <span class="legend-item"><span class="legend-dot trans"></span> Transgender ({transPct}%)</span>
+      {/if}
+      <span class="legend-item"><span class="legend-dot male"></span> Men ({malePct}%)</span>
+    </div>
+  </div>
 </div>
 
 <style>
-    .gender-pies {
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
-    }
+  .gender-dist {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
 
-    .pie-wrapper-large {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 16px;
-        background: var(--card2);
-        border-radius: 10px;
-    }
+  .tab-bar {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
 
-    .pie-chart-large {
-        width: 100%;
-        max-width: 600px;
-        height: 400px;
-    }
+  .tabs {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    position: relative;
+  }
 
-    @media (max-width: 600px) {
-        .pie-chart-large {
-            height: 280px;
-        }
-    }
+  .tab-btn {
+    padding: 8px 16px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
 
-    .pies-small {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 16px;
-    }
+  .tab-btn:hover {
+    border-color: var(--gold-mid);
+    color: var(--text-soft);
+  }
 
-    @media (max-width: 800px) {
-        .pies-small {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
+  .tab-btn.active {
+    background: var(--gold-light);
+    border-color: var(--gold-mid);
+    color: var(--gold);
+  }
 
-    @media (max-width: 500px) {
-        .pies-small {
-            grid-template-columns: 1fr;
-        }
-    }
+  .filter-select {
+    padding: 8px 12px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--text);
+    min-width: 150px;
+    cursor: pointer;
+  }
 
-    .pie-wrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+  .cards-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
 
-    .pie-label {
-        font-family: "DM Mono", monospace;
-        font-size: 18px;
-        font-weight: 600;
-        letter-spacing: 0.08em;
-        margin-bottom: 8px;
-        color: var(--text-soft);
-    }
+  .cards-row.has-trans {
+    grid-template-columns: repeat(3, 1fr);
+  }
 
-    .pie-chart {
-        width: 100%;
-        height: 280px;
-    }
+  .gender-card {
+    padding: 24px 16px;
+    border-radius: 12px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .gender-card.female {
+    background: #FCE7F3;
+    border: 1px solid #F9A8D4;
+  }
+
+  .gender-card.male {
+    background: #DBEAFE;
+    border: 1px solid #93C5FD;
+  }
+
+  .gender-card.trans {
+    background: #EDE9FE;
+    border: 1px solid #C4B5FD;
+  }
+
+  .card-icon {
+    font-size: 28px;
+    line-height: 1;
+  }
+
+  .gender-card.female .card-icon { color: #EC4899; }
+  .gender-card.male .card-icon { color: #3B82F6; }
+  .gender-card.trans .card-icon { color: #8B5CF6; }
+
+  .card-count {
+    font-family: 'Inter', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1;
+    margin-top: 8px;
+  }
+
+  .gender-card.female .card-count { color: #BE185D; }
+  .gender-card.male .card-count { color: #1D4ED8; }
+  .gender-card.trans .card-count { color: #7C3AED; }
+
+  .card-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .gender-card.female .card-label { color: #9D174D; }
+  .gender-card.male .card-label { color: #1E40AF; }
+  .gender-card.trans .card-label { color: #6D28D9; }
+
+  .card-pct {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  .stacked-bar-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+  }
+
+  .stacked-bar {
+    width: 100%;
+    height: 24px;
+    border-radius: 4px;
+    overflow: hidden;
+    min-width: 0;
+  }
+
+  .bar-legend {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+  }
+
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  .legend-dot.female { background: #EC4899; }
+  .legend-dot.male { background: #3B82F6; }
+  .legend-dot.trans { background: #8B5CF6; }
 </style>
