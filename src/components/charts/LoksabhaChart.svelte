@@ -21,7 +21,7 @@
   let hasData = $derived(seriesData.length > 0);
 
   $effect(() => {
-    if (chartContainer && hasData && currentView === 'stacked') {
+    if (chartContainer && hasData && (currentView === 'bars' || currentView === 'stacked')) {
       renderChart();
     }
   });
@@ -46,18 +46,51 @@
 
   function renderChart() {
     if (!chartContainer || !hasData) return;
-    if (chart) { chart.dispose(); chart = null; }
+    
+    if (chart) {
+      chart.dispose();
+      chart = null;
+    }
     chart = echarts.init(chartContainer, null, { renderer: 'svg' });
 
+    const isStacked = currentView === 'stacked';
+    
     const series = ALLIANCES
       .filter(al => seriesData.some(d => d.allianceVotes[al] > 0))
       .map(al => ({
         name: al,
         type: 'bar',
-        stack: 'total',
+        stack: isStacked ? 'total' : undefined,
         data: seriesData.map(d => {
-          const pct = d.totalVotes > 0 ? (d.allianceVotes[al] / d.totalVotes) * 100 : 0;
-          return parseFloat(pct.toFixed(1));
+          const allianceVotes = d.allianceVotes[al] || 0;
+          const pct = d.totalVotes > 0 ? (allianceVotes / d.totalVotes) * 100 : 0;
+          let candidateName = '';
+          let candidateParty = '';
+          let candidateVotes = 0;
+          
+          if (d.winner?.alliance === al) {
+            candidateName = d.winner.name || '';
+            candidateParty = d.winner.party || '';
+            candidateVotes = d.winner.votes || 0;
+          } else if (d.runnerUp?.alliance === al) {
+            candidateName = d.runnerUp.name || '';
+            candidateParty = d.runnerUp.party || '';
+            candidateVotes = d.runnerUp.votes || 0;
+          } else if (d.candidates) {
+            const cand = d.candidates.find(c => c.alliance === al);
+            if (cand) {
+              candidateName = cand.candidate || '';
+              candidateParty = cand.party || '';
+              candidateVotes = cand.votes || 0;
+            }
+          }
+          
+          return {
+            value: parseFloat(pct.toFixed(1)),
+            candidate: candidateName,
+            party: candidateParty,
+            votes: candidateVotes
+          };
         }),
         itemStyle: { color: COLORS[al] },
         label: {
@@ -76,8 +109,12 @@
           const yearData = seriesData[params[0].dataIndex];
           let html = `<b>${yearData.year}</b><br/>`;
           params.forEach(p => {
-            const votes = yearData.allianceVotes[p.seriesName];
+            const item = p.data;
+            const votes = item.votes;
             html += `<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${p.color};margin-right:4px"></span>${p.seriesName}: ${p.value}% (${votes.toLocaleString()} votes)<br/>`;
+            if (item.candidate && item.party) {
+              html += `<span style="margin-left:16px;font-size:10px;color:#666">${item.candidate} (${item.party})</span><br/>`;
+            }
           });
           return html;
         }
@@ -87,7 +124,7 @@
       xAxis: { type: 'category', data: seriesData.map(d => d.year) },
       yAxis: { type: 'value', max: 100, axisLabel: { formatter: '{value}%' } },
       series
-    });
+    }, { notMerge: true });
   }
 
   function getPct(votes, total) {
@@ -139,27 +176,7 @@
     </div>
 
     {#if currentView === 'bars'}
-      <div class="vertical-bars-view">
-        {#each seriesData as yearData}
-          <div class="year-block">
-            <div class="year-title">{yearData.year}</div>
-            <div class="vertical-bars">
-              {#each ALLIANCES as alliance}
-                {#if yearData.allianceVotes[alliance] > 0}
-                  {@const pct = parseFloat(getPct(yearData.allianceVotes[alliance], yearData.totalVotes))}
-                  <div class="vbar-col">
-                    <div class="vbar-pct" style="color:{COLORS[alliance]}">{pct}%</div>
-                    <div class="vbar-track">
-                      <div class="vbar-fill" style="height:{pct}%;background:{COLORS[alliance]}"></div>
-                    </div>
-                    <div class="vbar-label" style="color:{COLORS[alliance]}">{alliance}</div>
-                  </div>
-                {/if}
-              {/each}
-            </div>
-          </div>
-        {/each}
-      </div>
+      <div class="chart-view" bind:this={chartContainer}></div>
 
     {:else if currentView === 'stacked'}
       <div class="chart-view" bind:this={chartContainer}></div>
@@ -332,73 +349,6 @@
 
   .hist-switch-btn:hover { border-color: var(--text); color: var(--text); }
   .hist-switch-btn.active { background: var(--text); color: var(--card); border-color: var(--text); }
-
-  .vertical-bars-view { display: flex; gap: 20px; align-items: flex-end; }
-
-  .year-block {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .year-title {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    color: var(--muted);
-    letter-spacing: 0.05em;
-  }
-
-  .vertical-bars {
-    display: flex;
-    align-items: flex-end;
-    gap: 4px;
-    height: 160px;
-    width: 100%;
-    justify-content: center;
-  }
-
-  .vbar-col {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3px;
-    flex: 1;
-    max-width: 40px;
-    height: 100%;
-    justify-content: flex-end;
-  }
-
-  .vbar-pct {
-    font-family: 'DM Mono', monospace;
-    font-size: 8px;
-    font-weight: 700;
-    line-height: 1;
-  }
-
-  .vbar-track {
-    width: 100%;
-    height: 130px;
-    background: var(--bg2);
-    border-radius: 3px 3px 0 0;
-    display: flex;
-    align-items: flex-end;
-    overflow: hidden;
-  }
-
-  .vbar-fill {
-    width: 100%;
-    border-radius: 3px 3px 0 0;
-    transition: height 0.4s ease;
-  }
-
-  .vbar-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 7px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-  }
 
   .chart-view { width: 100%; height: 260px; }
 
