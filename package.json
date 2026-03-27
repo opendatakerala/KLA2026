@@ -10,8 +10,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/svelte": "^8.0.3",
-    "astro": "^6.0.8",
+    "@astrojs/svelte": "^8.0.4",
+    "astro": "^6.1.1",
     "d3": "^7.9.0",
     "echarts": "^6.0.0",
     "jsdom": "^29.0.1",
