@@ -1,12 +1,19 @@
 <script>
   import { filters, setSearch } from '../stores/constituencyStore.js';
   
-  let searchValue = '';
-  
-  $: searchValue = $filters.search;
+  let searchValue = $derived($filters.search);
   
   function handleInput(e) {
     setSearch(e.target.value);
+  }
+
+  function handleKeydown(e) {
+    if (e.key === 'Enter') {
+      const explorer = document.getElementById('data-explorer');
+      if (explorer) {
+        explorer.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
   }
 
   function handleClear() {
@@ -29,10 +36,11 @@
       placeholder="Search constituency, candidate, party…"
       data-i18n-placeholder="header.searchPlaceholder"
       value={searchValue}
-      on:input={handleInput}
+      oninput={handleInput}
+      onkeydown={handleKeydown}
     />
     {#if searchValue}
-      <button class="clear-search" on:click={handleClear}>
+      <button class="clear-search" onclick={handleClear}>
         <svg width="12" height="12" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M4 4l12 12M16 4L4 16"/>
         </svg>
