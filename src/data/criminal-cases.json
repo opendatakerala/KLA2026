@@ -1,9 +1,9 @@
 {
   "overall": {
     "No Cases": 0,
-    "Pending Cases": 3,
-    "Convicted": 2,
-    "Unknown": 713
+    "Pending Cases": 4,
+    "Convicted": 3,
+    "Unknown": 711
   },
   "byAlliance": {
     "LDF": {
@@ -14,9 +14,9 @@
     },
     "UDF": {
       "No Cases": 0,
-      "Pending Cases": 2,
-      "Convicted": 1,
-      "Unknown": 137
+      "Pending Cases": 3,
+      "Convicted": 2,
+      "Unknown": 135
     },
     "NDA": {
       "No Cases": 0,

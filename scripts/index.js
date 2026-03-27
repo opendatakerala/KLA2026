@@ -3,7 +3,6 @@ import generateGenderDistribution from './generate-gender-distribution.js';
 import generateEducationDistribution from './generate-education-distribution.js';
 import generateCriminalCases from './generate-criminal-cases.js';
 import generateAssetsDistribution from './generate-assets-distribution.js';
-import generateHistoricalComparison from './generate-historical-comparison.js';
 import generateKlaMapSvg from './generate-kla-map-svg.js';
 import generateConstituencies from './generate-constituencies.js';
 
@@ -13,7 +12,6 @@ const scripts = {
   'education-distribution': generateEducationDistribution,
   'criminal-cases': generateCriminalCases,
   'assets-distribution': generateAssetsDistribution,
-  'historical-comparison': generateHistoricalComparison,
   'kla-map-svg': generateKlaMapSvg,
   'constituencies': generateConstituencies
 };
