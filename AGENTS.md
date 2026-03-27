@@ -29,13 +29,16 @@ node scripts/index.js --all
 - Prioritize readability over cleverness
 - NO comments unless explicitly requested by user
 
-### Svelte Components (.svelte)
-- Use Svelte 5 runes (`$state`, `$derived`, `$effect`) for reactive state
+### Svelte Components (.svelte) - STRICT SVELTE 5 MODE
+- **Must use Svelte 5 runes** (`$state`, `$derived`, `$effect`, `$props`) for all reactivity and properties.
+- **NEVER use Svelte 3/4 reactive statements** (`$:`). Use `$derived` instead.
+- **NEVER use `export let` for props**. Use `let { propName } = $props();`.
+- **Use modern event handlers**: Use `onclick`, `oninput`, etc. NEVER use the old `on:click` or `on:input` syntax.
 - Component styles should be in `<style>` block scoped to the component
 - Use semantic HTML elements
 - Prefer `#each` blocks over manual HTML string construction
 - Avoid `{@html}` - use proper Svelte templates instead
-- Access stores directly with `$storeName` syntax
+- Access Nanostores directly with `$storeName` syntax, but wrap derivations in `$derived()` when combining with local state.
 
 ### JavaScript (.js)
 - Use ES modules (`import`/`export`)
@@ -81,21 +84,35 @@ node scripts/index.js --all
 
 ## Important Patterns
 
-### Accessing Store Data in Components
+### Defining Component Props (Svelte 5)
 ```svelte
 <script>
-  import { filteredConstituencies } from '../stores/constituencyStore.js';
-  
-  $: data = $filteredConstituencies;
+  let { title, isActive = false } = $props();
 </script>
 ```
 
-### Reactive Statements
+### Accessing Store Data and Derived State (Svelte 5)
 ```svelte
 <script>
-  $: qid = $selectedConstituency?.qid;
-  $: seriesData = qid ? getHistoricalData(qid) : [];
+  import { selectedConstituency } from '../stores/constituencyStore.js';
+  
+  // Use $derived instead of $: for reactive store transformations
+  let qid = $derived($selectedConstituency?.qid);
+  let seriesData = $derived(qid ? getHistoricalData(qid) : []);
 </script>
+```
+
+### Local State and Event Handling (Svelte 5)
+```svelte
+<script>
+  let count = $state(0);
+  
+  function increment() {
+    count++;
+  }
+</script>
+
+<button onclick={increment}>Count is {count}</button>
 ```
 
 ### Conditional Rendering
@@ -116,11 +133,12 @@ node scripts/index.js --all
 
 ## Common Issues to Avoid
 
-1. **Don't use `document.getElementById`** - Use Svelte bindings (`bind:this`) or reactive statements
-2. **Don't craft HTML strings** - Use Svelte templates with `#each`
-3. **Don't pass data via props when store would be better** - Access stores directly
-4. **Don't mix data concerns** - Keep constituency data in one store, historical in another
-5. **Don't forget to update reactive statements** - When using stores, ensure proper `$:` declarations
+1. **Don't use `on:click` or other `on:event` syntax** - Always use the modern `onevent` equivalent (e.g., `onclick`, `onchange`).
+2. **Don't use `$: ` for reactivity** - Use `$derived()` for computed values and `$effect()` for side effects.
+3. **Don't use `export let` for props** - Use `$props()` exclusively.
+4. **Don't use `document.getElementById`** - Use Svelte 5 bindings or standard reactivity.
+5. **Don't craft HTML strings** - Use Svelte templates with `#each`.
+6. **Don't mix data concerns** - Keep constituency data in one store, historical in another.
 
 ## File Structure
 
