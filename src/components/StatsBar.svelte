@@ -7,12 +7,12 @@
     { key: 'constituencies', value: 140 },
     { key: 'alliances', value: 3 },
     { key: 'parties', value: 25 },
-    { key: 'nominations', value: 2117 },
-    { key: 'applications', value: 1252 },
-    { key: 'afterScrutiny', value: '????' },
-    { key: 'contesting', value: '???' },
+    { key: 'nominations', value: 2125 },
+    { key: 'applications', value: 1254 },
+    { key: 'afterScrutiny', value: 985 },
+    { key: 'contesting', value: 890 },
     { key: 'booths', value: 30471 },
-    { key: 'voters', value: '???????' },
+    { key: 'voters', value: 27142952 },
   ];
 
   let displayedValues = $state(statsData.map(() => 0));
