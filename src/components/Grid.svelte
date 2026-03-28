@@ -1,22 +1,28 @@
 <script>
-  import { _ } from '../lib/i18n.js';
+  import { _, locale } from '../lib/i18n.js';
   import { filteredConstituencies, openModal } from '../stores/constituencyStore.js';
   import Modal from './Modal.svelte';
 
   let filteredData = $derived($filteredConstituencies);
+  let currentLang = $derived($locale);
 
-  function createCandidateRow(alliance, party, name) {
-    const allianceClass = alliance === "LDF" ? "LDF" : alliance === "UDF" ? "UDF" : alliance === "NDA" ? "NDA" : "OTH";
-    const allianceLabel = alliance === "OTH" ? "Others" : alliance;
-    return `
-      <div class="candidate-row">
-        <span class="alliance-tag ${allianceClass}">${allianceLabel}</span>
-        <div>
-          <div class="candidate-party">${party || "—"}</div>
-          <span class="candidate-name">${name || "TBD"}</span>
-        </div>
-      </div>
-    `;
+  function getCandidateName(candidate) {
+    if (!candidate?.name) return 'TBD';
+    if (currentLang === 'ml' && candidate.malayalam) {
+      return candidate.malayalam;
+    }
+    return candidate.name;
+  }
+
+  function getAllianceClass(alliance) {
+    if (alliance === "LDF") return "LDF";
+    if (alliance === "UDF") return "UDF";
+    if (alliance === "NDA") return "NDA";
+    return "OTH";
+  }
+
+  function getAllianceLabel(alliance) {
+    return alliance === "OTH" ? "Others" : alliance;
   }
 
   function handleCardClick(row) {
@@ -36,7 +42,7 @@
       <div class="card-header">
         <div>
           <div class="card-num">CONSTITUENCY #{row.number}</div>
-          <div class="card-name">{row.name}</div>
+          <div class="card-name">{currentLang === 'ml' && row.malayalam ? row.malayalam : row.name}</div>
           <div class="card-district">{row.district}</div>
         </div>
         {#if row.reservation}
@@ -48,16 +54,40 @@
       </div>
       <div class="card-candidates">
         {#each row.candidates.filter((c) => c.alliance === "LDF") as c}
-          {@html createCandidateRow("LDF", c.party, c.name)}
+          <div class="candidate-row">
+            <span class="alliance-tag {getAllianceClass('LDF')}">{getAllianceLabel('LDF')}</span>
+            <div>
+              <div class="candidate-party">{c.party || "—"}</div>
+              <span class="candidate-name">{getCandidateName(c)}</span>
+            </div>
+          </div>
         {/each}
         {#each row.candidates.filter((c) => c.alliance === "UDF") as c}
-          {@html createCandidateRow("UDF", c.party, c.name)}
+          <div class="candidate-row">
+            <span class="alliance-tag {getAllianceClass('UDF')}">{getAllianceLabel('UDF')}</span>
+            <div>
+              <div class="candidate-party">{c.party || "—"}</div>
+              <span class="candidate-name">{getCandidateName(c)}</span>
+            </div>
+          </div>
         {/each}
         {#each row.candidates.filter((c) => c.alliance === "NDA") as c}
-          {@html createCandidateRow("NDA", c.party, c.name)}
+          <div class="candidate-row">
+            <span class="alliance-tag {getAllianceClass('NDA')}">{getAllianceLabel('NDA')}</span>
+            <div>
+              <div class="candidate-party">{c.party || "—"}</div>
+              <span class="candidate-name">{getCandidateName(c)}</span>
+            </div>
+          </div>
         {/each}
         {#each row.candidates.filter((c) => c.alliance === "Others") as c}
-          {@html createCandidateRow("OTH", c.party, c.name)}
+          <div class="candidate-row">
+            <span class="alliance-tag {getAllianceClass('OTH')}">{getAllianceLabel('OTH')}</span>
+            <div>
+              <div class="candidate-party">{c.party || "—"}</div>
+              <span class="candidate-name">{getCandidateName(c)}</span>
+            </div>
+          </div>
         {/each}
       </div>
     </div>
@@ -160,13 +190,13 @@
     gap: 6px;
   }
 
-  :global(.candidate-row) {
+  .candidate-row {
     display: flex;
     align-items: center;
     gap: 8px;
   }
 
-  :global(.alliance-tag) {
+  .alliance-tag {
     font-family: 'DM Mono', monospace;
     font-size: 9px;
     font-weight: 600;
@@ -177,34 +207,34 @@
     text-align: center;
   }
 
-  :global(.alliance-tag.LDF) {
+  .alliance-tag.LDF {
     background: #ffebee;
     color: #EE0000;
   }
 
-  :global(.alliance-tag.UDF) {
+  .alliance-tag.UDF {
     background: #e3f2fd;
     color: #0078FF;
   }
 
-  :global(.alliance-tag.NDA) {
+  .alliance-tag.NDA {
     background: #fff3e0;
     color: #FF9933;
   }
 
-  :global(.alliance-tag.OTH) {
+  .alliance-tag.OTH {
     background: var(--card2);
     color: var(--muted);
   }
 
-  :global(.candidate-party) {
+  .candidate-party {
     font-family: 'Inter', sans-serif;
     font-weight: 500;
     font-size: 12px;
     color: var(--text);
   }
 
-  :global(.candidate-name) {
+  .candidate-name {
     font-size: 11px;
     color: var(--muted);
   }

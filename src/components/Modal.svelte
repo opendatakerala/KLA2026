@@ -1,5 +1,5 @@
 <script>
-  import { _ } from '../lib/i18n.js';
+  import { _, locale } from '../lib/i18n.js';
   import { selectedConstituency, closeModal } from '../stores/constituencyStore.js';
   import NiyamasabhaChart from './charts/NiyamasabhaChart.svelte';
   import LoksabhaChart from './charts/LoksabhaChart.svelte';
@@ -13,11 +13,20 @@
 
   const API_BASE = import.meta.env.PUBLIC_KLA_API_URL || '';
   let currentModal = $derived($selectedConstituency);
+  let currentLang = $derived($locale);
   
   let ldfCandidates = $derived(currentModal?.candidates?.filter(c => c.alliance === 'LDF') || []);
   let udfCandidates = $derived(currentModal?.candidates?.filter(c => c.alliance === 'UDF') || []);
   let ndaCandidates = $derived(currentModal?.candidates?.filter(c => c.alliance === 'NDA') || []);
   let othersCandidates = $derived(currentModal?.candidates?.filter(c => c.alliance === 'Others' || !['LDF', 'UDF', 'NDA'].includes(c.alliance)) || []);
+
+  function getCandidateName(candidate) {
+    if (!candidate?.name) return $_('modal.toBeAnnounced');
+    if (currentLang === 'ml' && candidate.malayalam) {
+      return candidate.malayalam;
+    }
+    return candidate.name;
+  }
 
   let historicalLoading = $state(true);
   let historicalError = $state(false);
@@ -125,7 +134,7 @@
                 <div class="candidate-info">
                   <div class="alliance-label">LDF</div>
                   <div class="candidate-party">{c.party || '—'}</div>
-                  <div class="candidate-name" class:tbd={!c.name}>{c.name || 'To be announced'}</div>
+                  <div class="candidate-name" class:tbd={!c.name}>{getCandidateName(c)}</div>
                 </div>
               </div>
             {/each}
@@ -140,7 +149,7 @@
                 <div class="candidate-info">
                   <div class="alliance-label">UDF</div>
                   <div class="candidate-party">{c.party || '—'}</div>
-                  <div class="candidate-name" class:tbd={!c.name}>{c.name || 'To be announced'}</div>
+                  <div class="candidate-name" class:tbd={!c.name}>{getCandidateName(c)}</div>
                 </div>
               </div>
             {/each}
@@ -155,7 +164,7 @@
                 <div class="candidate-info">
                   <div class="alliance-label">NDA</div>
                   <div class="candidate-party">{c.party || '—'}</div>
-                  <div class="candidate-name" class:tbd={!c.name}>{c.name || 'To be announced'}</div>
+                  <div class="candidate-name" class:tbd={!c.name}>{getCandidateName(c)}</div>
                 </div>
               </div>
             {/each}
@@ -170,7 +179,7 @@
                 <div class="candidate-info">
                   <div class="alliance-label">Others</div>
                   <div class="candidate-party">{c.party || '—'}</div>
-                  <div class="candidate-name" class:tbd={!c.name}>{c.name || 'To be announced'}</div>
+                  <div class="candidate-name" class:tbd={!c.name}>{getCandidateName(c)}</div>
                 </div>
               </div>
             {/each}
