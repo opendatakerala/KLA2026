@@ -387,4 +387,20 @@
   .legend-dot.female { background: #EC4899; }
   .legend-dot.male { background: #3B82F6; }
   .legend-dot.trans { background: #8B5CF6; }
+
+  @media (max-width: 640px) {
+    .cards-row {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+    .cards-row.has-trans {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .gender-card {
+      padding: 16px 8px;
+    }
+    .card-value {
+      font-size: var(--fs-2xl);
+    }
+  }
 </style>
