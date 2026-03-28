@@ -69,49 +69,58 @@
 </div>
 
 <style>
-  .stats-bar {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 28px;
-  }
-
-  .stat-cell {
-    flex: 1 1 calc(11.11% - 8px);
-    min-width: 90px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 14px 10px 12px;
-    text-align: center;
-  }
-
-  .stat-value {
-    font-family: 'Inter', sans-serif;
-    font-size: var(--fs-2xl);
-    font-weight: 700;
-    line-height: 1.1;
-    color: var(--text);
-    margin-bottom: 4px;
-  }
-
-  .stat-label {
-    font-family: 'DM Mono', monospace;
-    font-size: var(--fs-xs);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--muted);
-    white-space: nowrap;
-  }
-
-  @media (max-width: 640px) {
-    .stats-bar { gap: 6px; }
-    .stat-cell {
-      flex: 1 1 calc(25% - 6px);
-      min-width: 60px;
-      padding: 8px 4px 6px;
+    .stats-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 28px;
     }
-    .stat-value { font-size: var(--fs-base); }
-    .stat-label { font-size: var(--fs-xs); }
-  }
+    
+    .stat-cell {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex: 1 1 auto;
+      min-width: 120px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px 12px;
+      text-align: center;
+    }
+    
+    .stat-value {
+      font-family: 'Inter', sans-serif;
+      font-size: var(--fs-2xl);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 4px;
+      white-space: nowrap;
+    }
+    
+    .stat-label {
+      font-family: 'DM Mono', monospace;
+      font-size: var(--fs-xs);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      line-height: 1.4;
+      text-wrap: balance;
+    }
+    
+    @media (max-width: 640px) {
+      .stats-bar { 
+        gap: 6px; 
+        justify-content: center; 
+      }
+      .stat-cell {
+        flex: 1 1 calc(50% - 6px); 
+        min-width: 0;
+        padding: 12px 8px 10px;
+      }
+      .stat-value { font-size: var(--fs-base); }
+      .stat-label { font-size: var(--fs-xs); }
+    }
 </style>
