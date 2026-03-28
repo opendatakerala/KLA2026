@@ -59,8 +59,8 @@
           <div class="candidate-row">
             <span class="alliance-tag {getAllianceClass('LDF')}">{getAllianceLabel('LDF')}</span>
             <div>
-              <div class="candidate-party">{c.party || "—"}</div>
               <span class="candidate-name">{getCandidateName(c)}</span>
+              <div class="candidate-party">{c.party || "—"}</div>
             </div>
           </div>
         {/each}
@@ -68,8 +68,8 @@
           <div class="candidate-row">
             <span class="alliance-tag {getAllianceClass('UDF')}">{getAllianceLabel('UDF')}</span>
             <div>
-              <div class="candidate-party">{c.party || "—"}</div>
               <span class="candidate-name">{getCandidateName(c)}</span>
+              <div class="candidate-party">{c.party || "—"}</div>
             </div>
           </div>
         {/each}
@@ -77,8 +77,8 @@
           <div class="candidate-row">
             <span class="alliance-tag {getAllianceClass('NDA')}">{getAllianceLabel('NDA')}</span>
             <div>
-              <div class="candidate-party">{c.party || "—"}</div>
               <span class="candidate-name">{getCandidateName(c)}</span>
+              <div class="candidate-party">{c.party || "—"}</div>
             </div>
           </div>
         {/each}
@@ -86,8 +86,8 @@
           <div class="candidate-row">
             <span class="alliance-tag {getAllianceClass('OTH')}">{getAllianceLabel('OTH')}</span>
             <div>
-              <div class="candidate-party">{c.party || "—"}</div>
               <span class="candidate-name">{getCandidateName(c)}</span>
+              <div class="candidate-party">{c.party || "—"}</div>
             </div>
           </div>
         {/each}
@@ -231,14 +231,14 @@
 
   .candidate-party {
     font-family: 'Inter', sans-serif;
-    font-weight: 500;
-    font-size: var(--fs-base);
-    color: var(--text);
+    font-size: var(--fs-sm);
+    color: var(--muted);
   }
 
   .candidate-name {
-    font-size: var(--fs-sm);
-    color: var(--muted);
+    font-size: var(--fs-base);
+    font-weight: 500;
+    color: var(--text);
   }
 
   .empty-state {
