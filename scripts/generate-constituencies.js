@@ -16,6 +16,7 @@ function generate() {
   ensureOutputDir();
 
   const candidates = readCSV('2026-candidates.csv');
+  const constituencies = readCSV('2026-constituencies.csv');
   const alliances = readCSV('2026-alliances.csv');
 
   const partyToAlliance = {};
@@ -27,41 +28,67 @@ function generate() {
     }
   });
 
+  const constituencyData = {};
+  constituencies.forEach(row => {
+    const qid = cleanString(row.constituency_Wikidata);
+    if (qid) {
+      constituencyData[qid] = {
+        name: cleanString(row.constituency_Name),
+        nameMalayalam: cleanString(row['constituency_Name_ (Malayalam)']),
+        district: cleanString(row.district),
+        districtQid: cleanString(row.distrct_Wikidata),
+        number: cleanString(row.constituency_Number),
+        reservation: cleanString(row.reservation),
+        pollingBooths: cleanString(row['Polling Booths']),
+        votersMale: cleanString(row['Voters Male']),
+        votersFemale: cleanString(row['Voters Female']),
+        votersThirdGender: cleanString(row['Voters Third Gender']),
+        votersTotal: cleanString(row['Voters Total'])
+      };
+    }
+  });
+
   const grouped = {};
   candidates.forEach(cand => {
-    const constNum = cleanString(cand.constituency_Number);
-    if (!constNum) return;
+    const qid = cleanString(cand.constituency_Wikidata);
+    if (!qid) return;
 
-    if (!grouped[constNum]) {
-      grouped[constNum] = {
-        number: constNum,
-        name: cleanString(cand.constituency_Name),
-        district: cleanString(cand.district),
-        qid: cleanString(cand.constituency_Wikidata),
-        reservation: cleanString(cand.reservation),
+    const constData = constituencyData[qid];
+    if (!constData) return;
+
+    if (!grouped[qid]) {
+      grouped[qid] = {
+        number: constData.number,
+        name: constData.name,
+        nameMalayalam: constData.nameMalayalam,
+        district: constData.district,
+        districtQid: constData.districtQid,
+        qid: qid,
+        reservation: constData.reservation,
+        pollingBooths: constData.pollingBooths,
+        votersMale: constData.votersMale,
+        votersFemale: constData.votersFemale,
+        votersThirdGender: constData.votersThirdGender,
+        votersTotal: constData.votersTotal,
         candidates: []
       };
     }
 
-    const party = cleanString(cand.party);
+    const party = cleanString(cand.party_y);
     const alliance = getAlliance(party, cleanString(cand.alliance));
 
     const name = cleanString(cand.candidate_Name);
     if (!name) return;
     
-    grouped[constNum].candidates.push({
+    grouped[qid].candidates.push({
       alliance,
       party,
       name,
       malayalam: cleanString(cand.Malayalam),
       wikidata: cleanString(cand.candidate_Wikidata),
       gender: cleanString(cand.candidate_Gender),
-      age: cleanString(cand.age),
-      eduTag: cleanString(cand['edu tag']),
-      education: cleanString(cand.education),
-      criminal: cleanString(cand['Criminal Case']),
-      convictions: cleanString(cand.Convictions),
-      assets: cleanString(cand.assets)
+      age: cleanString(cand['age_x affidavit']),
+      candidateId: cleanString(cand.candidate_id)
     });
   });
 
