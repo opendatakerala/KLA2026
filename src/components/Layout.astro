@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import Header from './Header.astro';
 
 const { title } = Astro.props;
 ---
@@ -13,6 +14,7 @@ const { title } = Astro.props;
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
+  <Header />
   <slot />
 </body>
 </html>

@@ -32,7 +32,10 @@
       <span class="version-label">Data version:</span> {dataVersion}
     </span>
   </div>
-  <button class="footer-disc-link" id="footer-disc-link" onclick={toggleDisclaimer}>{$_('footer.viewDisclaimer')}</button>
+  <div class="footer-right">
+    <a class="footer-disc-link" href="/KLA2026/about">About</a>
+    <button class="footer-disc-link" id="footer-disc-link" onclick={toggleDisclaimer}>{$_('footer.viewDisclaimer')}</button>
+  </div>
 </footer>
 
 <style>
@@ -70,6 +73,10 @@
   .version-divider {
     margin: 0 6px;
     color: var(--border);
+  }
+  .footer-right {
+    display: flex;
+    gap: 16px;
   }
   .footer-disc-link {
     font-family: 'DM Mono', monospace;
