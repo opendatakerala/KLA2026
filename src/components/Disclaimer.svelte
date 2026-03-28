@@ -1,10 +1,12 @@
 <script>
     import { onMount } from 'svelte';
     import { _ } from '../lib/i18n.js';
-    import { disclaimerDismissed } from '../stores/uiStore.js';
+    import { disclaimerDismissed, disclaimerOpen, closeDisclaimer } from '../stores/uiStore.js';
+
+    let isOpen = $derived($disclaimerOpen);
 
     const hideOverlay = () => {
-        document.getElementById("disc-overlay")?.classList.remove("open");
+        closeDisclaimer();
         disclaimerDismissed.set(true);
     };
 
@@ -16,7 +18,7 @@
     });
 </script>
 
-<div class="disc-overlay open" id="disc-overlay">
+<div class="disc-overlay" class:open={isOpen} id="disc-overlay">
     <div class="disc-modal">
         <div class="disc-top"></div>
         <div class="disc-header">
@@ -35,7 +37,7 @@
                 {$_('disclaimer.body1')}
             </p>
             <p>
-                {$_('disclaimer.body2')}
+                {@html $_('disclaimer.body2')}
             </p>
         </div>
         <div class="disc-footer">

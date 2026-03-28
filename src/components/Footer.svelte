@@ -1,5 +1,6 @@
 <script>
   import { _ } from '../lib/i18n.js';
+  import { openDisclaimer } from '../stores/uiStore.js';
 
   const formatVersion = (isoString) => {
     const date = new Date(isoString);
@@ -14,13 +15,6 @@
 
   let appVersion = $derived(formatVersion(import.meta.env.APP_VERSION || ''));
   let dataVersion = $derived(formatVersion(import.meta.env.DATA_VERSION || ''));
-
-  const toggleDisclaimer = () => {
-    const overlay = document.getElementById('disc-overlay');
-    if (overlay) {
-      overlay.classList.toggle('open');
-    }
-  };
 </script>
 
 <footer>
@@ -31,10 +25,15 @@
       <span class="version-divider">|</span>
       <span class="version-label">Data version:</span> {dataVersion}
     </span>
+    <div class="disc-content">
+      <strong>{$_('disclaimer.title')}</strong>
+      <p>{@html $_('disclaimer.body1')}</p>
+      <p>{@html $_('disclaimer.body2')}</p>
+    </div>
   </div>
   <div class="footer-right">
     <a class="footer-disc-link" href="/KLA2026/about">About</a>
-    <button class="footer-disc-link" id="footer-disc-link" onclick={toggleDisclaimer}>{$_('footer.viewDisclaimer')}</button>
+    <button class="footer-disc-link" id="footer-disc-link" onclick={openDisclaimer}>{$_('footer.viewDisclaimer')}</button>
   </div>
 </footer>
 
@@ -44,15 +43,17 @@
     padding: 18px 32px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 16px;
     background: #fff;
   }
   .footer-left {
     display: flex;
     flex-direction: column;
     gap: 4px;
+    flex: 1;
+    min-width: 200px;
   }
   .footer-text {
     font-family: 'DM Mono', monospace;
@@ -92,8 +93,40 @@
   }
   .footer-disc-link:hover { color: var(--gold-mid); }
 
+  .disc-content {
+    margin-top: 12px;
+    font-size: var(--fs-xs);
+    color: var(--text-soft);
+    line-height: 1.6;
+    max-width: 600px;
+  }
+
+  .disc-content strong {
+    display: block;
+    font-family: 'DM Mono', monospace;
+    font-size: var(--fs-sm);
+    color: var(--text);
+    margin-bottom: 4px;
+    letter-spacing: 0.05em;
+  }
+
+  .disc-content p {
+    margin: 0;
+    margin-bottom: 4px;
+  }
+
+  .disc-content p:last-child {
+    margin-bottom: 0;
+  }
+
+  .disc-content a {
+    color: var(--udf);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
   @media (max-width: 640px) {
-    footer { padding: 12px 16px; flex-direction: column; align-items: flex-start; gap: 6px; }
+    footer { padding: 12px 16px; flex-direction: column; gap: 12px; }
     .footer-text { font-size: var(--fs-xs); }
     .footer-version { font-size: var(--fs-xs); }
   }

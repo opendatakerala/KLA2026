@@ -28,8 +28,8 @@
   "disclaimer": {
     "title": "Data Disclaimer",
     "subtitle": "Please read before proceeding",
-    "body1": "The accuracy or completeness of the data presented on this page cannot be guaranteed. The information has been sourced from Various Media, party social media handles and CEC Kerala website.",
-    "body2": "There is a chance for change according to time. Candidate announcements may be updated or revised by parties at any point.",
+    "body1": "The accuracy or completeness of the data presented on this page cannot be guaranteed. The information has been sourced from multiple sources, including the CEC Kerala, Gazette notifications, and official party media.",
+    "body2": "Found a mistake? Help us improve by filing an issue on <a href=\"https://github.com/opendatakerala/KLA2026/issues\" target=\"_blank\" rel=\"noopener\">GitHub</a> or emailing <a href=\"mailto:opendatakerala@gmail.com\">opendatakerala@gmail.com</a>.",
     "dismiss": "Dismiss",
     "ok": "I Understand"
   },
