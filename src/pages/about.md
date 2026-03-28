@@ -1,5 +1,5 @@
 ---
-layout: ../components/Layout.astro
+layout: ../components/LayoutSimple.astro
 title: About - Kerala Legislative Assembly Election 2026
 ---
 
