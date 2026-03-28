@@ -83,11 +83,14 @@ export const filteredConstituencies = computed(
       if ($filters.search) {
         const q = $filters.search.toLowerCase().trim();
         const matchesName = row.name?.toLowerCase().includes(q);
+        const matchesMalayalamName = row.malayalam?.toLowerCase().includes(q);
         const matchesDistrict = row.district?.toLowerCase().includes(q);
         const matchesCandidate = candidates.some(
-          c => (c.name || '').toLowerCase().includes(q) || (c.party || '').toLowerCase().includes(q)
+          c => (c.name || '').toLowerCase().includes(q) || 
+               (c.party || '').toLowerCase().includes(q) ||
+               (c.malayalam || '').toLowerCase().includes(q)
         );
-        if (!matchesName && !matchesDistrict && !matchesCandidate) return false;
+        if (!matchesName && !matchesMalayalamName && !matchesDistrict && !matchesCandidate) return false;
       }
 
       return true;

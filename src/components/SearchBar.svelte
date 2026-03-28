@@ -1,11 +1,16 @@
 <script>
-  import { _ } from '../lib/i18n.js';
+  import { _, setLanguage } from '../lib/i18n.js';
   import { filters, setSearch } from '../stores/constituencyStore.js';
   
   let searchValue = $derived($filters.search);
   
   function handleInput(e) {
-    setSearch(e.target.value);
+    const value = e.target.value;
+    setSearch(value);
+    
+    if (/[\u0D00-\u0D7F]/.test(value)) {
+      setLanguage('ml');
+    }
   }
 
   function handleKeydown(e) {
