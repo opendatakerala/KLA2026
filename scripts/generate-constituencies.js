@@ -1,4 +1,9 @@
+import fs from 'fs';
+import path from 'path';
 import { readCSV, writeJSON, ensureOutputDir, cleanString } from './utils/common.js';
+
+const DATA_DIR = path.join(process.cwd(), 'data');
+const OUTPUT_DIR = path.join(process.cwd(), 'src', 'data');
 
 function getAlliance(party, allianceFromCSV) {
   if (allianceFromCSV && ['LDF', 'UDF', 'NDA', 'Others'].includes(allianceFromCSV)) {
@@ -79,6 +84,11 @@ function generate() {
 
   writeJSON('constituencies.json', sorted);
   console.log('Generated: constituencies.json');
+
+  const csvPath = path.join(DATA_DIR, '2026-candidates.csv');
+  const mtime = fs.statSync(csvPath).mtime.toISOString();
+  fs.writeFileSync(path.join(OUTPUT_DIR, 'version.json'), JSON.stringify({ timestamp: mtime }));
+  console.log('Generated: version.json');
 }
 
 export default generate;

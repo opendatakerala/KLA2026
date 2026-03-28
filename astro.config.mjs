@@ -1,14 +1,14 @@
 import { defineConfig } from 'astro/config';
 import svelte from '@astrojs/svelte';
-import { statSync } from 'fs';
+import { statSync, readFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const dataFilePath = join(__dirname, 'src/data/constituencies.json');
-const dataStats = statSync(dataFilePath);
+const versionPath = join(__dirname, 'src/data/version.json');
+const versionData = JSON.parse(readFileSync(versionPath, 'utf-8'));
 const buildTime = new Date().toISOString();
-const dataTime = dataStats.mtime.toISOString();
+const dataTime = versionData.timestamp;
 
 export default defineConfig({
   base: '/KLA2026',
