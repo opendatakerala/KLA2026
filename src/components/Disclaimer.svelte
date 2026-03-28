@@ -12,7 +12,9 @@
 
     onMount(() => {
         const PROD_HOSTNAME = "opendatakerala.org";
-        if (location.hostname !== PROD_HOSTNAME) {
+        if (location.hostname === PROD_HOSTNAME) {
+            disclaimerOpen.set(true);
+        } else {
             hideOverlay();
         }
     });
