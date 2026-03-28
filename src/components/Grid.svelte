@@ -1,14 +1,16 @@
 <script>
-  import { _, locale } from '../lib/i18n.js';
+  import { _, currentLang, isLoading } from '../lib/i18n.js';
   import { filteredConstituencies, openModal } from '../stores/constituencyStore.js';
   import Modal from './Modal.svelte';
 
   let filteredData = $derived($filteredConstituencies);
-  let currentLang = $derived($locale);
+  let currentLangValue = $derived($currentLang);
+
+  let t = (key) => $isLoading ? key : $_(key);
 
   function getCandidateName(candidate) {
     if (!candidate?.name) return 'TBD';
-    if (currentLang === 'ml' && candidate.malayalam) {
+    if (currentLangValue === 'ml' && candidate.malayalam) {
       return candidate.malayalam;
     }
     return candidate.name;
@@ -42,13 +44,13 @@
       <div class="card-header">
         <div>
           <div class="card-num">CONSTITUENCY #{row.number}</div>
-          <div class="card-name">{currentLang === 'ml' && row.malayalam ? row.malayalam : row.name}</div>
+          <div class="card-name">{currentLangValue === 'ml' && row.malayalam ? row.malayalam : row.name}</div>
           <div class="card-district">{row.district}</div>
         </div>
         {#if row.reservation}
           <span class="reservation-badge {row.reservation.toLowerCase()}">
             {row.reservation}
-            <span>{$_('modal.reserved')}</span>
+            <span>{t('modal.reserved')}</span>
           </span>
         {/if}
       </div>
@@ -95,7 +97,7 @@
 
   {#if filteredData.length === 0}
     <div class="empty-state">
-      <span>{$_('results.empty')}</span>
+      <span>{t('results.empty')}</span>
     </div>
   {/if}
 </div>

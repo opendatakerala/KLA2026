@@ -1,5 +1,5 @@
 <script>
-  import { _, locale } from '../lib/i18n.js';
+  import { _, currentLang, isLoading } from '../lib/i18n.js';
   import { selectedConstituency, closeModal } from '../stores/constituencyStore.js';
   import NiyamasabhaChart from './charts/NiyamasabhaChart.svelte';
   import LoksabhaChart from './charts/LoksabhaChart.svelte';
@@ -13,7 +13,7 @@
 
   const API_BASE = import.meta.env.PUBLIC_KLA_API_URL || '';
   let currentModal = $derived($selectedConstituency);
-  let currentLang = $derived($locale);
+  let currentLangValue = $derived($currentLang);
   
   let ldfCandidates = $derived(currentModal?.candidates?.filter(c => c.alliance === 'LDF') || []);
   let udfCandidates = $derived(currentModal?.candidates?.filter(c => c.alliance === 'UDF') || []);
@@ -21,8 +21,8 @@
   let othersCandidates = $derived(currentModal?.candidates?.filter(c => c.alliance === 'Others' || !['LDF', 'UDF', 'NDA'].includes(c.alliance)) || []);
 
   function getCandidateName(candidate) {
-    if (!candidate?.name) return $_('modal.toBeAnnounced');
-    if (currentLang === 'ml' && candidate.malayalam) {
+    if (!candidate?.name) return $isLoading ? 'To be announced' : $_('modal.toBeAnnounced');
+    if (currentLangValue === 'ml' && candidate.malayalam) {
       return candidate.malayalam;
     }
     return candidate.name;

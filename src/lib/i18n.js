@@ -1,4 +1,5 @@
 import { init, register, locale, _, isLoading } from 'svelte-i18n';
+import { atom } from 'nanostores';
 
 import en from '../i18n/en.json';
 import ml from '../i18n/ml.json';
@@ -19,23 +20,28 @@ const initialLocale = getInitialLocale();
 init({
   fallbackLocale: 'en',
   initialLocale,
+  preload: [initialLocale],
 });
 
-if (typeof window !== 'undefined' && initialLocale !== 'en') {
-  locale.set(initialLocale);
+const currentLang = atom(initialLocale);
+
+if (typeof window !== 'undefined') {
+  currentLang.subscribe((lang) => {
+    locale.set(lang);
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem('kla-lang', lang);
+    }
+  });
 }
 
-export { locale, _, isLoading };
+export { locale, _, isLoading, currentLang };
 
 export function setLanguage(lang) {
-  locale.set(lang);
-  if (typeof localStorage !== 'undefined') {
-    localStorage.setItem('kla-lang', lang);
-  }
+  currentLang.set(lang);
 }
 
 export function getLanguage() {
-  return locale;
+  return currentLang;
 }
 
 export function getAvailableLanguages() {
