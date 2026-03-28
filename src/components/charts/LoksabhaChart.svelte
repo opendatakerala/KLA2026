@@ -12,13 +12,13 @@
   };
 
   const ALLIANCES = ['LDF', 'UDF', 'NDA'];
-  const YEARS = ['2014', '2019', '2024'];
+  const YEARS = ['2024', '2019', '2014'];
 
   let currentView = $state('simple');
   let chartContainer = $state(null);
   let chart = null;
 
-  let seriesData = $derived(data);
+  let seriesData = $derived([...data].reverse());
   let hasData = $derived(seriesData.length > 0);
 
   $effect(() => {
