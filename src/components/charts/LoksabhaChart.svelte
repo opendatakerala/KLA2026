@@ -160,7 +160,7 @@
   <div class="simple-view">
     {#each seriesData as yearData}
       <div class="simple-year-row">
-        <span class="simple-year">{yearData.year}</span>
+        <span class="simple-year">{yearData.year} ({yearData.parliamentaryConstituency})</span>
         <span class="simple-result">{getSimpleText(yearData)}</span>
       </div>
     {/each}
