@@ -1,19 +1,36 @@
 <script>
   import { onMount } from 'svelte';
   import * as d3 from 'd3';
-  import mapSvgText from '../data/kla-map.svg?raw';
   import { _ } from '../lib/i18n.js';
   import { filteredConstituencies, openModal, constituencies, filters, districtBounds } from '../stores/constituencyStore.js';
-  import Modal from './Modal.svelte';
 
+  let mapSvgText = $state('');
+  let mapLoading = $state(true);
   let mapSvg = null;
   const viewWidth = 263;
   const viewHeight = 345;
   
-  $: allData = $constituencies;
-  $: filteredData = $filteredConstituencies;
+  let allData = $derived($constituencies);
+  let filteredData = $derived($filteredConstituencies);
+
+  onMount(() => {
+    loadMap();
+  });
+
+  async function loadMap() {
+    try {
+      const raw = await import('../data/kla-map.svg?raw');
+      mapSvgText = raw.default;
+      mapLoading = false;
+      // Wait for next tick to ensure div exists
+      setTimeout(() => initMap(), 0);
+    } catch (e) {
+      console.error('Failed to load map', e);
+    }
+  }
 
   function initMap() {
+    if (!mapSvgText) return;
     const container = document.getElementById('kerala-map');
     if (!container) return;
 
@@ -115,18 +132,22 @@
     }
   }
 
-  $: if (mapSvg && filteredData) {
-    updateMap();
-  }
-
-  onMount(() => {
-    initMap();
+  $effect(() => {
+    if (mapSvg && filteredData) {
+      updateMap();
+    }
   });
 </script>
 
 <div class="map-view" id="map-view">
   <div class="map-container" id="map-container">
-    <div id="kerala-map"></div>
+    {#if mapLoading}
+      <div class="map-loader">
+        <div class="shimmer"></div>
+        <span>{$_('charts.loading')}</span>
+      </div>
+    {/if}
+    <div id="kerala-map" style:visibility={mapLoading ? 'hidden' : 'visible'}></div>
     <div class="map-legend" id="map-legend">
       <div class="map-legend-title">{$_('map.reservedSeats')}</div>
       <div class="map-legend-item"><div class="map-legend-dot sc"></div><span>{$_('map.scReserved')}</span></div>
@@ -136,7 +157,6 @@
   </div>
 </div>
 
-<Modal />
 
 <style>
   .map-view {
@@ -246,5 +266,33 @@
     display: none;
     z-index: 100;
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  .map-loader {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    z-index: 5;
+    background: var(--card);
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    font-size: var(--fs-sm);
+  }
+
+  .shimmer {
+    width: 48px;
+    height: 48px;
+    background: var(--card2);
+    border-radius: 50%;
+    animation: pulse 1.5s infinite ease-in-out;
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(0.95); opacity: 0.5; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+    100% { transform: scale(0.95); opacity: 0.5; }
   }
 </style>
