@@ -1,6 +1,19 @@
 <script>
   import { onMount } from 'svelte';
-  import * as echarts from 'echarts';
+  import * as echarts from 'echarts/core';
+import { BarChart } from 'echarts/charts';
+import {
+  TooltipComponent,
+  GridComponent
+} from 'echarts/components';
+import { SVGRenderer } from 'echarts/renderers';
+
+echarts.use([
+  BarChart,
+  GridComponent,
+  TooltipComponent,
+  SVGRenderer
+]);
   import candidatesByParty from '../../data/candidates-by-party.json';
   import { getPartyColor, ALLIANCE_COLORS } from '../../lib/constants.js';
 

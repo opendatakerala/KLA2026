@@ -1,6 +1,21 @@
 <script>
   import { onMount } from 'svelte';
-  import * as echarts from 'echarts';
+  import * as echarts from 'echarts/core';
+import { BarChart } from 'echarts/charts';
+import {
+  TooltipComponent,
+  GridComponent,
+  LegendComponent
+} from 'echarts/components';
+import { SVGRenderer } from 'echarts/renderers';
+
+echarts.use([
+  BarChart,
+  GridComponent,
+  TooltipComponent,
+  LegendComponent,
+  SVGRenderer
+]);
   import { _ } from '../../lib/i18n.js';
 
   let { constituencyQid = null, data = [], loading = false, error = false } = $props();

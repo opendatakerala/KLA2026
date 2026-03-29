@@ -1,6 +1,19 @@
 <script>
   import { onMount } from 'svelte';
-  import * as echarts from 'echarts';
+  import * as echarts from 'echarts/core';
+import { BarChart } from 'echarts/charts';
+import {
+  TooltipComponent,
+  GridComponent
+} from 'echarts/components';
+import { SVGRenderer } from 'echarts/renderers';
+
+echarts.use([
+  BarChart,
+  GridComponent,
+  TooltipComponent,
+  SVGRenderer
+]);
   import genderData from '../../data/gender-distribution.json';
   import { _ } from '../../lib/i18n.js';
   import { KERALA_DISTRICTS } from '../../lib/constants.js';
