@@ -325,8 +325,23 @@
     .cnum { font-size: var(--fs-lg); }
     .clabel { font-size: 8px; }
     .csep { font-size: var(--fs-sm); margin-bottom: 8px; }
-    .lang-switcher { gap: 0; }
-    .lang-btn { padding: 4px 6px; font-size: 10px; }
+    .lang-switcher { 
+      flex-direction: column; 
+      gap: 4px; 
+      height: 100%;
+    }
+    .lang-btn { 
+      flex: 1;
+      padding: 6px 14px; 
+      font-size: 11px; 
+      background: var(--bg2);
+      border: 1px solid var(--border);
+    }
+    .lang-btn.active {
+      background: var(--card);
+      color: var(--gold);
+      border-color: var(--gold);
+    }
     h1 { font-size: var(--fs-xl); }
     .header-eyebrow { font-size: var(--fs-xs); }
     .header-tagline { font-size: var(--fs-sm); }
