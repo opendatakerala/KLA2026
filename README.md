@@ -38,8 +38,8 @@ To complement the tabular data, an interactive map interface is available, allow
 ## Supporting Team
 OpenDataKerala (ODK) Election Data Working Group - Jinoy Tom Jacob, Naveen Francis, Ark Arjun, Jothish Babu, Jaisen Nedumpala, Ranjith Sajeev
 
-## “OpenData for Journalism” Workshop
-This project also acknowledges the contributions of 19 participants from a collaborative workshop at Department Of Journalism And Mass Communication as part of **Open Data Day 2026** supported by Wikimedians of Kerala User Group and Sahya Digital Conservation Foundation.
+## OpenData for Journalism Workshop at Calicut University
+This project also acknowledges the contributions of 19 participants from a collaborative workshop at Department Of Journalism And Mass Communication, Calicut University as part of **Open Data Day 2026** supported by Wikimedians of Kerala User Group and Sahya Digital Conservation Foundation.
 
 Participants:-
 Manjusha P M, Athira M P, Noufal K K, Ayisha Raha E, Riza Raz, Muhammed Sahad M, Abhinand C P, Revathy Mahendran, Aruniga Babu, Safa Parvin, Afiya P A, Vishnu K, Rinsha M K, Haniyah Ollassery Usman, Navaneeth T M, Abhishek V T, Dr. Muhammadali N, Dr. Abdul Muneer V, Dr. Ashraf P
