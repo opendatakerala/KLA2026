@@ -323,14 +323,6 @@
 
   .historical-chart-container { margin-top: 8px; }
 
-  .pc-label {
-    font-family: 'DM Mono', monospace;
-    font-size: var(--fs-sm);
-    color: var(--text-soft);
-    letter-spacing: 0.05em;
-    margin-bottom: 8px;
-  }
-
   .back-btn {
     font-family: 'DM Mono', monospace;
     font-size: 10px;
