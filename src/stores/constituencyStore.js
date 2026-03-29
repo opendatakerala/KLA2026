@@ -4,7 +4,15 @@ import districtBoundsData from '../data/district-bounds.json';
 
 export const districtBounds = districtBoundsData;
 
-export const constituencies = atom(constituencyData);
+const processedData = constituencyData.map(c => ({
+  ...c,
+  candidates: c.candidates.map(cand => ({
+    ...cand,
+    party: cand.party || 'Independent'
+  }))
+}));
+
+export const constituencies = atom(processedData);
 
 export const filters = atom({
   search: '',
