@@ -20,5 +20,8 @@
     "svelte": "^5.55.0",
     "svelte-i18n": "^4.0.1",
     "topojson-client": "^3.1.0"
+  },
+  "devDependencies": {
+    "rollup-plugin-visualizer": "^7.0.1"
   }
 }

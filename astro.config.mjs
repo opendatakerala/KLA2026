@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import svelte from '@astrojs/svelte';
+import { visualizer } from "rollup-plugin-visualizer";
 import { statSync, readFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
@@ -24,6 +25,10 @@ export default defineConfig({
     define: {
       'import.meta.env.APP_VERSION': JSON.stringify(buildTime),
       'import.meta.env.DATA_VERSION': JSON.stringify(dataTime)
-    }
+    },
+    plugins: [visualizer({
+        emitFile: true,
+        filename: "stats.html",
+    })]
   }
 });
