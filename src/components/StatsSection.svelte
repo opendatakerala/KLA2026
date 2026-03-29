@@ -4,13 +4,12 @@
   import StatsBar from './StatsBar.svelte';
   import PartyDistribution from './charts/PartyDistribution.svelte';
   import GenderDistribution from './charts/GenderDistribution.svelte';
+  import AgeDistribution from './charts/AgeDistribution.svelte';
 
   let collapsed = true;
   let activeTab = '';
 
   function handleTabClick(stat) {
-    if (stat === 'criminal-cases' || stat === 'education-distribution') return;
-
     if (activeTab === stat && !collapsed) {
       collapsed = true;
       activeTab = '';
@@ -44,13 +43,13 @@
     >
       <span>{$_('stats.genderDistribution')}</span>
     </button>
-    <button class="stats-tab" data-stat="age-distribution" disabled>
+    <button 
+      class="stats-tab"
+      class:active={activeTab === 'age-distribution'}
+      data-stat="age-distribution"
+      onclick={() => handleTabClick('age-distribution')}
+    >
       <span>{$_('stats.ageDistribution')}</span>
-      <span class="coming-soon">{$_('stats.comingSoon')}</span>
-    </button>
-    <button class="stats-tab" data-stat="education-distribution" disabled>
-      <span>{$_('stats.educationDistribution')}</span>
-      <span class="coming-soon">{$_('stats.comingSoon')}</span>
     </button>
   </div>
 
@@ -64,25 +63,7 @@
     </div>
 
     <div class="stats-panel" class:active={activeTab === 'age-distribution'}>
-      <div class="placeholder">
-        <div class="placeholder-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
-          </svg>
-        </div>
-        <div class="placeholder-text">{$_('stats.comingSoon')}</div>
-      </div>
-    </div>
-
-    <div class="stats-panel" class:active={activeTab === 'education-distribution'}>
-      <div class="placeholder">
-        <div class="placeholder-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
-          </svg>
-        </div>
-        <div class="placeholder-text">{$_('stats.comingSoon')}</div>
-      </div>
+      <AgeDistribution isActive={activeTab === 'age-distribution'} />
     </div>
   </div>
 </div>
@@ -161,27 +142,5 @@
 
   .stats-panel.active {
     display: block;
-  }
-
-  .placeholder {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 340px;
-    color: var(--muted);
-  }
-
-  .placeholder-icon {
-    width: 48px;
-    height: 48px;
-    margin-bottom: 16px;
-    color: var(--faint);
-  }
-
-  .placeholder-text {
-    font-family: 'DM Mono', monospace;
-    font-size: var(--fs-base);
-    letter-spacing: 0.08em;
   }
 </style>
