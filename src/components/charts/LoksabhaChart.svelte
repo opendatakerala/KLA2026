@@ -172,9 +172,6 @@
   </div>
 {:else}
   <div class="historical-chart-container">
-    {#if parliamentaryConstituency}
-      <div class="pc-label">{$_('charts.partOfParliamentaryConstituency', { values: { parliamentaryConstituency } })}</div>
-    {/if}
     <button class="back-btn" onclick={goBack}>← Back</button>
     <div class="historical-switcher">
       <button class="hist-switch-btn" class:active={currentView === 'bars'} onclick={() => setView('bars')}>{$_('charts.bars')}</button>
