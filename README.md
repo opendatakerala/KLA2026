@@ -5,7 +5,7 @@ Cite our work
 > Kerala legislative assembly election 2026 ODK portal. 1.0.0, OpenDataKerala Community, 29 Mar. 2026, https://doi.org/10.5281/zenodo.19323427.
 
 * Website under GPL-3.0 license  
-* Dataset - DOI (To be updated)
+* Dataset - 2026 Kerala Assembly Elections: Candidate Registry (Demographics & Alliances) [Data set]. OpenDataKerala Community. https://doi.org/10.5281/zenodo.19323710
 * Concept Paper - (To be updated)
 
 # About the Portal
