@@ -89,18 +89,31 @@
             </div>
           {/if}
           {#if currentModal.votersTotal}
-            <div class="stat-card">
-              <span class="stat-label">{$_('modal.voters')}</span>
-              <span class="stat-value">{formatIndian(currentModal.votersTotal)}</span>
-            </div>
-            <div class="stat-card">
-              <span class="stat-label">{$_('modal.genderBreakup')}</span>
-              <div class="stat-breakdown">
-                <span>♂ {formatIndian(currentModal.votersMale || 0)}</span>
-                <span>♀ {formatIndian(currentModal.votersFemale || 0)}</span>
-                {#if currentModal.votersTransgender > 0}
-                  <span>⚥ {formatIndian(currentModal.votersTransgender)}</span>
+            {@const total = parseInt(currentModal.votersTotal) || 0}
+            {@const male = parseInt(currentModal.votersMale) || 0}
+            {@const female = parseInt(currentModal.votersFemale) || 0}
+            {@const trans = parseInt(currentModal.votersTransgender) || 0}
+            {@const malePct = total > 0 ? Math.round((male / total) * 100) : 0}
+            {@const femalePct = total > 0 ? Math.round((female / total) * 100) : 0}
+            {@const transPct = total > 0 ? Math.round((trans / total) * 100) : 0}
+            <div class="voters-card">
+              <div class="voters-total">
+                <span class="stat-label">{$_('modal.voters')}</span>
+                <span class="voters-count">{formatIndian(currentModal.votersTotal)}</span>
+              </div>
+              <div class="voters-bar-wrapper">
+                {#if trans > 0}
+                  <div class="voters-bar-segment trans" style="width: {transPct}%"></div>
                 {/if}
+                <div class="voters-bar-segment female" style="width: {femalePct}%"></div>
+                <div class="voters-bar-segment male" style="width: {malePct}%"></div>
+              </div>
+              <div class="voters-legend">
+                <span class="legend-item"><span class="legend-dot female"></span> ♀ {formatIndian(female)} ({femalePct}%)</span>
+                {#if trans > 0}
+                  <span class="legend-item"><span class="legend-dot trans"></span> ⚥ {formatIndian(trans)} ({transPct}%)</span>
+                {/if}
+                <span class="legend-item"><span class="legend-dot male"></span> ♂ {formatIndian(male)} ({malePct}%)</span>
               </div>
             </div>
           {/if}
@@ -322,7 +335,7 @@
 
   .stat-value {
     font-family: 'DM Mono', monospace;
-    font-size: var(--fs-sm);
+    font-size: var(--fs-xl);
     font-weight: 700;
     color: var(--text);
   }
@@ -335,6 +348,71 @@
     font-size: var(--fs-xs);
     color: var(--muted);
   }
+
+  .voters-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px 14px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+
+  .voters-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .voters-count {
+    font-family: 'Inter', sans-serif;
+    font-size: var(--fs-xl);
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .voters-bar-wrapper {
+    display: flex;
+    height: 16px;
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--bg2);
+  }
+
+  .voters-bar-segment {
+    height: 100%;
+  }
+
+  .voters-bar-segment.male { background: #3B82F6; }
+  .voters-bar-segment.female { background: #EC4899; }
+  .voters-bar-segment.trans { background: #8B5CF6; }
+
+  .voters-legend {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'DM Mono', monospace;
+    font-size: var(--fs-xs);
+    color: var(--muted);
+  }
+
+  .legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .legend-dot.male { background: #3B82F6; }
+  .legend-dot.female { background: #EC4899; }
+  .legend-dot.trans { background: #8B5CF6; }
 
   .modal-body { padding: 20px; }
 
