@@ -64,7 +64,7 @@
       <div class="modal-top"></div>
       <div class="modal-header">
         <div class="modal-eyebrow">
-          {currentModal.district} · Constituency #{currentModal.number}
+          {currentLangValue === 'ml' && currentModal.districtMalayalam ? currentModal.districtMalayalam : currentModal.district} · {$_('modal.constituency')} #{currentModal.number}
         </div>
         <div class="modal-title">{getConstituencyName(currentModal, currentLangValue)}</div>
         <div class="modal-badges">

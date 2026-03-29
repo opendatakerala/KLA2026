@@ -41,9 +41,9 @@
     >
       <div class="card-header">
         <div>
-          <div class="card-num">CONSTITUENCY #{row.number}</div>
-          <div class="card-name">{currentLangValue === 'ml' && row.malayalam ? row.malayalam : row.name}</div>
-          <div class="card-district">{row.district}</div>
+          <div class="card-num">{$_('modal.constituency')} #{row.number}</div>
+          <div class="card-name">{currentLangValue === 'ml' && row.nameMalayalam ? row.nameMalayalam : row.name}</div>
+          <div class="card-district">{currentLangValue === 'ml' && row.districtMalayalam ? row.districtMalayalam : row.district}</div>
         </div>
         {#if row.reservation}
           <span class="reservation-badge {row.reservation.toLowerCase()}">

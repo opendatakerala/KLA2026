@@ -94,6 +94,7 @@
     "reservedSeats": "Reserved Seats"
   },
   "modal": {
+    "constituency": "Constituency",
     "contestingCandidates": "Contesting Candidates",
     "close": "Close",
     "reserved": "Reserved",
