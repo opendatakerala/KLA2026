@@ -46,28 +46,40 @@ function generate() {
   
   const rawResult = {
     overall: {
-      under20: 0,
-      '20-29': 0,
-      '30-39': 0,
-      '40-49': 0,
-      '50-59': 0,
-      '60-69': 0,
-      '70-79': 0,
-      '80+': 0,
-      unknown: 0
+      bins: {
+        under20: 0,
+        '20-29': 0,
+        '30-39': 0,
+        '40-49': 0,
+        '50-59': 0,
+        '60-69': 0,
+        '70-79': 0,
+        '80+': 0,
+        unknown: 0
+      },
+      ageSum: 0,
+      count: 0
     },
     byAlliance: {
       LDF: {
-        under20: 0, '20-29': 0, '30-39': 0, '40-49': 0, '50-59': 0, '60-69': 0, '70-79': 0, '80+': 0, unknown: 0
+        bins: { under20: 0, '20-29': 0, '30-39': 0, '40-49': 0, '50-59': 0, '60-69': 0, '70-79': 0, '80+': 0, unknown: 0 },
+        ageSum: 0,
+        count: 0
       },
       UDF: {
-        under20: 0, '20-29': 0, '30-39': 0, '40-49': 0, '50-59': 0, '60-69': 0, '70-79': 0, '80+': 0, unknown: 0
+        bins: { under20: 0, '20-29': 0, '30-39': 0, '40-49': 0, '50-59': 0, '60-69': 0, '70-79': 0, '80+': 0, unknown: 0 },
+        ageSum: 0,
+        count: 0
       },
       NDA: {
-        under20: 0, '20-29': 0, '30-39': 0, '40-49': 0, '50-59': 0, '60-69': 0, '70-79': 0, '80+': 0, unknown: 0
+        bins: { under20: 0, '20-29': 0, '30-39': 0, '40-49': 0, '50-59': 0, '60-69': 0, '70-79': 0, '80+': 0, unknown: 0 },
+        ageSum: 0,
+        count: 0
       },
       Others: {
-        under20: 0, '20-29': 0, '30-39': 0, '40-49': 0, '50-59': 0, '60-69': 0, '70-79': 0, '80+': 0, unknown: 0
+        bins: { under20: 0, '20-29': 0, '30-39': 0, '40-49': 0, '50-59': 0, '60-69': 0, '70-79': 0, '80+': 0, unknown: 0 },
+        ageSum: 0,
+        count: 0
       }
     },
     byParty: {},
@@ -75,53 +87,88 @@ function generate() {
   };
   
   candidates.forEach(cand => {
-    const age = cleanString(cand['age_x affidavit']);
+    const ageStr = cleanString(cand['age_x affidavit']);
+    const age = parseInt(ageStr, 10);
     const alliance = getAlliance(cleanString(cand.alliance));
     let party = cleanString(cand.party_y);
     if (!party) party = 'Independent';
     const qid = cleanString(cand.constituency_Wikidata);
     const district = qid ? constituencyToDistrict[qid] : null;
     
-    const ageBin = getAgeBin(age);
+    const ageBin = getAgeBin(ageStr);
     
-    rawResult.overall[ageBin]++;
+    rawResult.overall.bins[ageBin]++;
+    if (!isNaN(age)) {
+      rawResult.overall.ageSum += age;
+      rawResult.overall.count++;
+    }
     
-    rawResult.byAlliance[alliance][ageBin]++;
+    rawResult.byAlliance[alliance].bins[ageBin]++;
+    if (!isNaN(age)) {
+      rawResult.byAlliance[alliance].ageSum += age;
+      rawResult.byAlliance[alliance].count++;
+    }
     
     if (!rawResult.byParty[party]) {
       rawResult.byParty[party] = {
-        under20: 0, '20-29': 0, '30-39': 0, '40-49': 0, '50-59': 0, '60-69': 0, '70-79': 0, '80+': 0, unknown: 0
+        bins: { under20: 0, '20-29': 0, '30-39': 0, '40-49': 0, '50-59': 0, '60-69': 0, '70-79': 0, '80+': 0, unknown: 0 },
+        ageSum: 0,
+        count: 0
       };
     }
-    rawResult.byParty[party][ageBin]++;
+    rawResult.byParty[party].bins[ageBin]++;
+    if (!isNaN(age)) {
+      rawResult.byParty[party].ageSum += age;
+      rawResult.byParty[party].count++;
+    }
     
     if (district) {
       if (!rawResult.byDistrict[district]) {
         rawResult.byDistrict[district] = {
-          under20: 0, '20-29': 0, '30-39': 0, '40-49': 0, '50-59': 0, '60-69': 0, '70-79': 0, '80+': 0, unknown: 0
+          bins: { under20: 0, '20-29': 0, '30-39': 0, '40-49': 0, '50-59': 0, '60-69': 0, '70-79': 0, '80+': 0, unknown: 0 },
+          ageSum: 0,
+          count: 0
         };
       }
-      rawResult.byDistrict[district][ageBin]++;
+      rawResult.byDistrict[district].bins[ageBin]++;
+      if (!isNaN(age)) {
+        rawResult.byDistrict[district].ageSum += age;
+        rawResult.byDistrict[district].count++;
+      }
     }
   });
   
+  const calcAvg = (obj) => obj.count > 0 ? parseFloat((obj.ageSum / obj.count).toFixed(1)) : 0;
+  
   const result = {
-    overall: filterZeros(rawResult.overall),
+    overall: {
+      ...filterZeros(rawResult.overall.bins),
+      average: calcAvg(rawResult.overall)
+    },
     byAlliance: {},
     byParty: {},
     byDistrict: {}
   };
   
   for (const alliance in rawResult.byAlliance) {
-    result.byAlliance[alliance] = filterZeros(rawResult.byAlliance[alliance]);
+    result.byAlliance[alliance] = {
+      ...filterZeros(rawResult.byAlliance[alliance].bins),
+      average: calcAvg(rawResult.byAlliance[alliance])
+    };
   }
   
   for (const party in rawResult.byParty) {
-    result.byParty[party] = filterZeros(rawResult.byParty[party]);
+    result.byParty[party] = {
+      ...filterZeros(rawResult.byParty[party].bins),
+      average: calcAvg(rawResult.byParty[party])
+    };
   }
   
   for (const district in rawResult.byDistrict) {
-    result.byDistrict[district] = filterZeros(rawResult.byDistrict[district]);
+    result.byDistrict[district] = {
+      ...filterZeros(rawResult.byDistrict[district].bins),
+      average: calcAvg(rawResult.byDistrict[district])
+    };
   }
   
   writeJSON('age-distribution.json', result);

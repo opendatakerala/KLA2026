@@ -23,7 +23,8 @@
     LDF: '#E53935',
     UDF: '#1E88E5',
     NDA: '#FB8C00',
-    Others: '#757575'
+    Others: '#757575',
+    Overall: '#10B981'
   };
 
   const AGE_BINS = ['20-29', '30-39', '40-49', '50-59', '60-69', '70-79', '80+'];
@@ -37,6 +38,18 @@
     '80+': '#C084FC'
   };
 
+  function getBins(data) {
+    const { average, ...bins } = data;
+    return bins;
+  }
+
+  let avgAges = $derived({
+    Overall: ageData.overall?.average || 0,
+    LDF: ageData.byAlliance['LDF']?.average || 0,
+    UDF: ageData.byAlliance['UDF']?.average || 0,
+    NDA: ageData.byAlliance['NDA']?.average || 0
+  });
+
   let activeTab = $state('overall');
   let activeFilter = $state('overall');
   let prevTab = $state('overall');
@@ -47,16 +60,31 @@
 
   function getCurrentData(tab, filter) {
     if (tab === 'overall') {
-      return ageData.overall;
+      return getBins(ageData.overall);
     } else if (tab === 'alliance') {
-      return ageData.byAlliance[filter] || {};
+      return getBins(ageData.byAlliance[filter] || {});
     } else if (tab === 'party') {
-      return ageData.byParty[filter] || {};
+      return getBins(ageData.byParty[filter] || {});
     } else if (tab === 'district') {
-      return ageData.byDistrict[filter] || {};
+      return getBins(ageData.byDistrict[filter] || {});
     }
-    return ageData.overall;
+    return getBins(ageData.overall);
   }
+
+  function getCurrentAverage(tab, filter) {
+    if (tab === 'overall') {
+      return ageData.overall.average || 0;
+    } else if (tab === 'alliance') {
+      return ageData.byAlliance[filter]?.average || 0;
+    } else if (tab === 'party') {
+      return ageData.byParty[filter]?.average || 0;
+    } else if (tab === 'district') {
+      return ageData.byDistrict[filter]?.average || 0;
+    }
+    return 0;
+  }
+
+  let currentAverage = $derived(getCurrentAverage(activeTab, activeFilter));
 
   function getCompareData() {
     const result = {};
@@ -272,6 +300,40 @@
     {/if}
   </div>
 
+  {#if activeTab === 'overall'}
+    <div class="avg-label-row">Average Age</div>
+    <div class="avg-ages">
+      <div class="avg-card" style="--card-color: {ALLIANCE_COLORS.Overall}">
+        <span class="avg-label">Overall</span>
+        <span class="avg-value">{avgAges.Overall}</span>
+        <span class="avg-unit">yrs</span>
+      </div>
+      <div class="avg-card" style="--card-color: {ALLIANCE_COLORS.LDF}">
+        <span class="avg-label">LDF</span>
+        <span class="avg-value">{avgAges.LDF}</span>
+        <span class="avg-unit">yrs</span>
+      </div>
+      <div class="avg-card" style="--card-color: {ALLIANCE_COLORS.UDF}">
+        <span class="avg-label">UDF</span>
+        <span class="avg-value">{avgAges.UDF}</span>
+        <span class="avg-unit">yrs</span>
+      </div>
+      <div class="avg-card" style="--card-color: {ALLIANCE_COLORS.NDA}">
+        <span class="avg-label">NDA</span>
+        <span class="avg-value">{avgAges.NDA}</span>
+        <span class="avg-unit">yrs</span>
+      </div>
+    </div>
+  {:else}
+    <div class="avg-ages">
+      <div class="avg-header-card">
+        <span class="avg-label">Average Age</span>
+        <span class="avg-value">{currentAverage}</span>
+        <span class="avg-unit">yrs</span>
+      </div>
+    </div>
+  {/if}
+
   <div class="chart-container" bind:this={chartContainer}></div>
 </div>
 
@@ -334,5 +396,78 @@
   .chart-container {
     width: 100%;
     height: 320px;
+  }
+
+  .avg-label-row {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    text-align: center;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .avg-ages {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .avg-header-card {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, var(--gold-mid) 0%, var(--gold) 100%);
+    border: 1px solid var(--gold);
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(234, 179, 8, 0.3);
+  }
+
+  .avg-card {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    padding: 12px 20px;
+    background: var(--card2);
+    border: 1px solid var(--card-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .avg-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--card-color);
+    letter-spacing: 0.05em;
+  }
+
+  .avg-header-card .avg-label {
+    color: #fff;
+  }
+
+  .avg-value {
+    font-family: 'Inter', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--card-color);
+    line-height: 1;
+  }
+
+  .avg-header-card .avg-value {
+    color: #fff;
+  }
+
+  .avg-unit {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  .avg-header-card .avg-unit {
+    color: rgba(255, 255, 255, 0.8);
   }
 </style>
