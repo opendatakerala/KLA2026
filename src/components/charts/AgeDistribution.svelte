@@ -124,6 +124,27 @@
     return [];
   }
 
+  function getCurrentIndex() {
+    const options = getFilterOptions(activeTab);
+    return options.indexOf(activeFilter);
+  }
+
+  function navigatePrev() {
+    const options = getFilterOptions(activeTab);
+    const idx = getCurrentIndex();
+    if (idx > 0) {
+      activeFilter = options[idx - 1];
+    }
+  }
+
+  function navigateNext() {
+    const options = getFilterOptions(activeTab);
+    const idx = getCurrentIndex();
+    if (idx < options.length - 1) {
+      activeFilter = options[idx + 1];
+    }
+  }
+
   function calculateTotal(data) {
     return Object.values(data).reduce((sum, val) => sum + val, 0);
   }
@@ -286,14 +307,26 @@
       {/each}
     </div>
     {#if activeTab !== 'overall'}
-      <select 
-        class="filter-select"
-        bind:value={activeFilter}
-      >
-        {#each getFilterOptions(activeTab) as opt}
-          <option value={opt}>{opt}</option>
-        {/each}
-      </select>
+      <div class="filter-nav">
+        <button 
+          class="nav-btn" 
+          onclick={navigatePrev}
+          disabled={getCurrentIndex() <= 0}
+        >←</button>
+        <select 
+          class="filter-select"
+          bind:value={activeFilter}
+        >
+          {#each getFilterOptions(activeTab) as opt}
+            <option value={opt}>{opt}</option>
+          {/each}
+        </select>
+        <button 
+          class="nav-btn" 
+          onclick={navigateNext}
+          disabled={getCurrentIndex() >= getFilterOptions(activeTab).length - 1}
+        >→</button>
+      </div>
     {/if}
   </div>
 
@@ -388,6 +421,34 @@
     color: var(--text);
     min-width: 150px;
     cursor: pointer;
+  }
+
+  .filter-nav {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .nav-btn {
+    padding: 6px 10px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--text-soft);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .nav-btn:hover:not(:disabled) {
+    border-color: var(--gold-mid);
+    color: var(--gold);
+  }
+
+  .nav-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
   }
 
   .chart-container {
