@@ -195,7 +195,7 @@
         {#if currentModal.qid && loksabhaData?.[0]?.parliamentaryConstituency}
           <div class="modal-section-label loksabha-section">
             <button class="toggle-loksabha-btn" onclick={() => loksabhaVisible = !loksabhaVisible}>
-              {loksabhaVisible ? '▼' : '▶'} {$_('modal.partOfParliamentaryConstituency', { values: { parliamentaryConstituency: loksabhaData[0].parliamentaryConstituency } })}
+              {loksabhaVisible ? '▼' : '▶'} {$_('modal.partOfParliamentaryConstituency', { values: { parliamentaryConstituency: currentLangValue === 'ml' && loksabhaData[0].parliamentaryConstituencyMalayalam ? loksabhaData[0].parliamentaryConstituencyMalayalam : loksabhaData[0].parliamentaryConstituency } })}
             </button>
           </div>
           <div class="loksabha-chart-wrapper" class:hidden={!loksabhaVisible}>
