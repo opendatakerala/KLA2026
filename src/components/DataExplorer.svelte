@@ -1,6 +1,7 @@
 <script>
   import FilterBar from './FilterBar.svelte';
   import DataDisplay from './DataDisplay.svelte';
+  import SearchBar from './SearchBar.svelte';
   import { 
     filters, 
     clearFilters,
@@ -19,7 +20,22 @@
 </script>
 
 <div class="data-explorer" id="data-explorer">
-  <div class="explorer-toolbar">
+  <div class="explorer-toolbar desktop-only">
+    <button 
+      class="filters-toggle"
+      class:active={filtersOpen}
+      onclick={toggleFilters}
+    >
+      <span class="toggle-icon">{filtersOpen ? '▼' : '▶'}</span>
+      Filters
+    </button>
+  </div>
+
+  <div class="mobile-search-wrap mobile-only">
+    <SearchBar />
+  </div>
+
+  <div class="explorer-toolbar mobile-only">
     <button 
       class="filters-toggle"
       class:active={filtersOpen}
@@ -220,5 +236,17 @@
     background: var(--card2);
     color: var(--text);
     border-color: var(--gold-mid);
+  }
+
+  .mobile-search-wrap {
+    margin-bottom: 12px;
+  }
+
+  .desktop-only { display: block !important; }
+  .mobile-only { display: none !important; }
+
+  @media (max-width: 640px) {
+    .desktop-only { display: none !important; }
+    .mobile-only { display: block !important; }
   }
 </style>

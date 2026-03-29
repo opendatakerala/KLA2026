@@ -303,10 +303,30 @@
       gap: 12px;
     }
     .header-search {
-      padding: 0 16px 12px;
+      display: none;
     }
     .header-logo { width: 44px; height: 44px; }
-    .header-right { display: none; }
+    .header-right {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 12px;
+      grid-column: 1 / -1;
+      padding-top: 8px;
+      border-top: 1px solid var(--border);
+      margin-top: 4px;
+    }
+    .countdown-box {
+      padding: 6px 10px;
+    }
+    .countdown-label { font-size: 9px; margin-bottom: 2px; }
+    .countdown-units { gap: 2px; }
+    .cunit { min-width: 24px; }
+    .cnum { font-size: var(--fs-lg); }
+    .clabel { font-size: 8px; }
+    .csep { font-size: var(--fs-sm); margin-bottom: 8px; }
+    .lang-switcher { gap: 0; }
+    .lang-btn { padding: 4px 6px; font-size: 10px; }
     h1 { font-size: var(--fs-xl); }
     .header-eyebrow { font-size: var(--fs-xs); }
     .header-tagline { font-size: var(--fs-sm); }
