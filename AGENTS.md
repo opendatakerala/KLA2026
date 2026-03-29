@@ -17,8 +17,6 @@ node scripts/index.js --script constituencies
 # Run all scripts
 node scripts/index.js --all
 
-# Available scripts: constituencies, historical-comparison, candidates-by-party, 
-# gender-distribution, education-distribution, criminal-cases, assets-distribution, kla-map-svg
 ```
 
 ## Code Style Guidelines
@@ -72,8 +70,8 @@ node scripts/index.js --all
 - Put stores in `src/stores/`
 
 ### CSS Guidelines
-- Use CSS variables from `global.css` for colors (e.g., `var(--gold)`, `var(--border)`)
-- Avoid hardcoding colors - use the defined variables
+- Use CSS variables from `global.css` for colors (e.g., `var(--gold)`, `var(--border)`) and font size ( `var(--text-muted)`, etc)
+- Avoid hardcoding colors and size - use the defined variables
 - Use `DM Mono` for monospace text, `Inter` for sans-serif
 - Keep styles scoped to components when possible
 
