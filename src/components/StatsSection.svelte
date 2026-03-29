@@ -114,19 +114,6 @@
     color: var(--gold);
   }
 
-  .stats-tab[disabled] {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-
-  .stats-tab .coming-soon {
-    font-size: var(--fs-xs);
-    padding: 2px 6px;
-    background: var(--bg2);
-    border-radius: 10px;
-    color: var(--faint);
-  }
-
   .stats-content {
     padding: 20px;
     min-height: 380px;

@@ -170,8 +170,6 @@
     letter-spacing: -0.02em;
   }
 
-  h1 em { font-style: italic; color: #000; }
-
   .header-tagline {
     font-size: var(--fs-base);
     color: #000;

@@ -191,6 +191,4 @@
     color: #EC4899;
   }
 
-  .filter-btn.party-btn {
-  }
 </style>

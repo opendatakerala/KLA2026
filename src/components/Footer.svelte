@@ -99,38 +99,6 @@
   }
   .footer-disc-link:hover { color: var(--gold-mid); }
 
-  .disc-content {
-    margin-top: 12px;
-    font-size: var(--fs-xs);
-    color: var(--text-soft);
-    line-height: 1.6;
-    max-width: 600px;
-  }
-
-  .disc-content strong {
-    display: block;
-    font-family: 'DM Mono', monospace;
-    font-size: var(--fs-sm);
-    color: var(--text);
-    margin-bottom: 4px;
-    letter-spacing: 0.05em;
-  }
-
-  .disc-content p {
-    margin: 0;
-    margin-bottom: 4px;
-  }
-
-  .disc-content p:last-child {
-    margin-bottom: 0;
-  }
-
-  .disc-content a {
-    color: var(--udf);
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
-
   @media (max-width: 640px) {
     footer { padding: 12px 16px; flex-direction: column; gap: 12px; }
     .footer-text { font-size: var(--fs-xs); }

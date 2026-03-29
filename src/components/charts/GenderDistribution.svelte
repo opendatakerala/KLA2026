@@ -479,8 +479,5 @@ echarts.use([
     .gender-card {
       padding: 16px 8px;
     }
-    .card-value {
-      font-size: var(--fs-2xl);
-    }
   }
 </style>
