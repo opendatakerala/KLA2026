@@ -8,14 +8,16 @@ The platform integrates data from multiple sources to provide a comprehensive an
 
 # Team
 ## Core Team
-Manoj Karingamadathil – Project Management & Data Modeling
-Akshay S Dinesh – Web Technology & Informatics
-Navaneeth T M – Infography & Data Curation
-Athul R T – Data Scraping & Management
-Haniyah Olassery Usman – Data Curation, Analytics & Media Outreach
-Sruthi Mohandas – (Intern, Sahya Digital Conservation Foundation)
-Rajaneesh P – Mapping & Data Linking
-Jameela P – Infographics & Icons
+1. Manoj Karingamadathil – Project Management & Data Modeling
+2. Akshay S Dinesh – Web Technology & Informatics
+3. Navaneeth T M – Infography & Data Curation
+4. Athul R T – Data Scraping & Management
+5. Haniyah Olassery Usman – Data Curation, Analytics & Media Outreach
+6. Sruthi Mohandas – (Intern, Sahya Digital Conservation Foundation)
+7. Rajaneesh P – Mapping & Data Linking
+8. Jameela P – Infographics & Icons
+9. Arun Raj K M 
+
 ## Supporting Team
 OpenDataKerala (ODK) Election Data Working Group - Jinoy Tom Jacob, Naveen Francis, Ark Arjun, Jothish Babu, Jaisen Nedumpala, Ranjith Sajeev
 
