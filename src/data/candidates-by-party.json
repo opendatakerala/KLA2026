@@ -4,16 +4,16 @@
     "CPI": 24,
     "Independent (CPI(M) support)": 13,
     "Kerala Congress (M)": 12,
-    "RJD": 3,
-    "NCP(SP)": 3,
     "Indian Socialist Janata Dal": 3,
-    "Independent (INL Support)": 1,
+    "NCP(SP)": 3,
+    "RJD": 3,
     "Congress (Secular)": 1,
+    "Independent (INL Support)": 1,
     "INL": 1,
-    "Independent (CPI support)": 1,
-    "Independent (INL support)": 1,
     "RSP(L)": 1,
-    "Kerala Congress (B)": 1
+    "Independent (CPI support)": 1,
+    "Kerala Congress (B)": 1,
+    "Independent (INL support)": 1
   },
   "UDF": {
     "INC": 92,
@@ -21,13 +21,13 @@
     "KEC": 8,
     "RSP": 4,
     "Independent (INC Support)": 3,
-    "Independent (RSP support)": 1,
-    "RMPI": 1,
     "AITC": 1,
     "Independent (IUML Support)": 1,
-    "KC(J)": 1,
     "DCK": 1,
-    "CMP": 1
+    "Independent (RSP support)": 1,
+    "KC(J)": 1,
+    "CMP": 1,
+    "RMPI": 1
   },
   "NDA": {
     "BJP": 97,
@@ -36,7 +36,8 @@
     "JRS": 1
   },
   "Others": {
-    "AAP": 61,
-    "SDPI": 31
+    "Independent": 383,
+    "AAP": 53,
+    "SDPI": 27
   }
 }

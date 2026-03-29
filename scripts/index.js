@@ -1,19 +1,17 @@
 import generateCandidatesByParty from './generate-candidates-by-party.js';
 import generateGenderDistribution from './generate-gender-distribution.js';
-import generateEducationDistribution from './generate-education-distribution.js';
-import generateCriminalCases from './generate-criminal-cases.js';
-import generateAssetsDistribution from './generate-assets-distribution.js';
+import generateAgeDistribution from './generate-age-distribution.js';
 import generateKlaMapSvg from './generate-kla-map-svg.js';
 import generateConstituencies from './generate-constituencies.js';
+import generateDistrictBounds from './generate-district-bounds.js';
 
 const scripts = {
   'candidates-by-party': generateCandidatesByParty,
   'gender-distribution': generateGenderDistribution,
-  'education-distribution': generateEducationDistribution,
-  'criminal-cases': generateCriminalCases,
-  'assets-distribution': generateAssetsDistribution,
+  'age-distribution': generateAgeDistribution,
   'kla-map-svg': generateKlaMapSvg,
-  'constituencies': generateConstituencies
+  'constituencies': generateConstituencies,
+  'district-bounds': generateDistrictBounds
 };
 
 const args = process.argv.slice(2);

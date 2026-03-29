@@ -1,4 +1,11 @@
-import { readCSV, writeJSON, ensureOutputDir } from './utils/common.js';
+import { readCSV, writeJSON, ensureOutputDir, cleanString } from './utils/common.js';
+
+function getAlliance(allianceFromCSV) {
+  if (allianceFromCSV && ['LDF', 'UDF', 'NDA'].includes(allianceFromCSV)) {
+    return allianceFromCSV;
+  }
+  return 'Others';
+}
 
 function generate() {
   ensureOutputDir();
@@ -13,14 +20,9 @@ function generate() {
   };
   
   candidates.forEach(cand => {
-    const alliance = cand.alliance;
-    const party = cand.party;
-    
-    if (!alliance || !party) return;
-    
-    if (!result[alliance]) {
-      alliance = 'Others';
-    }
+    const alliance = getAlliance(cleanString(cand.alliance));
+    let party = cleanString(cand.party_y);
+    if (!party) party = 'Independent';
     
     if (!result[alliance][party]) {
       result[alliance][party] = 0;

@@ -1,9 +1,25 @@
 import { readCSV, writeJSON, ensureOutputDir, cleanString } from './utils/common.js';
 
+function getAlliance(allianceFromCSV) {
+  if (allianceFromCSV && ['LDF', 'UDF', 'NDA'].includes(allianceFromCSV)) {
+    return allianceFromCSV;
+  }
+  return 'Others';
+}
+
 function generate() {
   ensureOutputDir();
   
   const candidates = readCSV('2026-candidates.csv');
+  const constituencies = readCSV('2026-constituencies.csv');
+  
+  const constituencyToDistrict = {};
+  constituencies.forEach(row => {
+    const qid = cleanString(row.constituency_Wikidata);
+    if (qid) {
+      constituencyToDistrict[qid] = cleanString(row.district);
+    }
+  });
   
   const result = {
     overall: { male: 0, female: 0, transgender: 0, unknown: 0 },
@@ -19,9 +35,11 @@ function generate() {
   
   candidates.forEach(cand => {
     const gender = cleanString(cand.candidate_Gender).toLowerCase();
-    const alliance = cleanString(cand.alliance) || 'Others';
-    const party = cleanString(cand.party) || 'Others';
-    const district = cleanString(cand.district);
+    const alliance = getAlliance(cleanString(cand.alliance));
+    let party = cleanString(cand.party_y);
+    if (!party) party = 'Independent';
+    const qid = cleanString(cand.constituency_Wikidata);
+    const district = qid ? constituencyToDistrict[qid] : null;
     
     if (!gender) return;
     
@@ -30,21 +48,15 @@ function generate() {
     else if (gender === 'female') genderKey = 'female';
     else if (gender === 'transgender') genderKey = 'transgender';
     
-    // Overall
     result.overall[genderKey]++;
     
-    // By Alliance
-    if (result.byAlliance[alliance]) {
-      result.byAlliance[alliance][genderKey]++;
-    }
+    result.byAlliance[alliance][genderKey]++;
     
-    // By Party
     if (!result.byParty[party]) {
       result.byParty[party] = { male: 0, female: 0, transgender: 0, unknown: 0 };
     }
     result.byParty[party][genderKey]++;
     
-    // By District
     if (district) {
       if (!result.byDistrict[district]) {
         result.byDistrict[district] = { male: 0, female: 0, transgender: 0, unknown: 0 };
