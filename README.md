@@ -20,8 +20,8 @@ The platform integrates data from multiple sources to provide a comprehensive an
 4. Athul R T – Data Scraping & Management
 5. Haniyah Olassery Usman – Data Curation, Analytics & Media Outreach
 6. Sruthi Mohandas – (Intern, Sahya Digital Conservation Foundation)
-7. Rajaneesh P – Mapping & Data Linking
-8. Jameela P – Infographics & Icons
+7. Jameela P – Infographics & Icons
+8. Rajaneesh P –
 9. Arun Raj K M 
 
 ## Supporting Team
