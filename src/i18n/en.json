@@ -123,6 +123,11 @@
     "women": "Women",
     "transgender": "Transgender",
     "men": "Men",
+    "overall": "Overall",
+    "alliance": "Alliance",
+    "party": "Party",
+    "district": "District",
+    "averageAge": "Average Age",
     "wonBy": "{party} ({alliance}) won by {margin} votes",
     "leadBy": "{party} ({alliance}) had a lead of {margin} votes",
     "partOfParliamentaryConstituency": "Part of {parliamentaryConstituency} parliamentary constituency"

@@ -7,12 +7,9 @@
   const { isActive = false } = $props();
 
   const TABS = ['overall', 'alliance', 'party', 'district'];
-  const TAB_LABELS = {
-    overall: 'Overall',
-    alliance: 'Alliance',
-    party: 'Party',
-    district: 'District'
-  };
+  function getTabLabel(tab) {
+    return $_(`charts.${tab}`);
+  }
 
   const ALLIANCES = ['LDF', 'UDF', 'NDA', 'Others'];
 
@@ -168,7 +165,7 @@
           class:active={activeTab === tab}
           on:click={() => setTab(tab)}
         >
-          {TAB_LABELS[tab]}
+          {getTabLabel(tab)}
         </button>
       {/each}
     </div>
@@ -210,11 +207,11 @@
   <div class="stacked-bar-container">
     <div class="stacked-bar" bind:this={chartContainer}></div>
     <div class="bar-legend">
-      <span class="legend-item"><span class="legend-dot female"></span> Women ({femalePct}%)</span>
+      <span class="legend-item"><span class="legend-dot female"></span> {$_('charts.women')} ({femalePct}%)</span>
       {#if showTransgender}
-        <span class="legend-item"><span class="legend-dot trans"></span> Transgender ({transPct}%)</span>
+        <span class="legend-item"><span class="legend-dot trans"></span> {$_('charts.transgender')} ({transPct}%)</span>
       {/if}
-      <span class="legend-item"><span class="legend-dot male"></span> Men ({malePct}%)</span>
+      <span class="legend-item"><span class="legend-dot male"></span> {$_('charts.men')} ({malePct}%)</span>
     </div>
   </div>
 </div>

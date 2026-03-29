@@ -7,12 +7,9 @@
   const { isActive = false } = $props();
 
   const TABS = ['overall', 'alliance', 'party', 'district'];
-  const TAB_LABELS = {
-    overall: 'Overall',
-    alliance: 'Alliance',
-    party: 'Party',
-    district: 'District'
-  };
+  function getTabLabel(tab) {
+    return $_(`charts.${tab}`);
+  }
 
   let tabsWithFloat = $derived(activeTab !== 'overall' 
     ? TABS.filter(t => t !== activeTab).concat([activeTab])
@@ -284,7 +281,7 @@
           class:active={activeTab === tab}
           onclick={() => setTab(tab)}
         >
-          {TAB_LABELS[tab]}
+          {getTabLabel(tab)}
         </button>
       {/each}
     </div>
@@ -301,7 +298,7 @@
   </div>
 
   {#if activeTab === 'overall'}
-    <div class="avg-label-row">Average Age</div>
+    <div class="avg-label-row">{$_('charts.averageAge')}</div>
     <div class="avg-ages">
       <div class="avg-card" style="--card-color: {ALLIANCE_COLORS.Overall}">
         <span class="avg-label">Overall</span>
@@ -327,7 +324,7 @@
   {:else}
     <div class="avg-ages">
       <div class="avg-header-card">
-        <span class="avg-label">Average Age</span>
+        <span class="avg-label">{$_('charts.averageAge')}</span>
         <span class="avg-value">{currentAverage}</span>
         <span class="avg-unit">yrs</span>
       </div>

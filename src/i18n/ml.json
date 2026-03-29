@@ -123,6 +123,11 @@
     "women": "സ്ത്രീകൾ",
     "transgender": "ട്രാൻസ്‌ജൻഡർ",
     "men": "പുരുഷന്മാർ",
+    "overall": "മൊത്തത്തില്‍",
+    "alliance": "സഖ്യം",
+    "party": "പാര്‍ട്ടി",
+    "district": "ജില്ല",
+    "averageAge": "ശരാശരി പ്രായം",
     "wonBy": "{party} ({alliance}) {margin} വോട്ടുകൾക്ക് വിജയിച്ചു",
     "leadBy": "{party} ({alliance}) {margin} വോട്ടുകളുടെ ഭൂരിപക്ഷമുണ്ട്",
     "partOfParliamentaryConstituency": "ഈ മണ്ഡലം {parliamentaryConstituency} ലോകസഭ മണ്ഡലത്തിൻ്റെ ഭാഗമാണ്"
