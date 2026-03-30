@@ -28,7 +28,7 @@
     return currentIsLoading ? key : $_(key);
   }
 
-  let loksabhaVisible = $state(false);
+  let loksabhaVisible = $state(true);
 
   let historicalData = $derived($historicalDataStore);
   let niyamasabhaData = $derived(historicalData?.data?.niyamasabha || []);
@@ -224,7 +224,7 @@
         <div class="modal-section-label">
           {$_('modal.historicalResultsNiyamasabha')}
         </div>
-        <NiyamasabhaChart constituencyNumber={currentModal.number} data={niyamasabhaData} loading={historicalLoading} error={historicalError} />
+        <NiyamasabhaChart constituencyNumber={currentModal.number} data={niyamasabhaData} loading={historicalLoading} error={historicalError} alwaysShowSimple={true} />
 
         <!-- Lok Sabha Historical Results -->
         {#if currentModal.qid && loksabhaData?.[0]?.parliamentaryConstituency}

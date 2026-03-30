@@ -18,7 +18,7 @@ echarts.use([
 ]);
   import { _ } from '../../lib/i18n.js';
 
-  let { constituencyNumber = null, data = [], loading = false, error = false, forceView = null } = $props();
+  let { constituencyNumber = null, data = [], loading = false, error = false, forceView = null, alwaysShowSimple = false } = $props();
 
   const COLORS = {
     LDF: '#D94040',
@@ -33,6 +33,13 @@ echarts.use([
 
   let internalView = $state('simple');
   let currentView = $derived(forceView || internalView);
+
+  $effect(() => {
+    if (alwaysShowSimple && internalView === 'simple') {
+      internalView = 'stacked';
+    }
+  });
+
   let chartContainer = $state(null);
   let chart = null;
 
@@ -179,28 +186,32 @@ echarts.use([
       <span class="pending-sub">{$_('charts.dataForYears', { values: { years: YEARS.join(', ') } })}</span>
     </div>
   </div>
-{:else if currentView === 'simple'}
-  <div class="simple-view">
-    {#each seriesData as yearData}
-      <div class="simple-year-row">
-        <span class="simple-year">{yearData.year}</span>
-        <span class="simple-result">{getSimpleText(yearData)}</span>
-      </div>
-    {/each}
-    <button class="view-details-btn" onclick={() => setView('bars')}>{$_('charts.viewDetails')}</button>
-  </div>
 {:else}
-  <div class="historical-chart-container">
-    {#if !forceView}
-      <button class="back-btn" onclick={goBack}>← Back</button>
+  {#if !forceView}
+    {#if currentView === 'simple' || alwaysShowSimple}
+      <div class="simple-view">
+        {#each seriesData as yearData}
+          <div class="simple-year-row">
+            <span class="simple-year">{yearData.year}</span>
+            <span class="simple-result">{getSimpleText(yearData)}</span>
+          </div>
+        {/each}
+        {#if !alwaysShowSimple}
+          <button class="view-details-btn" onclick={() => setView('bars')}>{$_('charts.viewDetails')}</button>
+        {/if}
+      </div>
     {/if}
-    <div class="historical-switcher">
+  {/if}
+
+  {#if forceView || alwaysShowSimple}
+    <div class="historical-chart-container">
       {#if !forceView}
-        <button class="hist-switch-btn" class:active={currentView === 'bars'} onclick={() => setView('bars')}>{$_('charts.bars')}</button>
-        <button class="hist-switch-btn" class:active={currentView === 'stacked'} onclick={() => setView('stacked')}>{$_('charts.stacked')}</button>
-        <button class="hist-switch-btn" class:active={currentView === 'table'} onclick={() => setView('table')}>{$_('charts.table')}</button>
+        <div class="historical-switcher">
+          <button class="hist-switch-btn" class:active={currentView === 'bars'} onclick={() => setView('bars')}>{$_('charts.bars')}</button>
+          <button class="hist-switch-btn" class:active={currentView === 'stacked'} onclick={() => setView('stacked')}>{$_('charts.stacked')}</button>
+          <button class="hist-switch-btn" class:active={currentView === 'table'} onclick={() => setView('table')}>{$_('charts.table')}</button>
+        </div>
       {/if}
-    </div>
 
     {#if currentView === 'bars'}
       <div class="chart-view" bind:this={chartContainer}></div>
@@ -248,6 +259,7 @@ echarts.use([
       </div>
     {/if}
   </div>
+  {/if}
 {/if}
 
 <style>
