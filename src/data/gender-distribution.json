@@ -50,15 +50,21 @@
       "transgender": 0,
       "unknown": 0
     },
-    "Independent": {
-      "male": 341,
-      "female": 42,
+    "BSP": {
+      "male": 48,
+      "female": 7,
       "transgender": 0,
       "unknown": 0
     },
     "CPI(M)": {
       "male": 64,
-      "female": 11,
+      "female": 12,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "Independent": {
+      "male": 234,
+      "female": 22,
       "transgender": 0,
       "unknown": 0
     },
@@ -74,15 +80,33 @@
       "transgender": 0,
       "unknown": 0
     },
+    "SUCI": {
+      "male": 22,
+      "female": 9,
+      "transgender": 0,
+      "unknown": 0
+    },
     "TTP": {
       "male": 16,
       "female": 3,
       "transgender": 0,
       "unknown": 0
     },
+    "API": {
+      "male": 2,
+      "female": 0,
+      "transgender": 0,
+      "unknown": 0
+    },
     "BDJS": {
       "male": 22,
       "female": 1,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "BDP": {
+      "male": 1,
+      "female": 0,
       "transgender": 0,
       "unknown": 0
     },
@@ -93,8 +117,14 @@
       "unknown": 0
     },
     "SDPI": {
-      "male": 26,
+      "male": 32,
       "female": 1,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "Anna DHRM": {
+      "male": 6,
+      "female": 3,
       "transgender": 0,
       "unknown": 0
     },
@@ -122,9 +152,15 @@
       "transgender": 0,
       "unknown": 0
     },
+    "JRP": {
+      "male": 2,
+      "female": 1,
+      "transgender": 0,
+      "unknown": 0
+    },
     "Independent (CPI(M) support)": {
       "male": 12,
-      "female": 1,
+      "female": 0,
       "transgender": 0,
       "unknown": 0
     },
@@ -146,13 +182,31 @@
       "transgender": 0,
       "unknown": 0
     },
+    "NCP": {
+      "male": 1,
+      "female": 0,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "CPIML Red Star": {
+      "male": 5,
+      "female": 0,
+      "transgender": 0,
+      "unknown": 0
+    },
     "RJD": {
-      "male": 3,
+      "male": 4,
       "female": 0,
       "transgender": 0,
       "unknown": 0
     },
     "Congress (Secular)": {
+      "male": 1,
+      "female": 0,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "BJKP": {
       "male": 1,
       "female": 0,
       "transgender": 0,
@@ -164,7 +218,43 @@
       "transgender": 0,
       "unknown": 0
     },
+    "CPIML Liberation": {
+      "male": 2,
+      "female": 0,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "RPI (A)": {
+      "male": 1,
+      "female": 0,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "RJP": {
+      "male": 1,
+      "female": 0,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "EPI": {
+      "male": 2,
+      "female": 0,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "SRP": {
+      "male": 1,
+      "female": 0,
+      "transgender": 0,
+      "unknown": 0
+    },
     "INL": {
+      "male": 1,
+      "female": 0,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "AIHCP": {
       "male": 1,
       "female": 0,
       "transgender": 0,
@@ -176,7 +266,19 @@
       "transgender": 0,
       "unknown": 0
     },
+    "IGP": {
+      "male": 1,
+      "female": 0,
+      "transgender": 0,
+      "unknown": 0
+    },
     "Independent (CPI support)": {
+      "male": 1,
+      "female": 0,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "TFIP": {
       "male": 1,
       "female": 0,
       "transgender": 0,
@@ -207,6 +309,18 @@
       "unknown": 0
     },
     "CMP": {
+      "male": 1,
+      "female": 0,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "SP (I)": {
+      "male": 1,
+      "female": 0,
+      "transgender": 0,
+      "unknown": 0
+    },
+    "CPI (M)": {
       "male": 1,
       "female": 0,
       "transgender": 0,

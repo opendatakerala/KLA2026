@@ -116,7 +116,7 @@
       },
       {
         "alliance": "Others",
-        "party": "",
+        "party": "BSP",
         "name": "Sanjeeva",
         "malayalam": "സഞ്ജീവ",
         "wikidata": "",
@@ -317,7 +317,7 @@
       },
       {
         "alliance": "Others",
-        "party": "",
+        "party": "BSP",
         "name": "B. Vijayakumar",
         "malayalam": "ബി. വിജയകുമാർ",
         "wikidata": "",
@@ -809,7 +809,7 @@
       },
       {
         "alliance": "Others",
-        "party": "",
+        "party": "SUCI",
         "name": "Reshmi Ravi",
         "malayalam": "രശ്മി രവി",
         "wikidata": "",
@@ -867,16 +867,6 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "Suresh Kumar",
-        "malayalam": "സുരേഷ് കുമാർ",
-        "wikidata": "",
-        "gender": "male",
-        "age": "59",
-        "candidateId": "4500"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
         "name": "T.K. Mohanan",
         "malayalam": "ടി.കെ. മോഹനൻ",
         "wikidata": "",
@@ -887,22 +877,32 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "M.K. Shahazad",
-        "malayalam": "എം.കെ. ഷഹസാദ്",
-        "wikidata": "",
-        "gender": "male",
-        "age": "36",
-        "candidateId": "1051"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
         "name": "Ramachandran Kuniyil",
         "malayalam": "രാമചന്ദ്രൻ കുനിയിൽ",
         "wikidata": "",
         "gender": "male",
         "age": "64",
         "candidateId": "4441"
+      },
+      {
+        "alliance": "Others",
+        "party": "BJKP",
+        "name": "Suresh Kumar",
+        "malayalam": "സുരേഷ് കുമാർ",
+        "wikidata": "",
+        "gender": "male",
+        "age": "59",
+        "candidateId": "4500"
+      },
+      {
+        "alliance": "Others",
+        "party": "SUCI",
+        "name": "M.K. Shahazad",
+        "malayalam": "എം.കെ. ഷഹസാദ്",
+        "wikidata": "",
+        "gender": "male",
+        "age": "36",
+        "candidateId": "1051"
       }
     ]
   },
@@ -1322,16 +1322,6 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "Aruvikkal Krishnan",
-        "malayalam": "അരുവിക്കൽ കൃഷ്ണൻ",
-        "wikidata": "",
-        "gender": "male",
-        "age": "50",
-        "candidateId": "4647"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
         "name": "C. Shylaja",
         "malayalam": "സി. ഷൈലജ",
         "wikidata": "",
@@ -1368,6 +1358,16 @@
         "gender": "male",
         "age": "57",
         "candidateId": "1522"
+      },
+      {
+        "alliance": "Others",
+        "party": "CPIML Red Star",
+        "name": "Aruvikkal Krishnan",
+        "malayalam": "അരുവിക്കൽ കൃഷ്ണൻ",
+        "wikidata": "",
+        "gender": "male",
+        "age": "50",
+        "candidateId": "4647"
       }
     ]
   },
@@ -1466,32 +1466,12 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "V.A Ramesan",
-        "malayalam": "വി. എ രമേശൻ",
-        "wikidata": "",
-        "gender": "male",
-        "age": "47",
-        "candidateId": "3794"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
         "name": "Balakrishnan Edakkal",
         "malayalam": "ബാലകൃഷ്ണൻ എടക്കൽ",
         "wikidata": "",
         "gender": "male",
         "age": "58",
         "candidateId": "3526"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
-        "name": "Benadict",
-        "malayalam": "ബെനഡിക്റ്റ്",
-        "wikidata": "",
-        "gender": "male",
-        "age": "59",
-        "candidateId": "3218"
       },
       {
         "alliance": "Others",
@@ -1512,6 +1492,26 @@
         "gender": "transgender",
         "age": "26",
         "candidateId": "3426"
+      },
+      {
+        "alliance": "Others",
+        "party": "BSP",
+        "name": "Benadict",
+        "malayalam": "ബെനഡിക്റ്റ്",
+        "wikidata": "",
+        "gender": "male",
+        "age": "59",
+        "candidateId": "3218"
+      },
+      {
+        "alliance": "Others",
+        "party": "SUCI",
+        "name": "V.A Ramesan",
+        "malayalam": "വി. എ രമേശൻ",
+        "wikidata": "",
+        "gender": "male",
+        "age": "47",
+        "candidateId": "3794"
       }
     ]
   },
@@ -1583,36 +1583,6 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "V. K. Prakash",
-        "malayalam": "വി. കെ. പ്രകാശ്",
-        "wikidata": "",
-        "gender": "male",
-        "age": "55",
-        "candidateId": "54"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
-        "name": "N Hamza",
-        "malayalam": "എൻ ഹംസ",
-        "wikidata": "",
-        "gender": "male",
-        "age": "52",
-        "candidateId": "2808"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
-        "name": "Anil Kumar K.P.",
-        "malayalam": "അനിൽ കുമാർ കെ.പി.",
-        "wikidata": "",
-        "gender": "male",
-        "age": "53",
-        "candidateId": "3466"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
         "name": "Radhakrishnan M",
         "malayalam": "രാധാകൃഷ്ണൻ എം",
         "wikidata": "",
@@ -1629,6 +1599,36 @@
         "gender": "male",
         "age": "44",
         "candidateId": "528"
+      },
+      {
+        "alliance": "Others",
+        "party": "CPIML Red Star",
+        "name": "V. K. Prakash",
+        "malayalam": "വി. കെ. പ്രകാശ്",
+        "wikidata": "",
+        "gender": "male",
+        "age": "55",
+        "candidateId": "54"
+      },
+      {
+        "alliance": "Others",
+        "party": "RJD",
+        "name": "Anil Kumar K.P.",
+        "malayalam": "അനിൽ കുമാർ കെ.പി.",
+        "wikidata": "",
+        "gender": "male",
+        "age": "53",
+        "candidateId": "3466"
+      },
+      {
+        "alliance": "Others",
+        "party": "SDPI",
+        "name": "N Hamza",
+        "malayalam": "എൻ ഹംസ",
+        "wikidata": "",
+        "gender": "male",
+        "age": "52",
+        "candidateId": "2808"
       }
     ]
   },
@@ -1719,7 +1719,7 @@
       },
       {
         "alliance": "Others",
-        "party": "",
+        "party": "SDPI",
         "name": "Shamseer Chombala",
         "malayalam": "ഷംസീർ ചോംബാല",
         "wikidata": "",
@@ -2028,16 +2028,6 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "Akhil Kumar A.M",
-        "malayalam": "അഖിൽ കുമാർ എ.എം.",
-        "wikidata": "",
-        "gender": "male",
-        "age": "48",
-        "candidateId": "2994"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
         "name": "Fathima Nasri.V",
         "malayalam": "ഫാത്തിമ നസ്രി.വി",
         "wikidata": "",
@@ -2084,6 +2074,16 @@
         "gender": "male",
         "age": "42",
         "candidateId": "1516"
+      },
+      {
+        "alliance": "Others",
+        "party": "CPIML Red Star",
+        "name": "Akhil Kumar A.M",
+        "malayalam": "അഖിൽ കുമാർ എ.എം.",
+        "wikidata": "",
+        "gender": "male",
+        "age": "48",
+        "candidateId": "2994"
       }
     ]
   },
@@ -2221,7 +2221,17 @@
       },
       {
         "alliance": "Others",
-        "party": "",
+        "party": "AAP",
+        "name": "Abdul Basith Atholi",
+        "malayalam": "അബ്ദുൾ ബാസിത് അത്തോളി",
+        "wikidata": "",
+        "gender": "male",
+        "age": "39",
+        "candidateId": "2962"
+      },
+      {
+        "alliance": "Others",
+        "party": "NCP",
         "name": "P.K.Saseendran",
         "malayalam": "പി.കെ. ശശീന്ദ്രൻ",
         "wikidata": "",
@@ -2231,23 +2241,13 @@
       },
       {
         "alliance": "Others",
-        "party": "",
+        "party": "SUCI",
         "name": "P.M.Sreekumar",
         "malayalam": "പി.എം. ശ്രീകുമാർ",
         "wikidata": "",
         "gender": "male",
         "age": "56",
         "candidateId": "485"
-      },
-      {
-        "alliance": "Others",
-        "party": "AAP",
-        "name": "Abdul Basith Atholi",
-        "malayalam": "അബ്ദുൾ ബാസിത് അത്തോളി",
-        "wikidata": "",
-        "gender": "male",
-        "age": "39",
-        "candidateId": "2962"
       }
     ]
   },
@@ -2295,16 +2295,6 @@
         "gender": "female",
         "age": "41",
         "candidateId": "3313"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
-        "name": "A Sajeena",
-        "malayalam": "എ സജീന",
-        "wikidata": "",
-        "gender": "female",
-        "age": "33",
-        "candidateId": "520"
       },
       {
         "alliance": "Others",
@@ -2365,6 +2355,16 @@
         "gender": "female",
         "age": "62",
         "candidateId": "2743"
+      },
+      {
+        "alliance": "Others",
+        "party": "SUCI",
+        "name": "A Sajeena",
+        "malayalam": "എ സജീന",
+        "wikidata": "",
+        "gender": "female",
+        "age": "33",
+        "candidateId": "520"
       }
     ]
   },
@@ -2609,7 +2609,7 @@
       },
       {
         "alliance": "Others",
-        "party": "",
+        "party": "AIHCP",
         "name": "Santhosh P T",
         "malayalam": "സന്തോഷ് പി ടി",
         "wikidata": "",
@@ -2663,16 +2663,6 @@
         "gender": "male",
         "age": "51",
         "candidateId": "4772"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
-        "name": "Sunil Mannath",
-        "malayalam": "സുനിൽ മന്നത്ത്",
-        "wikidata": "",
-        "gender": "male",
-        "age": "46",
-        "candidateId": "3085"
       },
       {
         "alliance": "Others",
@@ -2763,6 +2753,16 @@
         "gender": "male",
         "age": "71",
         "candidateId": "2828"
+      },
+      {
+        "alliance": "Others",
+        "party": "RPI (A)",
+        "name": "Sunil Mannath",
+        "malayalam": "സുനിൽ മന്നത്ത്",
+        "wikidata": "",
+        "gender": "male",
+        "age": "46",
+        "candidateId": "3085"
       }
     ]
   },
@@ -2900,7 +2900,7 @@
       },
       {
         "alliance": "Others",
-        "party": "",
+        "party": "BSP",
         "name": "Keeran N.K",
         "malayalam": "കീരൻ എൻ.കെ.",
         "wikidata": "",
@@ -2968,22 +2968,22 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "Krishnan Thachannan",
-        "malayalam": "കൃഷ്ണൻ തച്ചന്നൻ",
-        "wikidata": "",
-        "gender": "male",
-        "age": "58",
-        "candidateId": "917"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
         "name": "Mujeeb Rahman",
         "malayalam": "മുജീബ് റഹ്മാൻ",
         "wikidata": "",
         "gender": "male",
         "age": "42",
         "candidateId": "3241"
+      },
+      {
+        "alliance": "Others",
+        "party": "BSP",
+        "name": "Krishnan Thachannan",
+        "malayalam": "കൃഷ്ണൻ തച്ചന്നൻ",
+        "wikidata": "",
+        "gender": "male",
+        "age": "58",
+        "candidateId": "917"
       },
       {
         "alliance": "Others",
@@ -3630,16 +3630,6 @@
       },
       {
         "alliance": "Others",
-        "party": "",
-        "name": "Hameed V",
-        "malayalam": "ഹമീദ് വി",
-        "wikidata": "",
-        "gender": "male",
-        "age": "49",
-        "candidateId": "3415"
-      },
-      {
-        "alliance": "Others",
         "party": "AAP",
         "name": "Moosa Jarathingal",
         "malayalam": "മൂസ ജാരത്തിങ്കൽ",
@@ -3647,6 +3637,16 @@
         "gender": "male",
         "age": "59",
         "candidateId": "1754"
+      },
+      {
+        "alliance": "Others",
+        "party": "SDPI",
+        "name": "Hameed V",
+        "malayalam": "ഹമീദ് വി",
+        "wikidata": "",
+        "gender": "male",
+        "age": "49",
+        "candidateId": "3415"
       }
     ]
   },
@@ -3775,42 +3775,12 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "Siyad Koodiyath",
-        "malayalam": "സിയാദ് കോടിയത്ത്",
-        "wikidata": "",
-        "gender": "male",
-        "age": "39",
-        "candidateId": "3336"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
-        "name": "V. Abdurahiman",
-        "malayalam": "വി. അബ്ദുറഹ്മാൻ",
-        "wikidata": "",
-        "gender": "male",
-        "age": "63",
-        "candidateId": "2717"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
         "name": "Abdurahiman S/o Kunjeen",
         "malayalam": "അബ്ദുറഹ്മാൻ, കുഞ്ഞീൻ മകൻ",
         "wikidata": "",
         "gender": "male",
         "age": "36",
         "candidateId": "2992"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
-        "name": "Dr.S.Aleena",
-        "malayalam": "ഡോ. എസ്. അലീന",
-        "wikidata": "",
-        "gender": "female",
-        "age": "35",
-        "candidateId": "3444"
       },
       {
         "alliance": "Others",
@@ -3831,6 +3801,36 @@
         "gender": "male",
         "age": "49",
         "candidateId": "3338"
+      },
+      {
+        "alliance": "Others",
+        "party": "CPI (M)",
+        "name": "V. Abdurahiman",
+        "malayalam": "വി. അബ്ദുറഹ്മാൻ",
+        "wikidata": "",
+        "gender": "male",
+        "age": "63",
+        "candidateId": "2717"
+      },
+      {
+        "alliance": "Others",
+        "party": "SP (I)",
+        "name": "Siyad Koodiyath",
+        "malayalam": "സിയാദ് കോടിയത്ത്",
+        "wikidata": "",
+        "gender": "male",
+        "age": "39",
+        "candidateId": "3336"
+      },
+      {
+        "alliance": "Others",
+        "party": "SUCI",
+        "name": "Dr.S.Aleena",
+        "malayalam": "ഡോ. എസ്. അലീന",
+        "wikidata": "",
+        "gender": "female",
+        "age": "35",
+        "candidateId": "3444"
       }
     ]
   },
@@ -3851,7 +3851,7 @@
     "candidates": [
       {
         "alliance": "LDF",
-        "party": "Independent (CPI(M) support)",
+        "party": "CPI(M)",
         "name": "K. Preethi",
         "malayalam": "കെ. പ്രീതി",
         "wikidata": "",
@@ -4143,16 +4143,6 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "Adv Keerthi Jayanandhan",
-        "malayalam": "അഡ്വ. കീർത്തി ജയാനന്ദൻ",
-        "wikidata": "",
-        "gender": "female",
-        "age": "30",
-        "candidateId": "3392"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
         "name": "Balaraman",
         "malayalam": "ബലരാമൻ",
         "wikidata": "",
@@ -4169,6 +4159,16 @@
         "gender": "male",
         "age": "48",
         "candidateId": "3546"
+      },
+      {
+        "alliance": "Others",
+        "party": "BSP",
+        "name": "Adv Keerthi Jayanandhan",
+        "malayalam": "അഡ്വ. കീർത്തി ജയാനന്ദൻ",
+        "wikidata": "",
+        "gender": "female",
+        "age": "30",
+        "candidateId": "3392"
       },
       {
         "alliance": "Others",
@@ -4316,7 +4316,7 @@
       },
       {
         "alliance": "Others",
-        "party": "",
+        "party": "SDPI",
         "name": "Aboobacker",
         "malayalam": "അബൂബക്കർ",
         "wikidata": "",
@@ -4374,16 +4374,6 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "K.P Rajeesh",
-        "malayalam": "കെ.പി. രജീഷ്",
-        "wikidata": "",
-        "gender": "male",
-        "age": "42",
-        "candidateId": "2358"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
         "name": "Muhammed Asharaf V.H",
         "malayalam": "മുഹമ്മദ് അഷറഫ് വി.എച്ച്",
         "wikidata": "",
@@ -4400,6 +4390,16 @@
         "gender": "male",
         "age": "49",
         "candidateId": "2707"
+      },
+      {
+        "alliance": "Others",
+        "party": "BSP",
+        "name": "K.P Rajeesh",
+        "malayalam": "കെ.പി. രജീഷ്",
+        "wikidata": "",
+        "gender": "male",
+        "age": "42",
+        "candidateId": "2358"
       }
     ]
   },
@@ -4450,7 +4450,7 @@
       },
       {
         "alliance": "Others",
-        "party": "",
+        "party": "BSP",
         "name": "Guruvayoorappan P E",
         "malayalam": "ഗുരുവായൂരപ്പൻ പി ഇ",
         "wikidata": "",
@@ -4594,17 +4594,17 @@
       },
       {
         "alliance": "Others",
-        "party": "",
-        "name": "K Prasad",
-        "malayalam": "കെ പ്രസാദ്",
+        "party": "AAP",
+        "name": "Saji P J",
+        "malayalam": "സജി പി. ജെ.",
         "wikidata": "",
         "gender": "male",
-        "age": "43",
-        "candidateId": "605"
+        "age": "40",
+        "candidateId": "3429"
       },
       {
         "alliance": "Others",
-        "party": "",
+        "party": "BSP",
         "name": "Ramnath C",
         "malayalam": "രാംനാഥ് സി",
         "wikidata": "",
@@ -4614,13 +4614,13 @@
       },
       {
         "alliance": "Others",
-        "party": "AAP",
-        "name": "Saji P J",
-        "malayalam": "സജി പി. ജെ.",
+        "party": "SUCI",
+        "name": "K Prasad",
+        "malayalam": "കെ പ്രസാദ്",
         "wikidata": "",
         "gender": "male",
-        "age": "40",
-        "candidateId": "3429"
+        "age": "43",
+        "candidateId": "605"
       }
     ]
   },
@@ -4672,16 +4672,6 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "Krishnankutty K",
-        "malayalam": "കൃഷ്ണൻകുട്ടി കെ",
-        "wikidata": "",
-        "gender": "male",
-        "age": "51",
-        "candidateId": "3277"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
         "name": "Reghu M",
         "malayalam": "രഘു എം",
         "wikidata": "",
@@ -4708,6 +4698,16 @@
         "gender": "male",
         "age": "38",
         "candidateId": "1541"
+      },
+      {
+        "alliance": "Others",
+        "party": "BSP",
+        "name": "Krishnankutty K",
+        "malayalam": "കൃഷ്ണൻകുട്ടി കെ",
+        "wikidata": "",
+        "gender": "male",
+        "age": "51",
+        "candidateId": "3277"
       }
     ]
   },
@@ -4758,7 +4758,7 @@
       },
       {
         "alliance": "Others",
-        "party": "",
+        "party": "BSP",
         "name": "Narayanankutty  K T",
         "malayalam": "നാരായണൻകുട്ടി കെ ടി",
         "wikidata": "",
@@ -4979,7 +4979,7 @@
       },
       {
         "alliance": "Others",
-        "party": "",
+        "party": "BSP",
         "name": "M T Chandran",
         "malayalam": "എം ടി ചന്ദ്രൻ",
         "wikidata": "",
@@ -5160,16 +5160,6 @@
       },
       {
         "alliance": "Others",
-        "party": "",
-        "name": "C. R. Unnikrishnan",
-        "malayalam": "സി. ആർ. ഉണ്ണികൃഷ്ണൻ",
-        "wikidata": "",
-        "gender": "male",
-        "age": "72",
-        "candidateId": "4625"
-      },
-      {
-        "alliance": "Others",
         "party": "AAP",
         "name": "Pauly Francis Guruvayur",
         "malayalam": "പോളി ഫ്രാൻസിസ് ഗുരുവായൂർ",
@@ -5187,6 +5177,16 @@
         "gender": "male",
         "age": "55",
         "candidateId": "1654"
+      },
+      {
+        "alliance": "Others",
+        "party": "SUCI",
+        "name": "C. R. Unnikrishnan",
+        "malayalam": "സി. ആർ. ഉണ്ണികൃഷ്ണൻ",
+        "wikidata": "",
+        "gender": "male",
+        "age": "72",
+        "candidateId": "4625"
       }
     ]
   },
@@ -5238,16 +5238,6 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "Sivaprasad Gandhi K M",
-        "malayalam": "ശിവപ്രസാദ് ഗാന്ധി കെ എം",
-        "wikidata": "",
-        "gender": "male",
-        "age": "47",
-        "candidateId": "3270"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
         "name": "Sujith",
         "malayalam": "സുജിത്ത്",
         "wikidata": "",
@@ -5294,6 +5284,16 @@
         "gender": "male",
         "age": "68",
         "candidateId": "529"
+      },
+      {
+        "alliance": "Others",
+        "party": "IGP",
+        "name": "Sivaprasad Gandhi K M",
+        "malayalam": "ശിവപ്രസാദ് ഗാന്ധി കെ എം",
+        "wikidata": "",
+        "gender": "male",
+        "age": "47",
+        "candidateId": "3270"
       },
       {
         "alliance": "Others",
@@ -5354,16 +5354,6 @@
       },
       {
         "alliance": "Others",
-        "party": "",
-        "name": "Subramanian Penakam",
-        "malayalam": "സുബ്രഹ്മണ്യൻ പേനകം",
-        "wikidata": "",
-        "gender": "male",
-        "age": "70",
-        "candidateId": "701"
-      },
-      {
-        "alliance": "Others",
         "party": "AAP",
         "name": "Jithin Sadanananthan",
         "malayalam": "ജിതിൻ സദാനന്ദൻ",
@@ -5371,6 +5361,16 @@
         "gender": "male",
         "age": "37",
         "candidateId": "625"
+      },
+      {
+        "alliance": "Others",
+        "party": "BSP",
+        "name": "Subramanian Penakam",
+        "malayalam": "സുബ്രഹ്മണ്യൻ പേനകം",
+        "wikidata": "",
+        "gender": "male",
+        "age": "70",
+        "candidateId": "701"
       }
     ]
   },
@@ -5489,32 +5489,12 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "Arshed Aziz",
-        "malayalam": "അർഷെഡ് അസീസ്",
-        "wikidata": "",
-        "gender": "male",
-        "age": "27",
-        "candidateId": "2180"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
         "name": "Rajan. M",
         "malayalam": "രാജൻ. എം",
         "wikidata": "",
         "gender": "male",
         "age": "56",
         "candidateId": "2233"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
-        "name": "Rosilin Chacko",
-        "malayalam": "റോസിലിൻ ചാക്കോ",
-        "wikidata": "",
-        "gender": "male",
-        "age": "60",
-        "candidateId": "831"
       },
       {
         "alliance": "Others",
@@ -5525,6 +5505,26 @@
         "gender": "female",
         "age": "53",
         "candidateId": "2244"
+      },
+      {
+        "alliance": "Others",
+        "party": "BSP",
+        "name": "Rosilin Chacko",
+        "malayalam": "റോസിലിൻ ചാക്കോ",
+        "wikidata": "",
+        "gender": "male",
+        "age": "60",
+        "candidateId": "831"
+      },
+      {
+        "alliance": "Others",
+        "party": "CPIML Liberation",
+        "name": "Arshed Aziz",
+        "malayalam": "അർഷെഡ് അസീസ്",
+        "wikidata": "",
+        "gender": "male",
+        "age": "27",
+        "candidateId": "2180"
       }
     ]
   },
@@ -5622,16 +5622,6 @@
       },
       {
         "alliance": "Others",
-        "party": "",
-        "name": "Manoj M.M.",
-        "malayalam": "മനോജ് എം.എം.",
-        "wikidata": "",
-        "gender": "male",
-        "age": "47",
-        "candidateId": "3969"
-      },
-      {
-        "alliance": "Others",
         "party": "AAP",
         "name": "Jayan Eratt",
         "malayalam": "ജയൻ ഏറാട്ട്",
@@ -5639,6 +5629,16 @@
         "gender": "male",
         "age": "61",
         "candidateId": "1070"
+      },
+      {
+        "alliance": "Others",
+        "party": "CPIML Red Star",
+        "name": "Manoj M.M.",
+        "malayalam": "മനോജ് എം.എം.",
+        "wikidata": "",
+        "gender": "male",
+        "age": "47",
+        "candidateId": "3969"
       },
       {
         "alliance": "Others",
@@ -5700,16 +5700,6 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "Thankamany Tharayil",
-        "malayalam": "തങ്കമണി തറയിൽ",
-        "wikidata": "",
-        "gender": "female",
-        "age": "68",
-        "candidateId": "579"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
         "name": "Ayyappan Manakkal",
         "malayalam": "അയ്യപ്പൻ മനക്കൽ",
         "wikidata": "",
@@ -5736,6 +5726,16 @@
         "gender": "male",
         "age": "58",
         "candidateId": "1269"
+      },
+      {
+        "alliance": "Others",
+        "party": "BSP",
+        "name": "Thankamany Tharayil",
+        "malayalam": "തങ്കമണി തറയിൽ",
+        "wikidata": "",
+        "gender": "female",
+        "age": "68",
+        "candidateId": "579"
       }
     ]
   },
@@ -5796,16 +5796,6 @@
       },
       {
         "alliance": "Others",
-        "party": "",
-        "name": "P C Pushpakaran",
-        "malayalam": "പി സി പുഷ്പാകരൻ",
-        "wikidata": "",
-        "gender": "male",
-        "age": "58",
-        "candidateId": "46"
-      },
-      {
-        "alliance": "Others",
         "party": "AAP",
         "name": "Jayakrishnan P N",
         "malayalam": "ജയകൃഷ്ണൻ പി. എൻ.",
@@ -5813,6 +5803,16 @@
         "gender": "male",
         "age": "44",
         "candidateId": "1739"
+      },
+      {
+        "alliance": "Others",
+        "party": "BSP",
+        "name": "P C Pushpakaran",
+        "malayalam": "പി സി പുഷ്പാകരൻ",
+        "wikidata": "",
+        "gender": "male",
+        "age": "58",
+        "candidateId": "46"
       }
     ]
   },
@@ -5883,16 +5883,6 @@
       },
       {
         "alliance": "Others",
-        "party": "",
-        "name": "M S Asokan Mangalappilly",
-        "malayalam": "എം എസ് അശോകൻ മംഗലപ്പിള്ളി",
-        "wikidata": "",
-        "gender": "male",
-        "age": "56",
-        "candidateId": "943"
-      },
-      {
-        "alliance": "Others",
         "party": "AAP",
         "name": "Wilson Kallen",
         "malayalam": "വിൽസൺ കല്ലൻ",
@@ -5900,6 +5890,16 @@
         "gender": "male",
         "age": "69",
         "candidateId": "2495"
+      },
+      {
+        "alliance": "Others",
+        "party": "BSP",
+        "name": "M S Asokan Mangalappilly",
+        "malayalam": "എം എസ് അശോകൻ മംഗലപ്പിള്ളി",
+        "wikidata": "",
+        "gender": "male",
+        "age": "56",
+        "candidateId": "943"
       }
     ]
   },
@@ -5960,16 +5960,6 @@
       },
       {
         "alliance": "Others",
-        "party": "",
-        "name": "Ravi A K",
-        "malayalam": "രവി എ കെ",
-        "wikidata": "",
-        "gender": "male",
-        "age": "57",
-        "candidateId": "1099"
-      },
-      {
-        "alliance": "Others",
         "party": "AAP",
         "name": "Dr. K.M Francis Roy",
         "malayalam": "ഡോ. കെ. എം. ഫ്രാൻസിസ് റോയ്",
@@ -5977,6 +5967,16 @@
         "gender": "male",
         "age": "52",
         "candidateId": "974"
+      },
+      {
+        "alliance": "Others",
+        "party": "BSP",
+        "name": "Ravi A K",
+        "malayalam": "രവി എ കെ",
+        "wikidata": "",
+        "gender": "male",
+        "age": "57",
+        "candidateId": "1099"
       }
     ]
   },
@@ -6028,16 +6028,6 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "Adv. Prasanth",
-        "malayalam": "അഡ്വ. പ്രശാന്ത്",
-        "wikidata": "",
-        "gender": "male",
-        "age": "37",
-        "candidateId": "4086"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
         "name": "Eldho George",
         "malayalam": "എൽദോ ജോർജ്",
         "wikidata": "",
@@ -6054,6 +6044,16 @@
         "gender": "male",
         "age": "65",
         "candidateId": "59"
+      },
+      {
+        "alliance": "Others",
+        "party": "BSP",
+        "name": "Adv. Prasanth",
+        "malayalam": "അഡ്വ. പ്രശാന്ത്",
+        "wikidata": "",
+        "gender": "male",
+        "age": "37",
+        "candidateId": "4086"
       }
     ]
   },
@@ -6134,7 +6134,7 @@
       },
       {
         "alliance": "Others",
-        "party": "",
+        "party": "SUCI",
         "name": "P V Rajeesh",
         "malayalam": "പി വി രജീഷ്",
         "wikidata": "",
@@ -6249,36 +6249,6 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "Siyad V A",
-        "malayalam": "സിയാദ് വി എ",
-        "wikidata": "",
-        "gender": "male",
-        "age": "45",
-        "candidateId": "4595"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
-        "name": "Ajmal K Mujeeb",
-        "malayalam": "അജ്മൽ കെ മുജീബ്",
-        "wikidata": "",
-        "gender": "male",
-        "age": "50",
-        "candidateId": "1741"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
-        "name": "A Rajeena",
-        "malayalam": "എ റജീന",
-        "wikidata": "",
-        "gender": "female",
-        "age": "42",
-        "candidateId": "614"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
         "name": "Rajeev S/o Vareed",
         "malayalam": "രാജീവ് സ/ഓ വരീദ്",
         "wikidata": "",
@@ -6295,6 +6265,36 @@
         "gender": "male",
         "age": "67",
         "candidateId": "1552"
+      },
+      {
+        "alliance": "Others",
+        "party": "BSP",
+        "name": "Siyad V A",
+        "malayalam": "സിയാദ് വി എ",
+        "wikidata": "",
+        "gender": "male",
+        "age": "45",
+        "candidateId": "4595"
+      },
+      {
+        "alliance": "Others",
+        "party": "SDPI",
+        "name": "Ajmal K Mujeeb",
+        "malayalam": "അജ്മൽ കെ മുജീബ്",
+        "wikidata": "",
+        "gender": "male",
+        "age": "50",
+        "candidateId": "1741"
+      },
+      {
+        "alliance": "Others",
+        "party": "SUCI",
+        "name": "A Rajeena",
+        "malayalam": "എ റജീന",
+        "wikidata": "",
+        "gender": "female",
+        "age": "42",
+        "candidateId": "614"
       }
     ]
   },
@@ -6365,7 +6365,7 @@
       },
       {
         "alliance": "Others",
-        "party": "",
+        "party": "BSP",
         "name": "P.K.Rajesh",
         "malayalam": "പി.കെ.രാജേഷ്",
         "wikidata": "",
@@ -6433,16 +6433,6 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "T. C. Subrahmanyan",
-        "malayalam": "ടി. സി. സുബ്രഹമണ്യൻ",
-        "wikidata": "",
-        "gender": "male",
-        "age": "63",
-        "candidateId": "4130"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
         "name": "Sadasivan",
         "malayalam": "സദാശിവൻ",
         "wikidata": "",
@@ -6459,6 +6449,16 @@
         "gender": "male",
         "age": "40",
         "candidateId": "2695"
+      },
+      {
+        "alliance": "Others",
+        "party": "CPIML Red Star",
+        "name": "T. C. Subrahmanyan",
+        "malayalam": "ടി. സി. സുബ്രഹമണ്യൻ",
+        "wikidata": "",
+        "gender": "male",
+        "age": "63",
+        "candidateId": "4130"
       }
     ]
   },
@@ -6587,16 +6587,6 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "Karthikeyan",
-        "malayalam": "കാർത്തികേയൻ",
-        "wikidata": "",
-        "gender": "male",
-        "age": "71",
-        "candidateId": "2325"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
         "name": "Rajkumar",
         "malayalam": "രാജ്കുമാർ",
         "wikidata": "",
@@ -6616,16 +6606,6 @@
       },
       {
         "alliance": "Others",
-        "party": "",
-        "name": "Satheesan",
-        "malayalam": "സതീശൻ",
-        "wikidata": "",
-        "gender": "male",
-        "age": "57",
-        "candidateId": "585"
-      },
-      {
-        "alliance": "Others",
         "party": "AAP",
         "name": "Thomas Paul",
         "malayalam": "തോമസ് പോൾ",
@@ -6633,6 +6613,26 @@
         "gender": "male",
         "age": "47",
         "candidateId": "2612"
+      },
+      {
+        "alliance": "Others",
+        "party": "BSP",
+        "name": "Karthikeyan",
+        "malayalam": "കാർത്തികേയൻ",
+        "wikidata": "",
+        "gender": "male",
+        "age": "71",
+        "candidateId": "2325"
+      },
+      {
+        "alliance": "Others",
+        "party": "SUCI",
+        "name": "Satheesan",
+        "malayalam": "സതീശൻ",
+        "wikidata": "",
+        "gender": "male",
+        "age": "57",
+        "candidateId": "585"
       }
     ]
   },
@@ -6721,8 +6721,8 @@
       {
         "alliance": "LDF",
         "party": "CPI(M)",
-        "name": "Pushpadhas",
-        "malayalam": "പുഷ്പദാസ്",
+        "name": "Pushpa das",
+        "malayalam": "പുഷ്പ ദാസ്",
         "wikidata": "",
         "gender": "female",
         "age": "55",
@@ -6827,7 +6827,7 @@
       },
       {
         "alliance": "Others",
-        "party": "",
+        "party": "BSP",
         "name": "Manikuttan A. T.",
         "malayalam": "മണിക്കുട്ടൻ എ. ടി.",
         "wikidata": "",
@@ -6885,16 +6885,6 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "T C Ramanan",
-        "malayalam": "ടി സി രമണൻ",
-        "wikidata": "",
-        "gender": "male",
-        "age": "59",
-        "candidateId": "1026"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
         "name": "Renny Mathew",
         "malayalam": "റെന്നി മാത്യു",
         "wikidata": "",
@@ -6921,6 +6911,16 @@
         "gender": "male",
         "age": "38",
         "candidateId": "3924"
+      },
+      {
+        "alliance": "Others",
+        "party": "SUCI",
+        "name": "T C Ramanan",
+        "malayalam": "ടി സി രമണൻ",
+        "wikidata": "",
+        "gender": "male",
+        "age": "59",
+        "candidateId": "1026"
       }
     ]
   },
@@ -7029,26 +7029,6 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "Finto Xavier",
-        "malayalam": "ഫിന്റോ സേവ്യർ",
-        "wikidata": "",
-        "gender": "male",
-        "age": "36",
-        "candidateId": "4070"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
-        "name": "Roy Arackal",
-        "malayalam": "റോയ് അറക്കൽ",
-        "wikidata": "",
-        "gender": "male",
-        "age": "57",
-        "candidateId": "2011"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
         "name": "Shibu Chalakattu",
         "malayalam": "ഷിബു ചാലക്കാട്ട്",
         "wikidata": "",
@@ -7065,6 +7045,26 @@
         "gender": "male",
         "age": "48",
         "candidateId": "3435"
+      },
+      {
+        "alliance": "Others",
+        "party": "RJP",
+        "name": "Finto Xavier",
+        "malayalam": "ഫിന്റോ സേവ്യർ",
+        "wikidata": "",
+        "gender": "male",
+        "age": "36",
+        "candidateId": "4070"
+      },
+      {
+        "alliance": "Others",
+        "party": "SDPI",
+        "name": "Roy Arackal",
+        "malayalam": "റോയ് അറക്കൽ",
+        "wikidata": "",
+        "gender": "male",
+        "age": "57",
+        "candidateId": "2011"
       }
     ]
   },
@@ -7126,22 +7126,22 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "Rajendran .V. B",
-        "malayalam": "രാജേന്ദ്രൻ .വി. ബി",
-        "wikidata": "",
-        "gender": "male",
-        "age": "60",
-        "candidateId": "1787"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
         "name": "Selvi",
         "malayalam": "സെൽവി",
         "wikidata": "",
         "gender": "female",
         "age": "47",
         "candidateId": "1570"
+      },
+      {
+        "alliance": "Others",
+        "party": "BSP",
+        "name": "Rajendran .V. B",
+        "malayalam": "രാജേന്ദ്രൻ .വി. ബി",
+        "wikidata": "",
+        "gender": "male",
+        "age": "60",
+        "candidateId": "1787"
       }
     ]
   },
@@ -7192,7 +7192,7 @@
       },
       {
         "alliance": "Others",
-        "party": "",
+        "party": "BSP",
         "name": "P.K. Sajeevan",
         "malayalam": "പി.കെ. സജീവൻ",
         "wikidata": "",
@@ -7269,16 +7269,6 @@
       },
       {
         "alliance": "Others",
-        "party": "",
-        "name": "P T Varghese",
-        "malayalam": "പി ടി വർഗീസ്",
-        "wikidata": "",
-        "gender": "male",
-        "age": "58",
-        "candidateId": "1581"
-      },
-      {
-        "alliance": "Others",
         "party": "AAP",
         "name": "Adv. Basil John",
         "malayalam": "അഡ്വ. ബേസിൽ ജോൺ",
@@ -7296,6 +7286,16 @@
         "gender": "male",
         "age": "36",
         "candidateId": "1923"
+      },
+      {
+        "alliance": "Others",
+        "party": "SUCI",
+        "name": "P T Varghese",
+        "malayalam": "പി ടി വർഗീസ്",
+        "wikidata": "",
+        "gender": "male",
+        "age": "58",
+        "candidateId": "1581"
       }
     ]
   },
@@ -7346,7 +7346,7 @@
       },
       {
         "alliance": "Others",
-        "party": "",
+        "party": "BSP",
         "name": "Shijo Antony",
         "malayalam": "ഷിജോ ആൻ്റണി",
         "wikidata": "",
@@ -7403,16 +7403,6 @@
       },
       {
         "alliance": "Others",
-        "party": "",
-        "name": "K Murali",
-        "malayalam": "കെ മുരളി",
-        "wikidata": "",
-        "gender": "male",
-        "age": "62",
-        "candidateId": "1991"
-      },
-      {
-        "alliance": "Others",
         "party": "AAP",
         "name": "Joseph Jacob",
         "malayalam": "ജോസഫ് ജേക്കബ്",
@@ -7420,6 +7410,16 @@
         "gender": "male",
         "age": "47",
         "candidateId": "2670"
+      },
+      {
+        "alliance": "Others",
+        "party": "BSP",
+        "name": "K Murali",
+        "malayalam": "കെ മുരളി",
+        "wikidata": "",
+        "gender": "male",
+        "age": "62",
+        "candidateId": "1991"
       }
     ]
   },
@@ -7481,16 +7481,6 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "Santhosh Nadoopparampil",
-        "malayalam": "സന്തോഷ് നാടൂപ്പറമ്പിൽ",
-        "wikidata": "",
-        "gender": "male",
-        "age": "47",
-        "candidateId": "2983"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
         "name": "Santhosh Pulickal",
         "malayalam": "സന്തോഷ് പുളിക്കൽ",
         "wikidata": "",
@@ -7507,6 +7497,16 @@
         "gender": "male",
         "age": "31",
         "candidateId": "2867"
+      },
+      {
+        "alliance": "Others",
+        "party": "BSP",
+        "name": "Santhosh Nadoopparampil",
+        "malayalam": "സന്തോഷ് നാടൂപ്പറമ്പിൽ",
+        "wikidata": "",
+        "gender": "male",
+        "age": "47",
+        "candidateId": "2983"
       }
     ]
   },
@@ -7568,16 +7568,6 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "Jijith K Joy",
-        "malayalam": "ജിജിത്ത് കെ ജോയ്",
-        "wikidata": "",
-        "gender": "male",
-        "age": "41",
-        "candidateId": "1231"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
         "name": "M.M.Scaria",
         "malayalam": "എം.എം.സ്കറിയ",
         "wikidata": "",
@@ -7594,6 +7584,16 @@
         "gender": "male",
         "age": "47",
         "candidateId": "2948"
+      },
+      {
+        "alliance": "Others",
+        "party": "BSP",
+        "name": "Jijith K Joy",
+        "malayalam": "ജിജിത്ത് കെ ജോയ്",
+        "wikidata": "",
+        "gender": "male",
+        "age": "41",
+        "candidateId": "1231"
       }
     ]
   },
@@ -7645,26 +7645,6 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "Sumam P S",
-        "malayalam": "സുമം പി എസ്",
-        "wikidata": "",
-        "gender": "female",
-        "age": "57",
-        "candidateId": "1637"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
-        "name": "T M Bose",
-        "malayalam": "ടി എം ബോസ്",
-        "wikidata": "",
-        "gender": "male",
-        "age": "62",
-        "candidateId": "957"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
         "name": "Adv. P I Jayakumar",
         "malayalam": "അഡ്വ. പി ഐ ജയകുമാർ",
         "wikidata": "",
@@ -7681,6 +7661,26 @@
         "gender": "male",
         "age": "52",
         "candidateId": "1752"
+      },
+      {
+        "alliance": "Others",
+        "party": "BSP",
+        "name": "Sumam P S",
+        "malayalam": "സുമം പി എസ്",
+        "wikidata": "",
+        "gender": "female",
+        "age": "57",
+        "candidateId": "1637"
+      },
+      {
+        "alliance": "Others",
+        "party": "SUCI",
+        "name": "T M Bose",
+        "malayalam": "ടി എം ബോസ്",
+        "wikidata": "",
+        "gender": "male",
+        "age": "62",
+        "candidateId": "957"
       }
     ]
   },
@@ -7732,16 +7732,16 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "Ashna Thambi",
-        "malayalam": "ആഷ്ന തമ്പി",
+        "name": "Raj Mohan Vettikulangara Unni",
+        "malayalam": "രാജ് മോഹൻ വെട്ടിക്കുളങ്ങര ഉണ്ണി",
         "wikidata": "",
-        "gender": "female",
-        "age": "26",
-        "candidateId": "638"
+        "gender": "male",
+        "age": "57",
+        "candidateId": "2267"
       },
       {
         "alliance": "Others",
-        "party": "",
+        "party": "BSP",
         "name": "Binoy Joseph Kulathunkal",
         "malayalam": "ബിനോയ് ജോസഫ് കുളത്തുങ്കൽ",
         "wikidata": "",
@@ -7751,13 +7751,13 @@
       },
       {
         "alliance": "Others",
-        "party": "",
-        "name": "Raj Mohan Vettikulangara Unni",
-        "malayalam": "രാജ് മോഹൻ വെട്ടിക്കുളങ്ങര ഉണ്ണി",
+        "party": "SUCI",
+        "name": "Ashna Thambi",
+        "malayalam": "ആഷ്ന തമ്പി",
         "wikidata": "",
-        "gender": "male",
-        "age": "57",
-        "candidateId": "2267"
+        "gender": "female",
+        "age": "26",
+        "candidateId": "638"
       }
     ]
   },
@@ -7809,16 +7809,6 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "Ralesh Chandran",
-        "malayalam": "റാലേഷ് ചന്ദ്രൻ",
-        "wikidata": "",
-        "gender": "male",
-        "age": "30",
-        "candidateId": "464"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
         "name": "Shaiju Kurian",
         "malayalam": "ഷൈജു കുര്യൻ",
         "wikidata": "",
@@ -7835,6 +7825,16 @@
         "gender": "female",
         "age": "64",
         "candidateId": "4643"
+      },
+      {
+        "alliance": "Others",
+        "party": "SUCI",
+        "name": "Ralesh Chandran",
+        "malayalam": "റാലേഷ് ചന്ദ്രൻ",
+        "wikidata": "",
+        "gender": "male",
+        "age": "30",
+        "candidateId": "464"
       }
     ]
   },
@@ -7886,16 +7886,6 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "Paul P Chacko",
-        "malayalam": "പോൾ പി ചാക്കോ",
-        "wikidata": "",
-        "gender": "male",
-        "age": "59",
-        "candidateId": "2439"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
         "name": "Rijomon Mathew",
         "malayalam": "റിജോമോൻ മാത്യു",
         "wikidata": "",
@@ -7905,7 +7895,17 @@
       },
       {
         "alliance": "Others",
-        "party": "",
+        "party": "BSP",
+        "name": "Paul P Chacko",
+        "malayalam": "പോൾ പി ചാക്കോ",
+        "wikidata": "",
+        "gender": "male",
+        "age": "59",
+        "candidateId": "2439"
+      },
+      {
+        "alliance": "Others",
+        "party": "JRP",
         "name": "Sabu Mylakkadan",
         "malayalam": "സാബു മൈലക്കാടൻ",
         "wikidata": "",
@@ -7963,26 +7963,6 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "Usha Johnson",
-        "malayalam": "ഉഷാ ജോൺസൺ",
-        "wikidata": "",
-        "gender": "female",
-        "age": "55",
-        "candidateId": "2465"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
-        "name": "Aravind V",
-        "malayalam": "അരവിന്ദ് വി",
-        "wikidata": "",
-        "gender": "male",
-        "age": "30",
-        "candidateId": "966"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
         "name": "Dr.Kalki P",
         "malayalam": "ഡോ. കൽക്കി പി",
         "wikidata": "",
@@ -8002,16 +7982,6 @@
       },
       {
         "alliance": "Others",
-        "party": "",
-        "name": "Jose Joseph",
-        "malayalam": "ജോസ് ജോസഫ്",
-        "wikidata": "",
-        "gender": "male",
-        "age": "53",
-        "candidateId": "3285"
-      },
-      {
-        "alliance": "Others",
         "party": "AAP",
         "name": "Prof. (Dr.) Saju Kannanthara",
         "malayalam": "പ്രൊഫ. (ഡോ.) സാജു കണ്ണന്തറ",
@@ -8022,6 +7992,26 @@
       },
       {
         "alliance": "Others",
+        "party": "BSP",
+        "name": "Usha Johnson",
+        "malayalam": "ഉഷാ ജോൺസൺ",
+        "wikidata": "",
+        "gender": "female",
+        "age": "55",
+        "candidateId": "2465"
+      },
+      {
+        "alliance": "Others",
+        "party": "JRP",
+        "name": "Jose Joseph",
+        "malayalam": "ജോസ് ജോസഫ്",
+        "wikidata": "",
+        "gender": "male",
+        "age": "53",
+        "candidateId": "3285"
+      },
+      {
+        "alliance": "Others",
         "party": "SDPI",
         "name": "Althaf Hassan",
         "malayalam": "അൽത്താഫ് ഹസ്സൻ",
@@ -8029,6 +8019,16 @@
         "gender": "male",
         "age": "54",
         "candidateId": "3162"
+      },
+      {
+        "alliance": "Others",
+        "party": "SUCI",
+        "name": "Aravind V",
+        "malayalam": "അരവിന്ദ് വി",
+        "wikidata": "",
+        "gender": "male",
+        "age": "30",
+        "candidateId": "966"
       }
     ]
   },
@@ -8079,7 +8079,7 @@
       },
       {
         "alliance": "Others",
-        "party": "",
+        "party": "BSP",
         "name": "Thampi Kavumpadam",
         "malayalam": "തമ്പി കാവുംപാടം",
         "wikidata": "",
@@ -8166,7 +8166,7 @@
       },
       {
         "alliance": "Others",
-        "party": "",
+        "party": "BSP",
         "name": "Shiny A C",
         "malayalam": "ഷൈനി എ സി",
         "wikidata": "",
@@ -8224,16 +8224,6 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "Vayalar Rajeevan",
-        "malayalam": "വയലാർ രാജീവൻ",
-        "wikidata": "",
-        "gender": "male",
-        "age": "53",
-        "candidateId": "2297"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
         "name": "Vipin",
         "malayalam": "വിപിൻ",
         "wikidata": "",
@@ -8243,7 +8233,17 @@
       },
       {
         "alliance": "Others",
-        "party": "",
+        "party": "BDP",
+        "name": "Vayalar Rajeevan",
+        "malayalam": "വയലാർ രാജീവൻ",
+        "wikidata": "",
+        "gender": "male",
+        "age": "53",
+        "candidateId": "2297"
+      },
+      {
+        "alliance": "Others",
+        "party": "SUCI",
         "name": "N.K. Sasikumar",
         "malayalam": "എൻ.കെ. ശശികുമാർ",
         "wikidata": "",
@@ -8464,7 +8464,7 @@
       },
       {
         "alliance": "Others",
-        "party": "",
+        "party": "SUCI",
         "name": "Johnson Mathew",
         "malayalam": "ജോൺസൺ മാത്യു",
         "wikidata": "",
@@ -8542,16 +8542,6 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "P.K. Sasi",
-        "malayalam": "പി.കെ. ശശി",
-        "wikidata": "",
-        "gender": "male",
-        "age": "56",
-        "candidateId": "1021"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
         "name": "Renju T. R.",
         "malayalam": "രഞ്ജു ടി. ആർ.",
         "wikidata": "",
@@ -8568,6 +8558,16 @@
         "gender": "male",
         "age": "60",
         "candidateId": "1058"
+      },
+      {
+        "alliance": "Others",
+        "party": "SUCI",
+        "name": "P.K. Sasi",
+        "malayalam": "പി.കെ. ശശി",
+        "wikidata": "",
+        "gender": "male",
+        "age": "56",
+        "candidateId": "1021"
       }
     ]
   },
@@ -8629,22 +8629,22 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "Vidhya V.P",
-        "malayalam": "വിദ്യ വി.പി.",
-        "wikidata": "",
-        "gender": "female",
-        "age": "27",
-        "candidateId": "1080"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
         "name": "Ch. Ramesh",
         "malayalam": "ച. രമേശ്",
         "wikidata": "",
         "gender": "male",
         "age": "48",
         "candidateId": "2257"
+      },
+      {
+        "alliance": "Others",
+        "party": "SUCI",
+        "name": "Vidhya V.P",
+        "malayalam": "വിദ്യ വി.പി.",
+        "wikidata": "",
+        "gender": "female",
+        "age": "27",
+        "candidateId": "1080"
       }
     ]
   },
@@ -8742,7 +8742,7 @@
       },
       {
         "alliance": "Others",
-        "party": "",
+        "party": "API",
         "name": "Suresh Nooranad",
         "malayalam": "സുരേഷ് നൂറനാട്",
         "wikidata": "",
@@ -8799,7 +8799,7 @@
       },
       {
         "alliance": "Others",
-        "party": "",
+        "party": "SUCI",
         "name": "B. Praneesh",
         "malayalam": "ബി. പ്രനീഷ്",
         "wikidata": "",
@@ -8886,7 +8886,7 @@
       },
       {
         "alliance": "Others",
-        "party": "",
+        "party": "BSP",
         "name": "Ramesh Chathenkary",
         "malayalam": "രമേശ് ചാത്തങ്കരി",
         "wikidata": "",
@@ -9000,7 +9000,7 @@
       },
       {
         "alliance": "Others",
-        "party": "",
+        "party": "API",
         "name": "Omalloor Ramachandran",
         "malayalam": "ഓമല്ലൂർ രാമചന്ദ്രൻ",
         "wikidata": "",
@@ -9010,7 +9010,7 @@
       },
       {
         "alliance": "Others",
-        "party": "",
+        "party": "BSP",
         "name": "Prabhakaran V R",
         "malayalam": "പ്രഭാകരൻ വി ആർ",
         "wikidata": "",
@@ -9020,7 +9020,7 @@
       },
       {
         "alliance": "Others",
-        "party": "",
+        "party": "SUCI",
         "name": "Radhamani",
         "malayalam": "രാധാമണി",
         "wikidata": "",
@@ -9134,7 +9134,7 @@
       },
       {
         "alliance": "Others",
-        "party": "",
+        "party": "BSP",
         "name": "Sivakumar C S",
         "malayalam": "ശിവകുമാർ സി എസ്",
         "wikidata": "",
@@ -9191,7 +9191,7 @@
       },
       {
         "alliance": "Others",
-        "party": "",
+        "party": "SUCI",
         "name": "Twinkle Prabhakaran",
         "malayalam": "ട്വിങ്കിൾ പ്രഭാകരൻ",
         "wikidata": "",
@@ -9201,7 +9201,7 @@
       },
       {
         "alliance": "Others",
-        "party": "",
+        "party": "SUCI",
         "name": "Latheef",
         "malayalam": "ലത്തീഫ്",
         "wikidata": "",
@@ -9315,7 +9315,7 @@
       },
       {
         "alliance": "Others",
-        "party": "",
+        "party": "SUCI",
         "name": "Sasidharan",
         "malayalam": "ശശിധരൻ",
         "wikidata": "",
@@ -9372,17 +9372,17 @@
       },
       {
         "alliance": "Others",
-        "party": "",
-        "name": "G Suresh",
-        "malayalam": "ജി സുരേഷ്",
+        "party": "AAP",
+        "name": "Mamachan D",
+        "malayalam": "മാമച്ചൻ ഡി.",
         "wikidata": "",
         "gender": "male",
-        "age": "53",
-        "candidateId": "2499"
+        "age": "66",
+        "candidateId": "1679"
       },
       {
         "alliance": "Others",
-        "party": "",
+        "party": "BSP",
         "name": "Wilfred Zacharias",
         "malayalam": "വിൽഫ്രഡ് സക്കറിയാസ്",
         "wikidata": "",
@@ -9392,13 +9392,13 @@
       },
       {
         "alliance": "Others",
-        "party": "AAP",
-        "name": "Mamachan D",
-        "malayalam": "മാമച്ചൻ ഡി.",
+        "party": "EPI",
+        "name": "G Suresh",
+        "malayalam": "ജി സുരേഷ്",
         "wikidata": "",
         "gender": "male",
-        "age": "66",
-        "candidateId": "1679"
+        "age": "53",
+        "candidateId": "2499"
       }
     ]
   },
@@ -9450,26 +9450,6 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "Vipinkumar V",
-        "malayalam": "വിപിൻകുമാർ വി",
-        "wikidata": "",
-        "gender": "male",
-        "age": "36",
-        "candidateId": "4160"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
-        "name": "Aneesh Aneesh",
-        "malayalam": "അനീഷ് അനീഷ്",
-        "wikidata": "",
-        "gender": "male",
-        "age": "36",
-        "candidateId": "3736"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
         "name": "Genash Kumar",
         "malayalam": "ഗെനാഷ് കുമാർ",
         "wikidata": "",
@@ -9486,6 +9466,26 @@
         "gender": "male",
         "age": "38",
         "candidateId": "4456"
+      },
+      {
+        "alliance": "Others",
+        "party": "Anna DHRM",
+        "name": "Aneesh Aneesh",
+        "malayalam": "അനീഷ് അനീഷ്",
+        "wikidata": "",
+        "gender": "male",
+        "age": "36",
+        "candidateId": "3736"
+      },
+      {
+        "alliance": "Others",
+        "party": "BSP",
+        "name": "Vipinkumar V",
+        "malayalam": "വിപിൻകുമാർ വി",
+        "wikidata": "",
+        "gender": "male",
+        "age": "36",
+        "candidateId": "4160"
       }
     ]
   },
@@ -9536,7 +9536,7 @@
       },
       {
         "alliance": "Others",
-        "party": "",
+        "party": "BSP",
         "name": "Jose Saranath",
         "malayalam": "ജോസ് സാരാനാഥ്",
         "wikidata": "",
@@ -9546,23 +9546,23 @@
       },
       {
         "alliance": "Others",
-        "party": "",
-        "name": "K. Mahesh",
-        "malayalam": "കെ. മഹേഷ്",
-        "wikidata": "",
-        "gender": "male",
-        "age": "49",
-        "candidateId": "692"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
+        "party": "EPI",
         "name": "Nedumoncavu Gopalakrishnan",
         "malayalam": "നെടുമൺകാവ് ഗോപാലകൃഷ്ണൻ",
         "wikidata": "",
         "gender": "male",
         "age": "58",
         "candidateId": "2069"
+      },
+      {
+        "alliance": "Others",
+        "party": "SUCI",
+        "name": "K. Mahesh",
+        "malayalam": "കെ. മഹേഷ്",
+        "wikidata": "",
+        "gender": "male",
+        "age": "49",
+        "candidateId": "692"
       }
     ]
   },
@@ -9614,22 +9614,22 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "Aji Kadasseri",
-        "malayalam": "അജി കടശ്ശേരി",
-        "wikidata": "",
-        "gender": "male",
-        "age": "47",
-        "candidateId": "827"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
         "name": "G. Jayan Moonlight Chithara",
         "malayalam": "ജി. ജയൻ മൂൺലൈറ്റ് ചിതറ",
         "wikidata": "",
         "gender": "male",
         "age": "63",
         "candidateId": "3737"
+      },
+      {
+        "alliance": "Others",
+        "party": "Anna DHRM",
+        "name": "Aji Kadasseri",
+        "malayalam": "അജി കടശ്ശേരി",
+        "wikidata": "",
+        "gender": "male",
+        "age": "47",
+        "candidateId": "827"
       },
       {
         "alliance": "Others",
@@ -9691,6 +9691,16 @@
       {
         "alliance": "Others",
         "party": "",
+        "name": "Riyas M",
+        "malayalam": "റിയാസ് എം",
+        "wikidata": "",
+        "gender": "male",
+        "age": "40",
+        "candidateId": "4051"
+      },
+      {
+        "alliance": "Others",
+        "party": "BSP",
         "name": "Lathika C",
         "malayalam": "ലതിക സി",
         "wikidata": "",
@@ -9700,23 +9710,13 @@
       },
       {
         "alliance": "Others",
-        "party": "",
+        "party": "SUCI",
         "name": "Rahul R",
         "malayalam": "രാഹുൽ ആർ",
         "wikidata": "",
         "gender": "male",
         "age": "33",
         "candidateId": "754"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
-        "name": "Riyas M",
-        "malayalam": "റിയാസ് എം",
-        "wikidata": "",
-        "gender": "male",
-        "age": "40",
-        "candidateId": "4051"
       }
     ]
   },
@@ -9767,16 +9767,6 @@
       },
       {
         "alliance": "Others",
-        "party": "",
-        "name": "Mylode Sudhan",
-        "malayalam": "മൈലോഡ് സുധൻ",
-        "wikidata": "",
-        "gender": "male",
-        "age": "61",
-        "candidateId": "1954"
-      },
-      {
-        "alliance": "Others",
         "party": "AAP",
         "name": "Adv. Sinu L R",
         "malayalam": "അഡ്വ. സിനു എൽ. ആർ.",
@@ -9784,6 +9774,16 @@
         "gender": "male",
         "age": "47",
         "candidateId": "1705"
+      },
+      {
+        "alliance": "Others",
+        "party": "BSP",
+        "name": "Mylode Sudhan",
+        "malayalam": "മൈലോഡ് സുധൻ",
+        "wikidata": "",
+        "gender": "male",
+        "age": "61",
+        "candidateId": "1954"
       }
     ]
   },
@@ -9901,16 +9901,6 @@
       },
       {
         "alliance": "Others",
-        "party": "",
-        "name": "Sindhu Puthenkulam",
-        "malayalam": "സിന്ധു പുത്തൻകുളം",
-        "wikidata": "",
-        "gender": "female",
-        "age": "44",
-        "candidateId": "1806"
-      },
-      {
-        "alliance": "Others",
         "party": "AAP",
         "name": "Arun A",
         "malayalam": "അരുൺ എ.",
@@ -9918,6 +9908,16 @@
         "gender": "male",
         "age": "39",
         "candidateId": "2554"
+      },
+      {
+        "alliance": "Others",
+        "party": "Anna DHRM",
+        "name": "Sindhu Puthenkulam",
+        "malayalam": "സിന്ധു പുത്തൻകുളം",
+        "wikidata": "",
+        "gender": "female",
+        "age": "44",
+        "candidateId": "1806"
       }
     ]
   },
@@ -9969,16 +9969,6 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "Vinod Elakamon",
-        "malayalam": "വിനോദ് ഇലകമോൻ",
-        "wikidata": "",
-        "gender": "male",
-        "age": "45",
-        "candidateId": "3190"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
         "name": "Vivekanandan K",
         "malayalam": "വിവേകാനന്ദൻ കെ",
         "wikidata": "",
@@ -10009,22 +9999,32 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "Raju S Kottarakonam",
-        "malayalam": "രാജു എസ് കൊട്ടാരക്കോണം",
-        "wikidata": "",
-        "gender": "male",
-        "age": "59",
-        "candidateId": "1535"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
         "name": "Säju",
         "malayalam": "സാജു",
         "wikidata": "",
         "gender": "male",
         "age": "41",
         "candidateId": "3409"
+      },
+      {
+        "alliance": "Others",
+        "party": "Anna DHRM",
+        "name": "Vinod Elakamon",
+        "malayalam": "വിനോദ് ഇലകമോൻ",
+        "wikidata": "",
+        "gender": "male",
+        "age": "45",
+        "candidateId": "3190"
+      },
+      {
+        "alliance": "Others",
+        "party": "BSP",
+        "name": "Raju S Kottarakonam",
+        "malayalam": "രാജു എസ് കൊട്ടാരക്കോണം",
+        "wikidata": "",
+        "gender": "male",
+        "age": "59",
+        "candidateId": "1535"
       }
     ]
   },
@@ -10075,23 +10075,23 @@
       },
       {
         "alliance": "Others",
-        "party": "",
-        "name": "S. Sujithra",
-        "malayalam": "എസ്. സുജിത്ര",
-        "wikidata": "",
-        "gender": "female",
-        "age": "40",
-        "candidateId": "1841"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
+        "party": "Anna DHRM",
         "name": "Sunitha Kilimanoor",
         "malayalam": "സുനിത കിളിമാനൂർ",
         "wikidata": "",
         "gender": "female",
         "age": "42",
         "candidateId": "4203"
+      },
+      {
+        "alliance": "Others",
+        "party": "BSP",
+        "name": "S. Sujithra",
+        "malayalam": "എസ്. സുജിത്ര",
+        "wikidata": "",
+        "gender": "female",
+        "age": "40",
+        "candidateId": "1841"
       },
       {
         "alliance": "Others",
@@ -10152,7 +10152,7 @@
       },
       {
         "alliance": "Others",
-        "party": "",
+        "party": "Anna DHRM",
         "name": "Anoop Alappuramkunnu",
         "malayalam": "അനൂപ് ആലപ്പുറംകുന്ന്",
         "wikidata": "",
@@ -10162,7 +10162,7 @@
       },
       {
         "alliance": "Others",
-        "party": "",
+        "party": "BSP",
         "name": "Ramasamy Sasi",
         "malayalam": "രാമസാമി ശശി",
         "wikidata": "",
@@ -10220,16 +10220,6 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "Sujilal B G",
-        "malayalam": "സുജിലാൽ ബി ജി",
-        "wikidata": "",
-        "gender": "male",
-        "age": "43",
-        "candidateId": "3224"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
         "name": "Vembayam Yesudas",
         "malayalam": "വെമ്പായം യേശുദാസ്",
         "wikidata": "",
@@ -10259,13 +10249,23 @@
       },
       {
         "alliance": "Others",
-        "party": "",
+        "party": "Anna DHRM",
         "name": "Shibu G",
         "malayalam": "ഷിബു ജി",
         "wikidata": "",
         "gender": "male",
         "age": "40",
         "candidateId": "817"
+      },
+      {
+        "alliance": "Others",
+        "party": "BSP",
+        "name": "Sujilal B G",
+        "malayalam": "സുജിലാൽ ബി ജി",
+        "wikidata": "",
+        "gender": "male",
+        "age": "43",
+        "candidateId": "3224"
       },
       {
         "alliance": "Others",
@@ -10327,16 +10327,6 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "Vipinlal V A",
-        "malayalam": "വിപിൻലാൽ വി എ",
-        "wikidata": "",
-        "gender": "male",
-        "age": "38",
-        "candidateId": "3564"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
         "name": "Muraleedharan G Nair",
         "malayalam": "മുരളീധരൻ ജി നായർ",
         "wikidata": "",
@@ -10346,13 +10336,23 @@
       },
       {
         "alliance": "Others",
-        "party": "",
+        "party": "Anna DHRM",
         "name": "Ratheesh R",
         "malayalam": "രതീഷ് ആർ",
         "wikidata": "",
         "gender": "male",
         "age": "35",
         "candidateId": "989"
+      },
+      {
+        "alliance": "Others",
+        "party": "BSP",
+        "name": "Vipinlal V A",
+        "malayalam": "വിപിൻലാൽ വി എ",
+        "wikidata": "",
+        "gender": "male",
+        "age": "38",
+        "candidateId": "3564"
       }
     ]
   },
@@ -10414,16 +10414,16 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "T. S. Rajan",
-        "malayalam": "ടി. എസ്. രാജൻ",
+        "name": "K. Surendran",
+        "malayalam": "കെ. സുരേന്ദ്രൻ",
         "wikidata": "",
         "gender": "male",
-        "age": "62",
-        "candidateId": "2542"
+        "age": "70",
+        "candidateId": "2786"
       },
       {
         "alliance": "Others",
-        "party": "",
+        "party": "Anna DHRM",
         "name": "Deebika Karimanal",
         "malayalam": "ദീബിക കരിമണൽ",
         "wikidata": "",
@@ -10433,13 +10433,13 @@
       },
       {
         "alliance": "Others",
-        "party": "",
-        "name": "K. Surendran",
-        "malayalam": "കെ. സുരേന്ദ്രൻ",
+        "party": "BSP",
+        "name": "T. S. Rajan",
+        "malayalam": "ടി. എസ്. രാജൻ",
         "wikidata": "",
         "gender": "male",
-        "age": "70",
-        "candidateId": "2786"
+        "age": "62",
+        "candidateId": "2542"
       }
     ]
   },
@@ -10501,16 +10501,6 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "Emil B.S",
-        "malayalam": "എമിൽ ബി.എസ്",
-        "wikidata": "",
-        "gender": "male",
-        "age": "26",
-        "candidateId": "1067"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
         "name": "Muralidharan. P S/o. K. Ponnan",
         "malayalam": "മുരളീധരൻ. പി, കെ.പൊന്നൻ മകൻ",
         "wikidata": "",
@@ -10521,6 +10511,16 @@
       {
         "alliance": "Others",
         "party": "",
+        "name": "Prasanth. K S/o. Karunakaran.C",
+        "malayalam": "പ്രശാന്ത്. കെ, കരുണാകരൻ.സി മകൻ",
+        "wikidata": "",
+        "gender": "male",
+        "age": "46",
+        "candidateId": "1724"
+      },
+      {
+        "alliance": "Others",
+        "party": "BSP",
         "name": "N. Murali",
         "malayalam": "എൻ. മുരളി",
         "wikidata": "",
@@ -10530,13 +10530,13 @@
       },
       {
         "alliance": "Others",
-        "party": "",
-        "name": "Prasanth. K S/o. Karunakaran.C",
-        "malayalam": "പ്രശാന്ത്. കെ, കരുണാകരൻ.സി മകൻ",
+        "party": "SUCI",
+        "name": "Emil B.S",
+        "malayalam": "എമിൽ ബി.എസ്",
         "wikidata": "",
         "gender": "male",
-        "age": "46",
-        "candidateId": "1724"
+        "age": "26",
+        "candidateId": "1067"
       }
     ]
   },
@@ -10598,42 +10598,12 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "Adv. Sen",
-        "malayalam": "അഡ്വ. സെൻ",
-        "wikidata": "",
-        "gender": "male",
-        "age": "53",
-        "candidateId": "2813"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
-        "name": "A Saboora",
-        "malayalam": "എ സബൂറ",
-        "wikidata": "",
-        "gender": "female",
-        "age": "47",
-        "candidateId": "63"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
         "name": "Bindhu Menon L R",
         "malayalam": "ബിന്ദു മേനോൻ എൽ ആർ",
         "wikidata": "",
         "gender": "female",
         "age": "49",
         "candidateId": "3868"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
-        "name": "Karthika Devi M",
-        "malayalam": "കാർത്തിക ദേവി എം",
-        "wikidata": "",
-        "gender": "female",
-        "age": "40",
-        "candidateId": "3670"
       },
       {
         "alliance": "Others",
@@ -10664,6 +10634,36 @@
         "gender": "male",
         "age": "34",
         "candidateId": "3965"
+      },
+      {
+        "alliance": "Others",
+        "party": "BSP",
+        "name": "Adv. Sen",
+        "malayalam": "അഡ്വ. സെൻ",
+        "wikidata": "",
+        "gender": "male",
+        "age": "53",
+        "candidateId": "2813"
+      },
+      {
+        "alliance": "Others",
+        "party": "JRP",
+        "name": "Karthika Devi M",
+        "malayalam": "കാർത്തിക ദേവി എം",
+        "wikidata": "",
+        "gender": "female",
+        "age": "40",
+        "candidateId": "3670"
+      },
+      {
+        "alliance": "Others",
+        "party": "SUCI",
+        "name": "A Saboora",
+        "malayalam": "എ സബൂറ",
+        "wikidata": "",
+        "gender": "female",
+        "age": "47",
+        "candidateId": "63"
       }
     ]
   },
@@ -10715,32 +10715,12 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "Subi S M",
-        "malayalam": "സുബി എം",
-        "wikidata": "",
-        "gender": "male",
-        "age": "41",
-        "candidateId": "1778"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
         "name": "Kamaleswaram Hari",
         "malayalam": "കമലേശ്വരം ഹരി",
         "wikidata": "",
         "gender": "male",
         "age": "55",
         "candidateId": "2065"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
-        "name": "Karamana Prasad",
-        "malayalam": "കരമന പ്രസാദ്",
-        "wikidata": "",
-        "gender": "male",
-        "age": "66",
-        "candidateId": "15"
       },
       {
         "alliance": "Others",
@@ -10781,6 +10761,26 @@
         "gender": "male",
         "age": "49",
         "candidateId": "1440"
+      },
+      {
+        "alliance": "Others",
+        "party": "SUCI",
+        "name": "Karamana Prasad",
+        "malayalam": "കരമന പ്രസാദ്",
+        "wikidata": "",
+        "gender": "male",
+        "age": "66",
+        "candidateId": "15"
+      },
+      {
+        "alliance": "Others",
+        "party": "TFIP",
+        "name": "Subi S M",
+        "malayalam": "സുബി എം",
+        "wikidata": "",
+        "gender": "male",
+        "age": "41",
+        "candidateId": "1778"
       }
     ]
   },
@@ -10861,7 +10861,7 @@
       },
       {
         "alliance": "Others",
-        "party": "",
+        "party": "BSP",
         "name": "Santhosh Kumar. S",
         "malayalam": "സന്തോഷ് കുമാർ. എസ്",
         "wikidata": "",
@@ -10939,16 +10939,6 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "Adv. Dhanuvachapuram Thankachan",
-        "malayalam": "അഡ്വ. ധനുവച്ചപുരം തങ്കച്ചൻ",
-        "wikidata": "",
-        "gender": "male",
-        "age": "66",
-        "candidateId": "2364"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
         "name": "Shaju Paliyodu",
         "malayalam": "ഷാജു പാലിയോട്",
         "wikidata": "",
@@ -10965,6 +10955,16 @@
         "gender": "male",
         "age": "39",
         "candidateId": "2881"
+      },
+      {
+        "alliance": "Others",
+        "party": "BSP",
+        "name": "Adv. Dhanuvachapuram Thankachan",
+        "malayalam": "അഡ്വ. ധനുവച്ചപുരം തങ്കച്ചൻ",
+        "wikidata": "",
+        "gender": "male",
+        "age": "66",
+        "candidateId": "2364"
       }
     ]
   },
@@ -11015,23 +11015,23 @@
       },
       {
         "alliance": "Others",
-        "party": "",
-        "name": "Adv. Jayakumar Theertham",
-        "malayalam": "അഡ്വ. ജയകുമാർ തീർത്ഥം",
-        "wikidata": "",
-        "gender": "male",
-        "age": "46",
-        "candidateId": "779"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
+        "party": "BSP",
         "name": "Nobil M. D",
         "malayalam": "നോബിൽ എം. ഡി",
         "wikidata": "",
         "gender": "male",
         "age": "46",
         "candidateId": "3244"
+      },
+      {
+        "alliance": "Others",
+        "party": "CPIML Liberation",
+        "name": "Adv. Jayakumar Theertham",
+        "malayalam": "അഡ്വ. ജയകുമാർ തീർത്ഥം",
+        "wikidata": "",
+        "gender": "male",
+        "age": "46",
+        "candidateId": "779"
       }
     ]
   },
@@ -11103,16 +11103,6 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "Kattachalkuzhi.M.Sugathan",
-        "malayalam": "കട്ടച്ചൽകുഴി.എം.സുഗതൻ",
-        "wikidata": "",
-        "gender": "male",
-        "age": "54",
-        "candidateId": "3130"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
         "name": "Kiran S Pillai",
         "malayalam": "കിരൺ എസ് പിള്ള",
         "wikidata": "",
@@ -11139,6 +11129,16 @@
         "gender": "male",
         "age": "50",
         "candidateId": "1833"
+      },
+      {
+        "alliance": "Others",
+        "party": "SRP",
+        "name": "Kattachalkuzhi.M.Sugathan",
+        "malayalam": "കട്ടച്ചൽകുഴി.എം.സുഗതൻ",
+        "wikidata": "",
+        "gender": "male",
+        "age": "54",
+        "candidateId": "3130"
       }
     ]
   },
@@ -11190,22 +11190,22 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "Surendranathan. K",
-        "malayalam": "സുരേന്ദ്രനാഥ്. കെ",
-        "wikidata": "",
-        "gender": "male",
-        "age": "63",
-        "candidateId": "1880"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
         "name": "Bibin S.B",
         "malayalam": "ബിബിൻ എസ്.ബി",
         "wikidata": "",
         "gender": "male",
         "age": "34",
         "candidateId": "1895"
+      },
+      {
+        "alliance": "Others",
+        "party": "BSP",
+        "name": "Surendranathan. K",
+        "malayalam": "സുരേന്ദ്രനാഥ്. കെ",
+        "wikidata": "",
+        "gender": "male",
+        "age": "63",
+        "candidateId": "1880"
       }
     ]
   }
