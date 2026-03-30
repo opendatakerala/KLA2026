@@ -18,7 +18,7 @@ echarts.use([
 ]);
   import { _ } from '../../lib/i18n.js';
 
-  let { constituencyNumber = null, data = [], loading = false, error = false } = $props();
+  let { constituencyNumber = null, data = [], loading = false, error = false, forceView = null } = $props();
 
   const COLORS = {
     LDF: '#D94040',
@@ -31,7 +31,8 @@ echarts.use([
   const ALLIANCES_WITH_OTHERS = ['LDF', 'UDF', 'NDA', 'Others'];
   const YEARS = ['2021', '2016', '2011'];
 
-  let currentView = $state('simple');
+  let internalView = $state('simple');
+  let currentView = $derived(forceView || internalView);
   let chartContainer = $state(null);
   let chart = null;
 
@@ -48,9 +49,9 @@ echarts.use([
     return () => { if (chart) chart.dispose(); };
   });
 
-  function setView(v) { currentView = v; }
+  function setView(v) { if (!forceView) internalView = v; }
 
-  function goBack() { currentView = 'simple'; }
+  function goBack() { if (!forceView) internalView = 'simple'; }
 
   function getSimpleText(yearData) {
     const winner = yearData.winner;
@@ -190,11 +191,15 @@ echarts.use([
   </div>
 {:else}
   <div class="historical-chart-container">
-    <button class="back-btn" onclick={goBack}>← Back</button>
+    {#if !forceView}
+      <button class="back-btn" onclick={goBack}>← Back</button>
+    {/if}
     <div class="historical-switcher">
-      <button class="hist-switch-btn" class:active={currentView === 'bars'} onclick={() => setView('bars')}>{$_('charts.bars')}</button>
-      <button class="hist-switch-btn" class:active={currentView === 'stacked'} onclick={() => setView('stacked')}>{$_('charts.stacked')}</button>
-      <button class="hist-switch-btn" class:active={currentView === 'table'} onclick={() => setView('table')}>{$_('charts.table')}</button>
+      {#if !forceView}
+        <button class="hist-switch-btn" class:active={currentView === 'bars'} onclick={() => setView('bars')}>{$_('charts.bars')}</button>
+        <button class="hist-switch-btn" class:active={currentView === 'stacked'} onclick={() => setView('stacked')}>{$_('charts.stacked')}</button>
+        <button class="hist-switch-btn" class:active={currentView === 'table'} onclick={() => setView('table')}>{$_('charts.table')}</button>
+      {/if}
     </div>
 
     {#if currentView === 'bars'}

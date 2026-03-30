@@ -3,8 +3,10 @@
   import { selectedConstituency, closeModal } from '../stores/constituencyStore.js';
   import { ldfCandidates, udfCandidates, ndaCandidates, othersCandidates, getCandidateName, getConstituencyName } from '../stores/candidateStore.js';
   import { historicalDataStore } from '../stores/historicalStore.js';
+  import html2canvas from 'html2canvas';
   import NiyamasabhaChart from './charts/NiyamasabhaChart.svelte';
   import LoksabhaChart from './charts/LoksabhaChart.svelte';
+  import ExportTemplate from './ExportTemplate.svelte';
 
   const ALLIANCE_COLORS = {
     LDF: '#D94040',
@@ -45,6 +47,34 @@
     const n = parseInt(num, 10);
     return isNaN(n) ? '0' : n.toLocaleString('en-IN');
   }
+
+  let exportTemplate = $state(null);
+  let isDownloading = $state(false);
+
+  function onExportRootReady(el) {
+    exportTemplate = el;
+  }
+
+  async function handleDownload() {
+    if (!exportTemplate || isDownloading) return;
+    isDownloading = true;
+    await Promise.resolve();
+    try {
+      const canvas = await html2canvas(exportTemplate, { 
+        backgroundColor: '#1a1a1a',
+        scale: 2,
+        useCORS: true
+      });
+      const link = document.createElement('a');
+      link.download = `KLA-${currentModal.number}-${currentModal.name || 'constituency'}.jpg`;
+      link.href = canvas.toDataURL('image/jpeg', 0.9);
+      link.click();
+    } catch (err) {
+      console.error('Failed to download image:', err);
+    } finally {
+      isDownloading = false;
+    }
+  }
 </script>
 
 <svelte:window onkeydown={handleKeydown} />
@@ -58,8 +88,10 @@
   >
     <div
       class="modal"
+
       onclick={(e) => e.stopPropagation()}
       role="dialog"
+
     >
       <div class="modal-top"></div>
       <div class="modal-header">
@@ -75,7 +107,10 @@
             </span>
           {/if}
         </div>
-        <button class="modal-close" onclick={handleClose}>
+        <button class="modal-close" onclick={handleDownload} disabled={isDownloading}>
+          <span>{isDownloading ? '...' : '⬇'}</span>
+        </button>
+        <button class="modal-close modal-close-btn" onclick={handleClose}>
           <span>{$_('modal.close')}</span>
         </button>
       </div>
@@ -210,6 +245,10 @@
       </div>
     </div>
   </div>
+
+  <div class="export-wrapper">
+    <ExportTemplate constituency={currentModal} {loksabhaVisible} onRootReady={onExportRootReady} />
+  </div>
 {/if}
 
 <style>
@@ -308,6 +347,15 @@
   .modal-close:hover {
     background: var(--bg2);
     color: var(--text);
+  }
+
+  .modal-close:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .modal-close-btn {
+    right: 80px;
   }
 
   .constituency-stats {
@@ -538,5 +586,12 @@
 
   .modal-report-link:hover {
     opacity: 1;
+  }
+
+  .export-wrapper {
+    position: absolute;
+    top: 0;
+    left: -9999px;
+    overflow: hidden;
   }
 </style>
