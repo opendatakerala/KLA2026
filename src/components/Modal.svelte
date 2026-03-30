@@ -3,7 +3,7 @@
   import { selectedConstituency, closeModal } from '../stores/constituencyStore.js';
   import { ldfCandidates, udfCandidates, ndaCandidates, othersCandidates, getCandidateName, getConstituencyName } from '../stores/candidateStore.js';
   import { historicalDataStore } from '../stores/historicalStore.js';
-  import html2canvas from 'html2canvas';
+  import { toJpeg } from 'html-to-image';
   import NiyamasabhaChart from './charts/NiyamasabhaChart.svelte';
   import LoksabhaChart from './charts/LoksabhaChart.svelte';
   import ExportTemplate from './ExportTemplate.svelte';
@@ -80,22 +80,50 @@
   });
 
   async function generateImage() {
-    if (!exportTemplate || isGenerating || generatedBlob) return;
-    isGenerating = true;
-    await new Promise(r => setTimeout(r, 0));
-    try {
-      const canvas = await html2canvas(exportTemplate, { 
-        backgroundColor: '#1a1a1a',
-        scale: 2,
-        useCORS: true
-      });
-      generatedBlob = await new Promise(resolve => canvas.toBlob(resolve, 'image/jpeg', 0.9));
-    } catch (err) {
-      console.error('Failed to generate image:', err);
-    } finally {
-      isGenerating = false;
+      if (!exportTemplate || isGenerating || generatedBlob) return;
+      isGenerating = true;
+      
+      // Give Svelte a tiny bit more breathing room to ensure charts have mounted
+      await new Promise(r => setTimeout(r, 100)); 
+      
+      try {
+        // 1. Force explicit dimensions so it doesn't collapse to 0x0
+        // We check offsetWidth first, falling back to scrollWidth
+        const exportWidth = exportTemplate.offsetWidth || exportTemplate.scrollWidth;
+        const exportHeight = exportTemplate.offsetHeight || exportTemplate.scrollHeight;
+  
+        const configOptions = { 
+          backgroundColor: '#1a1a1a',
+          pixelRatio: 2,
+          width: exportWidth,
+          height: exportHeight,
+          style: {
+                    left: '0px',
+                    top: '0px',
+                    position: 'static', 
+                    transform: 'none',
+                    margin: '0'
+                  }
+        };
+  
+        // 2. THE WARM-UP PASS (The Magic Fix)
+        // We run the generation once and throw away the result. 
+        // This forces the browser to load fonts, SVGs, and charts into the canvas cache.
+        await toJpeg(exportTemplate, configOptions).catch(() => {});
+        
+        // 3. THE REAL PASS
+        // Now that the browser engine is "warmed up", the second snapshot will capture everything perfectly.
+        const dataUrl = await toJpeg(exportTemplate, configOptions);
+        
+        const response = await fetch(dataUrl);
+        generatedBlob = await response.blob();
+        
+      } catch (err) {
+        console.error('Failed to generate image:', err);
+      } finally {
+        isGenerating = false;
+      }
     }
-  }
 
   async function handleShare() {
     if (!generatedBlob) {
@@ -670,5 +698,7 @@
     top: 0;
     left: -9999px;
     overflow: hidden;
+    width: 1080px;
+    height: 1080px;
   }
 </style>

@@ -220,10 +220,8 @@
 
 <style>
   .export-container {
-    position: absolute;
-    left: -9999px;
-    top: 0;
-    width: 800px;
+    width: 100%;
+    height: 100%;
     background: var(--card);
     font-family: 'Manjari', sans-serif;
     color: #000;
@@ -241,6 +239,7 @@
     align-items: center;
     gap: 16px;
     border-bottom: 1px solid var(--border);
+    background: var(--card);
   }
 
   .export-logo-wrap { display: flex; align-items: center; flex-shrink: 0; }
