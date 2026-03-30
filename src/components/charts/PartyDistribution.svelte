@@ -35,7 +35,7 @@ echarts.use([
       .map(([name, count]) => ({
         name,
         value: count,
-        itemStyle: { color: getPartyColor(name) }
+        itemStyle: { color: getPartyColor(alliance) }
       }));
 
     const height = Math.max(180, data.length * ROW_HEIGHT + 20);
