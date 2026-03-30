@@ -1,5 +1,5 @@
 # KLA Election 2026
-This is Commnity Iniative to Explore the Kerala Legislative Assembly Election 2026 Through Data. 
+This is a Community Initiative to Explore the Kerala Legislative Assembly Election 2026 Through Data. The data is sourced from various media outlets, party social media handles, the CEC Kerala website, gazette notifications, wikipedia, wikidata and openstreetmap.
 
 Cite our work 
 > Kerala legislative assembly election 2026 ODK portal. 1.0.0, OpenDataKerala Community, 29 Mar. 2026, https://doi.org/10.5281/zenodo.19323427.
