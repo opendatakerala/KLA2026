@@ -250,7 +250,7 @@
 
   .export-eyebrow {
     font-family: 'Manjari', monospace;
-    font-size: 11px;
+    font-size: 13px;
     letter-spacing: 0.2em;
     color: #000;
     font-weight: 700;
@@ -270,7 +270,7 @@
 
   .export-title h1 {
     font-family: 'Manjari', sans-serif;
-    font-size: 24px;
+    font-size: 28px;
     font-weight: 900;
     line-height: 1.05;
     color: #000;
@@ -279,7 +279,7 @@
   }
 
   .export-tagline {
-    font-size: 12px;
+    font-size: 14px;
     color: #000;
     font-weight: 700;
     margin-top: 2px;
@@ -325,14 +325,14 @@
 
   .modal-eyebrow {
     font-family: 'Manjari', monospace;
-    font-size: 11px;
+    font-size: 13px;
     color: var(--muted);
     letter-spacing: 0.05em;
   }
 
   .modal-title {
     font-family: 'Manjari', sans-serif;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 700;
     color: var(--text);
     margin-top: 4px;
@@ -351,7 +351,7 @@
     padding: 4px 8px;
     border-radius: 4px;
     font-family: 'Manjari', monospace;
-    font-size: 10px;
+    font-size: 12px;
     letter-spacing: 0.05em;
   }
 
@@ -446,7 +446,7 @@
     display: flex;
     align-items: center;
     gap: 4px;
-    font-size: 10px;
+    font-size: 12px;
     color: var(--muted);
   }
 
@@ -464,7 +464,25 @@
 
   .modal-section-label {
     font-family: 'Manjari', monospace;
-    font-size: 10px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .legend-dot.male { background: #3B82F6; }
+  .legend-dot.female { background: #EC4899; }
+  .legend-dot.trans { background: #8B5CF6; }
+
+  .modal-body { padding: 20px; }
+
+  .modal-section-label {
+    font-family: 'Manjari', monospace;
+    font-size: 12px;
     letter-spacing: 0.08em;
     color: var(--muted);
     text-transform: uppercase;
@@ -493,7 +511,7 @@
 
   .stat-label {
     font-family: 'Manjari', monospace;
-    font-size: 10px;
+    font-size: 12px;
     letter-spacing: 0.08em;
     color: var(--muted);
     text-transform: uppercase;
@@ -501,7 +519,7 @@
 
   .stat-value {
     font-family: 'Manjari', monospace;
-    font-size: 18px;
+    font-size: 22px;
     font-weight: 700;
     color: var(--text);
   }
@@ -526,7 +544,7 @@
 
   .voters-count {
     font-family: 'Manjari', sans-serif;
-    font-size: 18px;
+    font-size: 22px;
     font-weight: 700;
     color: var(--text);
   }
@@ -558,7 +576,7 @@
     align-items: center;
     gap: 4px;
     font-family: 'Manjari', monospace;
-    font-size: 10px;
+    font-size: 12px;
     color: var(--muted);
   }
 
@@ -592,7 +610,7 @@
 
   .modal-section-label {
     font-family: 'Manjari', monospace;
-    font-size: 10px;
+    font-size: 12px;
     letter-spacing: 0.08em;
     color: var(--muted);
     text-transform: uppercase;
@@ -638,7 +656,7 @@
 
   .alliance-label {
     font-family: 'Manjari', monospace;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 600;
     letter-spacing: 0.1em;
     opacity: 0.7;
@@ -647,13 +665,13 @@
   .candidate-name {
     font-family: 'Manjari', sans-serif;
     font-weight: 600;
-    font-size: 13px;
+    font-size: 15px;
     margin-top: 2px;
     color: #000;
   }
 
   .candidate-party {
-    font-size: 11px;
+    font-size: 13px;
     color: var(--text-soft);
     margin-top: 2px;
   }
@@ -677,7 +695,7 @@
   }
 
   .qr-text {
-    font-size: 9px;
+    font-size: 11px;
     color: var(--muted);
     font-family: 'Manjari', monospace;
   }
