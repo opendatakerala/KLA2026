@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import Header from './Header.astro';
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -10,6 +10,25 @@ const { title } = Astro.props;
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="citation_title" content="Kerala Legislative Assembly Election 2026 ODK Portal" />
+  <meta name="citation_author" content="Karingamadathil, Manoj" />
+  <meta name="citation_author" content="S Dinesh, Akshay" />
+  <meta name="citation_author" content="R T, Athul" />
+  <meta name="citation_author" content="T M, Navaneeth" />
+  <meta name="citation_doi" content="10.5281/zenodo.19323427" />
+  <meta name="citation_keywords" content="Data Visualization" />
+  <meta name="citation_keywords" content="Data Science" />
+  <meta name="citation_keywords" content="Statistical data" />
+  <meta name="citation_abstract_html_url" content="https://zenodo.org/records/19323427" />
+  <meta name="description" content={description} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content="https://opendatakerala.org/KLA2026" />
+  <meta property="og:site_name" content="ODK Elections 2026" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:site" content="@opendatakerala" />
+  <meta name="twitter:description" content={description} />
   <title>{title}</title>
 </head>
 <body>

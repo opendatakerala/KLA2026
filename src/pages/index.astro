@@ -3,8 +3,9 @@ import Layout from '../components/Layout.astro';
 import Home from '../components/Home.svelte';
 
 const pageTitle = "Kerala Legislative Assembly Election 2026";
+const description = "The Kerala Legislative Assembly Election 2026 Data Portal is an initiative by the OpenDataKerala Community to track, curate, and present structured information related to election candidates and constituencies.";
 ---
 
-<Layout title={pageTitle}>
+<Layout title={pageTitle} description={description}>
   <Home client:load />
 </Layout>

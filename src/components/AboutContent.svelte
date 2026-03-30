@@ -6,17 +6,6 @@
 <div class="about-container">
   <a href="/KLA2026/" class="back-link">← {$_('about.back')}</a>
 
-  <h1>{$_('about.title')}</h1>
-
-  <p>
-    {$_('about.description')}
-  </p>
-
-  <h2>{$_('about.reportIssues')}</h2>
-  <p>
-    {@html $_('about.reportIssuesIntro')}
-  </p>
-  
   {@html content}
 </div>
 
