@@ -51,6 +51,8 @@
   let exportTemplate = $state(null);
   let isGenerating = $state(false);
   let generatedBlob = $state(null);
+  let lastConstituencyNumber = $state(null);
+  let lastLang = $state(null);
 
   let canShareImage = $state(false);
 
@@ -72,6 +74,16 @@
       setTimeout(generateImage, 500);
     }
   }
+
+  $effect(() => {
+    const constituencyNumber = currentModal?.number;
+    const lang = currentLangValue;
+    if (constituencyNumber && (lastConstituencyNumber !== constituencyNumber || lastLang !== lang)) {
+      generatedBlob = null;
+      lastConstituencyNumber = constituencyNumber;
+      lastLang = lang;
+    }
+  });
 
   $effect(() => {
     if (!historicalLoading && currentModal?.number) {
