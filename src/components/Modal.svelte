@@ -108,7 +108,7 @@
           {/if}
         </div>
         <button class="modal-close" onclick={handleDownload} disabled={isDownloading}>
-          <span>{isDownloading ? '...' : '⬇'}</span>
+          <span>{isDownloading ? '...' : '💾'}</span>
         </button>
         <button class="modal-close modal-close-btn" onclick={handleClose}>
           <span>{$_('modal.close')}</span>
