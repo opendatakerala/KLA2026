@@ -13,3 +13,11 @@ async function fetcher(constituency) {
 export const [createFetcherStore, createMutatorStore] = nanoquery({
   fetcher
 });
+
+export const [createHitsFetcherStore] = nanoquery({
+  fetcher: async () => {
+    const res = await fetch(`${API_BASE}/api/kla2026/hitcounter`);
+    return res.json();
+  }
+});
+
