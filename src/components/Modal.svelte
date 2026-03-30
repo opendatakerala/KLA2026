@@ -64,10 +64,20 @@
 
   function onExportRootReady(el) {
     exportTemplate = el;
-    if (currentModal?.number && !generatedBlob) {
-      generateImage();
+    tryStartGeneration();
+  }
+
+  function tryStartGeneration() {
+    if (currentModal?.number && !generatedBlob && exportTemplate && !historicalLoading) {
+      setTimeout(generateImage, 500);
     }
   }
+
+  $effect(() => {
+    if (!historicalLoading && currentModal?.number) {
+      tryStartGeneration();
+    }
+  });
 
   async function generateImage() {
     if (!exportTemplate || isGenerating || generatedBlob) return;
@@ -139,14 +149,16 @@
       <div class="modal-top"></div>
       <div class="modal-header">
         <div class="modal-actions">
-          {#if canShareImage}
-            <button class="modal-btn" onclick={handleShare} disabled={isGenerating}>
-              <span>{isGenerating ? '...' : '📤'}</span>
+          {#if generatedBlob}
+            {#if canShareImage}
+              <button class="modal-btn" onclick={handleShare}>
+                <span>📤</span>
+              </button>
+            {/if}
+            <button class="modal-btn" onclick={handleDownload}>
+              <span>📷</span>
             </button>
           {/if}
-          <button class="modal-btn" onclick={handleDownload} disabled={isGenerating}>
-            <span>{isGenerating ? '...' : '📷'}</span>
-          </button>
           <button class="modal-btn" onclick={handleClose}>
             <span>{$_('modal.close')}</span>
           </button>
