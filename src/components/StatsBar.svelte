@@ -6,7 +6,7 @@
   const statsData = [
     { key: 'constituencies', value: 140 },
     { key: 'alliances', value: 3 },
-    { key: 'parties', value: 25 },
+    { key: 'parties', value: 38 },
     { key: 'nominations', value: 2125 },
     { key: 'applications', value: 1254 },
     { key: 'afterScrutiny', value: 985 },
