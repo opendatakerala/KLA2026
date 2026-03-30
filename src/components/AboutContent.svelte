@@ -1,5 +1,6 @@
 <script>
   import { _ } from '../lib/i18n.js';
+  let {content} = $props();
 </script>
 
 <div class="about-container">
@@ -11,13 +12,12 @@
     {$_('about.description')}
   </p>
 
-  <h2>{$_('about.team')}</h2>
-  <p>{$_('about.teamContent')}</p>
-
   <h2>{$_('about.reportIssues')}</h2>
   <p>
     {@html $_('about.reportIssuesIntro')}
   </p>
+  
+  {@html content}
 </div>
 
 <style>
@@ -40,43 +40,43 @@
   .back-link:hover {
     color: var(--gold-mid);
   }
-  h1 {
+  :global(.about-container h1) {
     font-size: 32px;
     font-weight: 700;
     margin-bottom: 24px;
     color: var(--text);
   }
-  h2 {
+  :global(.about-container h2) {
     font-size: 22px;
     font-weight: 600;
     margin-top: 36px;
     margin-bottom: 16px;
     color: var(--text);
   }
-  p {
+  :global(.about-container p) {
     font-size: 15px;
     line-height: 1.7;
     color: var(--text-soft);
     margin-bottom: 16px;
   }
-  ul {
+  :global(.about-container ul) {
     list-style: none;
     padding: 0;
   }
-  li {
+  :global(.about-container li) {
     font-size: 14px;
     margin-bottom: 10px;
     color: var(--text-soft);
   }
-  li strong {
+  :global(.about-container li strong) {
     color: var(--text);
   }
-  a {
+  :global(.about-container a) {
     color: var(--udf);
     text-decoration: underline;
     text-underline-offset: 2px;
   }
-  a:hover {
+  :global(.about-container a:hover) {
     color: var(--gold);
   }
 </style>

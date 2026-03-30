@@ -1,10 +1,44 @@
 ---
 import LayoutSimple from '../components/LayoutSimple.astro';
 import AboutContent from '../components/AboutContent.svelte';
+import {compiledContent} from '../../README.md';
 
 const pageTitle = "About - Kerala Legislative Assembly Election 2026";
+const content = await compiledContent();
 ---
 
 <LayoutSimple title={pageTitle}>
-  <AboutContent client:load />
+  <AboutContent content={content} client:load />
+  <div class="about-container">
+  </div>
 </LayoutSimple>
+
+
+<style>
+  .about-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 24px;
+    font-family: 'Manjari', sans-serif;
+    color: var(--text);
+  }
+  .about-container h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: var(--text);
+  }
+  .about-container h2 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-top: 36px;
+    margin-bottom: 16px;
+    color: var(--text);
+  }
+  .about-container p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-soft);
+    margin-bottom: 16px;
+  }
+</style>
