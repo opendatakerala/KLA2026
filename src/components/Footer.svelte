@@ -17,6 +17,7 @@
   let appVersion = $derived(formatVersion(import.meta.env.APP_VERSION || ''));
   let dataVersion = $derived(formatVersion(import.meta.env.DATA_VERSION || ''));
   let hitCount = $derived($hitsStore?.data?.totalHits ?? '-');
+  let showPopup = $state(false);
 </script>
 
 <footer>
@@ -30,6 +31,20 @@
       <span class="version-item">
         <span class="version-label">Data version:</span><span class="version-value">&nbsp;{dataVersion}</span>
       </span>
+    </div>
+    <div class="footer-citation-wrapper">
+      <button class="footer-citation" onclick={async () => {
+        const text = "Kerala legislative assembly election 2026 ODK portal. V1.0.0\n©OpenDataKerala Community, https://doi.org/10.5281/zenodo.19323427";
+        await navigator.clipboard.writeText(text);
+        showPopup = true;
+        setTimeout(() => showPopup = false, 2000);
+      }}>
+        Kerala legislative assembly election 2026 ODK portal. V1.0.0<br />
+        &copy;OpenDataKerala Community, https://doi.org/10.5281/zenodo.19323427
+      </button>
+      {#if showPopup}
+        <div class="citation-popup">Citation copied to clipboard!</div>
+      {/if}
     </div>
   </div>
   <div class="footer-right">
@@ -83,6 +98,51 @@
   }
   .version-divider {
     color: var(--border);
+  }
+  .footer-citation-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-top: 4px;
+  }
+  .footer-citation {
+    font-family: 'Manjari', monospace;
+    font-size: var(--fs-xs);
+    color: var(--muted);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 6px 10px;
+    cursor: pointer;
+    text-align: left;
+    line-height: 1.5;
+    display: block;
+  }
+  .footer-citation:hover {
+    border-color: var(--gold);
+    color: var(--text);
+  }
+  .citation-popup {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--text);
+    color: var(--card);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 10;
+  }
+  .citation-popup::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: var(--text);
   }
   .footer-right {
     display: flex;
