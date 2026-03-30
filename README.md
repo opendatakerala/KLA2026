@@ -46,3 +46,8 @@ Manjusha P M, Athira M P, Noufal K K, Ayisha Raha E, Riza Raz, Muhammed Sahad M,
 
 # Technology 
 The platform has evolved rapidly from a single HTML proof-of-concept to a full-fledged web platform powered by Svelte (for interactive frontend), d3 and Apache ECharts (for interactive graphs), Astro (for build), Github Pages (for frontend deployment), a bespoke NodeJS API (for backend) and a linked dataset as database. Details of the libraries used can be found in [package.json](https://github.com/opendatakerala/KLA2026/blob/main/package.json).
+
+# Report Issues
+Found a mistake? Help us improve by [filing an issue on GitHub](https://github.com/opendatakerala/KLA2026/issues) or [emailing opendatakerala@gmail.com](mailto:opendatakerala@gmail.com).
+
+
