@@ -86,7 +86,7 @@ echarts.use([
           const pct = d.totalVotes > 0 ? (allianceVotes / d.totalVotes) * 100 : 0;
           let candidateName = '';
           let candidateParty = '';
-          let candidateVotes = 0;
+          let candidateVotes = allianceVotes;
           
           if (d.winner?.alliance === al) {
             candidateName = d.winner.name || '';

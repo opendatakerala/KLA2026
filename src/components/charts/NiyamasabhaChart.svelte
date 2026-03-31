@@ -92,7 +92,7 @@ echarts.use([
           const pct = d.totalVotes > 0 ? (allianceVotes / d.totalVotes) * 100 : 0;
           let candidateName = '';
           let candidateParty = '';
-          let candidateVotes = 0;
+          let candidateVotes = allianceVotes;
           
           if (d.winner?.alliance === al) {
             candidateName = d.winner.name || '';
@@ -136,9 +136,9 @@ echarts.use([
           const yearData = seriesData[params[0].dataIndex];
           let html = `<strong>${yearData.year}</strong><br/>`;
           params.forEach(p => {
-            html += `<span style="color:${p.color}">●</span> ${p.seriesName}: ${p.value}%`;
+            html += `<span style="color:${p.color}">●</span> ${p.seriesName}: ${p.value}% (${p.data.votes.toLocaleString()} votes)`;
             if (p.data.candidate) {
-              html += `<br/>&nbsp;&nbsp;${p.data.candidate} (${p.data.party}) - ${p.data.votes.toLocaleString()} votes`;
+              html += `<br/>&nbsp;&nbsp;${p.data.candidate} (${p.data.party})`;
             }
             html += '<br/>';
           });
