@@ -556,12 +556,12 @@
       {
         "alliance": "UDF",
         "party": "Independent (INC Support)",
-        "name": "T. K. Govindan",
-        "malayalam": "ടി. കെ. ഗോവിന്ദൻ",
+        "name": "T K Govindan Master",
+        "malayalam": "ടി കെ ഗോവിന്ദൻ മാസ്റ്റർ",
         "wikidata": "",
         "gender": "male",
-        "age": "71",
-        "candidateId": "3735"
+        "age": "75",
+        "candidateId": "3297"
       },
       {
         "alliance": "NDA",
@@ -576,22 +576,22 @@
       {
         "alliance": "Others",
         "party": "",
+        "name": "T. K. Govindan",
+        "malayalam": "ടി. കെ. ഗോവിന്ദൻ",
+        "wikidata": "",
+        "gender": "male",
+        "age": "71",
+        "candidateId": "3735"
+      },
+      {
+        "alliance": "Others",
+        "party": "",
         "name": "Shyamala P",
         "malayalam": "ശ്യാമള പി",
         "wikidata": "",
         "gender": "female",
         "age": "66",
         "candidateId": "4202"
-      },
-      {
-        "alliance": "Others",
-        "party": "",
-        "name": "T K Govindan Master",
-        "malayalam": "ടി കെ ഗോവിന്ദൻ മാസ്റ്റർ",
-        "wikidata": "",
-        "gender": "male",
-        "age": "75",
-        "candidateId": "3297"
       },
       {
         "alliance": "Others",
@@ -1533,8 +1533,8 @@
       {
         "alliance": "LDF",
         "party": "RJD",
-        "name": "Anil Kumar K.P.",
-        "malayalam": "അനിൽ കുമാർ കെ.പി.",
+        "name": "P. K. Anil Kumar",
+        "malayalam": "പി. കെ. അനിൽ കുമാർ",
         "wikidata": "",
         "gender": "male",
         "age": "53",
@@ -1701,7 +1701,7 @@
         "alliance": "Others",
         "party": "",
         "name": "Rama T P W/o Ashokan P K",
-        "malayalam": "രാമ ടി പി അശോകൻ പി കെ",
+        "malayalam": "രമ ടി പി,  അശോകൻ പി കെ യുടെ ഭാര്യ",
         "wikidata": "",
         "gender": "female",
         "age": "52",
@@ -1711,7 +1711,7 @@
         "alliance": "Others",
         "party": "",
         "name": "Rama W/o Vijayan",
-        "malayalam": "വിജയന്റെ കൂടെ രാമൻ",
+        "malayalam": "രമ, വിജയന്റെ ഭാര്യ",
         "wikidata": "",
         "gender": "female",
         "age": "61",
@@ -1864,8 +1864,8 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "Abhijeeth",
-        "malayalam": "അഭിജീത്ത്",
+        "name": "Abhijith, s/o Balan",
+        "malayalam": "അഭിജിത്ത്, ബാലൻ മകൻ",
         "wikidata": "",
         "gender": "male",
         "age": "39",
@@ -2145,8 +2145,8 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "Abhijeeth",
-        "malayalam": "അഭിജീത്ത്",
+        "name": "Abhijith",
+        "malayalam": "അഭിജിത്",
         "wikidata": "",
         "gender": "male",
         "age": "32",
@@ -2464,7 +2464,7 @@
         "alliance": "Others",
         "party": "",
         "name": "Anver S/o Enunni",
-        "malayalam": "അൻവർ സ/ഓ എനുണ്ണി",
+        "malayalam": "അൻവർ, എന്നുണ്ണി മകൻ",
         "wikidata": "",
         "gender": "male",
         "age": "52",
@@ -2474,7 +2474,7 @@
         "alliance": "Others",
         "party": "",
         "name": "Anver S/o Moideenkoya",
-        "malayalam": "അൻവർ സ/ഒ മൊയ്ദീൻകോയ",
+        "malayalam": "അൻവർ, മൊയ്ദീൻകോയ മകൻ",
         "wikidata": "",
         "gender": "male",
         "age": "45",
@@ -3091,7 +3091,7 @@
       },
       {
         "alliance": "NDA",
-        "party": "JRS",
+        "party": "BJP (Independent)",
         "name": "E. P. Kumaradas",
         "malayalam": "ഇ. പി. കുമാരദാസ്",
         "wikidata": "",
@@ -3293,12 +3293,12 @@
       {
         "alliance": "LDF",
         "party": "Independent (CPI(M) support)",
-        "name": "Kunnath Muhammed",
+        "name": "Kunnath Mohamed S/o Ali Haji",
         "malayalam": "കുന്നത്ത് മുഹമ്മദ്",
         "wikidata": "",
         "gender": "male",
-        "age": "61",
-        "candidateId": "4309"
+        "age": "52",
+        "candidateId": "913"
       },
       {
         "alliance": "UDF",
@@ -3323,12 +3323,12 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "Kunnath Mohamed S/o Ali Haji",
-        "malayalam": "കുന്നത്ത് മുഹമ്മദ് സ/ഒ അലി ഹാജി",
+        "name": "Kunnath Muhammed",
+        "malayalam": "കുന്നത്ത് മുഹമ്മദ്",
         "wikidata": "",
         "gender": "male",
-        "age": "52",
-        "candidateId": "913"
+        "age": "61",
+        "candidateId": "4309"
       }
     ]
   },
@@ -3668,12 +3668,12 @@
       {
         "alliance": "LDF",
         "party": "Independent (CPI(M) support)",
-        "name": "Muhammed Sameer",
-        "malayalam": "മുഹമ്മദ് സമീർ",
+        "name": "Mohamed Sameer T Thiruthiyil House",
+        "malayalam": "മുഹമ്മദ് സമീർ ടി തിരുത്തിയിൽ വീട്",
         "wikidata": "",
         "gender": "male",
-        "age": "43",
-        "candidateId": "4221"
+        "age": "50",
+        "candidateId": "4836"
       },
       {
         "alliance": "UDF",
@@ -3698,12 +3698,12 @@
       {
         "alliance": "Others",
         "party": "",
-        "name": "Mohamed Sameer T Thiruthiyil House",
-        "malayalam": "മുഹമ്മദ് സമീർ ടി തിരുത്തിയിൽ വീട്",
+        "name": "Muhammed Sameer",
+        "malayalam": "മുഹമ്മദ് സമീർ",
         "wikidata": "",
         "gender": "male",
-        "age": "50",
-        "candidateId": "4836"
+        "age": "43",
+        "candidateId": "4221"
       },
       {
         "alliance": "Others",
@@ -4950,8 +4950,8 @@
       {
         "alliance": "UDF",
         "party": "INC",
-        "name": "K. N. Febin",
-        "malayalam": "കെ. എൻ. ഫെബിൻ",
+        "name": "K. M. Febin",
+        "malayalam": "കെ. എം. ഫെബിൻ",
         "wikidata": "",
         "gender": "male",
         "age": "43",
@@ -4971,7 +4971,7 @@
         "alliance": "Others",
         "party": "",
         "name": "B Febin S/o Balan K.C.",
-        "malayalam": "ബി ഫെബിൻ എസ്/ഒ ബാലൻ കെ.സി.",
+        "malayalam": "ബി ഫെബിൻ, ബാലൻ കെ.സി. മകൻ",
         "wikidata": "",
         "gender": "male",
         "age": "37",
@@ -8312,7 +8312,7 @@
         "alliance": "Others",
         "party": "",
         "name": "A.P. Prasad S/o Purushothaman",
-        "malayalam": "എ.പി. പ്രസാദ് പുരുഷോത്തമൻ സാർ",
+        "malayalam": "എ.പി. പ്രസാദ്, പുരുഷോത്തമൻ മകൻ",
         "wikidata": "",
         "gender": "male",
         "age": "58",
@@ -8332,7 +8332,7 @@
         "alliance": "Others",
         "party": "",
         "name": "Rajendra Prasad S/o Prabhakaran",
-        "malayalam": "രാജേന്ദ്ര പ്രസാദ് S/o പ്രഭാകരൻ",
+        "malayalam": "രാജേന്ദ്ര പ്രസാദ്, പ്രഭാകരൻ മകൻ",
         "wikidata": "",
         "gender": "male",
         "age": "56",
@@ -10843,7 +10843,7 @@
         "alliance": "Others",
         "party": "",
         "name": "Adv. S. Sivakumar S/o Sadasivan",
-        "malayalam": "അഡ്വ. S. ശിവകുമാർ S/o സദാശിവൻ",
+        "malayalam": "അഡ്വ. എസ്. ശിവകുമാർ, സദാശിവൻ മകൻ",
         "wikidata": "",
         "gender": "male",
         "age": "51",
