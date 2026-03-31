@@ -109,7 +109,11 @@
     "averageAge": "Average Age",
     "wonBy": "{party} ({alliance}) won by {margin} votes",
     "leadBy": "{party} ({alliance}) had a lead of {margin} votes",
-    "partOfParliamentaryConstituency": "Part of {parliamentaryConstituency} parliamentary constituency"
+    "partOfParliamentaryConstituency": "Part of {parliamentaryConstituency} parliamentary constituency",
+    "mergeBothResults": "Merge Both Results",
+    "unmergeResults": "Unmerge",
+    "bothsabhaTitle": "Assembly & Parliament Results Combined",
+    "bothsabhaSubtitle": "Please note that the results shown are intermixing state and country elections"
   },
   "language": {
     "en": "EN",

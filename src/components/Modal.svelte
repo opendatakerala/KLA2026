@@ -6,6 +6,7 @@
   import { toJpeg } from 'html-to-image';
   import NiyamasabhaChart from './charts/NiyamasabhaChart.svelte';
   import LoksabhaChart from './charts/LoksabhaChart.svelte';
+  import Bothsabhas from './charts/Bothsabhas.svelte';
   import ExportTemplate from './ExportTemplate.svelte';
 
   const ALLIANCE_COLORS = {
@@ -55,6 +56,7 @@
   let lastLang = $state(null);
 
   let canShareImage = $state(false);
+  let showMergedView = $state(false);
 
   $effect(() => {
     if (typeof navigator !== 'undefined' && navigator.canShare) {
@@ -80,6 +82,7 @@
     const lang = currentLangValue;
     if (constituencyNumber && (lastConstituencyNumber !== constituencyNumber || lastLang !== lang)) {
       generatedBlob = null;
+      showMergedView = false;
       lastConstituencyNumber = constituencyNumber;
       lastLang = lang;
     }
@@ -327,21 +330,29 @@
         {/if}
 
         <!-- Niyamasabha Historical Results -->
-        <div class="modal-section-label">
-          {$_('modal.historicalResultsNiyamasabha')}
-        </div>
-        <NiyamasabhaChart constituencyNumber={currentModal.number} data={niyamasabhaData} loading={historicalLoading} error={historicalError} alwaysShowSimple={true} />
+        {#if showMergedView}
+          <Bothsabhas 
+            niyamasabhaData={niyamasabhaData} 
+            loksabhaData={loksabhaData}
+            onUnmerge={() => showMergedView = false}
+          />
+        {:else}
+          <div class="modal-section-label">
+            {$_('modal.historicalResultsNiyamasabha')}
+          </div>
+          <NiyamasabhaChart constituencyNumber={currentModal.number} data={niyamasabhaData} loading={historicalLoading} error={historicalError} alwaysShowSimple={true} />
 
-        <!-- Lok Sabha Historical Results -->
-        {#if currentModal.qid && loksabhaData?.[0]?.parliamentaryConstituency}
-          <div class="modal-section-label loksabha-section">
-            <button class="toggle-loksabha-btn" onclick={() => loksabhaVisible = !loksabhaVisible}>
-              {loksabhaVisible ? '▼' : '▶'} {$_('modal.partOfParliamentaryConstituency', { values: { parliamentaryConstituency: currentLangValue === 'ml' && loksabhaData[0].parliamentaryConstituencyMalayalam ? loksabhaData[0].parliamentaryConstituencyMalayalam : loksabhaData[0].parliamentaryConstituency } })}
-            </button>
-          </div>
-          <div class="loksabha-chart-wrapper" class:hidden={!loksabhaVisible}>
-            <LoksabhaChart data={loksabhaData} loading={historicalLoading} error={historicalError} />
-          </div>
+          <!-- Lok Sabha Historical Results -->
+          {#if currentModal.qid && loksabhaData?.[0]?.parliamentaryConstituency}
+            <div class="modal-section-label loksabha-section">
+              <button class="toggle-loksabha-btn" onclick={() => loksabhaVisible = !loksabhaVisible}>
+                {loksabhaVisible ? '▼' : '▶'} {$_('modal.partOfParliamentaryConstituency', { values: { parliamentaryConstituency: currentLangValue === 'ml' && loksabhaData[0].parliamentaryConstituencyMalayalam ? loksabhaData[0].parliamentaryConstituencyMalayalam : loksabhaData[0].parliamentaryConstituency } })}
+              </button>
+            </div>
+            <div class="loksabha-chart-wrapper" class:hidden={!loksabhaVisible}>
+              <LoksabhaChart data={loksabhaData} loading={historicalLoading} error={historicalError} onMergeClick={() => showMergedView = true} />
+            </div>
+          {/if}
         {/if}
         <div class="modal-footer">
           <a href="/KLA2026/about" class="modal-report-link" title={$_('footer.reportIssues')}>

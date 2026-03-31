@@ -18,7 +18,7 @@ echarts.use([
 ]);
   import { _ } from '../../lib/i18n.js';
 
-  let { constituencyQid = null, data = [], loading = false, error = false, forceView = null } = $props();
+  let { constituencyQid = null, data = [], loading = false, error = false, forceView = null, onMergeClick = null } = $props();
 
   const COLORS = {
     LDF: '#D94040',
@@ -202,9 +202,15 @@ echarts.use([
 
     {#if currentView === 'bars'}
       <div class="chart-view" bind:this={chartContainer}></div>
+      {#if onMergeClick && hasData}
+        <button class="merge-btn" onclick={onMergeClick}>{$_('charts.mergeBothResults')}</button>
+      {/if}
 
     {:else if currentView === 'stacked'}
       <div class="chart-view" bind:this={chartContainer}></div>
+      {#if onMergeClick && hasData}
+        <button class="merge-btn" onclick={onMergeClick}>{$_('charts.mergeBothResults')}</button>
+      {/if}
 
     {:else if currentView === 'table'}
       <div class="table-view">
@@ -428,4 +434,25 @@ echarts.use([
 
   .votes-cell div { display: block; margin-bottom: 2px; }
   .margin-line { font-weight: 700; color: var(--text); font-size: 10px; }
+
+  .merge-btn {
+    margin-top: 16px;
+    font-family: 'Manjari', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    padding: 8px 16px;
+    border: 1px solid var(--gold);
+    background: transparent;
+    color: var(--gold);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.18s;
+    display: block;
+    width: 100%;
+  }
+
+  .merge-btn:hover {
+    background: var(--gold);
+    color: var(--card);
+  }
 </style>

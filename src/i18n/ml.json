@@ -109,7 +109,11 @@
     "averageAge": "ശരാശരി പ്രായം",
     "wonBy": "{party} ({alliance}) {margin} വോട്ടുകൾക്ക് വിജയിച്ചു",
     "leadBy": "{party} ({alliance}) {margin} വോട്ടുകളുടെ ഭൂരിപക്ഷമുണ്ട്",
-    "partOfParliamentaryConstituency": "ഈ മണ്ഡലം {parliamentaryConstituency} ലോകസഭ മണ്ഡലത്തിൻ്റെ ഭാഗമാണ്"
+    "partOfParliamentaryConstituency": "ഈ മണ്ഡലം {parliamentaryConstituency} ലോകസഭ മണ്ഡലത്തിൻ്റെ ഭാഗമാണ്",
+    "mergeBothResults": "രണ്ടും ഒരുമിച്ച് കാണിക്കുക",
+    "unmergeResults": "രണ്ടും വെവ്വേറെ കാണിക്കുക",
+    "bothsabhaTitle": "നിയമസഭയും ലോകസഭയും ഒരുമിച്ച്",
+    "bothsabhaSubtitle": "കാണിച്ചിരിക്കുന്ന ഫലങ്ങൾ സംസ്ഥാന, രാജ്യ തിരഞ്ഞെടുപ്പുകളുടെ ഇടകലർന്ന ഫലങ്ങളാണെന്ന കാര്യം ശ്രദ്ധിക്കുക."
   },
   "language": {
     "en": "EN",
