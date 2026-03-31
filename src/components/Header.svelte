@@ -122,7 +122,7 @@
   }
 
   .header-inner {
-    max-width: 1400px;
+    max-width: 1600px;
     margin: 0 auto;
     padding: 20px 32px 14px;
     display: grid;
@@ -132,7 +132,7 @@
   }
 
   .header-search {
-    max-width: 1400px;
+    max-width: 1600px;
     margin: 0 auto;
     padding: 0 32px 16px;
   }
