@@ -3,6 +3,19 @@
   import * as d3 from 'd3';
   import { _ } from '../lib/i18n.js';
   import { filteredConstituencies, openModal, constituencies, filters, districtBounds } from '../stores/constituencyStore.js';
+  import partyData from '../data/candidates-by-party.json';
+
+  const PARTY_COLORS = [
+    '#E63946', '#457B9D', '#F4A261', '#2A9D8F', '#9B5DE5', '#00F5D4',
+    '#FF6B6B', '#4ECDC4', '#FFE66D', '#95E1D3', '#F38181', '#AA96DA'
+  ];
+
+  function getPartyColor(party) {
+    const parties = partyData[selectedAlliance] || {};
+    const sorted = Object.keys(parties).sort((a, b) => parties[b] - parties[a]);
+    const idx = sorted.indexOf(party);
+    return idx >= 0 ? PARTY_COLORS[idx % PARTY_COLORS.length] : '#9ca3af';
+  }
 
   let mapSvgText = $state('');
   let mapLoading = $state(true);
@@ -10,8 +23,29 @@
   const viewWidth = 263;
   const viewHeight = 345;
   
+  let selectedAlliance = $state('LDF');
+
   let allData = $derived($constituencies);
   let filteredData = $derived($filteredConstituencies);
+
+  let noFilters = $derived(
+    $filters.district === 'all' &&
+    $filters.party === 'all' &&
+    $filters.reservation === 'all' &&
+    $filters.search === '' &&
+    !$filters.women
+  );
+
+  let allianceParties = $derived(() => {
+    const parties = partyData[selectedAlliance] || {};
+    return Object.entries(parties)
+      .sort((a, b) => b[1] - a[1])
+      .map(([party, count], idx) => ({
+        party,
+        count,
+        color: PARTY_COLORS[idx % PARTY_COLORS.length]
+      }));
+  });
 
   onMount(() => {
     loadMap();
@@ -49,15 +83,10 @@
         const row = allData.find(x => x.qid === qid);
         
         if (row) {
-          const isSc = row.reservation === 'SC';
-          const isSt = row.reservation === 'ST';
-          
           path
             .attr('id', 'c' + row.number)
             .attr('data-num', row.number)
-            .classed('const-path', true)
-            .classed('reserved-sc', isSc)
-            .classed('reserved-st', isSt);
+            .classed('const-path', true);
         } else {
           path.classed('const-path', true);
         }
@@ -113,6 +142,19 @@
       const isMatch = filteredIds.has(row.qid);
       path.classed('highlighted', isMatch)
           .classed('dimmed', !isMatch);
+
+      if (noFilters) {
+        const candidates = row.candidates || [];
+        const candidate = candidates.find(c => c.alliance === selectedAlliance && c.name);
+        if (candidate) {
+          const color = getPartyColor(candidate.party);
+          path.style('fill', color);
+        } else {
+          path.style('fill', '#9ca3af');
+        }
+      } else {
+        path.style('fill', '#9ca3af');
+      }
     });
 
     const district = $filters.district;
@@ -135,6 +177,9 @@
   $effect(() => {
     const data = $filteredConstituencies;
     const svg = mapSvg;
+    const filtersState = $filters;
+    const alliance = selectedAlliance;
+    const filtersActive = noFilters;
     if (svg && data) {
       updateMap();
     }
@@ -150,11 +195,22 @@
       </div>
     {/if}
     <div id="kerala-map" style:visibility={mapLoading ? 'hidden' : 'visible'}></div>
-    <div class="map-legend" id="map-legend">
-      <div class="map-legend-title">{$_('map.reservedSeats')}</div>
-      <div class="map-legend-item"><div class="map-legend-dot sc"></div><span>{$_('map.scReserved')}</span></div>
-      <div class="map-legend-item"><div class="map-legend-dot st"></div><span>{$_('map.stReserved')}</span></div>
-    </div>
+    {#if noFilters}
+      <div class="map-legend" id="map-legend">
+        <div class="alliance-switcher">
+          <button class="alliance-btn" class:active={selectedAlliance === 'LDF'} style:--active-color=var(--ldf) onclick={() => selectedAlliance = 'LDF'}>LDF</button>
+          <button class="alliance-btn" class:active={selectedAlliance === 'UDF'} style:--active-color=var(--udf) onclick={() => selectedAlliance = 'UDF'}>UDF</button>
+          <button class="alliance-btn" class:active={selectedAlliance === 'NDA'} style:--active-color=var(--nda) onclick={() => selectedAlliance = 'NDA'}>NDA</button>
+        </div>
+        <div class="map-legend-title">{selectedAlliance} Parties</div>
+        {#each allianceParties() as p}
+          <div class="map-legend-item">
+            <div class="map-legend-dot" style:background={p.color}></div>
+            <span>{p.party} ({p.count})</span>
+          </div>
+        {/each}
+      </div>
+    {/if}
     <div class="map-tooltip" id="map-tooltip"></div>
   </div>
 </div>
@@ -193,14 +249,6 @@
     stroke-width: 0.003;
   }
 
-  #kerala-map :global(path.const-path.reserved-sc) {
-    fill: #7C3AED;
-  }
-
-  #kerala-map :global(path.const-path.reserved-st) {
-    fill: #0B7A56;
-  }
-
   #kerala-map :global(path.dimmed) {
     opacity: 0.15;
   }
@@ -229,6 +277,35 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
     margin-bottom: 6px;
+  }
+
+  .alliance-switcher {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 8px;
+  }
+
+  .alliance-btn {
+    font-family: 'Manjari', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 4px 8px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    background: var(--card);
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .alliance-btn:hover {
+    background: var(--card2);
+  }
+
+  .alliance-btn.active {
+    background: var(--active-color, var(--ldf));
+    color: #fff;
+    border-color: var(--active-color, var(--ldf));
   }
 
   .map-legend-item {
