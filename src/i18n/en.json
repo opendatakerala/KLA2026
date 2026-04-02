@@ -74,7 +74,8 @@
   "map": {
     "scReserved": "SC Reserved",
     "stReserved": "ST Reserved",
-    "reservedSeats": "Reserved Seats"
+    "reservedSeats": "Reserved Seats",
+    "legend": "Legend"
   },
   "modal": {
     "constituency": "Constituency",

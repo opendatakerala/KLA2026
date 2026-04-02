@@ -26,6 +26,29 @@
   let selectedAlliance = $state('LDF');
   let mapWidth = $state(600);
   let isResizing = $state(false);
+  let legendCollapsed = $state(false);
+  let userToggled = $state(false);
+
+  onMount(() => {
+    const container = document.getElementById('map-container');
+    if (container) {
+      mapWidth = container.offsetWidth;
+    }
+    legendCollapsed = mapWidth < 600;
+    loadMap();
+  });
+
+  $effect(() => {
+    const shouldBeCollapsed = mapWidth < 600;
+    if (!userToggled && legendCollapsed !== shouldBeCollapsed) {
+      legendCollapsed = shouldBeCollapsed;
+    }
+  });
+
+  function toggleLegend() {
+    legendCollapsed = !legendCollapsed;
+    userToggled = true;
+  }
 
   function startResize(e) {
     isResizing = true;
@@ -232,37 +255,42 @@
     <div id="kerala-map" style:visibility={mapLoading ? 'hidden' : 'visible'}></div>
     <div class="resize-handle" onmousedown={startResize}></div>
     <div class="map-legend" id="map-legend">
-      <div class="map-legend-section">
-        <div class="map-legend-title">{$_('map.reservedSeats')}</div>
-        <div class="map-legend-item">
-          <div class="map-legend-dot general"></div>
-          <span>General</span>
-        </div>
-        <div class="map-legend-item">
-          <div class="map-legend-dot sc"></div>
-          <span>{$_('map.scReserved')}</span>
-        </div>
-        <div class="map-legend-item">
-          <div class="map-legend-dot st"></div>
-          <span>{$_('map.stReserved')}</span>
-        </div>
-      </div>
-      {#if noFilters}
+      <button class="legend-toggle" onclick={toggleLegend}>
+        <span class="toggle-icon">{legendCollapsed ? '▼' : '▲'}</span> {$_('map.legend')}
+      </button>
+      <div class="legend-content" class:collapsed={legendCollapsed}>
         <div class="map-legend-section">
-          <div class="alliance-switcher">
-            <button class="alliance-btn" class:active={selectedAlliance === 'LDF'} style:--active-color=var(--ldf) onclick={() => selectedAlliance = 'LDF'}>LDF</button>
-            <button class="alliance-btn" class:active={selectedAlliance === 'UDF'} style:--active-color=var(--udf) onclick={() => selectedAlliance = 'UDF'}>UDF</button>
-            <button class="alliance-btn" class:active={selectedAlliance === 'NDA'} style:--active-color=var(--nda) onclick={() => selectedAlliance = 'NDA'}>NDA</button>
+          <div class="map-legend-title">{$_('map.reservedSeats')}</div>
+          <div class="map-legend-item">
+            <div class="map-legend-dot general"></div>
+            <span>General</span>
           </div>
-          <div class="map-legend-title">{selectedAlliance} Parties</div>
-          {#each allianceParties() as p}
-            <div class="map-legend-item">
-              <div class="map-legend-dot" style:background={p.color}></div>
-              <span>{p.party} ({p.count})</span>
-            </div>
-          {/each}
+          <div class="map-legend-item">
+            <div class="map-legend-dot sc"></div>
+            <span>{$_('map.scReserved')}</span>
+          </div>
+          <div class="map-legend-item">
+            <div class="map-legend-dot st"></div>
+            <span>{$_('map.stReserved')}</span>
+          </div>
         </div>
-      {/if}
+        {#if noFilters}
+          <div class="map-legend-section">
+            <div class="alliance-switcher">
+              <button class="alliance-btn" class:active={selectedAlliance === 'LDF'} style:--active-color=var(--ldf) onclick={() => selectedAlliance = 'LDF'}>LDF</button>
+              <button class="alliance-btn" class:active={selectedAlliance === 'UDF'} style:--active-color=var(--udf) onclick={() => selectedAlliance = 'UDF'}>UDF</button>
+              <button class="alliance-btn" class:active={selectedAlliance === 'NDA'} style:--active-color=var(--nda) onclick={() => selectedAlliance = 'NDA'}>NDA</button>
+            </div>
+            <div class="map-legend-title">{selectedAlliance} Parties</div>
+            {#each allianceParties() as p}
+              <div class="map-legend-item">
+                <div class="map-legend-dot" style:background={p.color}></div>
+                <span>{p.party} ({p.count})</span>
+              </div>
+            {/each}
+          </div>
+        {/if}
+      </div>
     </div>
     <div class="map-tooltip" id="map-tooltip"></div>
   </div>
@@ -331,6 +359,37 @@
     border-radius: 6px;
     padding: 10px;
     font-size: 11px;
+    max-height: calc(100% - 32px);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .legend-toggle {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 6px;
+    font-family: 'Manjari', monospace;
+    font-size: 11px;
+    cursor: pointer;
+    text-align: left;
+    color: var(--text);
+    align-items: center;
+    gap: 4px;
+  }
+
+  .toggle-icon {
+    font-size: 10px;
+  }
+
+  .legend-content {
+    overflow-y: auto;
+    flex: 1;
+  }
+
+  .legend-content.collapsed {
+    display: none;
   }
 
   .map-legend-title {
