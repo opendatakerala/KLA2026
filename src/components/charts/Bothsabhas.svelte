@@ -165,7 +165,6 @@
       },
       yAxis: { 
         type: 'value', 
-        max: 100,
         axisLabel: { formatter: (v) => v + '%' }
       },
       series
