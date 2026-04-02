@@ -5,6 +5,8 @@
   import { historicalDataStore } from '../stores/historicalStore.js';
   import partyLookup from '../data/party-lookup.json';
   import { getSymbolImage } from '../lib/symbols.js';
+  import downloadIcon from '../images/download.svg';
+  import shareIcon from '../images/share.svg';
   import { toJpeg } from 'html-to-image';
   import NiyamasabhaChart from './charts/NiyamasabhaChart.svelte';
   import LoksabhaChart from './charts/LoksabhaChart.svelte';
@@ -202,19 +204,19 @@
         <div class="modal-actions">
           {#if generatedBlob}
             {#if canShareImage}
-              <button class="modal-btn" onclick={handleShare}>
-                <span>📤</span>
+              <button class="modal-btn icon-btn" onclick={handleShare}>
+                <img src={shareIcon.src} alt="Share" />
               </button>
             {/if}
-            <button class="modal-btn" onclick={handleDownload}>
-              <span>📷</span>
+            <button class="modal-btn icon-btn" onclick={handleDownload}>
+              <img src={downloadIcon.src} alt="Download" />
             </button>
           {:else}
             <button class="modal-btn" disabled>
               <span class="loader"></span>
             </button>
           {/if}
-          <button class="modal-btn" onclick={handleClose}>
+          <button class="modal-btn icon-btn" onclick={handleClose}>
             <span>{$_('modal.close')}</span>
           </button>
         </div>
@@ -513,7 +515,7 @@
   }
 
   .modal-btn {
-    padding: 6px 12px;
+    padding: 8px 14px;
     background: var(--card2);
     border: 1px solid var(--border);
     border-radius: 4px;
@@ -522,6 +524,20 @@
     font-size: var(--fs-xs);
     cursor: pointer;
     transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-btn.icon-btn {
+    padding: 8px;
+    min-width: 36px;
+    min-height: 36px;
+  }
+
+  .modal-btn.icon-btn img {
+    width: 20px;
+    height: 20px;
   }
 
   .modal-btn:hover {
