@@ -18,14 +18,14 @@
     "seconds": "Sec"
   },
   "footer": {
-    "credits": "Kerala Legislative Assembly Election 2026 · Data sourced from Various Media & CEC Kerala · an OpenDataKerala Initiative",
+    "credits": "Kerala Legislative Assembly Election 2026 · Data sourced from Various Media & CEO Kerala · an OpenDataKerala Initiative",
     "viewDisclaimer": "View Disclaimer",
     "reportIssues": "Report Issues"
   },
   "about": {
     "back": "Back to Home",
     "title": "About",
-    "description": "This is an OpenDataKerala initiative to track and display candidate information for the Kerala Legislative Assembly Election 2026. The data is sourced from various media outlets, party social media handles, and the CEC Kerala website.",
+    "description": "This is an OpenDataKerala initiative to track and display candidate information for the Kerala Legislative Assembly Election 2026. The data is sourced from various media outlets, party social media handles, and the CEO Kerala website.",
     "team": "Team",
     "teamContent": "To be announced.",
     "reportIssues": "Report Issues",
@@ -34,7 +34,7 @@
   "disclaimer": {
     "title": "Data Disclaimer",
     "subtitle": "Please read before proceeding",
-    "body1": "The accuracy or completeness of the data presented on this page cannot be guaranteed. The information has been sourced from multiple sources, including the CEC Kerala, Gazette notifications, and official party media.",
+    "body1": "The accuracy or completeness of the data presented on this page cannot be guaranteed. The information has been sourced from multiple sources, including the CEO Kerala, Gazette notifications, and official party media.",
     "body2": "Found a mistake? Help us improve by filing an issue on <a href=\"https://github.com/opendatakerala/KLA2026/issues\" target=\"_blank\" rel=\"noopener\">GitHub</a> or emailing <a href=\"mailto:opendatakerala@gmail.com\">opendatakerala@gmail.com</a>.",
     "dismiss": "Dismiss",
     "ok": "I Understand"
