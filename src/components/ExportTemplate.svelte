@@ -2,8 +2,7 @@
   import { _, currentLang, isLoading } from '../lib/i18n.js';
   import { ldfCandidates, udfCandidates, ndaCandidates, othersCandidates, getCandidateName, getConstituencyName } from '../stores/candidateStore.js';
   import { historicalDataStore } from '../stores/historicalStore.js';
-  import partyLookup from '../data/party-lookup.json';
-  import { getSymbolImage } from '../lib/symbols.js';
+  import { getCandidateSymbol } from '../lib/symbols.js';
   import NiyamasabhaChart from './charts/NiyamasabhaChart.svelte';
   import LoksabhaChart from './charts/LoksabhaChart.svelte';
 
@@ -39,12 +38,6 @@
     if (!num) return '0';
     const n = parseInt(num, 10);
     return isNaN(n) ? '0' : n.toLocaleString('en-IN');
-  }
-
-  function getPartySymbol(party) {
-    const entry = partyLookup[party];
-    if (!entry?.symbol) return null;
-    return getSymbolImage(entry.symbol);
   }
 
   const ALLIANCE_COLORS = {
@@ -160,10 +153,11 @@
                           <div class="candidate-party">{c.party || '—'}</div>
                         </div>
                         <div class="candidate-symbol">
-                          {#if getPartySymbol(c.party)}
-                            <img src={getPartySymbol(c.party)} alt="" />
-                          {:else}
-                            <div class="symbol-placeholder"></div>
+                          {#if c.symbol}
+                            {@const symbolSrc = getCandidateSymbol(c.symbol)}
+                            {#if symbolSrc}
+                              <img src={symbolSrc} alt="" />
+                            {/if}
                           {/if}
                         </div>
                       </div>
@@ -184,13 +178,14 @@
                         <div class="candidate-party">{c.party || '—'}</div>
                       </div>
                         <div class="candidate-symbol">
-                          {#if getPartySymbol(c.party)}
-                            <img src={getPartySymbol(c.party)} alt="" />
-                          {:else}
-                          <div class="symbol-placeholder"></div>
-                        {/if}
+                          {#if c.symbol}
+                            {@const symbolSrc = getCandidateSymbol(c.symbol)}
+                            {#if symbolSrc}
+                              <img src={symbolSrc} alt="" />
+                            {/if}
+                          {/if}
+                        </div>
                       </div>
-                    </div>
                   </div>
                 {/each}
               </div>
@@ -208,13 +203,14 @@
                         <div class="candidate-party">{c.party || '—'}</div>
                       </div>
                         <div class="candidate-symbol">
-                          {#if getPartySymbol(c.party)}
-                            <img src={getPartySymbol(c.party)} alt="" />
-                          {:else}
-                          <div class="symbol-placeholder"></div>
-                        {/if}
+                          {#if c.symbol}
+                            {@const symbolSrc = getCandidateSymbol(c.symbol)}
+                            {#if symbolSrc}
+                              <img src={symbolSrc} alt="" />
+                            {/if}
+                          {/if}
+                        </div>
                       </div>
-                    </div>
                   </div>
                 {/each}
               </div>
@@ -232,13 +228,14 @@
                         <div class="candidate-party">{c.party || '—'}</div>
                       </div>
                         <div class="candidate-symbol">
-                          {#if getPartySymbol(c.party)}
-                            <img src={getPartySymbol(c.party)} alt="" />
-                          {:else}
-                          <div class="symbol-placeholder"></div>
-                        {/if}
+                          {#if c.symbol}
+                            {@const symbolSrc = getCandidateSymbol(c.symbol)}
+                            {#if symbolSrc}
+                              <img src={symbolSrc} alt="" />
+                            {/if}
+                          {/if}
+                        </div>
                       </div>
-                    </div>
                   </div>
                 {/each}
               </div>
@@ -724,11 +721,6 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
-  }
-
-  .symbol-placeholder {
-    width: 36px;
-    height: 36px;
   }
 
   .alliance-label {

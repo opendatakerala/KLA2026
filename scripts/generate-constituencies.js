@@ -95,7 +95,8 @@ function generate() {
       age: cleanString(cand['age_x affidavit']),
       candidateId: cleanString(cand.candidate_id),
       affidavitId,
-      photo: cleanString(cand.photo_filename)
+      photo: cleanString(cand.photo_filename),
+      symbol: cleanString(cand.Symbol)
     });
   });
 

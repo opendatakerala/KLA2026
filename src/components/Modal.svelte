@@ -3,8 +3,7 @@
   import { selectedConstituency, closeModal } from '../stores/constituencyStore.js';
   import { ldfCandidates, udfCandidates, ndaCandidates, othersCandidates, getCandidateName, getConstituencyName } from '../stores/candidateStore.js';
   import { historicalDataStore } from '../stores/historicalStore.js';
-  import partyLookup from '../data/party-lookup.json';
-  import { getSymbolImage } from '../lib/symbols.js';
+  import { getCandidateSymbol } from '../lib/symbols.js';
   import downloadIcon from '../images/download.svg';
   import shareIcon from '../images/share.svg';
   import { toPng } from 'html-to-image';
@@ -19,12 +18,6 @@
     NDA: '#E07828',
     Others: '#33AA55'
   };
-
-  function getPartySymbol(party) {
-    const entry = partyLookup[party];
-    if (!entry?.symbol) return null;
-    return getSymbolImage(entry.symbol);
-  }
 
   function getAffidavitUrl(affidavitId) {
     if (!affidavitId) return null;
@@ -292,10 +285,11 @@
                       {/if}
                     </div>
                     <div class="candidate-symbol">
-                      {#if getPartySymbol(c.party)}
-                        <img src={getPartySymbol(c.party)} alt="" />
-                      {:else}
-                        <div class="symbol-placeholder"></div>
+                      {#if c.symbol}
+                        {@const symbolSrc = getCandidateSymbol(c.symbol)}
+                        {#if symbolSrc}
+                          <img src={symbolSrc} alt="" />
+                        {/if}
                       {/if}
                     </div>
                   </div>
@@ -319,10 +313,11 @@
                     {/if}
                   </div>
                   <div class="candidate-symbol">
-                    {#if getPartySymbol(c.party)}
-                      <img src={getPartySymbol(c.party)} alt="" />
-                    {:else}
-                      <div class="symbol-placeholder"></div>
+                    {#if c.symbol}
+                      {@const symbolSrc = getCandidateSymbol(c.symbol)}
+                      {#if symbolSrc}
+                        <img src={symbolSrc} alt="" />
+                      {/if}
                     {/if}
                   </div>
                 </div>
@@ -346,10 +341,11 @@
                     {/if}
                   </div>
                   <div class="candidate-symbol">
-                    {#if getPartySymbol(c.party)}
-                      <img src={getPartySymbol(c.party)} alt="" />
-                    {:else}
-                      <div class="symbol-placeholder"></div>
+                    {#if c.symbol}
+                      {@const symbolSrc = getCandidateSymbol(c.symbol)}
+                      {#if symbolSrc}
+                        <img src={symbolSrc} alt="" />
+                      {/if}
                     {/if}
                   </div>
                 </div>
@@ -373,10 +369,11 @@
                     {/if}
                   </div>
                   <div class="candidate-symbol">
-                    {#if getPartySymbol(c.party)}
-                      <img src={getPartySymbol(c.party)} alt="" />
-                    {:else}
-                      <div class="symbol-placeholder"></div>
+                    {#if c.symbol}
+                      {@const symbolSrc = getCandidateSymbol(c.symbol)}
+                      {#if symbolSrc}
+                        <img src={symbolSrc} alt="" />
+                      {/if}
                     {/if}
                   </div>
                 </div>
@@ -774,11 +771,6 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
-  }
-
-  .symbol-placeholder {
-    width: 40px;
-    height: 40px;
   }
 
   .affidavit-btn {

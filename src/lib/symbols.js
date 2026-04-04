@@ -1,32 +1,50 @@
-import aap from '../images/aap.svg';
-import bjp from '../images/bjp.svg';
-import bsp from '../images/bsp.svg';
-import cpim from '../images/cpim.svg';
-import cpi from '../images/cpi.svg';
-import inc from '../images/inc.svg';
-import iuml from '../images/iuml.svg';
-import ncp from '../images/ncp.svg';
+import autoRikshaw from '../images/Auto Rikshaw.svg';
+import batteryTorch from '../images/Battery Torch.svg';
+import broom from '../images/Broom.svg';
+import bucket from '../images/Bucket.svg';
+import clock from '../images/Clock.svg';
+import coconutFarm from '../images/Coconut Farm.svg';
+import earsOfCornAndSickle from '../images/Ears of Corn and Sickle.svg';
+import elephant from '../images/Elephant.svg';
+import hand from '../images/Hand.svg';
+import hammerSickleAndStar from '../images/Hammer, Sickle and Star.svg';
+import hurricaneLamp from '../images/Hurricane Lamp.svg';
+import jackfruit from '../images/Jackfruit.svg';
+import ladder from '../images/Ladder.svg';
+import lotus from '../images/Lotus.svg';
+import manBlowingTurha from '../images/Man blowing Turha.png';
+import ring from '../images/Ring.svg';
+import scissors from '../images/Scissors.svg';
+import telephone from '../images/Telephone.svg';
+import television from '../images/Television.svg';
+import truck from '../images/Truck.svg';
+import twoLeaves from '../images/Two leaves.svg';
 
-import aapPng from '../images/aap.png';
-import bjpPng from '../images/bjp.png';
-import bspPng from '../images/bsp.png';
-import cpimPng from '../images/cpim.png';
-import cpiPng from '../images/cpi.png';
-import incPng from '../images/inc.png';
-import iumlPng from '../images/iuml.png';
-import ncpPng from '../images/ncp.png';
-
-const symbols = {
-  aap: aap?.src || aapPng?.src || null,
-  bjp: bjp?.src || bjpPng?.src || null,
-  bsp: bsp?.src || bspPng?.src || null,
-  cpim: cpim?.src || cpimPng?.src || null,
-  cpi: cpi?.src || cpiPng?.src || null,
-  inc: inc?.src || incPng?.src || null,
-  iuml: iuml?.src || iumlPng?.src || null,
-  ncp: ncp?.src || ncpPng?.src || null
+const candidateSymbols = {
+  'Auto Rikshaw': autoRikshaw,
+  'Battery Torch': batteryTorch,
+  'Broom': broom,
+  'Bucket': bucket,
+  'Clock': clock,
+  'Coconut Farm': coconutFarm,
+  'Ears of Corn and Sickle': earsOfCornAndSickle,
+  'Elephant': elephant,
+  'Hand': hand,
+  'Hammer, Sickle and Star': hammerSickleAndStar,
+  'Hurricane Lamp': hurricaneLamp,
+  'Jackfruit': jackfruit,
+  'Ladder': ladder,
+  'Lotus': lotus,
+  'Man blowing Turha': manBlowingTurha,
+  'Ring': ring,
+  'Scissors': scissors,
+  'Telephone': telephone,
+  'Television': television,
+  'Truck': truck,
+  'Two leaves': twoLeaves
 };
 
-export function getSymbolImage(symbolKey) {
-  return symbols[symbolKey] || null;
+export function getCandidateSymbol(symbolName) {
+  const sym = candidateSymbols[symbolName];
+  return sym?.src || null;
 }
