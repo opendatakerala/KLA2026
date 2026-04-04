@@ -1,12 +1,11 @@
 <script>
-  import { onMount } from 'svelte';
   import { _ } from '../lib/i18n.js';
   import { initRouter } from '../stores/routerStore.js';
   import { disclaimerDismissed } from '../stores/uiStore.js';
   import Grid from './Grid.svelte';
   import MapView from './MapView.svelte';
 
-  let viewMode = 'grid';
+  let viewMode = $state('grid');
 
   function setView(mode) {
     viewMode = mode;
@@ -15,7 +14,7 @@
     }
   }
 
-  onMount(() => {
+  $effect(() => {
     if (typeof localStorage !== 'undefined') {
       const saved = localStorage.getItem('viewPreference');
       if (saved === 'grid' || saved === 'map') {
