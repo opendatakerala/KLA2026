@@ -205,6 +205,7 @@ echarts.use([
             {#each seriesData as yearData}
               {@const winner = yearData.winner}
               {@const runnerUp = yearData.runnerUp}
+              {@const runnerUp2 = yearData.runnerUp2}
               <tr>
                 <td class="year-cell">{yearData.year}</td>
                 <td class="candidate-cell">
@@ -216,12 +217,21 @@ echarts.use([
                     <span class="party" style="color:{COLORS[runnerUp.alliance]}">{runnerUp.party}</span>
                     <span class="alliance-tag" style="background:{COLORS[runnerUp.alliance]}20;color:{COLORS[runnerUp.alliance]}">{runnerUp.alliance}</span>
                   {/if}
+                  {#if runnerUp2}
+                    <span class="runnerup-name">{runnerUp2.name}</span>
+                    <span class="party" style="color:{COLORS[runnerUp2.alliance]}">{runnerUp2.party}</span>
+                    <span class="alliance-tag" style="background:{COLORS[runnerUp2.alliance]}20;color:{COLORS[runnerUp2.alliance]}">{runnerUp2.alliance}</span>
+                  {/if}
                 </td>
                 <td class="votes-cell">
                   <div>{winner.votes.toLocaleString()}</div>
                   <div class="margin-line">+{formatMargin(yearData.margin)}</div>
                   {#if runnerUp}
                     <div>{runnerUp.votes.toLocaleString()}</div>
+                    <div><br/></div>
+                  {/if}
+                  {#if runnerUp2}
+                    <div>{runnerUp2.votes.toLocaleString()}</div>
                   {/if}
                 </td>
               </tr>
