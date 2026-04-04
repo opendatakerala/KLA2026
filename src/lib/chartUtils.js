@@ -13,6 +13,10 @@ export function getAllianceData(d, alliance) {
     candidateName = d.runnerUp.name || '';
     candidateParty = d.runnerUp.party || '';
     candidateVotes = d.runnerUp.votes || 0;
+  } else if (d.runnerUp2?.alliance === alliance) {
+    candidateName = d.runnerUp2.name || '';
+    candidateParty = d.runnerUp2.party || '';
+    candidateVotes = d.runnerUp2.votes || 0;
   } else if (d.candidates) {
     const cand = d.candidates.find(c => c.alliance === alliance);
     if (cand) {

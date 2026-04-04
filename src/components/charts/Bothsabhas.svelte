@@ -45,6 +45,7 @@
         type: 'N',
         winner: d.winner,
         runnerUp: d.runnerUp,
+        runnerUp2: d.runnerUp2,
         allianceVotes: d.allianceVotes,
         totalVotes: d.totalVotes
       });
@@ -56,6 +57,7 @@
         type: 'L',
         winner: d.winner,
         runnerUp: d.runnerUp,
+        runnerUp2: d.runnerUp2,
         allianceVotes: d.allianceVotes,
         totalVotes: d.totalVotes
       });
