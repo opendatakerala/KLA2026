@@ -232,7 +232,7 @@
 
   .candidate-name {
     font-size: var(--fs-sm);
-    font-weight: 500;
+    font-weight: 700;
     color: var(--text);
   }
 
