@@ -1,5 +1,5 @@
 <script>
-  import { _ } from '../lib/i18n.js';
+  import { _, locale } from '../lib/i18n.js';
   import FilterBar from './FilterBar.svelte';
   import DataDisplay from './DataDisplay.svelte';
   import SearchBar from './SearchBar.svelte';
@@ -10,13 +10,22 @@
     setReservation,
     toggleWomen,
     setParty,
-    setDistrict
+    setGeography,
+    GEOGRAPHY_REGIONS
   } from '../stores/constituencyStore.js';
 
   let filtersOpen = $state(false);
 
   function toggleFilters() {
     filtersOpen = !filtersOpen;
+  }
+
+  function getGeographyLabel(geo) {
+    if (geo === 'all') return $_('filters.all');
+    if (GEOGRAPHY_REGIONS[geo]) {
+      return $locale === 'ml' ? GEOGRAPHY_REGIONS[geo].malayalam : GEOGRAPHY_REGIONS[geo].name;
+    }
+    return geo;
   }
 </script>
 
@@ -52,7 +61,7 @@
   </div>
 
   <div class="active-filters">
-    {#if $filters.search || $filters.reservation !== 'all' || $filters.women || $filters.party !== 'all' || $filters.district !== 'all'}
+    {#if $filters.search || $filters.reservation !== 'all' || $filters.women || $filters.party !== 'all' || $filters.geography !== 'all'}
       {#if $filters.search}
         <span class="active-tag">
           Search: "{$filters.search}"
@@ -77,10 +86,10 @@
           <button class="tag-remove" onclick={() => setParty('all')}>×</button>
         </span>
       {/if}
-      {#if $filters.district !== 'all'}
-        <span class="active-tag district">
-          {$filters.district}
-          <button class="tag-remove" onclick={() => setDistrict('all')}>×</button>
+      {#if $filters.geography !== 'all'}
+        <span class="active-tag geography">
+          {getGeographyLabel($filters.geography)}
+          <button class="tag-remove" onclick={() => setGeography('all')}>×</button>
         </span>
       {/if}
       <button class="clear-all-btn" onclick={clearFilters}>
@@ -193,7 +202,8 @@
     color: var(--gold);
   }
 
-  .active-tag.district {
+  .active-tag.district,
+  .active-tag.geography {
     background: var(--card);
     border-color: var(--gold-mid);
     color: var(--gold);

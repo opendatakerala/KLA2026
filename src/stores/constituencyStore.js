@@ -5,6 +5,52 @@ import { KERALA_DISTRICTS } from '../lib/constants.js';
 
 export const districtBounds = districtBoundsData;
 
+export const GEOGRAPHY_REGIONS = {
+  north: {
+    name: 'North Kerala',
+    malayalam: 'വടക്കൻ കേരളം',
+    districts: ['Kasaragod', 'Kannur', 'Wayanad', 'Kozhikode', 'Malappuram']
+  },
+  central: {
+    name: 'Central Kerala',
+    malayalam: 'മധ്യകേരളം',
+    districts: ['Palakkad', 'Thrissur', 'Ernakulam', 'Kottayam', 'Idukki']
+  },
+  south: {
+    name: 'South Kerala',
+    malayalam: 'തെക്കൻ കേരളം',
+    districts: ['Alappuzha', 'Pathanamthitta', 'Kollam', 'Thiruvananthapuram']
+  }
+};
+
+export function getRegionBounds(region) {
+  const regionData = GEOGRAPHY_REGIONS[region];
+  if (!regionData) return null;
+  
+  let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+  
+  for (const district of regionData.districts) {
+    const bounds = districtBounds[district.toUpperCase()];
+    if (bounds) {
+      minX = Math.min(minX, bounds.minX);
+      minY = Math.min(minY, bounds.minY);
+      maxX = Math.max(maxX, bounds.maxX);
+      maxY = Math.max(maxY, bounds.maxY);
+    }
+  }
+  
+  if (minX === Infinity) return null;
+  return { minX, minY, maxX, maxY };
+}
+
+export function getGeographyLabel(geography) {
+  if (geography === 'all') return 'All';
+  if (GEOGRAPHY_REGIONS[geography]) {
+    return GEOGRAPHY_REGIONS[geography].name;
+  }
+  return geography;
+}
+
 const processedData = constituencyData.map(c => ({
   ...c,
   candidates: c.candidates.map(cand => ({
@@ -17,7 +63,7 @@ export const constituencies = atom(processedData);
 
 export const filters = atom({
   search: '',
-  district: 'all',
+  geography: 'all',
   party: 'all',
   reservation: 'all',
   women: false
@@ -29,8 +75,8 @@ export function setSearch(query) {
   filters.set({ ...filters.get(), search: query });
 }
 
-export function setDistrict(district) {
-  filters.set({ ...filters.get(), district });
+export function setGeography(geography) {
+  filters.set({ ...filters.get(), geography });
 }
 
 export function setParty(party) {
@@ -48,7 +94,7 @@ export function toggleWomen() {
 export function clearFilters() {
   filters.set({
     search: '',
-    district: 'all',
+    geography: 'all',
     party: 'all',
     reservation: 'all',
     women: false
@@ -176,8 +222,17 @@ export const filteredConstituencies = computed(
   [constituencies, filters],
   ($constituencies, $filters) => {
     const filtered = $constituencies.filter(row => {
-      if ($filters.district !== 'all' && row.district !== $filters.district) {
-        return false;
+      if ($filters.geography !== 'all') {
+        const geo = $filters.geography;
+        if (GEOGRAPHY_REGIONS[geo]) {
+          if (!GEOGRAPHY_REGIONS[geo].districts.includes(row.district)) {
+            return false;
+          }
+        } else {
+          if (row.district !== geo) {
+            return false;
+          }
+        }
       }
 
       const candidates = row.candidates || [];

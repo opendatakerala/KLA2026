@@ -1,22 +1,23 @@
 <script>
-  import { _ } from '../lib/i18n.js';
+  import { _, locale } from '../lib/i18n.js';
   import { 
     filters, 
     setReservation, 
     toggleWomen,
     setParty,
-    setDistrict,
+    setGeography,
     partyList,
-    districtList,
-    clearFilters
+    GEOGRAPHY_REGIONS
   } from '../stores/constituencyStore.js';
   
   let activeReservation = $derived($filters.reservation);
   let activeWomen = $derived($filters.women);
   let activeParty = $derived($filters.party);
-  let activeDistrict = $derived($filters.district);
+  let activeGeography = $derived($filters.geography);
   let parties = $derived($partyList);
-  let districts = $derived($districtList);
+  let currentLang = $derived($locale);
+  
+  const regions = Object.entries(GEOGRAPHY_REGIONS);
 
   let currentCategory = $derived.by(() => {
     if (activeWomen) return 'women';
@@ -45,8 +46,20 @@
     setParty(party === activeParty ? 'all' : party);
   }
 
-  function handleDistrictClick(district) {
-    setDistrict(district === activeDistrict ? 'all' : district);
+  function handleGeographyClick(value) {
+    setGeography(activeGeography === value ? 'all' : value);
+  }
+
+  function isRegionActive(regionKey) {
+    return activeGeography === regionKey;
+  }
+
+  function isDistrictActive(district) {
+    return activeGeography === district;
+  }
+
+  function getRegionLabel(region) {
+    return currentLang === 'ml' ? region.malayalam : region.name;
   }
 </script>
 
@@ -108,23 +121,29 @@
   </div>
 
   <div class="filter-group">
-    <div class="filter-label">{$_('filters.district')}</div>
-    <div class="filter-row district-row">
-      <button 
-        class="filter-btn"
-        class:active={activeDistrict === 'all'}
-        onclick={() => setDistrict('all')}
-      >
-        <span>{$_('browse.allDistricts')}</span>
-      </button>
-      {#each districts as district}
-        <button 
-          class="filter-btn"
-          class:active={activeDistrict === district}
-          onclick={() => handleDistrictClick(district)}
-        >
-          {district}
-        </button>
+    <div class="filter-label">{$_('filters.geography')}</div>
+    <div class="geo-regions">
+      {#each regions as [key, region]}
+        <div class="geo-region">
+          <button 
+            class="region-btn"
+            class:active={isRegionActive(key)}
+            onclick={() => handleGeographyClick(key)}
+          >
+            {getRegionLabel(region)}
+          </button>
+          <div class="region-districts">
+            {#each region.districts as district}
+              <button 
+                class="district-btn"
+                class:active={isDistrictActive(district)}
+                onclick={() => handleGeographyClick(district)}
+              >
+                {district}
+              </button>
+            {/each}
+          </div>
+        </div>
       {/each}
     </div>
   </div>
@@ -164,9 +183,70 @@
     overflow-y: auto;
   }
 
-  .district-row {
-    max-height: 80px;
-    overflow-y: auto;
+  .geo-regions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 4px;
+  }
+
+  .geo-region {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .region-btn {
+    padding: 6px 10px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--muted);
+    font-family: 'Manjari', monospace;
+    font-size: var(--fs-sm);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .region-btn:hover {
+    border-color: var(--gold-mid);
+    color: var(--text-soft);
+  }
+
+  .region-btn.active {
+    background: var(--gold-light);
+    border-color: var(--gold-mid);
+    color: var(--gold);
+  }
+
+  .region-districts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding-left: 4px;
+  }
+
+  .district-btn {
+    padding: 3px 6px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--muted);
+    font-family: 'Manjari', monospace;
+    font-size: 10px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .district-btn:hover {
+    border-color: var(--gold-mid);
+    color: var(--text-soft);
+  }
+
+  .district-btn.active {
+    background: var(--gold-light);
+    border-color: var(--gold-mid);
+    color: var(--gold);
   }
 
   .filter-btn {
@@ -208,6 +288,12 @@
     background: #fce4ec;
     border-color: #EC4899;
     color: #EC4899;
+  }
+
+  @media (max-width: 640px) {
+    .geo-regions {
+      grid-template-columns: 1fr;
+    }
   }
 
 </style>

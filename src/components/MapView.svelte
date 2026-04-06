@@ -2,7 +2,7 @@
   import { onMount } from 'svelte';
   import * as d3 from 'd3';
   import { _ } from '../lib/i18n.js';
-  import { filteredConstituencies, openModal, constituencies, filters, districtBounds } from '../stores/constituencyStore.js';
+  import { filteredConstituencies, openModal, constituencies, filters, districtBounds, GEOGRAPHY_REGIONS, getRegionBounds } from '../stores/constituencyStore.js';
   import { setConstituencyHash } from '../stores/routerStore.js';
   import partyData from '../data/candidates-by-party.json';
   import partyLookup from '../data/party-lookup.json';
@@ -88,7 +88,7 @@
   let filteredData = $derived($filteredConstituencies);
 
   let noFilters = $derived(
-    $filters.district === 'all' &&
+    $filters.geography === 'all' &&
     $filters.party === 'all' &&
     $filters.reservation === 'all' &&
     $filters.search === '' &&
@@ -234,13 +234,18 @@
       }
     });
 
-    const district = $filters.district;
-    if (district === 'all') {
+    const geography = $filters.geography;
+    if (geography === 'all') {
       mapSvg.transition()
         .duration(500)
         .attr('viewBox', `0 0 ${viewWidth} ${viewHeight}`);
     } else {
-      const bounds = districtBounds[district.toUpperCase()];
+      let bounds = null;
+      if (GEOGRAPHY_REGIONS[geography]) {
+        bounds = getRegionBounds(geography);
+      } else {
+        bounds = districtBounds[geography.toUpperCase()];
+      }
       if (bounds) {
         const padding = 5;
         const vb = `${bounds.minX - padding} ${bounds.minY - padding} ${bounds.maxX - bounds.minX + padding * 2} ${bounds.maxY - bounds.minY + padding * 2}`;
