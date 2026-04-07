@@ -123,6 +123,13 @@
   <div class="filter-group">
     <div class="filter-label">{$_('filters.geography')}</div>
     <div class="geo-regions">
+      <button 
+        class="filter-btn"
+        class:active={activeGeography === 'all'}
+        onclick={() => handleGeographyClick('all')}
+      >
+        {$_('filters.all')}
+      </button>
       {#each regions as [key, region]}
         <div class="geo-region">
           <button 
@@ -190,6 +197,10 @@
     margin-top: 4px;
   }
 
+  .geo-regions > .filter-btn {
+    grid-column: 1 / -1;
+  }
+
   .geo-region {
     display: flex;
     flex-direction: column;
@@ -221,21 +232,21 @@
 
   .region-districts {
     display: flex;
-    flex-wrap: wrap;
     gap: 4px;
-    padding-left: 4px;
   }
 
   .district-btn {
-    padding: 3px 6px;
+    flex: 1;
+    padding: 4px 6px;
     background: transparent;
     border: 1px solid var(--border);
     border-radius: 3px;
     color: var(--muted);
     font-family: 'Manjari', monospace;
-    font-size: 10px;
+    font-size: var(--fs-sm);
     cursor: pointer;
     transition: all 0.15s;
+    white-space: nowrap;
   }
 
   .district-btn:hover {
