@@ -50,15 +50,34 @@
       {/await}
     {/if}
     <div class="candidate-details">
-      <div class="alliance-label">{allianceLabel}</div>
+      <div class="alliance-label">
+        {allianceLabel}
+        {#if candidate.sittingMLA === 'YES'}
+          <span class="sitting-mla-badge">{t('modal.sittingMLA')}</span>
+        {/if}
+        {#if candidate.sittingMLA === 'YES (Party Change)'}
+          <span class="sitting-mla-badge">{t('modal.sittingMLADiffParty')}</span>
+        {/if}
+        {#if candidate.sittingMLA === 'YES (Seat Change)'}
+          <span class="sitting-mla-badge">{t('modal.sittingMLADiffSeat')}</span>
+        {/if}
+      </div>
       <div class="candidate-name" class:tbd={!candidate.name}>{getCandidateName(candidate, langValue, isLoading, t)}</div>
       <div class="candidate-party">{candidate.party || '—'}</div>
-      {#if pdfIcon && candidate.archiveUrl}
-        <button class="affidavit-btn" onclick={() => showPdf = true}><img src={pdfIcon.src} alt="" /> {t('modal.affidavit')}</button>
-      {/if}
-      {#if pdfIcon && manifestoUrl}
-        <a href={manifestoUrl} target="_blank" rel="noopener" class="affidavit-btn"><img src={pdfIcon.src} alt="" /> {t('modal.manifesto')}</a>
-      {/if}
+      <div class="candidate-actions">
+        {#if pdfIcon && candidate.archiveUrl}
+          <button class="affidavit-btn" onclick={() => showPdf = true}><img src={pdfIcon.src} alt="" /> {t('modal.affidavit')}</button>
+        {/if}
+        {#if pdfIcon && manifestoUrl}
+          <a href={manifestoUrl} target="_blank" rel="noopener" class="affidavit-btn"><img src={pdfIcon.src} alt="" /> {t('modal.manifesto')}</a>
+        {/if}
+        {#if candidate.mlaTrack}
+          <a href={candidate.mlaTrack} target="_blank" rel="noopener" class="affidavit-btn mla-track-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> 
+            {t('modal.mlaTrack')}
+          </a>
+        {/if}
+      </div>
     </div>
     <div class="candidate-symbol">
       {#if candidate.symbol}
@@ -167,6 +186,20 @@
     font-weight: 600;
     letter-spacing: 0.1em;
     opacity: 0.7;
+    display: flex;
+    align-items: center;
+  }
+
+  .sitting-mla-badge {
+    background: var(--gold);
+    color: var(--card);
+    font-size: 8px;
+    padding: 0px 4px;
+    border-radius: 2px;
+    margin-left: 6px;
+    letter-spacing: 0;
+    font-weight: 700;
+    line-height: normal;
   }
 
   .candidate-name {
@@ -181,6 +214,22 @@
     font-size: var(--fs-sm);
     color: var(--text-soft);
     margin-top: 2px;
+  }
+
+  .candidate-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .mla-track-btn {
+    border-color: var(--border);
+    color: var(--text-soft);
+  }
+
+  .mla-track-btn:hover {
+    background: var(--bg2);
+    color: var(--text-main);
   }
 
   .candidate-name.tbd {

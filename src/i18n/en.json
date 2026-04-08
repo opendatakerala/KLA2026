@@ -91,7 +91,11 @@
     "partOfParliamentaryConstituency": "Historical Results as a part of {parliamentaryConstituency} Lok Sabha constituency",
     "shareText": "View {constituency} election data details from https://opendatakerala.org/KLA2026/",
     "affidavit": "Affidavit",
-    "manifesto": "Manifesto"
+    "manifesto": "Manifesto",
+    "sittingMLA": "Sitting MLA",
+    "sittingMLADiffParty": "Sitting MLA from different party",
+    "sittingMLADiffSeat": "Sitting MLA from different seat",
+    "mlaTrack": "MLA Track"
   },
   "charts": {
     "loading": "Loading...",
