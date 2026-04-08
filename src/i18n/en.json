@@ -46,6 +46,7 @@
     "ageDistribution": "Age Distribution",
     "dummyDistribution": "Namesake Distribution",
     "educationDistribution": "Education Distribution",
+    "symbolDistribution": "Symbol Distribution",
     "experimental": "experimental"
   },
   "statsBar": {

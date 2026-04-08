@@ -7,6 +7,7 @@
   import AgeDistribution from './charts/AgeDistribution.svelte';
   import DummyDistribution from './charts/DummyDistribution.svelte';
   import EducationDistribution from './charts/EducationDistribution.svelte';
+  import SymbolDistribution from './charts/SymbolDistribution.svelte';
 
   let collapsed = true;
   let activeTab = '';
@@ -63,6 +64,14 @@
     </button>
     <button 
       class="stats-tab"
+      class:active={activeTab === 'symbol-distribution'}
+      data-stat="symbol-distribution"
+      onclick={() => handleTabClick('symbol-distribution')}
+    >
+      <span>{$_('stats.symbolDistribution')}</span>
+    </button>
+    <button 
+      class="stats-tab"
       class:active={activeTab === 'education-distribution'}
       data-stat="education-distribution"
       onclick={() => handleTabClick('education-distribution')}
@@ -87,6 +96,10 @@
 
     <div class="stats-panel" class:active={activeTab === 'dummy-distribution'}>
       <DummyDistribution isActive={activeTab === 'dummy-distribution'} />
+    </div>
+
+    <div class="stats-panel" class:active={activeTab === 'symbol-distribution'}>
+      <SymbolDistribution isActive={activeTab === 'symbol-distribution'} />
     </div>
 
     <div class="stats-panel" class:active={activeTab === 'education-distribution'}>

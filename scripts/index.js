@@ -2,6 +2,7 @@ import generateCandidatesByParty from './generate-candidates-by-party.js';
 import generateGenderDistribution from './generate-gender-distribution.js';
 import generateEducationDistribution from './generate-education-distribution.js';
 import generateAgeDistribution from './generate-age-distribution.js';
+import generateSymbolDistribution from './generate-symbol-distribution.js';
 import generateKlaMapSvg from './generate-kla-map-svg.js';
 import generateConstituencies from './generate-constituencies.js';
 import generateDistrictBounds from './generate-district-bounds.js';
@@ -12,6 +13,7 @@ const scripts = {
   'gender-distribution': generateGenderDistribution,
   'education-distribution': generateEducationDistribution,
   'age-distribution': generateAgeDistribution,
+  'symbol-distribution': generateSymbolDistribution,
   'kla-map-svg': generateKlaMapSvg,
   'constituencies': generateConstituencies,
   'district-bounds': generateDistrictBounds,
