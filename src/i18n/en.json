@@ -43,7 +43,8 @@
   "stats": {
     "partyDistribution": "Party Distribution",
     "genderDistribution": "Gender Distribution",
-    "ageDistribution": "Age Distribution"
+    "ageDistribution": "Age Distribution",
+    "dummyDistribution": "Dummy Distribution"
   },
   "statsBar": {
     "constituencies": "Constituencies",
@@ -119,7 +120,12 @@
     "mergeBothResults": "Merge Both Results",
     "unmergeResults": "Unmerge",
     "bothsabhaTitle": "Assembly & Parliament Results Combined",
-    "bothsabhaSubtitle": "Please note that the results shown are intermixing state and country elections"
+    "bothsabhaSubtitle": "Please note that the results shown are intermixing state and country elections",
+    "aparanDefinition": "Candidates who have names similar to those of front-line candidates and are contesting as independents without party backing are categorized as dummy candidates (aparan).",
+    "totalAparans": "Total No of Aparan's",
+    "candidatesWithAparan": "Candidates with Aparan",
+    "against": "Against",
+    "constituencies": "Constituencies"
   },
   "language": {
     "en": "EN",

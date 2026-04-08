@@ -5,6 +5,7 @@
   import PartyDistribution from './charts/PartyDistribution.svelte';
   import GenderDistribution from './charts/GenderDistribution.svelte';
   import AgeDistribution from './charts/AgeDistribution.svelte';
+  import DummyDistribution from './charts/DummyDistribution.svelte';
 
   let collapsed = true;
   let activeTab = '';
@@ -51,6 +52,14 @@
     >
       <span>{$_('stats.ageDistribution')}</span>
     </button>
+    <button 
+      class="stats-tab"
+      class:active={activeTab === 'dummy-distribution'}
+      data-stat="dummy-distribution"
+      onclick={() => handleTabClick('dummy-distribution')}
+    >
+      <span>{$_('stats.dummyDistribution')}</span>
+    </button>
   </div>
 
   <div class="stats-content">
@@ -64,6 +73,10 @@
 
     <div class="stats-panel" class:active={activeTab === 'age-distribution'}>
       <AgeDistribution isActive={activeTab === 'age-distribution'} />
+    </div>
+
+    <div class="stats-panel" class:active={activeTab === 'dummy-distribution'}>
+      <DummyDistribution isActive={activeTab === 'dummy-distribution'} />
     </div>
   </div>
 </div>

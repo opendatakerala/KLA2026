@@ -33,6 +33,14 @@ export function getConstituencyName(constituency, lang = 'en') {
   return constituency.name;
 }
 
+export function getDistrictName(constituency, lang = 'en') {
+  if (!constituency?.district) return '';
+  if (lang === 'ml' && constituency.districtMalayalam) {
+    return constituency.districtMalayalam;
+  }
+  return constituency.district;
+}
+
 export const ldfCandidates = computed(
   [selectedConstituency],
   ($selectedConstituency) => $selectedConstituency?.candidates?.filter(c => c.alliance === 'LDF') || []
