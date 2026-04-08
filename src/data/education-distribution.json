@@ -1,12 +1,12 @@
 {
   "overall": {
-    "UP": 3,
-    "High School": 77,
-    "Higher Secondary": 65,
-    "Diploma": 26,
-    "Degree": 111,
-    "Professional Degree": 149,
-    "Master Degree": 51,
+    "UP": 2,
+    "High School": 66,
+    "Higher Secondary": 50,
+    "Diploma": 22,
+    "Degree": 100,
+    "Professional Degree": 126,
+    "Master Degree": 43,
     "Doctorate Degree": 8,
     "Post Doctorate": 1
   },
@@ -45,13 +45,13 @@
       "Post Doctorate": 1
     },
     "Others": {
-      "UP": 1,
-      "High School": 11,
-      "Higher Secondary": 15,
-      "Diploma": 4,
-      "Degree": 11,
-      "Professional Degree": 23,
-      "Master Degree": 8,
+      "UP": 0,
+      "High School": 0,
+      "Higher Secondary": 0,
+      "Diploma": 0,
+      "Degree": 0,
+      "Professional Degree": 0,
+      "Master Degree": 0,
       "Doctorate Degree": 0,
       "Post Doctorate": 0
     }
@@ -88,17 +88,6 @@
       "Professional Degree": 19,
       "Master Degree": 8,
       "Doctorate Degree": 5,
-      "Post Doctorate": 0
-    },
-    "Independent": {
-      "UP": 1,
-      "High School": 7,
-      "Higher Secondary": 8,
-      "Diploma": 2,
-      "Degree": 5,
-      "Professional Degree": 14,
-      "Master Degree": 4,
-      "Doctorate Degree": 0,
       "Post Doctorate": 0
     },
     "IUML": {
@@ -145,17 +134,6 @@
       "Doctorate Degree": 1,
       "Post Doctorate": 0
     },
-    "BSP": {
-      "UP": 0,
-      "High School": 3,
-      "Higher Secondary": 6,
-      "Diploma": 1,
-      "Degree": 2,
-      "Professional Degree": 2,
-      "Master Degree": 1,
-      "Doctorate Degree": 0,
-      "Post Doctorate": 0
-    },
     "Kerala Congress (M)": {
       "UP": 0,
       "High School": 3,
@@ -186,17 +164,6 @@
       "Degree": 2,
       "Professional Degree": 4,
       "Master Degree": 0,
-      "Doctorate Degree": 0,
-      "Post Doctorate": 0
-    },
-    "SUCI": {
-      "UP": 0,
-      "High School": 1,
-      "Higher Secondary": 0,
-      "Diploma": 0,
-      "Degree": 2,
-      "Professional Degree": 1,
-      "Master Degree": 1,
       "Doctorate Degree": 0,
       "Post Doctorate": 0
     },
@@ -241,17 +208,6 @@
       "Degree": 0,
       "Professional Degree": 1,
       "Master Degree": 1,
-      "Doctorate Degree": 0,
-      "Post Doctorate": 0
-    },
-    "Anna DHRM": {
-      "UP": 0,
-      "High School": 0,
-      "Higher Secondary": 1,
-      "Diploma": 0,
-      "Degree": 0,
-      "Professional Degree": 2,
-      "Master Degree": 0,
       "Doctorate Degree": 0,
       "Post Doctorate": 0
     },
@@ -318,105 +274,6 @@
       "Degree": 0,
       "Professional Degree": 1,
       "Master Degree": 0,
-      "Doctorate Degree": 0,
-      "Post Doctorate": 0
-    },
-    "IGP": {
-      "UP": 0,
-      "High School": 0,
-      "Higher Secondary": 0,
-      "Diploma": 0,
-      "Degree": 1,
-      "Professional Degree": 0,
-      "Master Degree": 0,
-      "Doctorate Degree": 0,
-      "Post Doctorate": 0
-    },
-    "SP (I)": {
-      "UP": 0,
-      "High School": 0,
-      "Higher Secondary": 0,
-      "Diploma": 0,
-      "Degree": 0,
-      "Professional Degree": 1,
-      "Master Degree": 0,
-      "Doctorate Degree": 0,
-      "Post Doctorate": 0
-    },
-    "TFIP": {
-      "UP": 0,
-      "High School": 0,
-      "Higher Secondary": 0,
-      "Diploma": 0,
-      "Degree": 0,
-      "Professional Degree": 1,
-      "Master Degree": 0,
-      "Doctorate Degree": 0,
-      "Post Doctorate": 0
-    },
-    "RPI (A)": {
-      "UP": 0,
-      "High School": 0,
-      "Higher Secondary": 0,
-      "Diploma": 1,
-      "Degree": 0,
-      "Professional Degree": 0,
-      "Master Degree": 0,
-      "Doctorate Degree": 0,
-      "Post Doctorate": 0
-    },
-    "EPI": {
-      "UP": 0,
-      "High School": 0,
-      "Higher Secondary": 0,
-      "Diploma": 0,
-      "Degree": 0,
-      "Professional Degree": 1,
-      "Master Degree": 0,
-      "Doctorate Degree": 0,
-      "Post Doctorate": 0
-    },
-    "BJKP": {
-      "UP": 0,
-      "High School": 0,
-      "Higher Secondary": 0,
-      "Diploma": 0,
-      "Degree": 0,
-      "Professional Degree": 1,
-      "Master Degree": 0,
-      "Doctorate Degree": 0,
-      "Post Doctorate": 0
-    },
-    "API": {
-      "UP": 0,
-      "High School": 0,
-      "Higher Secondary": 0,
-      "Diploma": 0,
-      "Degree": 0,
-      "Professional Degree": 0,
-      "Master Degree": 1,
-      "Doctorate Degree": 0,
-      "Post Doctorate": 0
-    },
-    "CPIML Red Star": {
-      "UP": 0,
-      "High School": 0,
-      "Higher Secondary": 0,
-      "Diploma": 0,
-      "Degree": 1,
-      "Professional Degree": 0,
-      "Master Degree": 0,
-      "Doctorate Degree": 0,
-      "Post Doctorate": 0
-    },
-    "BDP": {
-      "UP": 0,
-      "High School": 0,
-      "Higher Secondary": 0,
-      "Diploma": 0,
-      "Degree": 0,
-      "Professional Degree": 0,
-      "Master Degree": 1,
       "Doctorate Degree": 0,
       "Post Doctorate": 0
     },
@@ -532,57 +389,46 @@
     }
   },
   "byDistrict": {
-    "Thiruvananthapuram": {
-      "UP": 0,
-      "High School": 9,
-      "Higher Secondary": 7,
-      "Diploma": 3,
-      "Degree": 13,
-      "Professional Degree": 22,
-      "Master Degree": 5,
-      "Doctorate Degree": 0,
-      "Post Doctorate": 0
-    },
     "Malappuram": {
       "UP": 0,
-      "High School": 11,
-      "Higher Secondary": 12,
+      "High School": 9,
+      "Higher Secondary": 11,
       "Diploma": 3,
       "Degree": 8,
-      "Professional Degree": 9,
-      "Master Degree": 8,
+      "Professional Degree": 7,
+      "Master Degree": 7,
       "Doctorate Degree": 3,
       "Post Doctorate": 0
     },
     "Ernakulam": {
       "UP": 0,
-      "High School": 9,
+      "High School": 7,
       "Higher Secondary": 6,
       "Diploma": 2,
-      "Degree": 13,
-      "Professional Degree": 13,
-      "Master Degree": 4,
+      "Degree": 11,
+      "Professional Degree": 12,
+      "Master Degree": 3,
       "Doctorate Degree": 1,
       "Post Doctorate": 0
     },
-    "Kannur": {
-      "UP": 1,
+    "Thiruvananthapuram": {
+      "UP": 0,
       "High School": 6,
-      "Higher Secondary": 4,
-      "Diploma": 1,
+      "Higher Secondary": 3,
+      "Diploma": 3,
       "Degree": 12,
-      "Professional Degree": 14,
-      "Master Degree": 5,
+      "Professional Degree": 15,
+      "Master Degree": 3,
       "Doctorate Degree": 0,
       "Post Doctorate": 0
     },
     "Kozhikode": {
-      "UP": 2,
+      "UP": 1,
       "High School": 5,
       "Higher Secondary": 7,
-      "Diploma": 4,
-      "Degree": 5,
-      "Professional Degree": 15,
+      "Diploma": 3,
+      "Degree": 4,
+      "Professional Degree": 14,
       "Master Degree": 5,
       "Doctorate Degree": 0,
       "Post Doctorate": 0
@@ -590,24 +436,13 @@
     "Thrissur": {
       "UP": 0,
       "High School": 9,
-      "Higher Secondary": 6,
+      "Higher Secondary": 4,
       "Diploma": 1,
-      "Degree": 13,
+      "Degree": 11,
       "Professional Degree": 10,
       "Master Degree": 2,
       "Doctorate Degree": 2,
       "Post Doctorate": 0
-    },
-    "Kollam": {
-      "UP": 0,
-      "High School": 5,
-      "Higher Secondary": 8,
-      "Diploma": 0,
-      "Degree": 6,
-      "Professional Degree": 12,
-      "Master Degree": 6,
-      "Doctorate Degree": 0,
-      "Post Doctorate": 1
     },
     "Palakkad": {
       "UP": 0,
@@ -615,48 +450,59 @@
       "Higher Secondary": 3,
       "Diploma": 2,
       "Degree": 7,
-      "Professional Degree": 14,
+      "Professional Degree": 12,
       "Master Degree": 5,
       "Doctorate Degree": 0,
       "Post Doctorate": 0
     },
-    "Alappuzha": {
+    "Kollam": {
       "UP": 0,
-      "High School": 4,
-      "Higher Secondary": 4,
-      "Diploma": 1,
-      "Degree": 8,
+      "High School": 5,
+      "Higher Secondary": 6,
+      "Diploma": 0,
+      "Degree": 5,
       "Professional Degree": 11,
-      "Master Degree": 4,
+      "Master Degree": 5,
+      "Doctorate Degree": 0,
+      "Post Doctorate": 1
+    },
+    "Kannur": {
+      "UP": 1,
+      "High School": 4,
+      "Higher Secondary": 2,
+      "Diploma": 1,
+      "Degree": 11,
+      "Professional Degree": 8,
+      "Master Degree": 5,
       "Doctorate Degree": 0,
       "Post Doctorate": 0
     },
     "Kottayam": {
       "UP": 0,
-      "High School": 4,
-      "Higher Secondary": 5,
+      "High School": 3,
+      "Higher Secondary": 3,
       "Diploma": 2,
       "Degree": 7,
-      "Professional Degree": 9,
+      "Professional Degree": 8,
       "Master Degree": 3,
       "Doctorate Degree": 1,
       "Post Doctorate": 0
     },
-    "Pathanamthitta": {
+    "Alappuzha": {
       "UP": 0,
-      "High School": 0,
-      "Higher Secondary": 0,
-      "Diploma": 2,
-      "Degree": 5,
-      "Professional Degree": 9,
-      "Master Degree": 3,
+      "High School": 4,
+      "Higher Secondary": 3,
+      "Diploma": 1,
+      "Degree": 8,
+      "Professional Degree": 10,
+      "Master Degree": 1,
       "Doctorate Degree": 0,
       "Post Doctorate": 0
     },
     "Kasaragod": {
       "UP": 0,
       "High School": 2,
-      "Higher Secondary": 3,
+      "Higher Secondary": 2,
       "Diploma": 3,
       "Degree": 4,
       "Professional Degree": 2,
@@ -675,12 +521,23 @@
       "Doctorate Degree": 0,
       "Post Doctorate": 0
     },
+    "Pathanamthitta": {
+      "UP": 0,
+      "High School": 0,
+      "Higher Secondary": 0,
+      "Diploma": 0,
+      "Degree": 4,
+      "Professional Degree": 8,
+      "Master Degree": 3,
+      "Doctorate Degree": 0,
+      "Post Doctorate": 0
+    },
     "Wayanad": {
       "UP": 0,
-      "High School": 5,
+      "High School": 4,
       "Higher Secondary": 0,
-      "Diploma": 2,
-      "Degree": 4,
+      "Diploma": 1,
+      "Degree": 2,
       "Professional Degree": 2,
       "Master Degree": 0,
       "Doctorate Degree": 0,
