@@ -68,6 +68,16 @@
     "geography": "Districts",
     "district": "District"
   },
+  "sort": {
+    "sortBy": "Sort By",
+    "number": "Constituency Number",
+    "name": "Name",
+    "candidates": "Candidates",
+    "voters": "Voters",
+    "booths": "Polling Booths",
+    "ascending": "Ascending",
+    "descending": "Descending"
+  },
   "browse": {
     "title": "Browse by District",
     "allDistricts": "All Districts"

@@ -4,6 +4,7 @@
   import { disclaimerDismissed } from '../stores/uiStore.js';
   import Grid from './Grid.svelte';
   import MapView from './MapView.svelte';
+  import SortBar from './SortBar.svelte';
 
   let viewMode = $state('grid');
 
@@ -51,6 +52,7 @@
   </div>
 
   {#if viewMode === 'grid'}
+    <SortBar />
     <Grid />
   {:else}
     <MapView />

@@ -2,6 +2,7 @@ import { atom, computed } from 'nanostores';
 import constituencyData from '../data/constituencies.json';
 import districtBoundsData from '../data/district-bounds.json';
 import { KERALA_DISTRICTS } from '../lib/constants.js';
+import { currentLang } from '../lib/i18n.js';
 
 export const districtBounds = districtBoundsData;
 
@@ -66,8 +67,32 @@ export const filters = atom({
   geography: 'all',
   party: 'all',
   reservation: 'all',
-  women: false
+  women: false,
+  sort: {
+    field: 'number',
+    direction: 'asc'
+  }
 });
+
+export const SORT_FIELDS = {
+  number: { labelKey: 'sort.number', defaultDirection: 'asc' },
+  name: { labelKey: 'sort.name', defaultDirection: 'asc' },
+  candidates: { labelKey: 'sort.candidates', defaultDirection: 'desc' },
+  voters: { labelKey: 'sort.voters', defaultDirection: 'desc' },
+  booths: { labelKey: 'sort.booths', defaultDirection: 'desc' }
+};
+
+export function setSort(field, direction) {
+  filters.set({ ...filters.get(), sort: { field, direction } });
+}
+
+export function toggleSortDirection() {
+  const current = filters.get();
+  filters.set({
+    ...current,
+    sort: { ...current.sort, direction: current.sort.direction === 'asc' ? 'desc' : 'asc' }
+  });
+}
 
 export const selectedConstituency = atom(null);
 
@@ -97,7 +122,8 @@ export function clearFilters() {
     geography: 'all',
     party: 'all',
     reservation: 'all',
-    women: false
+    women: false,
+    sort: { field: 'number', direction: 'asc' }
   });
 }
 
@@ -219,8 +245,8 @@ function scoreRelevance(row, q) {
 }
 
 export const filteredConstituencies = computed(
-  [constituencies, filters],
-  ($constituencies, $filters) => {
+  [constituencies, filters, currentLang],
+  ($constituencies, $filters, $currentLang) => {
     const filtered = $constituencies.filter(row => {
       if ($filters.geography !== 'all') {
         const geo = $filters.geography;
@@ -272,6 +298,57 @@ export const filteredConstituencies = computed(
     if ($filters.search) {
       const q = $filters.search.toLowerCase().trim();
       filtered.sort((a, b) => scoreRelevance(b, q) - scoreRelevance(a, q));
+    } else {
+      const sortField = $filters.sort?.field || 'number';
+      const sortDir = $filters.sort?.direction || 'asc';
+      const lang = $currentLang || 'en';
+      const collator = new Intl.Collator(lang === 'ml' ? 'ml' : 'en');
+      
+      filtered.sort((a, b) => {
+        let valA, valB;
+        
+        switch (sortField) {
+          case 'number':
+            valA = parseInt(a.number, 10);
+            valB = parseInt(b.number, 10);
+            break;
+          case 'name':
+            if (lang === 'ml') {
+              valA = a.malayalam || a.nameMalayalam || a.name || '';
+              valB = b.malayalam || b.nameMalayalam || b.name || '';
+            } else {
+              valA = a.name || '';
+              valB = b.name || '';
+            }
+            break;
+          case 'candidates':
+            valA = (a.candidates || []).length;
+            valB = (b.candidates || []).length;
+            break;
+          case 'voters':
+            valA = parseInt(a.votersTotal || '0', 10);
+            valB = parseInt(b.votersTotal || '0', 10);
+            break;
+          case 'booths':
+            valA = parseInt(a.pollingBooths || '0', 10);
+            valB = parseInt(b.pollingBooths || '0', 10);
+            break;
+          default:
+            valA = a.number;
+            valB = b.number;
+        }
+        
+        let cmp = 0;
+        if (sortField === 'name') {
+          cmp = collator.compare(valA, valB);
+        } else if (typeof valA === 'number' && typeof valB === 'number') {
+          cmp = valA - valB;
+        } else {
+          cmp = String(valA).localeCompare(String(valB));
+        }
+        
+        return sortDir === 'asc' ? cmp : -cmp;
+      });
     }
 
     return filtered;

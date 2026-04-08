@@ -11,6 +11,8 @@
     toggleWomen,
     setParty,
     setGeography,
+    setSort,
+    SORT_FIELDS,
     GEOGRAPHY_REGIONS
   } from '../stores/constituencyStore.js';
 
@@ -26,6 +28,11 @@
       return $locale === 'ml' ? GEOGRAPHY_REGIONS[geo].malayalam : GEOGRAPHY_REGIONS[geo].name;
     }
     return $_(`districts.${geo}`);
+  }
+
+  function getSortLabel(field) {
+    const config = SORT_FIELDS[field];
+    return config ? $_(config.labelKey) : field;
   }
 </script>
 
@@ -92,6 +99,10 @@
           <button class="tag-remove" onclick={() => setGeography('all')}>×</button>
         </span>
       {/if}
+      <span class="active-tag sort">
+        {$_('sort.sortBy')}: {getSortLabel($filters.sort?.field || 'number')} ({$filters.sort?.direction === 'asc' ? $_('sort.ascending') : $_('sort.descending')})
+        <button class="tag-remove" onclick={() => setSort('number', 'asc')}>×</button>
+      </span>
       <button class="clear-all-btn" onclick={clearFilters}>
         Clear All
       </button>
@@ -204,6 +215,12 @@
 
   .active-tag.district,
   .active-tag.geography {
+    background: var(--card);
+    border-color: var(--gold-mid);
+    color: var(--gold);
+  }
+
+  .active-tag.sort {
     background: var(--card);
     border-color: var(--gold-mid);
     color: var(--gold);
