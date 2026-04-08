@@ -25,7 +25,7 @@
     if (GEOGRAPHY_REGIONS[geo]) {
       return $locale === 'ml' ? GEOGRAPHY_REGIONS[geo].malayalam : GEOGRAPHY_REGIONS[geo].name;
     }
-    return geo;
+    return $_(`districts.${geo}`);
   }
 </script>
 

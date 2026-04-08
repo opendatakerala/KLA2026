@@ -134,5 +134,21 @@
   "language": {
     "en": "EN",
     "ml": "മല"
+  },
+  "districts": {
+    "Kasaragod": "കാസറഗോഡ്",
+    "Kannur": "കണ്ണൂര്‍",
+    "Wayanad": "വയനാട്",
+    "Kozhikode": "കോഴിക്കോട്",
+    "Malappuram": "മലപ്പുറം",
+    "Palakkad": "പാലക്കാട്",
+    "Thrissur": "തൃശ്ശൂര്‍",
+    "Ernakulam": "എറണാകുളം",
+    "Kottayam": "കോട്ടയം",
+    "Idukki": "ഇടുക്കി",
+    "Alappuzha": "ആലപ്പുഴ",
+    "Pathanamthitta": "പത്തനംതിട്ട",
+    "Kollam": "കൊല്ലം",
+    "Thiruvananthapuram": "തിരുവനന്തപുരം"
   }
 }

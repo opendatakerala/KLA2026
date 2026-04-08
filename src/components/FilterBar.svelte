@@ -146,7 +146,7 @@
                 class:active={isDistrictActive(district)}
                 onclick={() => handleGeographyClick(district)}
               >
-                {district}
+                {$_(`districts.${district}`)}
               </button>
             {/each}
           </div>
@@ -232,11 +232,12 @@
 
   .region-districts {
     display: flex;
+    flex-wrap: wrap;
     gap: 4px;
   }
 
   .district-btn {
-    flex: 1;
+    max-width: 150px;
     padding: 4px 6px;
     background: transparent;
     border: 1px solid var(--border);

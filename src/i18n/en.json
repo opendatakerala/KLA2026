@@ -134,5 +134,21 @@
   "language": {
     "en": "EN",
     "ml": "മല"
+  },
+  "districts": {
+    "Kasaragod": "Kasaragod",
+    "Kannur": "Kannur",
+    "Wayanad": "Wayanad",
+    "Kozhikode": "Kozhikode",
+    "Malappuram": "Malappuram",
+    "Palakkad": "Palakkad",
+    "Thrissur": "Thrissur",
+    "Ernakulam": "Ernakulam",
+    "Kottayam": "Kottayam",
+    "Idukki": "Idukki",
+    "Alappuzha": "Alappuzha",
+    "Pathanamthitta": "Pathanamthitta",
+    "Kollam": "Kollam",
+    "Thiruvananthapuram": "Thiruvananthapuram"
   }
 }
