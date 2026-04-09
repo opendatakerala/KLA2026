@@ -142,7 +142,9 @@
     "totalAparans": "അപരന്മാരുടെ ആകെ എണ്ണം",
     "candidatesWithAparan": "അപരന്മാരുള്ള സ്ഥാനാർത്ഥികൾ",
     "against": "എതിരായി",
-    "constituencies": "മണ്ഡലങ്ങൾ"
+    "constituencies": "മണ്ഡലങ്ങൾ",
+    "voterTurnout": "വോട്ടിംഗ് ശതമാനം",
+    "turnoutDataNotAvailable": "ഡാറ്റ ലഭ്യമല്ല"
   },
   "language": {
     "en": "EN",

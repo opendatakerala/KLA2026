@@ -142,7 +142,9 @@
     "totalAparans": "Total No of Aparan's",
     "candidatesWithAparan": "Candidates with Aparan",
     "against": "Against",
-    "constituencies": "Constituencies"
+    "constituencies": "Constituencies",
+    "voterTurnout": "Voter Turnout",
+    "turnoutDataNotAvailable": "Data not available"
   },
   "language": {
     "en": "EN",
