@@ -1,12 +1,17 @@
 # KLA Election 2026
-This is a community initiative to explore the 2026 Kerala Legislative Assembly Election through data. The data is sourced from various media outlets, social media handles of political parties, the Chief Electoral Officer Kerala website, gazette notifications, Wikipedia, Wikidata and OpenStreetMap.
+This is a community initiative to explore the 2026 Kerala Legislative Assembly Election through data. The platform integrates information from various media outlets, social media handles of political parties, the Chief Electoral Officer Kerala website, gazette notifications, Wikipedia, Wikidata, and OpenStreetMap.
 
 Cite our work 
-> Kerala legislative assembly election 2026 ODK portal. 1.0.0, OpenDataKerala Community, 29 Mar. 2026, https://doi.org/10.5281/zenodo.19323427.
-
+```javascript
+var s = "Kerala legislative assembly election 2026 ODK portal. 1.0.0, OpenDataKerala Community, 29 Mar. 2026, https://doi.org/10.5281/zenodo.19323427.";
+alert(s);
+```
+ 
 * Website under GPL-3.0 license  
 * Candidate Dataset - 2026 Kerala Assembly Elections: Candidate Registry (Demographics & Alliances) [Data set - ODbL license]. OpenDataKerala Community. https://doi.org/10.5281/zenodo.19323710
 * Concept Paper - (Coming Soon)
+
+## Download data
 
 ## About the Portal
 The platform integrates data from multiple sources to provide a comprehensive and accessible public dataset, along with references to past election information. 
@@ -19,9 +24,19 @@ The platform offers a range of features designed to enhance usability and delive
 
 For better accessibility, the portal features both table and map-based views. The table view provides detailed information through structured cards, with a dedicated card for each of the 140 legislative assembly constituencies. Each card includes the district, constituency number and name, number of polling booths, and voter demographics based on gender. It also provides key details on the contesting candidates, including their names, political parties, and alliances.
 
+For every candidate, the portal provides a comprehensive profile featuring their official photo, election symbol, and ECI affidavit. To aid voter research, we also include alliance manifestos and direct links to MLA Track for sitting members of the 15th Kerala Legislative Assembly. We extend our sincere gratitude to Omshivaprakash H L (on behalf of the Servant of Knowledge initiative) for his efforts in archiving candidate affidavit PDFs to archive.org, ensuring stable and permanent public access.
 In addition, the platform provides historical election data for comparative analysis. This includes Kerala Legislative Assembly (Niyamasabha) election results for the years 2011, 2016, and 2021, presented through bar charts, stacked visualizations, and tabular formats. Lok Sabha election results are also included as reference data, similarly visualized using multiple formats to support deeper analysis.
 
 To complement the tabular view, an interactive map allows users to explore the datasets geographically. By combining this spatial visualization with custom filtering and historical context, the platform empowers users to uncover deeper insights into electoral trends and patterns.
+
+## Data & Downloads
+We encourage the reuse of our datasets. Please ensure proper attribution according to the specified licenses.
+* 2026 Candidate Registry (Demographics & Alliances) DOI: 10.5281/zenodo.19323710 | License: ODbL
+* Kerala Assembly GeoJSON/Maps GitHub: kerala-assembly-map
+* Historical Election Data Currently in development. If you require specific datasets for collaboration, please contact us via email.
+
+## Technology 
+The platform has evolved rapidly from a single HTML proof-of-concept to a full-fledged web platform powered by Svelte (for interactive frontend), d3 and Apache ECharts (for interactive graphs), Astro (for build), Github Pages (for frontend deployment), a bespoke NodeJS API (for backend) and a linked dataset as database. Details of the libraries used can be found in [package.json](https://github.com/opendatakerala/KLA2026/blob/main/package.json).
 
 ## Team
 ### Core Team
@@ -44,13 +59,16 @@ This project also acknowledges the contributions of 19 participants from a colla
 Workshop Participants:-
 Manjusha P M, Athira M P, Noufal K K, Ayisha Raha E, Riza Raz, Muhammed Sahad M, Abhinand C P, Revathy Mahendran, Aruniga Babu, Safa Parvin, Afiya P A, Vishnu K, Rinsha M K, Haniyah Ollassery Usman, Navaneeth T M, Abhishek V T, Dr. Muhammadali N, Dr. Abdul Muneer V, Dr. Ashraf P
 
-## Technology 
-The platform has evolved rapidly from a single HTML proof-of-concept to a full-fledged web platform powered by Svelte (for interactive frontend), d3 and Apache ECharts (for interactive graphs), Astro (for build), Github Pages (for frontend deployment), a bespoke NodeJS API (for backend) and a linked dataset as database. Details of the libraries used can be found in [package.json](https://github.com/opendatakerala/KLA2026/blob/main/package.json).
-
 ## Report Issues
 Found a mistake? Help us improve by [filing an issue on GitHub](https://github.com/opendatakerala/KLA2026/issues) or [emailing opendatakerala@gmail.com](mailto:opendatakerala@gmail.com).
 
 Become part of the conversation! [Join the ODK Public Group](https://t.me/opendatakerala) to ask questions or help us improve by reporting bugs.
+
+## Media Coverage
+* [The Hindu: Online collective launches portal on assembly polls](https://www.thehindu.com/news/national/kerala/kerala-assembly-election-2026-online-collective-launches-portal-on-assembly-polls/article70830991.ece/amp/)
+* [Kerala Technology: Open data cuts through Kerala election noise](https://keralatechnology.com/blog/open-data-cuts-through-kerala-election-noise)
+* ദേശാഭിമാനി: നിയമസഭാ തെരഞ്ഞെടുപ്പ് വിശകലനത്തിന് ഡിജിറ്റൽ പോർട്ടൽ (09-04-2026)
+* [On The Dot Media: AI കാണുന്ന തെരത്തെടുപ്പ് ഫലം ! | Kerala Assembly Elections 2026 | EP 3](https://www.youtube.com/watch?v=mWyeF2eUo40&t=393s) 
 
 ## Similar Initiatives
 We have extensive experience and expertise in working with election data, gazette records, and legislative information systems. Our work focuses on transforming traditional formats—such as PDFs and scanned documents—into structured knowledge bases, linked data systems, and machine-readable, AI-friendly datasets. This approach enhances accessibility, usability, and interoperability of public data, enabling deeper analysis and broader public engagement.
