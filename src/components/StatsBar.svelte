@@ -57,16 +57,18 @@
   });
 </script>
 
-<div class="stats-bar">
-  {#each statsData as stat, index}
-    <div class="stat-cell">
-      <div class="stat-value">
-        {typeof stat.value === 'number' ? displayedValues[index].toLocaleString() : stat.value}
-      </div>
-      <div class="stat-label">{$_(`statsBar.${stat.key}`)}</div>
-    </div>
-  {/each}
-</div>
+<section class="stats-bar-section" aria-label={$_('statsBar.title')}>
+  <ul class="stats-bar">
+    {#each statsData as stat, index}
+      <li class="stat-cell">
+        <div class="stat-value" role="status" aria-live="polite">
+          {typeof stat.value === 'number' ? displayedValues[index].toLocaleString() : stat.value}
+        </div>
+        <div class="stat-label">{$_(`statsBar.${stat.key}`)}</div>
+      </li>
+    {/each}
+  </ul>
+</section>
 
 <style>
     .stats-bar {
@@ -74,6 +76,9 @@
       flex-wrap: wrap;
       gap: 8px;
       margin-bottom: 28px;
+      list-style: none;
+      padding: 0;
+      margin: 0 0 28px 0;
     }
     
     .stat-cell {

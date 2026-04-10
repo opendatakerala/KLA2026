@@ -32,31 +32,41 @@
 </script>
 
 <div class="data-display">
-  <div class="view-tabs">
+  <div class="view-tabs" role="tablist" aria-label={$_('header.viewSelection')}>
     <button 
+      id="view-grid-tab"
       class="view-tab" 
       class:active={viewMode === 'grid'}
+      role="tab"
+      aria-selected={viewMode === 'grid'}
+      aria-controls="view-content"
       onclick={() => setView('grid')}
     >
-      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="16" height="14" rx="2"/><line x1="2" y1="8" x2="18" y2="8"/><line x1="2" y1="13" x2="18" y2="13"/><line x1="7" y1="8" x2="7" y2="17"/></svg>
+      <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="16" height="14" rx="2"/><line x1="2" y1="8" x2="18" y2="8"/><line x1="2" y1="13" x2="18" y2="13"/><line x1="7" y1="8" x2="7" y2="17"/></svg>
       <span>{$_('header.table')}</span>
     </button>
     <button 
+      id="view-map-tab"
       class="view-tab" 
       class:active={viewMode === 'map'}
+      role="tab"
+      aria-selected={viewMode === 'map'}
+      aria-controls="view-content"
       onclick={() => setView('map')}
     >
-      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 5l5-2 4 2 5-2v12l-5 2-4-2-5 2V5z"/><line x1="8" y1="3" x2="8" y2="17"/><line x1="12" y1="5" x2="12" y2="19"/></svg>
+      <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 5l5-2 4 2 5-2v12l-5 2-4-2-5 2V5z"/><line x1="8" y1="3" x2="8" y2="17"/><line x1="12" y1="5" x2="12" y2="19"/></svg>
       <span>{$_('header.map')}</span>
     </button>
   </div>
 
-  {#if viewMode === 'grid'}
-    <SortBar />
-    <Grid />
-  {:else}
-    <MapView />
-  {/if}
+  <div id="view-content" role="tabpanel" aria-labelledby={viewMode === 'grid' ? 'view-grid-tab' : 'view-map-tab'} tabindex="0">
+    {#if viewMode === 'grid'}
+      <SortBar />
+      <Grid />
+    {:else}
+      <MapView />
+    {/if}
+  </div>
 </div>
 
 <style>

@@ -32,14 +32,15 @@
   }
 </script>
 
-<div class="grid" id="grid">
+<ul class="grid" id="grid" aria-label={$_('results.gridLabel')}>
   {#each filteredData as row (row.number)}
-    <div
+    <li
       class="card {row.reservation === 'SC' ? 'reserved-sc' : row.reservation === 'ST' ? 'reserved-st' : ''}"
       onclick={() => handleCardClick(row)}
       onkeydown={(e) => e.key === "Enter" && handleCardClick(row)}
       role="button"
       tabindex="0"
+      aria-label={$_('results.viewConstituency', { values: { name: currentLangValue === 'ml' && row.nameMalayalam ? row.nameMalayalam : row.name, number: row.number } })}
     >
       <div class="card-header">
         <div>
@@ -83,19 +84,19 @@
           </div>
         {/each}
       </div>
-      <div class="card-more">
+      <div class="card-more" aria-hidden="true">
         <span>{t('results.moreInfo')}</span>
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4l4 4-4 4"/></svg>
       </div>
-    </div>
+    </li>
   {/each}
 
   {#if filteredData.length === 0}
-    <div class="empty-state">
+    <div class="empty-state" role="status">
       <span>{t('results.empty')}</span>
     </div>
   {/if}
-</div>
+</ul>
 
 <Modal />
 
@@ -105,9 +106,14 @@
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 16px;
     margin-top: 16px;
+    list-style: none;
+    padding: 0;
   }
 
   .card {
+    list-style: none;
+    margin: 0;
+    padding: 14px;
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 8px;

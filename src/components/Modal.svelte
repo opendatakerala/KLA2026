@@ -184,6 +184,36 @@
     link.click();
     URL.revokeObjectURL(link.href);
   }
+
+  let modalElement = $state(null);
+  
+  $effect(() => {
+    if (currentModal && modalElement) {
+      const focusable = modalElement.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+      if (focusable.length) focusable[0].focus();
+      
+      const handleTab = (e) => {
+        if (e.key !== 'Tab') return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        
+        if (e.shiftKey) {
+          if (document.activeElement === first) {
+            last.focus();
+            e.preventDefault();
+          }
+        } else {
+          if (document.activeElement === last) {
+            first.focus();
+            e.preventDefault();
+          }
+        }
+      };
+      
+      window.addEventListener('keydown', handleTab);
+      return () => window.removeEventListener('keydown', handleTab);
+    }
+  });
 </script>
 
 <svelte:window onkeydown={handleKeydown} />
@@ -192,41 +222,42 @@
   <div
     class="modal-overlay open"
     onclick={handleClose}
-    role="button"
-    tabindex="0"
+    role="presentation"
   >
     <div
       class="modal"
-
+      bind:this={modalElement}
       onclick={(e) => e.stopPropagation()}
       role="dialog"
-
+      aria-modal="true"
+      aria-labelledby="modal-title"
+      aria-describedby="modal-eyebrow"
     >
       <div class="modal-top"></div>
       <div class="modal-header">
         <div class="modal-actions">
           {#if generatedBlob}
             {#if canShareImage}
-              <button class="modal-btn icon-btn" onclick={handleShare}>
-                <img src={shareIcon.src} alt="Share" />
+              <button class="modal-btn icon-btn" onclick={handleShare} aria-label={$_('modal.shareLabel')}>
+                <img src={shareIcon.src} alt="" aria-hidden="true" />
               </button>
             {/if}
-            <button class="modal-btn icon-btn" onclick={handleDownload}>
-              <img src={downloadIcon.src} alt="Download" />
+            <button class="modal-btn icon-btn" onclick={handleDownload} aria-label={$_('modal.downloadLabel')}>
+              <img src={downloadIcon.src} alt="" aria-hidden="true" />
             </button>
           {:else}
-            <button class="modal-btn" disabled>
+            <button class="modal-btn" disabled aria-label={$_('modal.generatingImage')}>
               <span class="loader"></span>
             </button>
           {/if}
-          <button class="modal-btn icon-btn" onclick={handleClose}>
-            <span>{$_('modal.close')}</span>
+          <button class="modal-btn icon-btn" onclick={handleClose} aria-label={$_('modal.close')}>
+            <span aria-hidden="true">{$_('modal.close')}</span>
           </button>
         </div>
-        <div class="modal-eyebrow">
+        <div class="modal-eyebrow" id="modal-eyebrow">
           {currentLangValue === 'ml' && currentModal.districtMalayalam ? currentModal.districtMalayalam : currentModal.district} · {$_('modal.constituency')} #{currentModal.number}
         </div>
-        <div class="modal-title">{getConstituencyName(currentModal, currentLangValue)}</div>
+        <div class="modal-title" id="modal-title">{getConstituencyName(currentModal, currentLangValue)}</div>
         <div class="modal-badges">
           {#if currentModal.reservation}
             <span class="reservation-badge {currentModal.reservation.toLowerCase()}">
@@ -258,14 +289,14 @@
                 <span class="stat-label">{$_('modal.voters')}</span>
                 <span class="voters-count">{formatIndian(currentModal.votersTotal)}</span>
               </div>
-              <div class="voters-bar-wrapper">
+              <div class="voters-bar-wrapper" role="img" aria-label={$_('modal.voterBreakdownLabel', { values: { female: femalePct, male: malePct, trans: transPct } })}>
                 {#if trans > 0}
                   <div class="voters-bar-segment trans" style="width: {transPct}%"></div>
                 {/if}
                 <div class="voters-bar-segment female" style="width: {femalePct}%"></div>
                 <div class="voters-bar-segment male" style="width: {malePct}%"></div>
               </div>
-              <div class="voters-legend">
+              <div class="voters-legend" aria-hidden="true">
                 <span class="legend-item"><span class="legend-dot female"></span> ♀ {formatIndian(female)} ({femalePct}%)</span>
                 {#if trans > 0}
                   <span class="legend-item"><span class="legend-dot trans"></span> ⚥ {formatIndian(trans)} ({transPct}%)</span>

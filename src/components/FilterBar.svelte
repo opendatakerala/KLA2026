@@ -63,14 +63,15 @@
   }
 </script>
 
-<div class="filter-bar">
-  <div class="filter-group">
-    <div class="filter-label">{$_('filters.category')}</div>
+<div class="filter-bar" aria-label={$_('filters.title')}>
+  <fieldset class="filter-group">
+    <legend class="filter-label">{$_('filters.category')}</legend>
     <div class="filter-row">
       <button 
         class="filter-btn"
         class:active={currentCategory === 'all'}
         onclick={() => handleCategoryClick('all')}
+        aria-pressed={currentCategory === 'all'}
       >
         <span>{$_('filters.all')}</span>
       </button>
@@ -78,6 +79,7 @@
         class="filter-btn sc"
         class:active={currentCategory === 'SC'}
         onclick={() => handleCategoryClick('SC')}
+        aria-pressed={currentCategory === 'SC'}
       >
         <span>{$_('map.scReserved')}</span>
       </button>
@@ -85,6 +87,7 @@
         class="filter-btn st"
         class:active={currentCategory === 'ST'}
         onclick={() => handleCategoryClick('ST')}
+        aria-pressed={currentCategory === 'ST'}
       >
         <span>{$_('map.stReserved')}</span>
       </button>
@@ -92,19 +95,22 @@
         class="filter-btn female"
         class:active={currentCategory === 'women'}
         onclick={() => handleCategoryClick('women')}
+        aria-pressed={currentCategory === 'women'}
+        aria-label={$_('filters.womenLabel')}
       >
-        ♀ <span>{$_('filters.women')}</span>
+        <span aria-hidden="true">♀</span> <span>{$_('filters.women')}</span>
       </button>
     </div>
-  </div>
+  </fieldset>
 
-  <div class="filter-group">
-    <div class="filter-label">{$_('filters.party')}</div>
+  <fieldset class="filter-group">
+    <legend class="filter-label">{$_('filters.party')}</legend>
     <div class="filter-row">
       <button 
         class="filter-btn"
         class:active={activeParty === 'all'}
         onclick={() => setParty('all')}
+        aria-pressed={activeParty === 'all'}
       >
         <span>{$_('filters.all')}</span>
       </button>
@@ -113,20 +119,22 @@
           class="filter-btn party-btn"
           class:active={activeParty === party.party}
           onclick={() => handlePartyClick(party.party)}
+          aria-pressed={activeParty === party.party}
         >
           {party.party}
         </button>
       {/each}
     </div>
-  </div>
+  </fieldset>
 
-  <div class="filter-group">
-    <div class="filter-label">{$_('filters.geography')}</div>
+  <fieldset class="filter-group">
+    <legend class="filter-label">{$_('filters.geography')}</legend>
     <div class="geo-regions">
       <button 
         class="filter-btn"
         class:active={activeGeography === 'all'}
         onclick={() => handleGeographyClick('all')}
+        aria-pressed={activeGeography === 'all'}
       >
         {$_('filters.all')}
       </button>
@@ -136,6 +144,7 @@
             class="region-btn"
             class:active={isRegionActive(key)}
             onclick={() => handleGeographyClick(key)}
+            aria-pressed={isRegionActive(key)}
           >
             {getRegionLabel(region)}
           </button>
@@ -145,6 +154,7 @@
                 class="district-btn"
                 class:active={isDistrictActive(district)}
                 onclick={() => handleGeographyClick(district)}
+                aria-pressed={isDistrictActive(district)}
               >
                 {$_(`districts.${district}`)}
               </button>
@@ -153,7 +163,7 @@
         </div>
       {/each}
     </div>
-  </div>
+  </fieldset>
 </div>
 
 <style>
@@ -171,14 +181,29 @@
     display: flex;
     flex-direction: column;
     gap: 6px;
+    border: none;
+    padding: 0;
+    margin: 0;
+    min-width: 0;
   }
 
   .filter-label {
+    display: block;
+    margin: 0;
+    padding: 0;
     font-family: 'Manjari', monospace;
     font-size: var(--fs-sm);
     letter-spacing: 0.08em;
     color: var(--muted);
     text-transform: uppercase;
+    float: left;
+    width: 100%;
+  }
+
+  .filter-label::after {
+    content: "";
+    display: table;
+    clear: both;
   }
 
   .filter-row {

@@ -16,7 +16,8 @@
     "hours": "Hrs",
     "minutes": "Min",
     "seconds": "Sec",
-    "alsoFromODK": "Also from ODK"
+    "alsoFromODK": "Also from ODK",
+    "viewSelection": "Select display mode"
   },
   "footer": {
     "credits": "Kerala Legislative Assembly Election 2026 · Data sourced from Various Media & CEO Kerala · an OpenDataKerala Initiative",
@@ -47,7 +48,8 @@
     "dummyDistribution": "Namesake Distribution",
     "educationDistribution": "Education Distribution",
     "symbolDistribution": "Symbol Distribution",
-    "experimental": "experimental"
+    "experimental": "experimental",
+    "tabsLabel": "Statistics Categories"
   },
   "statsBar": {
     "constituencies": "Constituencies",
@@ -58,7 +60,8 @@
     "nominations": "Nomination Papers",
     "applications": "Candidate Applications",
     "afterScrutiny": "After Scrutiny",
-    "contesting": "Contesting Candidates"
+    "contesting": "Contesting Candidates",
+    "title": "Election Statistics Dashboard"
   },
   "filters": {
     "filters": "Filters",
@@ -67,7 +70,9 @@
     "category": "Category",
     "party": "Party",
     "geography": "Districts",
-    "district": "District"
+    "district": "District",
+    "title": "Filter candidates by various criteria",
+    "womenLabel": "Filter to show only women candidates"
   },
   "sort": {
     "sortBy": "Sort By",
@@ -85,7 +90,9 @@
   },
   "results": {
     "empty": "No constituencies match your search.",
-    "moreInfo": "More info"
+    "moreInfo": "More info",
+    "gridLabel": "List of electoral constituencies",
+    "viewConstituency": "View details for {name} constituency, number {number}"
   },
   "map": {
     "scReserved": "SC Reserved",
@@ -108,7 +115,11 @@
     "sittingMLA": "Sitting MLA",
     "sittingMLADiffParty": "Sitting MLA from different party",
     "sittingMLADiffSeat": "Sitting MLA from different seat",
-    "mlaTrack": "MLA Track"
+    "mlaTrack": "MLA Track",
+    "shareLabel": "Share constituency information",
+    "downloadLabel": "Download as image",
+    "generatingImage": "Generating image, please wait...",
+    "voterBreakdownLabel": "Voter breakdown: {female}% female, {male}% male, {trans}% transgender"
   },
   "charts": {
     "loading": "Loading...",

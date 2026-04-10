@@ -29,51 +29,69 @@
 
 <div class="stats-section" class:collapsed id="stats-section">
   <StatsBar />
-  <div class="stats-tabs">
+  <div class="stats-tabs" role="tablist" aria-label={$_('stats.tabsLabel')}>
     <button 
+      id="tab-party"
       class="stats-tab" 
       class:active={activeTab === 'candidates-by-party'}
-      data-stat="candidates-by-party"
+      role="tab"
+      aria-selected={activeTab === 'candidates-by-party'}
+      aria-controls="panel-party"
       onclick={() => handleTabClick('candidates-by-party')}
     >
       <span>{$_('stats.partyDistribution')}</span>
     </button>
     <button 
+      id="tab-gender"
       class="stats-tab"
       class:active={activeTab === 'gender-distribution'}
-      data-stat="gender-distribution"
+      role="tab"
+      aria-selected={activeTab === 'gender-distribution'}
+      aria-controls="panel-gender"
       onclick={() => handleTabClick('gender-distribution')}
     >
       <span>{$_('stats.genderDistribution')}</span>
     </button>
     <button 
+      id="tab-age"
       class="stats-tab"
       class:active={activeTab === 'age-distribution'}
-      data-stat="age-distribution"
+      role="tab"
+      aria-selected={activeTab === 'age-distribution'}
+      aria-controls="panel-age"
       onclick={() => handleTabClick('age-distribution')}
     >
       <span>{$_('stats.ageDistribution')}</span>
     </button>
     <button 
+      id="tab-dummy"
       class="stats-tab"
       class:active={activeTab === 'dummy-distribution'}
-      data-stat="dummy-distribution"
+      role="tab"
+      aria-selected={activeTab === 'dummy-distribution'}
+      aria-controls="panel-dummy"
       onclick={() => handleTabClick('dummy-distribution')}
     >
       <span>{$_('stats.dummyDistribution')}</span>
     </button>
     <button 
+      id="tab-symbol"
       class="stats-tab"
       class:active={activeTab === 'symbol-distribution'}
-      data-stat="symbol-distribution"
+      role="tab"
+      aria-selected={activeTab === 'symbol-distribution'}
+      aria-controls="panel-symbol"
       onclick={() => handleTabClick('symbol-distribution')}
     >
       <span>{$_('stats.symbolDistribution')}</span>
     </button>
     <button 
+      id="tab-education"
       class="stats-tab"
       class:active={activeTab === 'education-distribution'}
-      data-stat="education-distribution"
+      role="tab"
+      aria-selected={activeTab === 'education-distribution'}
+      aria-controls="panel-education"
       onclick={() => handleTabClick('education-distribution')}
     >
       <span>{$_('stats.educationDistribution')}</span>
@@ -82,27 +100,69 @@
   </div>
 
   <div class="stats-content">
-    <div class="stats-panel" class:active={activeTab === 'candidates-by-party'}>
+    <div 
+      id="panel-party"
+      class="stats-panel" 
+      class:active={activeTab === 'candidates-by-party'}
+      role="tabpanel"
+      aria-labelledby="tab-party"
+      tabindex="0"
+    >
       <PartyDistribution isActive={activeTab === 'candidates-by-party'} />
     </div>
 
-    <div class="stats-panel" class:active={activeTab === 'gender-distribution'}>
+    <div 
+      id="panel-gender"
+      class="stats-panel" 
+      class:active={activeTab === 'gender-distribution'}
+      role="tabpanel"
+      aria-labelledby="tab-gender"
+      tabindex="0"
+    >
       <GenderDistribution isActive={activeTab === 'gender-distribution'} />
     </div>
 
-    <div class="stats-panel" class:active={activeTab === 'age-distribution'}>
+    <div 
+      id="panel-age"
+      class="stats-panel" 
+      class:active={activeTab === 'age-distribution'}
+      role="tabpanel"
+      aria-labelledby="tab-age"
+      tabindex="0"
+    >
       <AgeDistribution isActive={activeTab === 'age-distribution'} />
     </div>
 
-    <div class="stats-panel" class:active={activeTab === 'dummy-distribution'}>
+    <div 
+      id="panel-dummy"
+      class="stats-panel" 
+      class:active={activeTab === 'dummy-distribution'}
+      role="tabpanel"
+      aria-labelledby="tab-dummy"
+      tabindex="0"
+    >
       <DummyDistribution isActive={activeTab === 'dummy-distribution'} />
     </div>
 
-    <div class="stats-panel" class:active={activeTab === 'symbol-distribution'}>
+    <div 
+      id="panel-symbol"
+      class="stats-panel" 
+      class:active={activeTab === 'symbol-distribution'}
+      role="tabpanel"
+      aria-labelledby="tab-symbol"
+      tabindex="0"
+    >
       <SymbolDistribution isActive={activeTab === 'symbol-distribution'} />
     </div>
 
-    <div class="stats-panel" class:active={activeTab === 'education-distribution'}>
+    <div 
+      id="panel-education"
+      class="stats-panel" 
+      class:active={activeTab === 'education-distribution'}
+      role="tabpanel"
+      aria-labelledby="tab-education"
+      tabindex="0"
+    >
       <EducationDistribution isActive={activeTab === 'education-distribution'} />
     </div>
   </div>
