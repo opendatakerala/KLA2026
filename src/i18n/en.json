@@ -78,6 +78,7 @@
     "sortBy": "Sort By",
     "number": "Constituency Number",
     "name": "Name",
+    "fightIndex": "Fight Index",
     "candidates": "Candidates",
     "voters": "Voters",
     "booths": "Polling Booths",

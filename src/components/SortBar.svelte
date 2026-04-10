@@ -2,7 +2,7 @@
   import { _, locale } from '../lib/i18n.js';
   import { filters, setSort, SORT_FIELDS } from '../stores/constituencyStore.js';
 
-  let activeSort = $derived($filters.sort || { field: 'number', direction: 'desc' });
+  let activeSort = $derived($filters.sort || { field: 'fightIndex', direction: 'desc' });
   let currentLang = $derived($locale);
 
   const sortFields = Object.entries(SORT_FIELDS);

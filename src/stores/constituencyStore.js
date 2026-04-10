@@ -69,14 +69,15 @@ export const filters = atom({
   reservation: 'all',
   women: false,
   sort: {
-    field: 'number',
-    direction: 'asc'
+    field: 'fightIndex',
+    direction: 'desc'
   }
 });
 
 export const SORT_FIELDS = {
   number: { labelKey: 'sort.number', defaultDirection: 'asc' },
   name: { labelKey: 'sort.name', defaultDirection: 'asc' },
+  fightIndex: { labelKey: 'sort.fightIndex', defaultDirection: 'desc' },
   candidates: { labelKey: 'sort.candidates', defaultDirection: 'desc' },
   voters: { labelKey: 'sort.voters', defaultDirection: 'desc' },
   booths: { labelKey: 'sort.booths', defaultDirection: 'desc' }
@@ -123,7 +124,7 @@ export function clearFilters() {
     party: 'all',
     reservation: 'all',
     women: false,
-    sort: { field: 'number', direction: 'asc' }
+    sort: { field: 'fightIndex', direction: 'desc' }
   });
 }
 
@@ -320,6 +321,10 @@ export const filteredConstituencies = computed(
               valA = a.name || '';
               valB = b.name || '';
             }
+            break;
+          case 'fightIndex':
+            valA = parseFloat(a.fightIndex || '0', 10);
+            valB = parseFloat(b.fightIndex || '0', 10);
             break;
           case 'candidates':
             valA = (a.candidates || []).length;

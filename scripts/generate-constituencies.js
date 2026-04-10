@@ -12,12 +12,58 @@ function getAlliance(party, allianceFromCSV) {
   return 'Others';
 }
 
+function levenshteinDistance(a, b) {
+  const matrix = Array(b.length + 1).fill(null).map(() => Array(a.length + 1).fill(null));
+  for (let i = 0; i <= a.length; i++) matrix[0][i] = i;
+  for (let j = 0; j <= b.length; j++) matrix[j][0] = j;
+  for (let j = 1; j <= b.length; j++) {
+    for (let i = 1; i <= a.length; i++) {
+      const indicator = a[i - 1] === b[j - 1] ? 0 : 1;
+      matrix[j][i] = Math.min(
+        matrix[j][i - 1] + 1,
+        matrix[j - 1][i] + 1,
+        matrix[j - 1][i - 1] + indicator
+      );
+    }
+  }
+  return matrix[b.length][a.length];
+}
+
+function findBestMatch(name, candidates, maxDistance = 2) {
+  let bestMatch = null;
+  let bestDistance = Infinity;
+  for (const candidate of candidates) {
+    const distance = levenshteinDistance(name.toLowerCase(), candidate.toLowerCase());
+    if (distance < bestDistance && distance <= maxDistance) {
+      bestDistance = distance;
+      bestMatch = candidate;
+    }
+  }
+  return bestMatch ? { match: bestMatch, distance: bestDistance } : null;
+}
+
 function generate() {
   ensureOutputDir();
 
   const candidates = readCSV('2026-candidates.csv');
   const constituencies = readCSV('2026-constituencies.csv');
   const alliances = readCSV('2026-alliances.csv');
+  const fightIndexData = readCSV('2026-fight-index.csv');
+
+  const fightIndexByConstituency = {};
+  const fightIndexByDistrict = {};
+  fightIndexData.forEach(row => {
+    const district = cleanString(row.District);
+    const constituency = cleanString(row.Constituency);
+    const fightIndex = cleanString(row.FightIndex);
+    if (district && constituency && fightIndex) {
+      fightIndexByConstituency[`${district}|${constituency}`] = fightIndex;
+      if (!fightIndexByDistrict[district]) {
+        fightIndexByDistrict[district] = [];
+      }
+      fightIndexByDistrict[district].push(constituency);
+    }
+  });
 
   const partyToAlliance = {};
   alliances.forEach(row => {
@@ -50,6 +96,8 @@ function generate() {
   });
 
   const grouped = {};
+  const unmatchedConstNames = [];
+  const fuzzyMatches = [];
   candidates.forEach(cand => {
     const qid = cleanString(cand.constituency_Wikidata);
     if (!qid) return;
@@ -58,6 +106,24 @@ function generate() {
     if (!constData) return;
 
     if (!grouped[qid]) {
+      const district = constData.district;
+      const constName = constData.name;
+      const fightKey = `${district}|${constName}`;
+      let fightIndex = fightIndexByConstituency[fightKey];
+
+      if (!fightIndex && fightIndexByDistrict[district]) {
+        const result = findBestMatch(constName, fightIndexByDistrict[district], 3);
+        if (result) {
+          const fuzzyKey = `${district}|${result.match}`;
+          fightIndex = fightIndexByConstituency[fuzzyKey];
+          fuzzyMatches.push({ district, from: constName, to: result.match, distance: result.distance });
+        }
+      }
+
+      if (!fightIndex) {
+        unmatchedConstNames.push({ district, name: constName });
+      }
+
       grouped[qid] = {
         number: constData.number,
         name: constData.name,
@@ -74,6 +140,9 @@ function generate() {
         votersTotal: constData.votersTotal,
         candidates: []
       };
+      if (fightIndex) {
+        grouped[qid].fightIndex = fightIndex;
+      }
     }
 
     const party = cleanString(cand.party_y);
@@ -120,6 +189,20 @@ function generate() {
 
     grouped[qid].candidates.push(candidateObj);
   });
+
+  if (fuzzyMatches.length > 0) {
+    console.log('\n--- Fuzzy Matched FightIndex ---');
+    fuzzyMatches.forEach(m => {
+      console.log(`  ${m.district}: "${m.from}" → "${m.to}" (distance: ${m.distance})`);
+    });
+  }
+
+  if (unmatchedConstNames.length > 0) {
+    console.log('\n--- Unmatched Constituencies (no FightIndex) ---');
+    unmatchedConstNames.forEach(m => {
+      console.log(`  ${m.district}: "${m.name}"`);
+    });
+  }
 
   const sorted = Object.values(grouped).sort((a, b) => 
     parseInt(a.number) - parseInt(b.number)
