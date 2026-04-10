@@ -671,7 +671,7 @@
     top: 0;
     left: -9999px;
     overflow: hidden;
-    width: 1080px;
-    height: 1080px;
+    width: 1600px;
+    height: 1600px;
   }
 </style>
