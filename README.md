@@ -77,7 +77,8 @@ Become part of the conversation! [Join the ODK Public Group](https://t.me/openda
 * [Kerala Technology: Open data cuts through Kerala election noise](https://keralatechnology.com/blog/open-data-cuts-through-kerala-election-noise)
 * ദേശാഭിമാനി: നിയമസഭാ തെരഞ്ഞെടുപ്പ് വിശകലനത്തിന് ഡിജിറ്റൽ പോർട്ടൽ (09-04-2026)
 * [On The Dot Media: AI കാണുന്ന തെരത്തെടുപ്പ് ഫലം ! | Kerala Assembly Elections 2026 | EP 3](https://www.youtube.com/watch?v=mWyeF2eUo40&t=393s) 
-
+* ഓപ്പൺ ഡാറ്റ തിരഞ്ഞെടുപ്പ് ഡിജിറ്റൽ പോർട്ടൽ, അപരൻ 130 ചില്ലറയല്ല വെല്ലുവിളി. 11 ഏപ്രിൽ 2026, ദേശാഭിമാനി
+* 
 ## Similar Initiatives
 We have extensive experience and expertise in working with election data, gazette records, and legislative information systems. Our work focuses on transforming traditional formats—such as PDFs and scanned documents—into structured knowledge bases, linked data systems, and machine-readable, AI-friendly datasets. This approach enhances accessibility, usability, and interoperability of public data, enabling deeper analysis and broader public engagement.
 
