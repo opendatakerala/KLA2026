@@ -2,6 +2,8 @@
   import { onMount } from 'svelte';
   import SearchBar from './SearchBar.svelte';
   import { locale, _, setLanguage } from '../lib/i18n.js';
+  
+  import logo from "../images/logo-kla2026b.svg"
 
   let days = $state(0);
   let hours = $state(0);
@@ -46,7 +48,7 @@
   <div class="header-stripe"></div>
   <div class="header-inner">
     <div class="header-logo-wrap">
-      <img class="header-logo" src="https://opendatakerala.org/LSG2025/assets/logo-DnFodOdy.png" alt="OpenDataKerala Logo" />
+      <img class="header-logo" src={logo.src} alt="KLA Elections 2026 Logo" />
     </div>
     <div class="header-title">
       <div class="header-eyebrow">{$_('site.title')}</div>
@@ -143,7 +145,7 @@
   }
 
   .header-logo-wrap { display: flex; align-items: center; flex-shrink: 0; }
-  .header-logo { width: 60px; height: 60px; object-fit: contain; border-radius: 10px; }
+  .header-logo { width: 100px; height: 100px; object-fit: contain; border-radius: 10px; }
 
   .header-title { flex: 1; display: flex; flex-direction: column; }
 
@@ -348,7 +350,7 @@
     .header-external-links {
       display: none;
     }
-    .header-logo { width: 44px; height: 44px; }
+    .header-logo { width: 60px; height: 60px; }
     .header-right {
       display: flex;
       flex-direction: row;
